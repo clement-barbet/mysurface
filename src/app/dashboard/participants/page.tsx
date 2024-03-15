@@ -21,9 +21,9 @@ export default async function ParticipantsPage() {
 
   return (
     <ParticipantsPageClient
-      initialParticipants={initialParticipants}
-      initialQuestionnaires={initialQuestionnaires}
-      initialAppSettings={initialAppSettings}
+      initialParticipants={initialParticipants || []}
+      initialQuestionnaires={initialQuestionnaires || []}
+      initialAppSettings={initialAppSettings || {}}
     />
   );
 }

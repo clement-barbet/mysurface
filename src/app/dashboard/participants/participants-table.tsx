@@ -19,5 +19,9 @@ export default function ParticipantsTable({
     // ... (existing code)
   }, []);
 
+  if (!participants || !questionnaires) {
+    return <div>Loading...</div>;
+  }
+
   return <DataTable columns={columns(questionnaires)} data={participants} />;
 }
