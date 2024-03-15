@@ -62,11 +62,12 @@ export const columns = (questionnaires: any[]): ColumnDef<Participants>[] => [
     header: "Questionnaire",
     cell: ({ row }) => {
       const questionnaireId = row.original.questionnaire;
+      const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
       return questionnaireId ? (
         <Button
           onClick={() =>
             navigator.clipboard.writeText(
-              `localhost:3000/questionnaire/${questionnaireId}`
+              `${baseUrl}/questionnaire/${questionnaireId}`
             )
           }
           className=" bg-blue-500 px-2 py-1 rounded text-white"

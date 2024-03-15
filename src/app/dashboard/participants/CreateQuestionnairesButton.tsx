@@ -1,10 +1,19 @@
 "use client";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import { Button } from "@/components/ui/button";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 export default function CreateQuestionnairesButton({
   phase,
+  participantCount,
 }: {
   phase: string;
+  participantCount: number;
 }) {
   const createQuestionnaires = async () => {
     try {
@@ -30,10 +39,34 @@ export default function CreateQuestionnairesButton({
   };
 
   const isEnrollmentPhase = phase === "enrollment";
+  const canCreateQuestionnaires = isEnrollmentPhase && participantCount >= 2;
+
+  if (!isEnrollmentPhase) {
+    return null;
+  }
 
   return (
-    <button onClick={createQuestionnaires} disabled={!isEnrollmentPhase}>
-      Create Questionnaires
-    </button>
+    <TooltipProvider>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <div className=" w-fit">
+            <Button
+              onClick={createQuestionnaires}
+              disabled={!canCreateQuestionnaires}
+            >
+              Create Questionnaires
+            </Button>
+          </div>
+        </TooltipTrigger>
+        {!canCreateQuestionnaires && (
+          <TooltipContent>
+            <p>
+              You need to add at least 2 participants before generating the
+              questionnaires.
+            </p>
+          </TooltipContent>
+        )}
+      </Tooltip>
+    </TooltipProvider>
   );
 }

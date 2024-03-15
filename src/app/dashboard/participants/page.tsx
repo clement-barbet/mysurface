@@ -33,6 +33,7 @@ export default async function ParticipantsPage() {
   const allQuestionnairesCompleted = questionnaires.every(
     (questionnaire) => questionnaire.completed
   );
+  const participantCount = participants.length;
 
   return (
     <div>
@@ -41,7 +42,10 @@ export default async function ParticipantsPage() {
         questionnaires={questionnaires}
       />
       <CreateParticipantForm phase={appSettings.setting_value} />
-      <CreateQuestionnairesButton phase={appSettings.setting_value} />
+      <CreateQuestionnairesButton
+        phase={appSettings.setting_value}
+        participantCount={participantCount}
+      />
       <CreateResultButton
         phase={appSettings.setting_value}
         allQuestionnairesCompleted={allQuestionnairesCompleted}

@@ -57,7 +57,7 @@ export default function LoginForm() {
       setErrorMessage(response.error?.message);
       return;
     } else {
-      return router.push("/");
+      return router.push("/dashboard");
     }
   }
 

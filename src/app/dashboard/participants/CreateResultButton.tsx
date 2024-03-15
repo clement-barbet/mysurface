@@ -42,9 +42,9 @@ export default function CreateResultButton({
   const isQuestionnairePhase = phase === "questionnaire";
   const canGenerateResult = isQuestionnairePhase && allQuestionnairesCompleted;
 
-  return (
-    <button onClick={generateResult} disabled={!canGenerateResult}>
-      Generate Result
-    </button>
-  );
+  if (!canGenerateResult) {
+    return null;
+  }
+
+  return <button onClick={generateResult}>Generate Result</button>;
 }
