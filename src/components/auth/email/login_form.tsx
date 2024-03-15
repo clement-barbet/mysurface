@@ -46,14 +46,15 @@ export default function LoginForm() {
     const password = values.password;
 
     const supabase = createClientComponentClient();
-    const error = await supabase.auth.signInWithPassword({
+    const response = await supabase.auth.signInWithPassword({
       email,
       password,
     });
 
-    if (error) {
-      console.log(error);
-      setErrorMessage(error.error?.message);
+    if (response.error) {
+      console.log("Allo ?");
+      console.log(response);
+      setErrorMessage(response.error?.message);
       return;
     } else {
       return router.push("/");

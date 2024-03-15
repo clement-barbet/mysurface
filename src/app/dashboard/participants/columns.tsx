@@ -1,8 +1,6 @@
-/*
-name: string;
-email: string;
-questionnaire: uuid|empty;
-*/
+import { Button } from "@/components/ui/button";
+import { ColumnDef } from "@tanstack/react-table";
+import Link from "next/link";
 import { z } from "zod";
 
 const participantsSchema = z.object({
@@ -13,42 +11,7 @@ const participantsSchema = z.object({
 
 export type Participants = z.infer<typeof participantsSchema>;
 
-/*
-CONTEXT : Your job is to create `ColumnDef` for the Participants type
-
-EXAMPLE INPUT : 
-```ts
-// create ColumnDef instructions for status, email and amount
-export type Payment = {
-  id: string
-  amount: number
-  status: "pending" | "processing" | "success" | "failed"
-  email: string
-}
-```
-
-EXAMPLE OUTPUT : 
-```ts
-import { ColumnDef } from "@tanstack/react-table"
-export const columns: ColumnDef<Payment>[] = [
-  {
-    accessorKey: "status",
-    header: "Status",
-  },
-  {
-    accessorKey: "email",
-    header: "Email",
-  },
-  {
-    accessorKey: "amount",
-    header: "Amount",
-  },
-]
-```
-*/
-
-import { ColumnDef } from "@tanstack/react-table";
-export const columns: ColumnDef<Participants>[] = [
+export const columns = (questionnaires: any[]): ColumnDef<Participants>[] => [
   {
     accessorKey: "name",
     header: "Name",
@@ -58,7 +21,59 @@ export const columns: ColumnDef<Participants>[] = [
     header: "Email",
   },
   {
+    id: "status",
+    header: "Status",
+    cell: ({ row }) => {
+      const questionnaire = row.original.questionnaire;
+      if (questionnaire === null) {
+        return (
+          <div className="bg-gray-300 text-white px-2 py-1 rounded">
+            Undefined
+          </div>
+        );
+      }
+      const linkedQuestionnaire = questionnaires.find(
+        (q) => q.id === questionnaire
+      );
+      if (linkedQuestionnaire) {
+        if (linkedQuestionnaire.completed) {
+          return (
+            <div className="bg-green-500 text-white px-2 py-1 rounded">
+              Completed
+            </div>
+          );
+        } else {
+          return (
+            <div className="bg-yellow-500 text-white px-2 py-1 rounded">
+              To Complete
+            </div>
+          );
+        }
+      }
+      return (
+        <div className="bg-gray-300 text-white px-2 py-1 rounded">
+          Undefined
+        </div>
+      );
+    },
+  },
+  {
     accessorKey: "questionnaire",
     header: "Questionnaire",
+    cell: ({ row }) => {
+      const questionnaireId = row.original.questionnaire;
+      return questionnaireId ? (
+        <Button
+          onClick={() =>
+            navigator.clipboard.writeText(
+              `localhost:3000/questionnaire/${questionnaireId}`
+            )
+          }
+          className=" bg-blue-500 px-2 py-1 rounded text-white"
+        >
+          Copy Link
+        </Button>
+      ) : null;
+    },
   },
 ];
