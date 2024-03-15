@@ -52,7 +52,6 @@ export default function LoginForm() {
     });
 
     if (response.error) {
-      console.log("Allo ?");
       console.log(response);
       setErrorMessage(response.error?.message);
       return;
