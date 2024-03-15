@@ -48,11 +48,12 @@ export default function ParticipantsPageClient({
     fetchData();
   }, []);
 
-  const allQuestionnairesCompleted = questionnaires.every(
-    (questionnaire) => questionnaire.completed
-  );
+  const allQuestionnairesCompleted =
+    questionnaires && questionnaires.length > 0
+      ? questionnaires.every((questionnaire) => questionnaire.completed)
+      : false;
 
-  const participantCount = participants.length;
+  const participantCount = participants ? participants.length : 0;
 
   return (
     <div>
@@ -60,13 +61,13 @@ export default function ParticipantsPageClient({
         initialParticipants={participants}
         questionnaires={questionnaires}
       />
-      <CreateParticipantForm phase={appSettings.setting_value} />
+      <CreateParticipantForm phase={appSettings?.setting_value} />
       <CreateQuestionnairesButton
-        phase={appSettings.setting_value}
+        phase={appSettings?.setting_value}
         participantCount={participantCount}
       />
       <CreateResultButton
-        phase={appSettings.setting_value}
+        phase={appSettings?.setting_value}
         allQuestionnairesCompleted={allQuestionnairesCompleted}
       />
     </div>
