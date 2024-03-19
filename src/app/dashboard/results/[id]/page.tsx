@@ -46,35 +46,44 @@ export default async function ResultPage({
   });
 
   const links = [];
-  for (let i = 0; i < parsedResult.length; i++) {
-    for (let j = i + 1; j < parsedResult.length; j++) {
-      const sourceParticipant = parsedResult[i];
-      const targetParticipant = parsedResult[j];
-      const sourceToTargetConnection = sourceParticipant.data.find(
-        (dataPoint) =>
-          dataPoint.participantName === targetParticipant.participantName
-      );
-      const targetToSourceConnection = targetParticipant.data.find(
-        (dataPoint) =>
-          dataPoint.participantName === sourceParticipant.participantName
-      );
+  parsedResult.forEach((sourceParticipant) => {
+    let maxConnection = -Infinity;
+    let closestParticipant = null;
 
-      // Calculate the sum of connection ratings between the participants
-      const connectionSum =
-        (sourceToTargetConnection?.answers.find((answer) =>
-          answer.questionText.includes("collaborate with")
-        )?.rating || 0) +
-        (targetToSourceConnection?.answers.find((answer) =>
-          answer.questionText.includes("collaborate with")
-        )?.rating || 0);
+    sourceParticipant.data.forEach((dataPoint) => {
+      const targetParticipant = parsedResult.find(
+        (participant) =>
+          participant.participantName === dataPoint.participantName
+      );
+      if (targetParticipant) {
+        const connectionSum =
+          (dataPoint.answers.find((answer) =>
+            answer.questionText.includes("collaborate with")
+          )?.rating || 0) +
+          (targetParticipant.data
+            .find(
+              (targetData) =>
+                targetData.participantName === sourceParticipant.participantName
+            )
+            ?.answers.find((answer) =>
+              answer.questionText.includes("collaborate with")
+            )?.rating || 0);
 
+        if (connectionSum > maxConnection) {
+          maxConnection = connectionSum;
+          closestParticipant = targetParticipant.participantName;
+        }
+      }
+    });
+
+    if (closestParticipant) {
       links.push({
         source: sourceParticipant.participantName,
-        target: targetParticipant.participantName,
-        value: connectionSum,
+        target: closestParticipant,
+        value: maxConnection,
       });
     }
-  }
+  });
 
   const graphData = {
     nodes,
