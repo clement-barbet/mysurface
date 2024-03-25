@@ -2,6 +2,7 @@ import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
 import GraphNode2D from "./GraphNode2D";
+import GraphNode3D from "./GraphNode3D";
 
 export default async function ResultPage({
   params,
@@ -93,7 +94,8 @@ export default async function ResultPage({
   return (
     <div>
       <h1>Result: {params.id}</h1>
-      <GraphNode2D graphData={graphData} />
+      {/* <GraphNode2D graphData={graphData} /> */}
+      <GraphNode3D graphData={graphData} />
     </div>
   );
 }
