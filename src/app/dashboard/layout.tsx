@@ -8,7 +8,7 @@ export default function DashboardLayout({
 	return (
 		<div className="flex relative">
 			<DashboardNavbar />
-			<div className="flex-grow py-4 ps-14 md:ps-4">{children}</div>
+			<div className="flex-grow py-4">{children}</div>
 		</div>
 	);
 }
