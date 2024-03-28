@@ -112,7 +112,7 @@ export default function DashboardNavbar() {
 				</li>
 				<li className="py-4 px-4 tracking-wider">
 					<Link
-						href=""
+						href="#"
 						className="hover:font-bold transition-all duration-200 ease-linear"
 					>
 						<FontAwesomeIcon
@@ -126,7 +126,7 @@ export default function DashboardNavbar() {
 				<ul>
 					<li className="ps-10">
 						<Link
-							href=""
+							href="#"
 							className="hover:text-white transition-all duration-200 ease-linear"
 						>
 							Language
@@ -134,7 +134,7 @@ export default function DashboardNavbar() {
 					</li>
 					<li className="ps-10 pt-1">
 						<Link
-							href=""
+							href="#"
 							className="hover:text-white transition-all duration-200 ease-linear"
 						>
 							Theme
@@ -142,7 +142,7 @@ export default function DashboardNavbar() {
 					</li>
 					<li className="ps-10 pt-1">
 						<Link
-							href=""
+							href="#"
 							className="hover:text-white transition-all duration-200 ease-linear"
 						>
 							FAQ
