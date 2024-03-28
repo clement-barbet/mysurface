@@ -1,12 +1,13 @@
 import LoginForm from "@/components/auth/email/login_form";
 
 export default function LoginPage() {
-  return (
-    <>
-      <div className=" mt-16 flex flex-col items-center justify-center space-y-4">
-        <h1 className=" text-4xl font-bold">Log in to MySurface</h1>
-        <LoginForm />
-      </div>
-    </>
-  );
+	return (
+		<>
+			<LoginForm />
+			{/*
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="/scripts/login_animation.js" />
+      */}
+		</>
+	);
 }

@@ -52,6 +52,12 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        dark_blue: '#252B43',
+        mid_blue: '#374161',
+        darkest_gray: '#787878',
+        dark_gray: '#E6E6E6',
+        mid_gray: '#F6F6F6',
+        light_gray: '#EBECEF',
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -72,6 +78,9 @@ const config = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+      fontFamily: {
+        fjalla: ['Fjalla One', 'sans-serif'],
+      }
     },
   },
   plugins: [require("tailwindcss-animate")],
