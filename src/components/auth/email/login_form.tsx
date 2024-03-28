@@ -76,6 +76,17 @@ export default function LoginForm() {
 
 	return (
 		<div>
+			{errorMessage && (
+				<div className="w-full text-red-600 font-bold bg-red-200 p-4 fixed top-0 z-50 flex justify-between items-center drop-shadow-sm">
+					<p>{errorMessage}</p>
+					<button
+						onClick={() => setErrorMessage("")}
+						className="font-bold text-2xl"
+					>
+						×
+					</button>
+				</div>
+			)}
 			<FormBg />
 			<div className="relative md:absolute top-0 left-0 right-0 flex md:flex-row flex-col items-center justify-center md:h-screen">
 				<div className="md:rounded-2xl w-full md:w-4/5 flex flex-col md:flex-row md:drop-shadow-xl md:h-4/5 md:overflow-hidden hover:drop-shadow-2xl transition-all duration-200 ease-linear">
@@ -153,9 +164,6 @@ export default function LoginForm() {
 							</Form>
 						</div>
 					</div>
-					{errorMessage && (
-						<p className="text-red-500 mt-2">{errorMessage}</p>
-					)}
 				</div>
 			</div>
 		</div>
