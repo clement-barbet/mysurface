@@ -1,14 +1,16 @@
 import DashboardNavbar from "@/components/navbar/dashboard_navbar";
 
 export default function DashboardLayout({
-  children,
+	children,
 }: Readonly<{
-  children: React.ReactNode;
+	children: React.ReactNode;
 }>) {
-  return (
-    <div>
-      <DashboardNavbar />
-      <div>{children}</div>
-    </div>
-  );
+	return (
+		<div className="flex">
+			<div className="w-64">
+				<DashboardNavbar />
+			</div>
+			<div className="flex-grow p-4">{children}</div>
+		</div>
+	);
 }
