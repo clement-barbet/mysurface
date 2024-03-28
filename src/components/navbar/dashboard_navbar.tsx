@@ -21,7 +21,10 @@ export default function DashboardNavbar() {
 		<nav
 			className={clsx(
 				"absolute md:relative z-200 flex flex-col items-start w-10 h-screen bg-dark_blue bg-opacity-95 md:bg-opacity-100 z-50 text-light_gray transition-width duration-500 ease-in-out md:w-64 md:rounded-none",
-				{ "w-64": isMenuOpen, "rounded-r-xl": !isMenuOpen && window.innerWidth < 768 }
+				{
+					"w-64": isMenuOpen,
+					"rounded-r-xl": !isMenuOpen && window.innerWidth < 768,
+				}
 			)}
 		>
 			<div
@@ -107,14 +110,9 @@ export default function DashboardNavbar() {
 						RESULTS
 					</Link>
 				</li>
-				<li
-					className={clsx("py-4 px-4 tracking-wider", {
-						"border-l-4 border-light_gray font-bold":
-							pathname === "/dashboard/settings",
-					})}
-				>
+				<li className="py-4 px-4 tracking-wider">
 					<Link
-						href="/dashboard/settings"
+						href=""
 						className="hover:font-bold transition-all duration-200 ease-linear"
 					>
 						<FontAwesomeIcon
