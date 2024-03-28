@@ -6,11 +6,9 @@ export default function DashboardLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<div className="flex">
-			<div className="w-64">
-				<DashboardNavbar />
-			</div>
-			<div className="flex-grow p-4">{children}</div>
+		<div className="flex relative">
+			<DashboardNavbar />
+			<div className="flex-grow py-4 ps-14 md:ps-4">{children}</div>
 		</div>
 	);
 }

@@ -80,7 +80,7 @@ const config = {
       },
       fontFamily: {
         fjalla: ['Fjalla One', 'sans-serif'],
-      }
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],
