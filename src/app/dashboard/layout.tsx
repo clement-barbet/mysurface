@@ -11,7 +11,7 @@ export default function DashboardLayout({
 			<DashboardNavbar />
 			<div className="flex flex-grow flex-col">
 				<TopBar />
-				<div className="md:px-4 py-4 px-14">{children}</div>
+				<div style={{ zIndex: -20 }} className="md:px-4 py-4 px-14">{children}</div>
 			</div>
 		</div>
 	);

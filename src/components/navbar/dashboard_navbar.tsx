@@ -7,8 +7,8 @@ import {
 	faBorderAll,
 	faUserGroup,
 	faMagnifyingGlassChart,
-  faArrowLeft,
-  faArrowRight,
+	faArrowLeft,
+	faArrowRight,
 } from "@fortawesome/free-solid-svg-icons";
 import React, { useState } from "react";
 
@@ -40,7 +40,7 @@ export default function DashboardNavbar() {
 					icon={isMenuOpen ? faArrowLeft : faArrowRight}
 				/>
 			</div>
-      <div
+			<div
 				className={clsx(
 					"flex items-center justify-center w-full h-20 bg-mid_blue gap-x-3 drop-shadow-sm rounded-bl-2xl mb-5",
 					{ hidden: !isMenuOpen, "md:flex": true }
