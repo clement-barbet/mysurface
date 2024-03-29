@@ -70,15 +70,18 @@ export default function TopBar() {
 							</div>
 							<a href="#">My team</a>
 						</div>
-						<div className="flex items-center justify-start gap-x-2 px-4 py-4 hover:font-medium hover:bg-light_gray transition-all duration-100 ease-linear">
-							<div className="w-8 h-8 flex justify-center items-center rounded-full border-2 border-black">
-								<FontAwesomeIcon
-									icon={faRightFromBracket}
-									size="sm"
-								/>
+                        {/* TODO - This logout just redirects, develop a proper logout */}
+						<Link href="/login">
+							<div className="flex items-center justify-start gap-x-2 px-4 py-4 hover:font-medium hover:bg-light_gray transition-all duration-100 ease-linear">
+								<div className="w-8 h-8 flex justify-center items-center rounded-full border-2 border-black">
+									<FontAwesomeIcon
+										icon={faRightFromBracket}
+										size="sm"
+									/>
+								</div>
+								<p>Log out</p>
 							</div>
-							<Link href="/login">Log out</Link>
-						</div>
+						</Link>
 					</div>
 				)}
 			</div>
