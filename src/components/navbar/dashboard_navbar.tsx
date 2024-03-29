@@ -19,9 +19,10 @@ export default function DashboardNavbar() {
 	return (
 		<nav
 			className={clsx(
-				"absolute md:relative z-200 flex flex-col items-start w-10 h-screen bg-dark_blue bg-opacity-95 md:bg-opacity-100 z-50 text-light_gray transition-all duration-500 ease-in-out md:w-64",
+				"absolute md:relative z-50 flex flex-col items-start w-10 h-screen bg-dark_blue bg-opacity-95 md:bg-opacity-100 text-light_gray transition-all duration-500 ease-in-out md:w-64 md:rounded-none",
 				{
 					"w-64": isMenuOpen,
+					"rounded-r-xl": !isMenuOpen,
 				}
 			)}
 		>
@@ -55,7 +56,7 @@ export default function DashboardNavbar() {
 				})}
 			>
 				<li
-					className={clsx("py-2 px-4 w-full tracking-wider", {
+					className={clsx("py-4 px-4 w-full tracking-wider", {
 						"border-l-4 border-light_gray":
 							pathname === "/dashboard",
 					})}
@@ -73,7 +74,7 @@ export default function DashboardNavbar() {
 					</Link>
 				</li>
 				<li
-					className={clsx("py-2 px-4 tracking-wider", {
+					className={clsx("py-4 px-4 tracking-wider", {
 						"border-l-4 border-light_gray":
 							pathname === "/dashboard/participants",
 					})}
@@ -91,7 +92,7 @@ export default function DashboardNavbar() {
 					</Link>
 				</li>
 				<li
-					className={clsx("py-2 px-4 tracking-wider", {
+					className={clsx("py-4 px-4 tracking-wider", {
 						"border-l-4 border-light_gray":
 							pathname === "/dashboard/results",
 					})}
