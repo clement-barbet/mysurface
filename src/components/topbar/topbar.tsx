@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { ErrorMessage } from "@/components/ui/error_msg";
 import {
 	faUser,
 	faMagnifyingGlass,
@@ -13,14 +14,20 @@ import { usePathname } from "next/navigation";
 
 export default function TopBar() {
 	const [email, setEmail] = useState("");
+	const [errorMessage, setErrorMessage] = useState("");
 
 	useEffect(() => {
 		const fetchUser = async () => {
 			const supabase = createClientComponentClient();
-			const user = await supabase.auth.getUser("User not found");
+			const { data: user, error } = await supabase.auth.getUser();
+			console.log(user);
 
-			if (user && user.data && user.data.user) {
-				setEmail(user.data.user.email);
+			if (user && user.user) {
+				setEmail(user.user.email);
+			} else if (error) {
+				setErrorMessage(
+					"An error occurred while fetching user's email."
+				);
 			}
 		};
 
@@ -35,56 +42,67 @@ export default function TopBar() {
 	const pathname = usePathname();
 
 	return (
-		<div className="md:bg-dark_gray text-dark_blue px-10 h-20 flex items-center justify-end md:justify-between drop-shadow-sm rounded-br-2xl">
-			<div className="hidden md:flex justify-center items-center gap-x-3">
-				<FontAwesomeIcon icon={faMagnifyingGlass} />
-				{/* TODO - Develop search functionality */}
-				<input
-					type="text"
-					className="w-64 bg-transparent border-none focus:border-none focus:outline-none"
-					placeholder="Search"
+		<>
+			{errorMessage && (
+				<ErrorMessage
+					errorMessage={errorMessage}
+					setErrorMessage={setErrorMessage}
 				/>
-			</div>
-			<div
-				className="relative flex justify-center items-center gap-x-3 cursor-pointer"
-				onClick={handleDivClick}
-			>
-				<div className="flex items-center justify-center w-10 h-10 border-2 rounded-full border-dark_blue p-2 bg-mid_blue drop-shadow-md hover:bg-dark_blue transition-all duration-200 ease-linear">
-					<FontAwesomeIcon
-						icon={faUser}
-						className="text-light_gray"
+			)}
+			<div className="md:bg-dark_gray text-dark_blue px-10 h-20 flex items-center justify-end md:justify-between drop-shadow-sm rounded-br-2xl">
+				<div className="hidden md:flex justify-center items-center gap-x-3">
+					<FontAwesomeIcon icon={faMagnifyingGlass} />
+					{/* TODO - Develop search functionality */}
+					<input
+						type="text"
+						className="w-64 bg-transparent border-none focus:border-none focus:outline-none"
+						placeholder="Search"
 					/>
 				</div>
-				<p className="hidden md:block">{email}</p>
-				{isOpen && (
-					<div className="absolute right-0 top-10 w-40 z-100 bg-white rounded-lg shadow-lg mt-2 overflow-hidden">
-						<div className="flex items-center justify-start gap-x-2 px-4 py-4 hover:font-medium hover:bg-light_gray transition-all duration-100 ease-linear">
-							<div className="w-8 h-8 flex justify-center items-center rounded-full border-2 border-black">
-								<FontAwesomeIcon icon={faUser} size="sm" />
+				<div
+					className="relative flex justify-center items-center gap-x-3 cursor-pointer"
+					onClick={handleDivClick}
+				>
+					<div className="flex items-center justify-center w-10 h-10 border-2 rounded-full border-dark_blue p-2 bg-mid_blue drop-shadow-md hover:bg-dark_blue transition-all duration-200 ease-linear">
+						<FontAwesomeIcon
+							icon={faUser}
+							className="text-light_gray"
+						/>
+					</div>
+					<p className="hidden md:block">{email}</p>
+					{isOpen && (
+						<div className="absolute right-0 top-10 w-40 z-100 bg-white rounded-lg shadow-lg mt-2 overflow-hidden">
+							<div className="flex items-center justify-start gap-x-2 px-4 py-4 hover:font-medium hover:bg-light_gray transition-all duration-100 ease-linear">
+								<div className="w-8 h-8 flex justify-center items-center rounded-full border-2 border-black">
+									<FontAwesomeIcon icon={faUser} size="sm" />
+								</div>
+								<a href="#">My profile</a>
 							</div>
-							<a href="#">My profile</a>
-						</div>
-						<div className="flex items-center justify-start gap-x-2 px-4 py-4 hover:font-medium hover:bg-light_gray transition-all duration-100 ease-linear">
-							<div className="w-8 h-8 flex justify-center items-center rounded-full border-2 border-black">
-								<FontAwesomeIcon icon={faUserGroup} size="sm" />
-							</div>
-							<a href="#">My team</a>
-						</div>
-                        {/* TODO - This logout just redirects, develop a proper logout */}
-						<Link href="/login">
 							<div className="flex items-center justify-start gap-x-2 px-4 py-4 hover:font-medium hover:bg-light_gray transition-all duration-100 ease-linear">
 								<div className="w-8 h-8 flex justify-center items-center rounded-full border-2 border-black">
 									<FontAwesomeIcon
-										icon={faRightFromBracket}
+										icon={faUserGroup}
 										size="sm"
 									/>
 								</div>
-								<p>Log out</p>
+								<a href="#">My team</a>
 							</div>
-						</Link>
-					</div>
-				)}
+							{/* TODO - This logout just redirects, develop a proper logout */}
+							<Link href="/login">
+								<div className="flex items-center justify-start gap-x-2 px-4 py-4 hover:font-medium hover:bg-light_gray transition-all duration-100 ease-linear">
+									<div className="w-8 h-8 flex justify-center items-center rounded-full border-2 border-black">
+										<FontAwesomeIcon
+											icon={faRightFromBracket}
+											size="sm"
+										/>
+									</div>
+									<p>Log out</p>
+								</div>
+							</Link>
+						</div>
+					)}
+				</div>
 			</div>
-		</div>
+		</>
 	);
 }

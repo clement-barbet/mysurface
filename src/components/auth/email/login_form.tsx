@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { LeftSideLogin } from "@/components/ui/left_side_login";
 import { FormBg } from "@/components/ui/form_bg";
+import { ErrorMessage } from "@/components/ui/error_msg";
 import {
 	Form,
 	FormControl,
@@ -77,15 +78,10 @@ export default function LoginForm() {
 	return (
 		<div>
 			{errorMessage && (
-				<div className="w-full text-red-600 font-bold bg-red-200 p-4 fixed top-0 z-50 flex justify-between items-center drop-shadow-sm">
-					<p>{errorMessage}</p>
-					<button
-						onClick={() => setErrorMessage("")}
-						className="font-bold text-2xl"
-					>
-						×
-					</button>
-				</div>
+				<ErrorMessage
+					errorMessage={errorMessage}
+					setErrorMessage={setErrorMessage}
+				/>
 			)}
 			<FormBg />
 			<div className="relative md:absolute top-0 left-0 right-0 flex md:flex-row flex-col items-center justify-center md:h-screen">
