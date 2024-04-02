@@ -8,10 +8,17 @@ export default function DashboardLayout({
 }>) {
 	return (
 		<div className="flex relative">
-			<DashboardNavbar />
-			<div className="flex flex-grow flex-col">
+			<div style={{ flex: "0 0 auto" }} className="md:relative md:w-64">
+				<DashboardNavbar />
+			</div>
+			<div className="flex flex-grow flex-col w-full md:w-auto">
 				<TopBar />
-				<div style={{ zIndex: -20 }} className="md:px-4 py-4 px-14">{children}</div>
+				<div
+					style={{ zIndex: -20, flex: "1 0 auto" }}
+					className="md:px-4 py-4 ps-14 pe-4"
+				>
+					{children}
+				</div>
 			</div>
 		</div>
 	);

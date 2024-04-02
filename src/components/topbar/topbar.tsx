@@ -53,7 +53,7 @@ export default function TopBar() {
 					setErrorMessage={setErrorMessage}
 				/>
 			)}
-			<div className="md:bg-dark_gray text-dark_blue px-10 h-20 flex items-center justify-end md:justify-between drop-shadow-sm rounded-br-2xl">
+			<div className="md:bg-white text-dark_blue px-10 h-20 flex items-center justify-end md:justify-between drop-shadow-sm rounded-br-2xl">
 				<div className="hidden md:flex justify-center items-center gap-x-3">
 					<FontAwesomeIcon icon={faMagnifyingGlass} />
 					{/* TODO - Develop search functionality */}
