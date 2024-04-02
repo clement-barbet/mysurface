@@ -53,7 +53,7 @@ export default function TopBar() {
 					setErrorMessage={setErrorMessage}
 				/>
 			)}
-			<div className="md:bg-white text-dark_blue px-10 h-20 flex items-center justify-end md:justify-between drop-shadow-sm rounded-br-2xl">
+			<div className="md:bg-white text-dark_blue px-10 h-20 flex items-center justify-end md:justify-between drop-shadow-sm rounded-br-2xl" style={{zIndex: 100}}>
 				<div className="hidden md:flex justify-center items-center gap-x-3">
 					<FontAwesomeIcon icon={faMagnifyingGlass} />
 					{/* TODO - Develop search functionality */}
@@ -74,9 +74,9 @@ export default function TopBar() {
 						/>
 					</div>
 					<p className="hidden md:block">{email}</p>
-					{/*
+					
 					{isOpen && (
-						<div className="absolute right-0 top-10 w-40 bg-white rounded-lg shadow-lg mt-2 overflow-hidden">
+						<div className="absolute right-0 top-10 w-40 bg-white rounded-lg shadow-lg mt-2 overflow-hidden" style={{zIndex:101}}>
 							<div className="flex items-center justify-start gap-x-2 px-4 py-4 hover:font-medium hover:bg-light_gray transition-all duration-100 ease-linear">
 								<div className="w-8 h-8 flex justify-center items-center rounded-full border-2 border-black">
 									<FontAwesomeIcon icon={faUser} size="sm" />
@@ -105,7 +105,7 @@ export default function TopBar() {
 							</Link>
 						</div>
 					)}
-					*/}
+					
 				</div>
 			</div>
 		</>
