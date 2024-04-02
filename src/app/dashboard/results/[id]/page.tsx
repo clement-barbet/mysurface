@@ -92,8 +92,8 @@ export default async function ResultPage({
   };
 
   return (
-    <div>
-      <h1>Result: {params.id}</h1>
+    <div className="w-full">
+      <h2>Result: {params.id}</h2>
       {/* <GraphNode2D graphData={graphData} /> */}
       <GraphNode3D graphData={graphData} />
     </div>

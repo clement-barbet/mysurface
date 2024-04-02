@@ -14,7 +14,7 @@ export default function DashboardLayout({
 			<div className="flex flex-grow flex-col w-full md:w-auto">
 				<TopBar />
 				<div
-					style={{ flex: "1 0 auto"}}
+					style={{ flex: "1 0 auto" }}
 					className="relative md:px-4 py-4 ps-14 pe-4"
 				>
 					{children}
