@@ -15,12 +15,11 @@ import { usePathname } from "next/navigation";
 export default function TopBar() {
 	const [email, setEmail] = useState("");
 	const [errorMessage, setErrorMessage] = useState("");
+	const supabase = createClientComponentClient();
 
 	useEffect(() => {
 		const fetchUser = async () => {
-			const supabase = createClientComponentClient();
 			const { data: user, error } = await supabase.auth.getUser();
-			console.log(user);
 
 			if (user && user.user) {
 				setEmail(user.user.email);
@@ -33,6 +32,11 @@ export default function TopBar() {
 
 		fetchUser();
 	}, []);
+
+	const handleLogout = async () => {
+		const { error } = await supabase.auth.signOut();
+		if (error) setErrorMessage("Error logging out: " + error.message);
+	};
 
 	const [isOpen, setIsOpen] = useState(false);
 	const handleDivClick = () => {
@@ -88,7 +92,7 @@ export default function TopBar() {
 								<a href="#">My team</a>
 							</div>
 							{/* TODO - This logout just redirects, develop a proper logout */}
-							<Link href="/login">
+							<Link href="/login" onClick={handleLogout}>
 								<div className="flex items-center justify-start gap-x-2 px-4 py-4 hover:font-medium hover:bg-light_gray transition-all duration-100 ease-linear">
 									<div className="w-8 h-8 flex justify-center items-center rounded-full border-2 border-black">
 										<FontAwesomeIcon
