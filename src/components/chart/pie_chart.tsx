@@ -98,7 +98,7 @@ export function DashboardPieChart() {
 					content={({ active, payload }) => {
 						if (active && payload && payload.length) {
 							return (
-								<div className="custom-tooltip bg-white rounded-md p-2 bg-opacity-80">
+								<div className="custom-tooltip bg-white dark:text-black rounded-md p-2 bg-opacity-80">
 									<p className="label">{`${
 										payload[0].name
 									} : ${(payload[0].value * 100).toFixed(

@@ -19,12 +19,13 @@ export default function DashboardNavbar() {
 	return (
 		<nav
 			className={clsx(
-				"fixed z-50 flex flex-col items-start w-10 h-screen bg-dark_blue bg-opacity-95 md:bg-opacity-100 text-light_gray transition-all duration-500 ease-in-out md:w-64 md:rounded-none",
+				"fixed flex flex-col items-start w-10 h-screen bg-dark_blue bg-opacity-95 md:bg-opacity-100 text-light_gray transition-all duration-500 ease-in-out md:w-64 md:rounded-none",
 				{
 					"w-64": isMenuOpen,
 					"rounded-r-xl": !isMenuOpen,
 				}
 			)}
+			style={{ zIndex: 150 }}
 		>
 			<div
 				className={clsx(

@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ErrorMessage } from "@/components/ui/error_msg";
+import { DarkModeButton } from "@/components/ui/dark_mode_btn";
 import {
 	faUser,
 	faMagnifyingGlass,
@@ -53,7 +54,7 @@ export default function TopBar() {
 					setErrorMessage={setErrorMessage}
 				/>
 			)}
-			<div className="md:bg-white text-dark_blue px-10 h-20 flex items-center justify-end md:justify-between drop-shadow-sm rounded-br-2xl" style={{zIndex: 100}}>
+			<div className="md:bg-white dark:md:bg-mid_blue text-dark_blue dark:text-light_gray md:px-14 ps-14 pe-4 h-20 flex items-center justify-between drop-shadow-sm rounded-br-2xl" style={{zIndex: 100}}>
 				<div className="hidden md:flex justify-center items-center gap-x-3">
 					<FontAwesomeIcon icon={faMagnifyingGlass} />
 					{/* TODO - Develop search functionality */}
@@ -63,6 +64,7 @@ export default function TopBar() {
 						placeholder="Search"
 					/>
 				</div>
+				<DarkModeButton />
 				<div
 					className="relative flex justify-center items-center gap-x-3 cursor-pointer"
 					onClick={handleDivClick}
@@ -76,15 +78,15 @@ export default function TopBar() {
 					<p className="hidden md:block">{email}</p>
 					
 					{isOpen && (
-						<div className="absolute right-0 top-10 w-40 bg-white rounded-lg shadow-lg mt-2 overflow-hidden" style={{zIndex:101}}>
-							<div className="flex items-center justify-start gap-x-2 px-4 py-4 hover:font-medium hover:bg-light_gray transition-all duration-100 ease-linear">
-								<div className="w-8 h-8 flex justify-center items-center rounded-full border-2 border-black">
+						<div className="absolute right-0 top-10 w-40 bg-white dark:bg-dark_blue rounded-lg shadow-lg mt-2 overflow-hidden" style={{zIndex:101}}>
+							<div className="flex items-center justify-start gap-x-2 px-4 py-4 hover:font-medium hover:bg-light_gray dark:hover:bg-mid_blue transition-all duration-100 ease-linear">
+								<div className="w-8 h-8 flex justify-center items-center rounded-full border-2 border-black dark:border-light_gray">
 									<FontAwesomeIcon icon={faUser} size="sm" />
 								</div>
 								<a href="#">My profile</a>
 							</div>
-							<div className="flex items-center justify-start gap-x-2 px-4 py-4 hover:font-medium hover:bg-light_gray transition-all duration-100 ease-linear">
-								<div className="w-8 h-8 flex justify-center items-center rounded-full border-2 border-black">
+							<div className="flex items-center justify-start gap-x-2 px-4 py-4 hover:font-medium hover:bg-light_gray dark:hover:bg-mid_blue transition-all duration-100 ease-linear">
+								<div className="w-8 h-8 flex justify-center items-center rounded-full border-2 border-black dark:border-light_gray">
 									<FontAwesomeIcon
 										icon={faUserGroup}
 										size="sm"
@@ -93,8 +95,8 @@ export default function TopBar() {
 								<a href="#">My team</a>
 							</div>
 							<Link href="/login" onClick={handleLogout}>
-								<div className="flex items-center justify-start gap-x-2 px-4 py-4 hover:font-medium hover:bg-light_gray transition-all duration-100 ease-linear">
-									<div className="w-8 h-8 flex justify-center items-center rounded-full border-2 border-black">
+								<div className="flex items-center justify-start gap-x-2 px-4 py-4 hover:font-medium hover:bg-light_gray dark:hover:bg-mid_blue transition-all duration-100 ease-linear">
+									<div className="w-8 h-8 flex justify-center items-center rounded-full border-2 border-black dark:border-light_gray">
 										<FontAwesomeIcon
 											icon={faRightFromBracket}
 											size="sm"

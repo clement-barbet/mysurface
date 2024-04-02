@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className={`${glory.className} bg-dark_gray`}>
+			<body className={`${glory.className} bg-dark_gray dark:bg-gray-900 transition-colors duration-1000 linear`}>
 				{children}
 			</body>
 		</html>
