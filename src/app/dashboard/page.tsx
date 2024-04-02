@@ -1,4 +1,4 @@
-import { DashboardPieChart } from "@/components/dashboard/pie_chart";
+import { DashboardPieChart } from "@/components/chart/pie_chart";
 
 export default function Dashboard() {
 	return (

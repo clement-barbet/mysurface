@@ -7,7 +7,7 @@ import {
 	Legend,
 	ResponsiveContainer,
 } from "recharts";
-import { useMediaQuery } from 'react-responsive';
+import { useMediaQuery } from "react-responsive";
 import { useEffect, useState } from "react";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 
@@ -31,7 +31,7 @@ async function getCompletionPercentage() {
 
 export function DashboardPieChart() {
 	const [completionPercentage, setCompletionPercentage] = useState(0);
-    const isSmallScreen = useMediaQuery({ query: '(max-width: 400px)' });
+	const isSmallScreen = useMediaQuery({ query: "(max-width: 400px)" });
 
 	useEffect(() => {
 		getCompletionPercentage().then((percentage) =>
@@ -41,7 +41,7 @@ export function DashboardPieChart() {
 
 	const data = [
 		{ name: "Completed", value: completionPercentage },
-		{ name: "Uncompleted", value: 100 - completionPercentage },
+		{ name: "Uncompleted", value: 1 - completionPercentage },
 	];
 
 	const COLORS = ["#36b9cc", "#f6c23e"];
@@ -55,9 +55,36 @@ export function DashboardPieChart() {
 					data={data}
 					cx="50%"
 					cy="50%"
-					outerRadius={isSmallScreen ? "100%" : "60%"}
+					outerRadius={isSmallScreen ? "70%" : "60%"}
 					fill="#8884d8"
-					label
+					label={({
+						cx,
+						cy,
+						midAngle,
+						innerRadius,
+						outerRadius,
+						value,
+						index,
+					}) => {
+						const RADIAN = Math.PI / 180;
+						const radius =
+							25 + innerRadius + (outerRadius - innerRadius);
+						const x = cx + radius * Math.cos(-midAngle * RADIAN);
+						const y = cy + radius * Math.sin(-midAngle * RADIAN);
+
+						return (
+							<text
+								x={x}
+								y={y}
+								fill="#8884d8"
+								textAnchor={x > cx ? "start" : "end"}
+								dominantBaseline="central"
+								fontSize={isSmallScreen ? "8px" : "14px"}
+							>
+								{`${(value * 100).toFixed(0)}%`}
+							</text>
+						);
+					}}
 				>
 					{data.map((entry, index) => (
 						<Cell
@@ -69,8 +96,8 @@ export function DashboardPieChart() {
 				<Tooltip />
 				<Legend
 					layout="horizontal"
-                    align="center"
-                    verticalAlign="bottom"
+					align="center"
+					verticalAlign="bottom"
 					wrapperStyle={{ lineHeight: "1em" }}
 				/>
 			</PieChart>
