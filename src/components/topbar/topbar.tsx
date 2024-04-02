@@ -74,8 +74,9 @@ export default function TopBar() {
 						/>
 					</div>
 					<p className="hidden md:block">{email}</p>
+					{/*
 					{isOpen && (
-						<div className="absolute right-0 top-10 w-40 z-100 bg-white rounded-lg shadow-lg mt-2 overflow-hidden">
+						<div className="absolute right-0 top-10 w-40 bg-white rounded-lg shadow-lg mt-2 overflow-hidden">
 							<div className="flex items-center justify-start gap-x-2 px-4 py-4 hover:font-medium hover:bg-light_gray transition-all duration-100 ease-linear">
 								<div className="w-8 h-8 flex justify-center items-center rounded-full border-2 border-black">
 									<FontAwesomeIcon icon={faUser} size="sm" />
@@ -91,7 +92,6 @@ export default function TopBar() {
 								</div>
 								<a href="#">My team</a>
 							</div>
-							{/* TODO - This logout just redirects, develop a proper logout */}
 							<Link href="/login" onClick={handleLogout}>
 								<div className="flex items-center justify-start gap-x-2 px-4 py-4 hover:font-medium hover:bg-light_gray transition-all duration-100 ease-linear">
 									<div className="w-8 h-8 flex justify-center items-center rounded-full border-2 border-black">
@@ -105,6 +105,7 @@ export default function TopBar() {
 							</Link>
 						</div>
 					)}
+					*/}
 				</div>
 			</div>
 		</>
