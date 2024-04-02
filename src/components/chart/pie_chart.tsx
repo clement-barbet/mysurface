@@ -50,6 +50,7 @@ export function DashboardPieChart() {
 		<ResponsiveContainer width="80%" aspect={1}>
 			<PieChart margin={{ top: 2, right: 0, bottom: 2, left: 0 }}>
 				<Pie
+					className="focus:outline-none"
 					dataKey="value"
 					isAnimationActive={false}
 					data={data}
@@ -93,7 +94,23 @@ export function DashboardPieChart() {
 						/>
 					))}
 				</Pie>
-				<Tooltip />
+				<Tooltip
+					content={({ active, payload }) => {
+						if (active && payload && payload.length) {
+							return (
+								<div className="custom-tooltip bg-white rounded-md p-2 bg-opacity-80">
+									<p className="label">{`${
+										payload[0].name
+									} : ${(payload[0].value * 100).toFixed(
+										0
+									)}%`}</p>
+								</div>
+							);
+						}
+
+						return null;
+					}}
+				/>
 				<Legend
 					layout="horizontal"
 					align="center"
