@@ -3,6 +3,7 @@ import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
 import GraphNode2D from "./GraphNode2D";
 import GraphNode3D from "./GraphNode3D";
+import GraphData from "./GraphData";
 
 export default async function ResultPage({
   params,
@@ -28,62 +29,49 @@ export default async function ResultPage({
   const nodes = parsedResult.map((participant) => ({
     id: participant.participantName,
     name: participant.participantName,
-    val: 0, // Initialize the popularity value to 0
+    val: participant.data.reduce((sum, dataPoint) => {
+      const influenceRating =
+        dataPoint.answers.find((answer) =>
+          answer.questionText.includes("influence on you")
+        )?.rating || 0;
+      return sum + influenceRating;
+    }, 0),
   }));
-
-  // Calculate the popularity for each node
-  parsedResult.forEach((participant) => {
-    participant.data.forEach((dataPoint) => {
-      const targetNode = nodes.find(
-        (node) => node.id === dataPoint.participantName
-      );
-      if (targetNode) {
-        targetNode.val +=
-          dataPoint.answers.find((answer) =>
-            answer.questionText.includes("influence on you")
-          )?.rating || 0;
-      }
-    });
-  });
 
   const links = [];
   parsedResult.forEach((sourceParticipant) => {
-    let maxConnection = -Infinity;
-    let closestParticipant = null;
-
     sourceParticipant.data.forEach((dataPoint) => {
       const targetParticipant = parsedResult.find(
         (participant) =>
           participant.participantName === dataPoint.participantName
       );
       if (targetParticipant) {
-        const connectionSum =
-          (dataPoint.answers.find((answer) =>
+        const collaborationScore =
+          dataPoint.answers.find((answer) =>
             answer.questionText.includes("collaborate with")
-          )?.rating || 0) +
-          (targetParticipant.data
+          )?.rating || 0;
+
+        const oppositeCollaborationScore =
+          targetParticipant.data
             .find(
               (targetData) =>
                 targetData.participantName === sourceParticipant.participantName
             )
             ?.answers.find((answer) =>
               answer.questionText.includes("collaborate with")
-            )?.rating || 0);
+            )?.rating || 0;
 
-        if (connectionSum > maxConnection) {
-          maxConnection = connectionSum;
-          closestParticipant = targetParticipant.participantName;
+        const linkScore = collaborationScore + oppositeCollaborationScore;
+
+        if (linkScore > 0) {
+          links.push({
+            source: sourceParticipant.participantName,
+            target: targetParticipant.participantName,
+            value: linkScore,
+          });
         }
       }
     });
-
-    if (closestParticipant) {
-      links.push({
-        source: sourceParticipant.participantName,
-        target: closestParticipant,
-        value: maxConnection,
-      });
-    }
   });
 
   const graphData = {
@@ -95,6 +83,7 @@ export default async function ResultPage({
     <div className="w-full">
       <h2>Result: {params.id}</h2>
       {/* <GraphNode2D graphData={graphData} /> */}
+      <GraphData graphData={graphData} />
       <GraphNode3D graphData={graphData} />
     </div>
   );
