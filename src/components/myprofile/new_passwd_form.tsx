@@ -6,8 +6,8 @@ import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { SuccessMessage } from "@/components/ui/success_msg";
-import { ErrorMessage } from "@/components/ui/error_msg";
+import { SuccessMessage } from "@/components/ui/msg/success_msg";
+import { ErrorMessage } from "@/components/ui/msg/error_msg";
 import {
 	Form,
 	FormControl,

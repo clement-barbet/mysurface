@@ -2,8 +2,8 @@
 import React, { useState, useEffect } from "react";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { ErrorMessage } from "@/components/ui/error_msg";
-import { DarkModeButton } from "@/components/ui/dark_mode_btn";
+import { ErrorMessage } from "@/components/ui/msg/error_msg";
+import { DarkModeButton } from "@/components/dashboard/dark_mode_btn";
 import {
 	faUser,
 	faMagnifyingGlass,

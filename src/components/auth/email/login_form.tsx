@@ -4,9 +4,9 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
-import { LeftSideLogin } from "@/components/ui/left_side_login";
-import { FormBg } from "@/components/ui/form_bg";
-import { ErrorMessage } from "@/components/ui/error_msg";
+import { LeftSideLogin } from "@/components/login/left_side_login";
+import { FormBg } from "@/components/login/form_bg";
+import { ErrorMessage } from "@/components/ui/msg/error_msg";
 import {
 	Form,
 	FormControl,
