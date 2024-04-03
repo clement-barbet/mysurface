@@ -70,7 +70,7 @@ export default function NewPasswordForm() {
 				successMessage={successMessage}
 				setSuccessMessage={setSuccessMessage}
 			/>
-			<div className="w-1/2 m-auto">
+			<div className="md:w-1/2 w-full px-2 md:px-0 m-auto">
 				<h2 className="py-5 text-xl">Change Password</h2>
 				<Form {...form}>
 					<form
