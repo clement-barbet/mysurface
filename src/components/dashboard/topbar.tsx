@@ -53,7 +53,7 @@ export default function TopBar() {
 				/>
 			)}
 			<div
-				className="md:bg-white dark:md:bg-mid_blue text-dark_blue dark:text-light_gray md:px-14 ps-14 pe-4 h-12 flex items-center justify-between drop-shadow-sm rounded-br-2xl"
+				className="fixed right-0 left-48 w-auto md:bg-white dark:md:bg-mid_blue text-dark_blue dark:text-light_gray md:px-14 ps-14 pe-4 h-12 flex items-center justify-between drop-shadow-sm rounded-br-2xl"
 				style={{ zIndex: 100 }}
 			>
 				<div className="mr-14">

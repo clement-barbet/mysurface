@@ -18,7 +18,7 @@ export default function GraphNode3D({ graphData }: GraphNode3DProps) {
 		const resizeGraph = () => {
 			const width =
 				window.innerWidth < 768
-					? window.innerWidth - 72
+					? window.innerWidth - 90
 					: window.innerWidth - 242;
 			setDimensions({
 				width,
