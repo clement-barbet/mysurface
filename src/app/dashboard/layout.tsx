@@ -8,7 +8,7 @@ export default function DashboardLayout({
 }>) {
 	return (
 		<div className="flex relative">
-			<div style={{ flex: "0 0 auto" }} className="md:relative md:w-64">
+			<div style={{ flex: "0 0 auto" }} className="md:relative md:w-48">
 				<DashboardNavbar />
 			</div>
 			<div className="flex flex-grow flex-col w-full md:w-auto">
