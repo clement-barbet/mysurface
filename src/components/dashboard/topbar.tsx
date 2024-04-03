@@ -2,8 +2,8 @@
 import React, { useState, useEffect } from "react";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { ErrorMessage } from "@/components/ui/error_msg";
-import { DarkModeButton } from "@/components/ui/dark_mode_btn";
+import { ErrorMessage } from "@/components/ui/msg/error_msg";
+import { DarkModeButton } from "@/components/dashboard/dark_mode_btn";
 import {
 	faUser,
 	faMagnifyingGlass,
@@ -25,9 +25,7 @@ export default function TopBar() {
 			if (user && user.user) {
 				setEmail(user.user.email);
 			} else if (error) {
-				setErrorMessage(
-					"An error occurred while fetching user's email."
-				);
+				setErrorMessage("No user found: Please log in.");
 			}
 		};
 
@@ -55,9 +53,12 @@ export default function TopBar() {
 				/>
 			)}
 			<div
-				className="md:bg-white dark:md:bg-mid_blue text-dark_blue dark:text-light_gray md:px-14 ps-14 pe-4 h-20 flex items-center justify-between drop-shadow-sm rounded-br-2xl"
+				className="md:bg-white dark:md:bg-mid_blue text-dark_blue dark:text-light_gray md:px-14 ps-14 pe-4 h-12 flex items-center justify-between drop-shadow-sm rounded-br-2xl"
 				style={{ zIndex: 100 }}
 			>
+				<div className="mr-14">
+					<DarkModeButton />
+				</div>
 				<div className="hidden md:flex justify-center items-center gap-x-3">
 					<FontAwesomeIcon icon={faMagnifyingGlass} />
 					{/* TODO - Develop search functionality */}
@@ -67,12 +68,11 @@ export default function TopBar() {
 						placeholder="Search"
 					/>
 				</div>
-				<DarkModeButton />
 				<div
-					className="relative flex justify-center items-center gap-x-3 cursor-pointer"
+					className="relative flex justify-center items-center gap-x-3 cursor-pointer md:ml-auto"
 					onClick={handleDivClick}
 				>
-					<div className="flex items-center justify-center w-10 h-10 border-2 rounded-full border-dark_blue p-2 bg-mid_blue drop-shadow-md hover:bg-dark_blue transition-all duration-200 ease-linear">
+					<div className="flex items-center justify-center w-8 h-8 border-2 rounded-full border-dark_blue p-2 bg-mid_blue drop-shadow-md hover:bg-dark_blue transition-all duration-200 ease-linear">
 						<FontAwesomeIcon
 							icon={faUser}
 							className="text-light_gray"

@@ -1,5 +1,5 @@
-import DashboardNavbar from "@/components/navbar/dashboard_navbar";
-import TopBar from "@/components/topbar/topbar";
+import DashboardNavbar from "@/components/dashboard/dashboard_navbar";
+import TopBar from "@/components/dashboard/topbar";
 
 export default function DashboardLayout({
 	children,
@@ -8,7 +8,7 @@ export default function DashboardLayout({
 }>) {
 	return (
 		<div className="flex relative">
-			<div style={{ flex: "0 0 auto" }} className="md:relative md:w-64">
+			<div style={{ flex: "0 0 auto" }} className="md:relative md:w-48">
 				<DashboardNavbar />
 			</div>
 			<div className="flex flex-grow flex-col w-full md:w-auto">

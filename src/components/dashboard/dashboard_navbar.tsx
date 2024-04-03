@@ -19,9 +19,9 @@ export default function DashboardNavbar() {
 	return (
 		<nav
 			className={clsx(
-				"fixed flex flex-col items-start w-10 h-screen bg-dark_blue bg-opacity-95 md:bg-opacity-100 text-light_gray transition-all duration-500 ease-in-out md:w-64 md:rounded-none",
+				"fixed flex flex-col items-start w-10 h-screen bg-dark_blue bg-opacity-95 md:bg-opacity-100 text-light_gray transition-all duration-500 ease-in-out md:w-48 md:rounded-none",
 				{
-					"w-64": isMenuOpen,
+					"w-48": isMenuOpen,
 					"rounded-r-xl": !isMenuOpen,
 				}
 			)}
@@ -43,12 +43,12 @@ export default function DashboardNavbar() {
 			</div>
 			<div
 				className={clsx(
-					"flex items-center justify-center w-full h-20 bg-mid_blue gap-x-3 drop-shadow-sm rounded-bl-2xl mb-5",
+					"flex items-center justify-center w-full h-12 bg-mid_blue gap-x-3 drop-shadow-sm rounded-bl-2xl mb-5",
 					{ hidden: !isMenuOpen, "md:flex": true }
 				)}
 			>
-				<img src="/logo.svg" alt="mysurface_logo" className="w-10" />
-				<h1 className="text-3xl font-fjalla">MySurface</h1>
+				<img src="/logo.svg" alt="mysurface_logo" className="w-8" />
+				<h1 className="text-xl font-fjalla">MySurface</h1>
 			</div>
 			<ul
 				className={clsx("flex flex-col w-full", {
