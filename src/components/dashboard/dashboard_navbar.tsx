@@ -2,14 +2,10 @@
 import clsx from "clsx";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-	faBorderAll,
-	faUserGroup,
-	faMagnifyingGlassChart,
-	faArrowLeft,
-	faArrowRight,
-} from "@fortawesome/free-solid-svg-icons";
+import { MdDashboard } from "react-icons/md";
+import { IoPeople } from "react-icons/io5";
+import { PiGraph } from "react-icons/pi";
+import { BsArrowRightCircleFill, BsArrowLeftCircleFill } from "react-icons/bs";
 import React, { useState } from "react";
 
 export default function DashboardNavbar() {
@@ -37,9 +33,7 @@ export default function DashboardNavbar() {
 				)}
 				onClick={() => setIsMenuOpen(!isMenuOpen)}
 			>
-				<FontAwesomeIcon
-					icon={isMenuOpen ? faArrowLeft : faArrowRight}
-				/>
+				{isMenuOpen ? <BsArrowLeftCircleFill className="h-6 w-6" /> : <BsArrowRightCircleFill className="h-6 w-6" />}
 			</div>
 			<div
 				className={clsx(
@@ -64,13 +58,9 @@ export default function DashboardNavbar() {
 				>
 					<Link
 						href="/dashboard/"
-						className="hover:font-bold transition-all duration-200 ease-linear"
+						className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2"
 					>
-						<FontAwesomeIcon
-							id="faBorderAll"
-							icon={faBorderAll}
-							className="pe-2"
-						/>
+						<MdDashboard className="h-6 w-6" />
 						DASHBOARD
 					</Link>
 				</li>
@@ -82,13 +72,9 @@ export default function DashboardNavbar() {
 				>
 					<Link
 						href="/dashboard/participants"
-						className="hover:font-bold transition-all duration-200 ease-linear"
+						className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2"
 					>
-						<FontAwesomeIcon
-							id="faUserGroup"
-							icon={faUserGroup}
-							className="pe-2"
-						/>
+						<IoPeople className="h-6 w-6" />
 						PARTICIPANTS
 					</Link>
 				</li>
@@ -100,13 +86,9 @@ export default function DashboardNavbar() {
 				>
 					<Link
 						href="/dashboard/results"
-						className="hover:font-bold transition-all duration-200 ease-linear"
+						className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2"
 					>
-						<FontAwesomeIcon
-							id="faMagnifyingGlassChart"
-							icon={faMagnifyingGlassChart}
-							className="pe-2"
-						/>
+						<PiGraph className="h-6 w-6" />
 						RESULTS
 					</Link>
 				</li>
