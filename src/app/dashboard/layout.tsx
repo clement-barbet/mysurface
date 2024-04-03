@@ -11,7 +11,7 @@ export default function DashboardLayout({
 			<div style={{ flex: "0 0 auto" }} className="md:relative md:w-48">
 				<DashboardNavbar />
 			</div>
-			<div className="flex flex-grow flex-col w-full md:w-auto">
+			<div className="flex flex-grow flex-col w-full md:w-auto h-full">
 				<div className="relative h-12">
 					<TopBar />
 				</div>
