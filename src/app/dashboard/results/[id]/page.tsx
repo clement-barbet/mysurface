@@ -3,7 +3,6 @@ import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
 import GraphNode2D from "./GraphNode2D";
 import GraphNode3D from "./GraphNode3D";
-import GraphData from "./GraphData";
 
 export default async function ResultPage({
   params,
@@ -29,13 +28,15 @@ export default async function ResultPage({
   const nodes = parsedResult.map((participant) => ({
     id: participant.participantName,
     name: participant.participantName,
-    val: participant.data.reduce((sum, dataPoint) => {
-      const influenceRating =
-        dataPoint.answers.find((answer) =>
-          answer.questionText.includes("influence on you")
-        )?.rating || 0;
-      return sum + influenceRating;
-    }, 0),
+    val: Math.log(
+      participant.data.reduce((sum, dataPoint) => {
+        const influenceRating =
+          dataPoint.answers.find((answer) =>
+            answer.questionText.includes("influence on you")
+          )?.rating || 0;
+        return sum + influenceRating;
+      }, 0)
+    ),
   }));
 
   const links = [];
@@ -67,11 +68,19 @@ export default async function ResultPage({
           links.push({
             source: sourceParticipant.participantName,
             target: targetParticipant.participantName,
-            value: linkScore,
+            value: Math.log(linkScore),
           });
         }
       }
     });
+  });
+
+  // Normalize node sizes
+  const nodeValuesArray = nodes.map((node) => node.val);
+  const minNodeValue = Math.min(...nodeValuesArray);
+  const maxNodeValue = Math.max(...nodeValuesArray);
+  nodes.forEach((node) => {
+    node.val = (node.val - minNodeValue) / (maxNodeValue - minNodeValue);
   });
 
   const graphData = {
@@ -83,8 +92,8 @@ export default async function ResultPage({
     <div className="w-full">
       <h2>Result: {params.id}</h2>
       {/* <GraphNode2D graphData={graphData} /> */}
-      <GraphData graphData={graphData} />
       <GraphNode3D graphData={graphData} />
+      <pre>{JSON.stringify(graphData, null, 2)}</pre>
     </div>
   );
 }
