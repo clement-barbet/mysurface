@@ -43,12 +43,12 @@ export default function DashboardNavbar() {
 			</div>
 			<div
 				className={clsx(
-					"flex items-center justify-center w-full h-20 bg-mid_blue gap-x-3 drop-shadow-sm rounded-bl-2xl mb-5",
+					"flex items-center justify-center w-full h-12 bg-mid_blue gap-x-3 drop-shadow-sm rounded-bl-2xl mb-5",
 					{ hidden: !isMenuOpen, "md:flex": true }
 				)}
 			>
-				<img src="/logo.svg" alt="mysurface_logo" className="w-10" />
-				<h1 className="text-3xl font-fjalla">MySurface</h1>
+				<img src="/logo.svg" alt="mysurface_logo" className="w-8" />
+				<h1 className="text-xl font-fjalla">MySurface</h1>
 			</div>
 			<ul
 				className={clsx("flex flex-col w-full", {
