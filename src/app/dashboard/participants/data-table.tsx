@@ -1,80 +1,97 @@
 "use client";
 
 import {
-  ColumnDef,
-  flexRender,
-  getCoreRowModel,
-  useReactTable,
+	ColumnDef,
+	flexRender,
+	getCoreRowModel,
+	useReactTable,
 } from "@tanstack/react-table";
 
 import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
+	Table,
+	TableBody,
+	TableCell,
+	TableHead,
+	TableHeader,
+	THeadRow,
+	TBodyRow,
 } from "@/components/ui/table";
 
+import { FaUser } from "react-icons/fa6";
+
 interface DataTableProps<TData, TValue> {
-  columns: ColumnDef<TData, TValue>[];
-  data: TData[];
+	columns: ColumnDef<TData, TValue>[];
+	data: TData[];
 }
 
 export function DataTable<TData, TValue>({
-  columns,
-  data,
+	columns,
+	data,
 }: DataTableProps<TData, TValue>) {
-  const table = useReactTable({
-    data,
-    columns,
-    getCoreRowModel: getCoreRowModel(),
-  });
+	const table = useReactTable({
+		data,
+		columns,
+		getCoreRowModel: getCoreRowModel(),
+	});
 
-  return (
-    <div className="rounded-md border">
-      <Table>
-        <TableHeader>
-          {table.getHeaderGroups().map((headerGroup) => (
-            <TableRow key={headerGroup.id}>
-              {headerGroup.headers.map((header) => {
-                return (
-                  <TableHead key={header.id}>
-                    {header.isPlaceholder
-                      ? null
-                      : flexRender(
-                          header.column.columnDef.header,
-                          header.getContext()
-                        )}
-                  </TableHead>
-                );
-              })}
-            </TableRow>
-          ))}
-        </TableHeader>
-        <TableBody>
-          {table.getRowModel().rows?.length ? (
-            table.getRowModel().rows.map((row) => (
-              <TableRow
-                key={row.id}
-                data-state={row.getIsSelected() && "selected"}
-              >
-                {row.getVisibleCells().map((cell) => (
-                  <TableCell key={cell.id}>
-                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                  </TableCell>
-                ))}
-              </TableRow>
-            ))
-          ) : (
-            <TableRow>
-              <TableCell colSpan={columns.length} className="h-24 text-center">
-                No results.
-              </TableCell>
-            </TableRow>
-          )}
-        </TableBody>
-      </Table>
-    </div>
-  );
+	return (
+		<div className="rounded-md border">
+			<Table>
+				<TableHeader>
+					{table.getHeaderGroups().map((headerGroup) => (
+						<THeadRow key={headerGroup.id}>
+							{headerGroup.headers.map((header) => {
+								return (
+									<TableHead key={header.id}>
+										{header.isPlaceholder
+											? null
+											: flexRender(
+													header.column.columnDef
+														.header,
+													header.getContext()
+											  )}
+									</TableHead>
+								);
+							})}
+						</THeadRow>
+					))}
+				</TableHeader>
+				<TableBody>
+					{table.getRowModel().rows?.length ? (
+						table.getRowModel().rows.map((row) => (
+							<TBodyRow
+								key={row.id}
+								data-state={row.getIsSelected() && "selected"}
+							>
+								{row.getVisibleCells().map((cell, index) => (
+									<TableCell key={cell.id}>
+										{index === 0 && (
+											<div className="inline-block mr-5">
+												<div className="border-2 border-gray-200 shadow-sm dark:opacity-80 rounded-full w-10 h-10 flex items-center justify-center bg-gradient-to-br from-cyan-300 to-sky-500">
+													<FaUser className="w-5 h-5 text-white" />
+												</div>
+											</div>
+										)}
+										{flexRender(
+											cell.column.columnDef.cell,
+											cell.getContext()
+										)}
+									</TableCell>
+								))}
+							</TBodyRow>
+						))
+					) : (
+						<TBodyRow>
+							<TableCell
+								colSpan={columns.length}
+								className="h-24 text-center"
+							>
+								No results.
+							</TableCell>
+						</TBodyRow>
+					)}
+				</TableBody>
+			</Table>
+		</div>
+	);
 }
