@@ -3,6 +3,7 @@ import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
 import GraphNode2D from "./GraphNode2D";
 import GraphNode3D from "./GraphNode3D";
+import GraphData from "./GraphData";
 
 export default async function ResultPage({
   params,
@@ -91,7 +92,7 @@ export default async function ResultPage({
   return (
     <div className="w-full">
       <h2>Result: {params.id}</h2>
-      {/* <GraphNode2D graphData={graphData} /> */}
+      <GraphNode2D graphData={graphData} />
       <GraphNode3D graphData={graphData} />
       <pre>{JSON.stringify(graphData, null, 2)}</pre>
     </div>
