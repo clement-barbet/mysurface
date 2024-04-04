@@ -70,7 +70,7 @@ const DashboardPieChart = () => {
 	};
 
 	return (
-		<div className="w-full h-64">
+		<div className="max-w-full max-h-full">
 			<Pie data={data} options={options} />
 		</div>
 	);
