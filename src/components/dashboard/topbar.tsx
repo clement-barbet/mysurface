@@ -9,12 +9,6 @@ import { FaUser } from "react-icons/fa6";
 import { IoMdSettings } from "react-icons/io";
 import { IoMdLogOut } from "react-icons/io";
 import { FaMagnifyingGlass } from "react-icons/fa6";
-import {
-	faUser,
-	faMagnifyingGlass,
-	faUserGroup,
-	faRightFromBracket,
-} from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -58,7 +52,7 @@ export default function TopBar() {
 				/>
 			)}
 			<div
-				className="fixed right-0 left-0 md:left-48 w-auto md:bg-white dark:md:bg-mid_blue text-dark_blue dark:text-light_gray md:ps-4 md:pe-8 ps-14 pe-4 h-12 flex items-center justify-between drop-shadow-sm rounded-br-2xl"
+				className="fixed right-0 left-0 md:left-48 w-auto bg-light_gray bg-opacity-80 md:bg-white dark:md:bg-mid_blue text-dark_blue dark:text-light_gray md:ps-4 md:pe-8 ps-14 pe-4 h-12 flex items-center justify-between drop-shadow-sm rounded-br-2xl"
 				style={{ zIndex: 100 }}
 			>
 				<div className="md:mr-14">

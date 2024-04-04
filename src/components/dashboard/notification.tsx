@@ -33,11 +33,11 @@ const Notification = ({ type, name }) => {
 	}
 
 	return (
-		<div className="w-full py-1 border-b-2 flex flex-row items-center gap-x-4 flex-wrap hover:bg-light_gray dark:hover:bg-gray-600 dark:hover:bg-opacity-70 rounded-sm px-2 mb-2">
-			<div className={`border-2 border-gray-200 shadow-sm dark:opacity-80 rounded-full w-10 h-10 flex items-center justify-center bg-gradient-to-br ${gradient}`}>
+		<div className="w-full py-1 border-b-2 flex flex-row items-center gap-x-4 hover:bg-light_gray dark:hover:bg-gray-600 dark:hover:bg-opacity-70 rounded-sm px-2 mb-2">
+			<div className={`border-2 border-gray-200 shadow-sm dark:opacity-80 rounded-full min-w-10 min-h-10 flex items-center justify-center bg-gradient-to-br ${gradient}`}>
 				{icon}
 			</div>
-			<div>
+			<div className='md:text-base text-sm'>
 				<h3 className="font-semibold">{title}</h3>
 				<p>{message}</p>
 			</div>
