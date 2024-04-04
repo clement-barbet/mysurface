@@ -70,8 +70,8 @@ export default function NewPasswordForm() {
 				successMessage={successMessage}
 				setSuccessMessage={setSuccessMessage}
 			/>
-			<div className="md:w-1/2 w-full px-2 md:px-0 m-auto">
-				<h2 className="py-5 text-xl">Change Password</h2>
+			<div>
+				<h2 className="pb-5 text-xl">Change Password</h2>
 				<Form {...form}>
 					<form
 						onSubmit={form.handleSubmit(handleChangePassword)}
@@ -91,7 +91,7 @@ export default function NewPasswordForm() {
 												id="newPassword"
 												type={passwordType}
 												placeholder="Your New Password"
-												className="bg-white dark:bg-mid_blue"
+												className=" dark:bg-mid_blue"
 												{...field}
 											/>
 											<button
