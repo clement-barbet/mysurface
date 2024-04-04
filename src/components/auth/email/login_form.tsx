@@ -5,7 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { LeftSideLogin } from "@/components/login/left_side_login";
-import { FormBg } from "@/components/login/form_bg";
+import { FormBg } from "@/components/ui/form_bg";
 import { ErrorMessage } from "@/components/ui/msg/error_msg";
 import {
 	Form,
@@ -20,6 +20,7 @@ import { Input } from "@/components/ui/input";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import Link from "next/link";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
@@ -113,48 +114,73 @@ export default function LoginForm() {
 											</FormItem>
 										)}
 									/>
-									<FormField
-										control={form.control}
-										name="password"
-										render={({ field }) => (
-											<FormItem>
-												<FormLabel>Password</FormLabel>
-												<FormControl>
-													<div className="relative">
-														<Input
-															type={passwordType}
-															placeholder="Your Password"
-															{...field}
-														/>
-														<button
-															id="togglePassword"
-															type="button"
-															className="absolute inset-y-0 right-0 px-4 py-2 text-dark_blue focus:outline-none"
-															onClick={
-																togglePassword
-															}
-														>
-															<FontAwesomeIcon
-																id="eyeIcon"
-																icon={
-																	passwordType ===
-																	"password"
-																		? faEye
-																		: faEyeSlash
+									<div className="flex flex-col space-y-2">
+										<FormField
+											control={form.control}
+											name="password"
+											render={({ field }) => (
+												<FormItem>
+													<FormLabel htmlFor="password">
+														Password
+													</FormLabel>
+													<FormControl>
+														<div className="relative">
+															<Input
+																id="password"
+																type={
+																	passwordType
 																}
-																className="flex items-center justify-center w-6"
+																placeholder="Your Password"
+																{...field}
 															/>
-														</button>
-													</div>
-												</FormControl>
-												<FormMessage />
-											</FormItem>
-										)}
-									/>
+															<button
+																id="togglePassword"
+																type="button"
+																className="absolute inset-y-0 right-0 px-4 py-2 text-dark_blue focus:outline-none"
+																onClick={
+																	togglePassword
+																}
+															>
+																<FontAwesomeIcon
+																	id="eyeIcon"
+																	icon={
+																		passwordType ===
+																		"password"
+																			? faEye
+																			: faEyeSlash
+																	}
+																	className="flex items-center justify-center w-6"
+																/>
+															</button>
+														</div>
+													</FormControl>
+													<FormMessage />
+												</FormItem>
+											)}
+										/>
+										<div className="flex justify-end items-center mt-0 pe-1">
+											<Link
+												href="/forgot-password"
+												className="text-sm text-blue-700 border-b-2 border-transparent hover:border-b-2 hover:border-blue-700 transition-all duration-200 ease-linear"
+											>
+												Forgot password?
+											</Link>
+										</div>
+									</div>
 									<div className=" flex justify-center items-center">
 										<Button type="submit" variant="login">
 											LOG IN
 										</Button>
+									</div>
+									<div className=" flex justify-center items-center">
+										<Link
+											href="/sign-up"
+											className="w-full"
+										>
+											<Button variant="signup">
+												SIGN UP
+											</Button>
+										</Link>
 									</div>
 								</form>
 							</Form>
