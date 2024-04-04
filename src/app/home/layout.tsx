@@ -1,7 +1,7 @@
-import DashboardNavbar from "@/components/dashboard/dashboard_navbar";
-import TopBar from "@/components/dashboard/topbar";
+import DashboardNavbar from "@/components/home/dashboard_navbar";
+import TopBar from "@/components/home/topbar";
 
-export default function DashboardLayout({
+export default function HomeLayout({
 	children,
 }: Readonly<{
 	children: React.ReactNode;

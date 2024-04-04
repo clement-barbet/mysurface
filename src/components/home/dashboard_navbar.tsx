@@ -33,17 +33,23 @@ export default function DashboardNavbar() {
 				)}
 				onClick={() => setIsMenuOpen(!isMenuOpen)}
 			>
-				{isMenuOpen ? <BsArrowLeftCircleFill className="h-6 w-6" /> : <BsArrowRightCircleFill className="h-6 w-6" />}
-			</div>
-			<div
-				className={clsx(
-					"flex items-center justify-center w-full h-12 bg-mid_blue gap-x-3 drop-shadow-sm rounded-bl-2xl mb-5",
-					{ hidden: !isMenuOpen, "md:flex": true }
+				{isMenuOpen ? (
+					<BsArrowLeftCircleFill className="h-6 w-6" />
+				) : (
+					<BsArrowRightCircleFill className="h-6 w-6" />
 				)}
-			>
-				<img src="/logo.svg" alt="mysurface_logo" className="w-8" />
-				<h1 className="text-xl font-fjalla">MySurface</h1>
 			</div>
+			<Link href="/home" className="w-full">
+				<div
+					className={clsx(
+						"flex items-center justify-center w-full h-12 bg-mid_blue gap-x-3 drop-shadow-sm rounded-bl-2xl mb-5",
+						{ hidden: !isMenuOpen, "md:flex": true }
+					)}
+				>
+					<img src="/logo.svg" alt="mysurface_logo" className="w-8" />
+					<h1 className="text-xl font-fjalla">MySurface</h1>
+				</div>
+			</Link>
 			<ul
 				className={clsx("flex flex-col w-full", {
 					hidden: !isMenuOpen,
@@ -53,11 +59,11 @@ export default function DashboardNavbar() {
 				<li
 					className={clsx("py-4 px-4 w-full tracking-wider", {
 						"border-l-4 border-light_gray":
-							pathname === "/dashboard",
+							pathname === "/home/dashboard",
 					})}
 				>
 					<Link
-						href="/dashboard/"
+						href="/home/dashboard/"
 						className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2"
 					>
 						<MdDashboard className="h-6 w-6" />
@@ -67,11 +73,11 @@ export default function DashboardNavbar() {
 				<li
 					className={clsx("py-4 px-4 tracking-wider", {
 						"border-l-4 border-light_gray":
-							pathname === "/dashboard/participants",
+							pathname === "/home/participants",
 					})}
 				>
 					<Link
-						href="/dashboard/participants"
+						href="/home/participants"
 						className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2"
 					>
 						<IoPeople className="h-6 w-6" />
@@ -81,11 +87,11 @@ export default function DashboardNavbar() {
 				<li
 					className={clsx("py-4 px-4 tracking-wider", {
 						"border-l-4 border-light_gray":
-							pathname === "/dashboard/results",
+							pathname === "/home/results",
 					})}
 				>
 					<Link
-						href="/dashboard/results"
+						href="/home/results"
 						className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2"
 					>
 						<PiGraph className="h-6 w-6" />

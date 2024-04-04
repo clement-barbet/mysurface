@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ErrorMessage } from "@/components/ui/msg/error_msg";
-import { DarkModeButton } from "@/components/dashboard/dark_mode_btn";
+import { DarkModeButton } from "@/components/home/dark_mode_btn";
 import { IoPeople } from "react-icons/io5";
 import { FaUser } from "react-icons/fa6";
 import { IoMdSettings } from "react-icons/io";
@@ -81,15 +81,15 @@ export default function TopBar() {
 							className="absolute right-0 top-10 w-40 bg-white dark:bg-dark_blue rounded-lg shadow-lg mt-2 overflow-hidden"
 							style={{ zIndex: 101 }}
 						>
-							<Link href="/dashboard/myprofile">
+							<Link href="/home/account">
 								<div className="flex items-center justify-start gap-x-1 px-4 py-3 hover:font-medium hover:bg-light_gray dark:hover:bg-mid_blue transition-all duration-100 ease-linear">
 									<div className="w-8 h-8 flex justify-center items-center dark:border-light_gray">
 										<IoMdSettings className="w-5 h-5" />
 									</div>
-									<p>My profile</p>
+									<p>My account</p>
 								</div>
 							</Link>
-							<Link href="/dashboard/participants">
+							<Link href="/home/participants">
 								<div className="flex items-center justify-start gap-x-1 px-4 py-3 hover:font-medium hover:bg-light_gray dark:hover:bg-mid_blue transition-all duration-100 ease-linear">
 									<div className="w-8 h-8 flex justify-center items-center dark:border-light_gray">
 										<IoPeople className="h-5 w-5" />
