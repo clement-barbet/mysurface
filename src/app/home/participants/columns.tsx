@@ -2,8 +2,6 @@ import { Button } from "@/components/ui/button";
 import { ColumnDef } from "@tanstack/react-table";
 import Link from "next/link";
 import { z } from "zod";
-import { useState } from "react";
-import { LoadingMessage } from "@/components/ui/msg/loading_msg";
 
 const participantsSchema = z.object({
 	id: z.string().uuid(),
@@ -90,17 +88,11 @@ export const columns = (questionnaires: any[]): ColumnDef<Participants>[] => [
 		accessorKey: "delete",
 		header: "Delete",
 		cell: ({ row }) => {
-			const [isLoading, setIsLoading] = useState(false);
 			const participantId = row.original.id;
 			return participantId ? (
 				<>
-					<LoadingMessage
-						isLoading={isLoading}
-						setIsLoading={setIsLoading}
-					/>
 					<Button
 						onClick={async () => {
-							setIsLoading(true);
 							const response = await fetch("/api/participants", {
 								method: "DELETE",
 								headers: {
@@ -117,7 +109,6 @@ export const columns = (questionnaires: any[]): ColumnDef<Participants>[] => [
 									response.statusText
 								);
 							}
-							setIsLoading(false);
 						}}
 						className="bg-red-500 px-2 py-1 rounded text-white"
 					>
