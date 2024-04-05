@@ -87,6 +87,9 @@ export default function RegisterForm() {
 		let { data, error } = await supabase.auth.signUp({
 			email: email,
 			password: password,
+			options: {
+				emailRedirectTo: "https://mysurface.vercel.app/confirm-email",
+			},
 		});
 
 		if (error) {
