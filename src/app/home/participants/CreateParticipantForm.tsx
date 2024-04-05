@@ -12,6 +12,8 @@ import {
 	FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { useState } from "react";
+import { LoadingMessage } from "@/components/ui/msg/loading_msg";
 
 const formSchema = z.object({
 	name: z.string().min(2, {
@@ -23,6 +25,7 @@ const formSchema = z.object({
 });
 
 export function CreateParticipantForm({ phase }: { phase: string }) {
+	const [isLoading, setIsLoading] = useState(false);
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
 		defaultValues: {
@@ -32,6 +35,7 @@ export function CreateParticipantForm({ phase }: { phase: string }) {
 	});
 
 	const onSubmit = async (data: z.infer<typeof formSchema>) => {
+		setIsLoading(true);
 		try {
 			const response = await fetch("/api/participants", {
 				method: "POST",
@@ -50,55 +54,61 @@ export function CreateParticipantForm({ phase }: { phase: string }) {
 			}
 		} catch (error) {
 			console.error("Error creating participant:", error);
+		} finally {
+			setIsLoading(false);
 		}
 	};
 
 	const isEnrollmentPhase = phase === "enrollment";
 
 	return (
-		<Form {...form}>
-			<form
-				onSubmit={form.handleSubmit(onSubmit)}
-				className="flex md:space-x-4 space-y-4 md:items-end md:flex-row flex-col items-start w-full md:w-auto mb-4"
-			>
-				<FormField
-					control={form.control}
-					name="name"
-					render={({ field }) => (
-						<FormItem>
-							<FormLabel>Name</FormLabel>
-							<FormControl>
-								<Input
-									placeholder="John Doe"
-									className=" dark:bg-mid_blue"
-									{...field}
-								/>
-							</FormControl>
-							<FormMessage />
-						</FormItem>
-					)}
-				/>
-				<FormField
-					control={form.control}
-					name="email"
-					render={({ field }) => (
-						<FormItem>
-							<FormLabel>Email</FormLabel>
-							<FormControl>
-								<Input
-									placeholder="john@example.com"
-									className=" dark:bg-mid_blue"
-									{...field}
-								/>
-							</FormControl>
-							<FormMessage />
-						</FormItem>
-					)}
-				/>
-				<Button type="submit" disabled={!isEnrollmentPhase}>
-					Add Participant
-				</Button>
-			</form>
-		</Form>
+		<>
+			<LoadingMessage isLoading={isLoading} setIsLoading={setIsLoading} />
+
+			<Form {...form}>
+				<form
+					onSubmit={form.handleSubmit(onSubmit)}
+					className="flex md:space-x-4 space-y-4 md:items-end md:flex-row flex-col items-start w-full md:w-auto mb-4"
+				>
+					<FormField
+						control={form.control}
+						name="name"
+						render={({ field }) => (
+							<FormItem>
+								<FormLabel>Name</FormLabel>
+								<FormControl>
+									<Input
+										placeholder="John Doe"
+										className=" dark:bg-mid_blue"
+										{...field}
+									/>
+								</FormControl>
+								<FormMessage />
+							</FormItem>
+						)}
+					/>
+					<FormField
+						control={form.control}
+						name="email"
+						render={({ field }) => (
+							<FormItem>
+								<FormLabel>Email</FormLabel>
+								<FormControl>
+									<Input
+										placeholder="john@example.com"
+										className=" dark:bg-mid_blue"
+										{...field}
+									/>
+								</FormControl>
+								<FormMessage />
+							</FormItem>
+						)}
+					/>
+					<Button type="submit" disabled={!isEnrollmentPhase}>
+						Add Participant
+					</Button>
+				</form>
+			</Form>
+		</>
 	);
 }
