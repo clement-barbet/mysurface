@@ -14,11 +14,12 @@ const participantsSchema = z.object({
 export type Participants = z.infer<typeof participantsSchema>;
 
 export const columns = (questionnaires: any[]): ColumnDef<Participants>[] => [
-	{
+	/*{
 		accessorKey: "id",
 		header: "ID",
 	},
-	{
+	*/
+  {
 		accessorKey: "name",
 		header: "Name",
 	},
