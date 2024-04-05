@@ -44,6 +44,7 @@ export function CreateParticipantForm({ phase }: { phase: string }) {
 			if (response.ok) {
 				form.reset();
 				console.log("Participant created successfully");
+				location.reload();
 			} else {
 				console.error("Error creating participant");
 			}
@@ -58,7 +59,7 @@ export function CreateParticipantForm({ phase }: { phase: string }) {
 		<Form {...form}>
 			<form
 				onSubmit={form.handleSubmit(onSubmit)}
-				className="flex md:space-x-4 space-y-4 md:items-end md:flex-row flex-col items-start w-full md:w-auto"
+				className="flex md:space-x-4 space-y-4 md:items-end md:flex-row flex-col items-start w-full md:w-auto mb-4"
 			>
 				<FormField
 					control={form.control}
