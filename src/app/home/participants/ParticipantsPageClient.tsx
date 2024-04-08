@@ -64,12 +64,14 @@ export default function ParticipantsPageClient({
 			/>
 			<div className="mt-10 p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
 				<h2 className="mb-2">Add a new participant</h2>
-				<CreateParticipantForm phase={appSettings?.setting_value} />
-				<ResetPhaseButton/>
-				<CreateQuestionnairesButton
-					phase={appSettings?.setting_value}
-					participantCount={participantCount}
-				/>
+				<div className="flex flex-row justify-between items-end">
+					<CreateParticipantForm phase={appSettings?.setting_value} />
+					<CreateQuestionnairesButton
+						phase={appSettings?.setting_value}
+						participantCount={participantCount}
+					/>
+					<ResetPhaseButton phase={appSettings?.setting_value} />
+				</div>
 				<CreateResultButton
 					phase={appSettings?.setting_value}
 					allQuestionnairesCompleted={allQuestionnairesCompleted}

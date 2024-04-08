@@ -68,7 +68,7 @@ export function CreateParticipantForm({ phase }: { phase: string }) {
 			<Form {...form}>
 				<form
 					onSubmit={form.handleSubmit(onSubmit)}
-					className="flex md:space-x-4 space-y-4 md:items-end md:flex-row flex-col items-start w-full md:w-auto mb-4"
+					className="flex md:space-x-4 space-y-4 md:items-end md:flex-row flex-col items-start w-full md:w-auto"
 				>
 					<FormField
 						control={form.control}

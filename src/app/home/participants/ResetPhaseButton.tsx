@@ -2,7 +2,7 @@
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { Button } from "@/components/ui/button";
 
-const ResetPhaseButton = () => {
+const ResetPhaseButton = ({ phase }: { phase: string }) => {
     const handleClick = async () => {
         const supabase = createClientComponentClient();
         const { error } = await supabase
@@ -18,8 +18,12 @@ const ResetPhaseButton = () => {
         }
     };
 
+    if (phase !== "questionnaire") {
+        return null;
+    }
+
     return (
-        <Button onClick={handleClick} className="my-5">
+        <Button onClick={handleClick}>
             Reset Process Phase
         </Button>
     );
