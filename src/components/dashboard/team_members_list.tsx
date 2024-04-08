@@ -29,6 +29,10 @@ export default function TeamMembersList() {
 		getParticipants().then((data: Participant[]) => setParticipants(data));
 	}, []);
 
+	if (participants.length === 0) {
+		return <p className="text-sm italic text-center">No members yet.</p>;
+	}
+
 	return (
 		<div className="overflow-auto">
 			<table className="w-full">

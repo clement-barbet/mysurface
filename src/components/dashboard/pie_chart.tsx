@@ -15,8 +15,12 @@ async function getCompletionPercentage() {
 
 	if (error) {
 		console.error("Error fetching questionnaires:", error);
-		return 0;
+		return null;
 	}
+
+	if (questionnaires.length === 0) {
+        return null;
+    }
 
 	const completedCount = questionnaires.filter((q) => q.completed).length;
 	const totalCount = questionnaires.length;
@@ -25,7 +29,7 @@ async function getCompletionPercentage() {
 }
 
 const DashboardPieChart = () => {
-	const [completedPercentage, setCompletedPercentage] = useState(0);
+	const [completedPercentage, setCompletedPercentage] = useState<number | null>(null);
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -35,6 +39,10 @@ const DashboardPieChart = () => {
 
 		fetchData();
 	}, []);
+
+	if (completedPercentage === null) {
+        return <p className="text-sm italic text-center">No data yet.</p>;
+    }
 
 	const notCompletedPercentage = 100 - completedPercentage;
 
