@@ -12,53 +12,53 @@ export default function Home() {
 							Admin&apos;s Guide
 						</h2>
 						<p className="text-gray-600 dark:text-gray-400">
-							Steps to follow for admin tasks.
+							Steps to follow for admins.
 						</p>
 						<ol className="text-gray-600 dark:text-gray-400 list-inside py-4">
-							<li className="text-sm">
+							<li className="font-semibold">
 								<span className="text-xl font-bold text-blue-500 inline-block w-6">
 									1.
 								</span>
 								Log-in with an administrator account
 							</li>
-							<li className="text-sm">
+							<li className="font-semibold">
 								<span className="text-xl font-bold text-blue-500 inline-block w-6">
 									2.
 								</span>
 								Go to &quot;Participants&ldquo; section
 							</li>
-							<li className="text-sm">
+							<li className="font-semibold">
 								<span className="text-xl font-bold text-blue-500 inline-block w-6">
 									3.
 								</span>
 								Inside &quot;Participants&ldquo; create new participants
 							</li>
-							<li className="text-sm">
+							<li className="font-semibold">
 								<span className="text-xl font-bold text-blue-500 inline-block w-6">
 									4.
 								</span>
 								Click &quot;Create Questionnaire&ldquo; button to create
 								questionnaires for the participants
 							</li>
-							<li className="text-sm">
+							<li className="font-semibold">
 								<span className="text-xl font-bold text-blue-500 inline-block w-6">
 									5.
 								</span>
 								Copy each participant link and share with them
 							</li>
-							<li className="text-sm">
+							<li className="font-semibold">
 								<span className="text-xl font-bold text-blue-500 inline-block w-6">
 									6.
 								</span>
 								Make participants complete the questionnaire
 							</li>
-							<li className="text-sm">
+							<li className="font-semibold">
 								<span className="text-xl font-bold text-blue-500 inline-block w-6">
 									7.
 								</span>
 								Go to &quot;Results&ldquo; page
 							</li>
-							<li className="text-sm">
+							<li className="font-semibold">
 								<span className="text-xl font-bold text-blue-500 inline-block w-6">
 									8.
 								</span>
@@ -72,30 +72,30 @@ export default function Home() {
 					<div className="px-10 py-5">
 						<h2 className="font-bold text-lg">User&apos;s Guide</h2>
 						<p className="text-gray-600 dark:text-gray-400">
-							Steps to follow for user tasks.
+							Steps to follow for users.
 						</p>
 						<ol className="text-gray-600 dark:text-gray-400 list-inside py-4">
-							<li className="text-sm">
+							<li className="font-semibold">
 								<span className="text-xl font-bold text-blue-500 inline-block w-6">
 									1.
 								</span>
 								Access the link provided by your administrator
 							</li>
-							<li className="text-sm">
+							<li className="font-semibold">
 								<span className="text-xl font-bold text-blue-500 inline-block w-6">
 									2.
 								</span>
 								Access the questionnaire shared by your
 								administrator
 							</li>
-							<li className="text-sm">
+							<li className="font-semibold">
 								<span className="text-xl font-bold text-blue-500 inline-block w-6">
 									3.
 								</span>
 								Complete the questionnaire questions about your
 								teammates / classmates
 							</li>
-							<li className="text-sm">
+							<li className="font-semibold">
 								<span className="text-xl font-bold text-blue-500 inline-block w-6">
 									4.
 								</span>
