@@ -25,19 +25,19 @@ export default function Home() {
 								<span className="text-xl font-bold text-blue-500 inline-block w-6">
 									2.
 								</span>
-								Go to "Participants" section
+								Go to &quot;Participants&ldquo; section
 							</li>
 							<li className="text-sm">
 								<span className="text-xl font-bold text-blue-500 inline-block w-6">
 									3.
 								</span>
-								Inside "Participants" create new participants
+								Inside &quot;Participants&ldquo; create new participants
 							</li>
 							<li className="text-sm">
 								<span className="text-xl font-bold text-blue-500 inline-block w-6">
 									4.
 								</span>
-								Click "Create Questionnaire" button to create
+								Click &quot;Create Questionnaire&ldquo; button to create
 								questionnaires for the participants
 							</li>
 							<li className="text-sm">
@@ -56,13 +56,13 @@ export default function Home() {
 								<span className="text-xl font-bold text-blue-500 inline-block w-6">
 									7.
 								</span>
-								Go to "Results" page
+								Go to &quot;Results&ldquo; page
 							</li>
 							<li className="text-sm">
 								<span className="text-xl font-bold text-blue-500 inline-block w-6">
 									8.
 								</span>
-								Click "Generate report" button and the animation
+								Click &quot;Generate report&ldquo; button and the animation
 								with analytics will show up
 							</li>
 						</ol>
