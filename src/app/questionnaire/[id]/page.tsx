@@ -5,50 +5,69 @@ import { notFound } from "next/navigation";
 import QuestionnaireForm from "./QuestionnaireForm";
 
 export default async function QuestionnairePage({
-  params,
+	params,
 }: {
-  params: { id: string };
+	params: { id: string };
 }) {
-  const supabase = createServerComponentClient({ cookies });
+	const supabase = createServerComponentClient({ cookies });
 
-  const { data: questionnaire, error: questionnaireError } = await supabase
-    .from("questionnaires")
-    .select("*")
-    .eq("id", params.id)
-    .single();
+	const { data: questionnaire, error: questionnaireError } = await supabase
+		.from("questionnaires")
+		.select("*")
+		.eq("id", params.id)
+		.single();
 
-  if (questionnaireError) {
-    console.error("Error fetching questionnaire:", questionnaireError);
-    notFound();
-  }
+	if (questionnaireError) {
+		console.error("Error fetching questionnaire:", questionnaireError);
+		notFound();
+	}
 
-  const { data: participants, error: participantsError } = await supabase
-    .from("participants")
-    .select("*")
-    .neq("questionnaire", params.id);
+	const { data: participants, error: participantsError } = await supabase
+		.from("participants")
+		.select("*")
+		.neq("questionnaire", params.id);
 
-  if (participantsError) {
-    console.error("Error fetching participants:", participantsError);
-    notFound();
-  }
+	if (participantsError) {
+		console.error("Error fetching participants:", participantsError);
+		notFound();
+	}
 
-  const { data: questions, error: questionsError } = await supabase
-    .from("questions")
-    .select("*");
+	const { data: questions, error: questionsError } = await supabase
+		.from("questions")
+		.select("*");
 
-  if (questionsError) {
-    console.error("Error fetching questions:", questionsError);
-    notFound();
-  }
+	if (questionsError) {
+		console.error("Error fetching questions:", questionsError);
+		notFound();
+	}
 
-  return (
-    <div>
-      <h1>Questionnaire: {params.id}</h1>
-      <QuestionnaireForm
-        questionnaireId={params.id}
-        participants={participants}
-        questions={questions}
-      />
-    </div>
-  );
+	const { data: owner, error: ownerError } = await supabase
+		.from("participants")
+		.select("*")
+		.eq("questionnaire", params.id)
+		.single();
+
+	if (ownerError) {
+		console.error("Error fetching owner:", ownerError);
+		notFound();
+	}
+
+	return (
+		<div className="m-auto mt-5 w-full md:w-2/3 flex flex-col">
+			<h1 className="text-3xl my-5">Complete the Questionnaire</h1>
+			<div className="p-10 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
+				<h2>
+					<b>Questionnaire</b>: {params.id}
+				</h2>
+				<h2>
+					<b>Evaluator</b>: {owner.name}
+				</h2>
+				<QuestionnaireForm
+					questionnaireId={params.id}
+					participants={participants}
+					questions={questions}
+				/>
+			</div>
+		</div>
+	);
 }
