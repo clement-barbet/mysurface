@@ -1,6 +1,7 @@
 "use client";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
 
 export default function CreateResultButton({
   phase,
@@ -30,7 +31,7 @@ export default function CreateResultButton({
         // Redirect to the result page
         const resultResponse = await response.json();
         const resultId = resultResponse.resultId;
-        router.push(`/dashboard/results/${resultId}`);
+        router.push(`/home/results/${resultId}`);
       } else {
         console.error("Error generating result");
       }
@@ -46,5 +47,5 @@ export default function CreateResultButton({
     return null;
   }
 
-  return <button onClick={generateResult}>Generate Result</button>;
+  return <Button className="mt-5" onClick={generateResult}>Generate Result</Button>;
 }
