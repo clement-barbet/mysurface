@@ -5,7 +5,7 @@ import { CustomAccordionItem } from "@/components/ui/accordion_item";
 export default function Faq() {
 	return (
 		<div className="w-full m-auto p-5">
-			<h2 className="text-3xl pb-5">Frecuently Asked Questions</h2>
+			<h2 className="text-3xl pb-5">Frequently Asked Questions</h2>
 			<div className="w-full m-auto p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
 				<Accordion allowZeroExpanded>
 					<CustomAccordionItem title="- How can I add new participants after generating the questionnaires?">
