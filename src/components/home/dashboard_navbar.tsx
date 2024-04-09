@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { MdDashboard } from "react-icons/md";
 import { IoPeople } from "react-icons/io5";
 import { PiGraph } from "react-icons/pi";
+import { AiOutlineQuestion } from "react-icons/ai";
 import { BsArrowRightCircleFill, BsArrowLeftCircleFill } from "react-icons/bs";
 import React, { useState } from "react";
 
@@ -96,6 +97,20 @@ export default function DashboardNavbar() {
 					>
 						<PiGraph className="h-6 w-6" />
 						RESULTS
+					</Link>
+				</li>
+				<li
+					className={clsx("py-4 px-4 tracking-wider", {
+						"border-l-4 border-light_gray":
+							pathname === "/home/faq",
+					})}
+				>
+					<Link
+						href="/home/faq"
+						className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2"
+					>
+						<AiOutlineQuestion className="h-6 w-6" />
+						FAQ
 					</Link>
 				</li>
 			</ul>
