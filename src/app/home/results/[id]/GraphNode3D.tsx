@@ -35,7 +35,7 @@ export default function GraphNode3D({ graphData }: GraphNode3DProps) {
 	return (
 		<ForceGraph3D
 			ref={fgRef}
-			backgroundColor="#000003"
+			backgroundColor="#FFF003"
 			graphData={graphData}
 			nodeLabel="id"
 			nodeAutoColorBy="group"
