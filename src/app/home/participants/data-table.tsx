@@ -17,7 +17,8 @@ import {
 	TBodyRow,
 } from "@/components/ui/table";
 
-import { FaUser } from "react-icons/fa6";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faYinYang } from "@fortawesome/free-solid-svg-icons";
 
 interface DataTableProps<TData, TValue> {
 	columns: ColumnDef<TData, TValue>[];
@@ -67,8 +68,11 @@ export function DataTable<TData, TValue>({
 									<TableCell key={cell.id}>
 										{index === 0 && (
 											<div className="inline-block mr-5">
-												<div className="border-2 border-gray-200 shadow-sm dark:opacity-80 rounded-full w-10 h-10 flex items-center justify-center bg-gradient-to-br from-cyan-300 to-sky-500">
-													<FaUser className="w-5 h-5 text-white" />
+												<div className="border-2 border-gray-200 shadow-sm dark:opacity-80 rounded-full w-10 h-10 flex items-center justify-center bg-gradient-to-br from-cyan-500 to-sky-800">
+													<FontAwesomeIcon
+														icon={faYinYang}
+														className="w-5 h-5 text-white"
+													/>
 												</div>
 											</div>
 										)}
