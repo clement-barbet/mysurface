@@ -1,57 +1,62 @@
 "use client";
 
 import { ForceGraph2D } from "react-force-graph";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
-export default function GraphNode2D({ graphData }) {
-  const forceGraphRef = useRef(null);
-  const containerRef = useRef(null);
-  const [width, setWidth] = React.useState(0);
-  const [height, setHeight] = React.useState(0);
+interface GraphNode2DProps {
+	graphData: any;
+}
 
-  useEffect(() => {
-    const forceGraphInstance = forceGraphRef.current;
-    if (forceGraphInstance) {
-      const linkForce = forceGraphInstance.d3Force("link");
-      if (linkForce) {
-        linkForce.distance((link) => link.length || 100);
-        forceGraphInstance.d3ReheatSimulation();
-      }
-    }
-  }, []);
+export default function GraphNode2D({ graphData }: GraphNode2DProps) {
+	const forceGraphRef = useRef(null);
 
-  useEffect(() => {
-    const resizeGraph = () => {
-      if (containerRef.current) {
-        const { width, height } = containerRef.current.getBoundingClientRect();
-        setWidth(width);
-        setHeight(height);
-      }
-    };
+	const [dimensions, setDimensions] = useState({
+		width: window.innerWidth,
+		height: window.innerHeight,
+	});
 
-    resizeGraph();
-    window.addEventListener("resize", resizeGraph);
+	useEffect(() => {
+		const resizeGraph = () => {
+			const width =
+				window.innerWidth < 768
+					? window.innerWidth - 90
+					: window.innerWidth - 242;
+			setDimensions({
+				width,
+				height: window.innerHeight - 130,
+			});
+		};
+		resizeGraph();
+		window.addEventListener("resize", resizeGraph);
+		return () => {
+			window.removeEventListener("resize", resizeGraph);
+		};
+	}, []);
 
-    return () => {
-      window.removeEventListener("resize", resizeGraph);
-    };
-  }, []);
+	useEffect(() => {
+		const forceGraphInstance = forceGraphRef.current;
+		if (forceGraphInstance) {
+			const linkForce = forceGraphInstance.d3Force("link");
+			if (linkForce) {
+				linkForce.distance((link) => link.length || 100);
+				forceGraphInstance.d3ReheatSimulation();
+			}
+		}
+	}, []);
 
-  return (
-    <div
-      ref={containerRef}
-      className="border border-gray-200 rounded-lg"
-      style={{ width: "100%", height: "600px" }}
-    >
-      <ForceGraph2D
-        ref={forceGraphRef}
-        graphData={graphData}
-        width={width}
-        height={height}
-        nodeVal={(node) => node.val}
-        nodeLabel="name"
-        linkWidth={(link) => 1 / link.length}
-      />
-    </div>
-  );
+	graphData.nodes.forEach((node) => {
+		node.color = "#2C7EB5";
+	});
+
+	return (
+		<ForceGraph2D
+			ref={forceGraphRef}
+			graphData={graphData}
+			width={dimensions.width}
+			height={dimensions.height}
+			nodeVal={(node) => node.val}
+			nodeLabel="name"
+			linkWidth={(link) => 1 / link.length}
+		/>
+	);
 }

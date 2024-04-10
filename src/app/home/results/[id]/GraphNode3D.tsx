@@ -22,7 +22,7 @@ export default function GraphNode3D({ graphData }: GraphNode3DProps) {
 					: window.innerWidth - 242;
 			setDimensions({
 				width,
-				height: window.innerHeight - 120,
+				height: window.innerHeight - 130,
 			});
 		};
 		resizeGraph();
@@ -31,6 +31,10 @@ export default function GraphNode3D({ graphData }: GraphNode3DProps) {
 			window.removeEventListener("resize", resizeGraph);
 		};
 	}, []);
+
+	graphData.nodes.forEach((node) => {
+		node.color = "#7F9DAF";
+	});
 
 	return (
 		<ForceGraph3D
