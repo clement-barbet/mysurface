@@ -3,30 +3,44 @@ import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { Button } from "@/components/ui/button";
 
 const ResetPhaseButton = ({ phase }: { phase: string }) => {
-    const handleClick = async () => {
-        const supabase = createClientComponentClient();
-        const { error } = await supabase
-            .from("app_settings")
-            .update({ setting_value: "enrollment" })
-            .eq("setting_name", "phase");
+	const handleClick = async () => {
+		const supabase = createClientComponentClient();
 
-        if (error) {
-            console.error('Error updating phase:', error);
-        } else {
-            console.log('Phase updated successfully');
-            location.reload();
-        }
-    };
+		// Update phase to enrollment
+		const { error: updateError } = await supabase
+			.from("app_settings")
+			.update({ setting_value: "enrollment" })
+			.eq("setting_name", "phase");
 
-    if (phase !== "questionnaire") {
-        return null;
-    }
+		if (updateError) {
+			console.error("Error updating phase:", updateError);
+		} else {
+			console.log("Phase updated successfully");
+		}
 
-    return (
-        <Button onClick={handleClick}>
-            Reset Process Phase
-        </Button>
-    );
+		// Delete all records from questionnaires
+		const { error: deleteError } = await supabase
+			.from("questionnaires")
+			.delete()
+            .neq('id', '00000000-0000-0000-0000-000000000000');
+
+		if (deleteError) {
+			console.error("Error deleting questionnaires:", deleteError);
+		} else {
+			console.log("Questionnaires deleted successfully");
+		}
+
+		// Reload the page to show updated table
+		if (!updateError && !deleteError) {
+			location.reload();
+		}
+	};
+
+	if (phase !== "questionnaire") {
+		return null;
+	}
+
+	return <Button onClick={handleClick}>Reset Process Phase</Button>;
 };
 
 export default ResetPhaseButton;
