@@ -1,7 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ErrorMessage } from "@/components/ui/msg/error_msg";
 import { DarkModeButton } from "@/components/home/dark_mode_btn";
 import { IoPeople } from "react-icons/io5";
@@ -11,11 +10,14 @@ import { IoMdLogOut } from "react-icons/io";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import T from "@/components/translation";
+import { useTranslation } from 'react-i18next';
 
 export default function TopBar() {
 	const [email, setEmail] = useState("");
 	const [errorMessage, setErrorMessage] = useState("");
 	const supabase = createClientComponentClient();
+	const { t } = useTranslation();
 
 	useEffect(() => {
 		const fetchUser = async () => {
@@ -64,7 +66,7 @@ export default function TopBar() {
 					<input
 						type="text"
 						className="w-64 bg-transparent border-none focus:border-none focus:outline-none"
-						placeholder="Search"
+						placeholder={t('topbar.search')}
 					/>
 				</div>
 				<div
@@ -86,7 +88,7 @@ export default function TopBar() {
 									<div className="w-8 h-8 flex justify-center items-center dark:border-light_gray">
 										<IoMdSettings className="w-5 h-5" />
 									</div>
-									<p>My account</p>
+									<p><T tkey="topbar.account"/></p>
 								</div>
 							</Link>
 							<Link href="/home/participants">
@@ -94,7 +96,7 @@ export default function TopBar() {
 									<div className="w-8 h-8 flex justify-center items-center dark:border-light_gray">
 										<IoPeople className="h-5 w-5" />
 									</div>
-									<p>My team</p>
+									<p><T tkey="topbar.team"/></p>
 								</div>
 							</Link>
 							<Link href="/login" onClick={handleLogout}>
@@ -102,7 +104,7 @@ export default function TopBar() {
 									<div className="w-8 h-8 flex justify-center items-center dark:border-light_gray">
 										<IoMdLogOut className="h-5 w-5" />
 									</div>
-									<p>Log out</p>
+									<p><T tkey="topbar.logout"/></p>
 								</div>
 							</Link>
 						</div>

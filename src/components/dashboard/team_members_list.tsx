@@ -7,7 +7,7 @@ async function getParticipants() {
 	const supabase = createClientComponentClient();
 	const { data, error } = await supabase
 		.from("participants")
-		.select("name, email");
+		.select("id, name, email");
 
 	if (error) {
 		console.error("Error fetching participants:", error);

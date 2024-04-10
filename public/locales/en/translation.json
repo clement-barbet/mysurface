@@ -1,0 +1,43 @@
+{
+	"home": {
+		"guide": {
+			"admin": {
+				"title": "Admin's Guide",
+				"subtitle": "Steps to follow for admins.",
+				"steps": {
+					"s1": "Log-in with an administrator account",
+					"s2": "Go to 'Participants' section",
+					"s3": "Inside 'Participants' create new participants",
+					"s4": "Click 'Create Questionnaire' button to create questionnaires for the participants",
+					"s5": "Copy each participant link and share with them",
+					"s6": "Make participants complete the questionnaire",
+					"s7": "Go to 'Results' page",
+					"s8": "Click 'Generate report' button and the animation with analytics will show up"
+				}
+			},
+			"user": {
+				"title": "User's Guide",
+				"subtitle": "Steps to follow for users.",
+				"steps": {
+					"s1": "Access the link provided by your administrator",
+					"s2": "Access the questionnaire shared by your administrator",
+					"s3": "Complete the questionnaire questions about your teammates / classmates",
+					"s4": "Send the results to your administrator"
+				}
+			}
+		}
+	},
+	"navbar": {
+		"dashboard": "Dashboard",
+		"participants": "Participants",
+		"results": "Results",
+		"faq": "FAQ",
+		"language": "Language"
+	},
+	"topbar": {
+		"search": "Search",
+		"account": "My account",
+		"team": "My team",
+		"logout": "Log out"
+	}
+}

@@ -3,15 +3,19 @@ import clsx from "clsx";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { MdDashboard } from "react-icons/md";
-import { IoPeople } from "react-icons/io5";
+import { IoPeople, IoLanguageOutline } from "react-icons/io5";
 import { PiGraph } from "react-icons/pi";
 import { AiOutlineQuestion } from "react-icons/ai";
 import { BsArrowRightCircleFill, BsArrowLeftCircleFill } from "react-icons/bs";
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
+import T from "@/components/translation";
 
 export default function DashboardNavbar() {
 	const pathname = usePathname();
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
+	const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false);
+	const { i18n } = useTranslation();
 
 	return (
 		<nav
@@ -65,10 +69,10 @@ export default function DashboardNavbar() {
 				>
 					<Link
 						href="/home/dashboard/"
-						className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2"
+						className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase"
 					>
 						<MdDashboard className="h-6 w-6" />
-						DASHBOARD
+						<T tkey="navbar.dashboard" />
 					</Link>
 				</li>
 				<li
@@ -79,10 +83,10 @@ export default function DashboardNavbar() {
 				>
 					<Link
 						href="/home/participants"
-						className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2"
+						className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase"
 					>
 						<IoPeople className="h-6 w-6" />
-						PARTICIPANTS
+						<T tkey="navbar.participants" />
 					</Link>
 				</li>
 				<li
@@ -93,10 +97,10 @@ export default function DashboardNavbar() {
 				>
 					<Link
 						href="/home/results"
-						className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2"
+						className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase"
 					>
 						<PiGraph className="h-6 w-6" />
-						RESULTS
+						<T tkey="navbar.results" />
 					</Link>
 				</li>
 				<li
@@ -107,11 +111,51 @@ export default function DashboardNavbar() {
 				>
 					<Link
 						href="/home/faq"
-						className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2"
+						className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase"
 					>
 						<AiOutlineQuestion className="h-6 w-6" />
-						FAQ
+						<T tkey="navbar.faq" />
 					</Link>
+				</li>
+				<li
+					onClick={() => setIsLanguageMenuOpen(!isLanguageMenuOpen)}
+					className="py-4 px-4 tracking-wider relative"
+				>
+					<span className="hover:font-bold hover:cursor-pointer transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase">
+						<IoLanguageOutline className="h-6 w-6" />
+						<T tkey="navbar.language" />
+					</span>
+					{isLanguageMenuOpen && (
+						<ul className="mt-2 ms-8">
+							<li
+								onClick={() => {
+									i18n.changeLanguage("cs");
+									localStorage.setItem("i18nextLng", "cs");
+								}}
+								className="hover:font-semibold cursor-pointer transition-all duration-200 ease-linear"
+							>
+								Česky
+							</li>
+							<li
+								onClick={() => {
+									i18n.changeLanguage("en");
+									localStorage.setItem("i18nextLng", "en");
+								}}
+								className="hover:font-semibold cursor-pointer transition-all duration-200 ease-linear"
+							>
+								English
+							</li>
+							<li
+								onClick={() => {
+									i18n.changeLanguage("es");
+									localStorage.setItem("i18nextLng", "es");
+								}}
+								className="hover:font-semibold cursor-pointer transition-all duration-200 ease-linear"
+							>
+								Español
+							</li>
+						</ul>
+					)}
 				</li>
 			</ul>
 		</nav>

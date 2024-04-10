@@ -1,0 +1,43 @@
+{
+	"home": {
+		"guide": {
+			"admin": {
+				"title": "Guía del Administrador",
+				"subtitle": "Pasos a seguir para los administradores.",
+				"steps": {
+					"s1": "Inicia sesión con una cuenta de administrador",
+					"s2": "Ve a la sección 'Participantes'",
+					"s3": "Dentro de 'Participantes' crea nuevos participantes",
+					"s4": "Haz clic en el botón 'Crear Cuestionario' para crear cuestionarios para los participantes",
+					"s5": "Copia cada enlace de participante y compártelo con ellos",
+					"s6": "Haz que los participantes completen el cuestionario",
+					"s7": "Ve a la página 'Resultados'",
+					"s8": "Haz clic en el botón 'Generar informe' y aparecerá la animación con las analíticas"
+				}
+			},
+			"user": {
+				"title": "Guía del Usuario",
+				"subtitle": "Pasos a seguir para los usuarios.",
+				"steps": {
+					"s1": "Accede al enlace proporcionado por tu administrador",
+					"s2": "Accede al cuestionario compartido por tu administrador",
+					"s3": "Completa las preguntas del cuestionario sobre tus compañeros de equipo / clase",
+					"s4": "Envía los resultados a tu administrador"
+				}
+			}
+		}
+	},
+	"navbar": {
+		"dashboard": "Panel",
+		"participants": "Participantes",
+		"results": "Resultados",
+		"faq": "FAQ",
+		"language": "Idioma"
+	},
+	"topbar": {
+		"search": "Buscar",
+		"account": "Mi cuenta",
+		"team": "Mi equipo",
+		"logout": "Cerrar sesión"
+	}
+}
