@@ -4,6 +4,7 @@ import { DashboardPieChart } from "@/components/dashboard/pie_chart";
 import TeamMembersList from "@/components/dashboard/team_members_list";
 import { Notification } from "@/components/dashboard/notification";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 export default function Dashboard() {
 	return (
@@ -37,16 +38,25 @@ export default function Dashboard() {
 					</div>
 				</div>
 			</div>
-			<div className="h-auto w-full xl:w-2/5 flex flex-col shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
-				<div className="px-10 py-5">
-					<Link href="/home/participants"><h2 className="font-bold text-lg hover:text-blue-500 transition-colors duration-200 ease-linear">Team members</h2></Link>
-					
-					<p className="text-gray-600 dark:text-gray-400">
-						Actual team members, contributing to the analysis.
-					</p>
-					<div className="mt-3">
-						<TeamMembersList />
+			<div className="h-auto w-full xl:w-2/5 flex flex-col justify-between shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
+				<div>
+					<div className="px-10 py-5">
+						<h2 className="font-bold text-lg hover:text-blue-500 transition-colors duration-200 ease-linear">
+							Team members
+						</h2>
+
+						<p className="text-gray-600 dark:text-gray-400">
+							Actual team members, contributing to the analysis.
+						</p>
+						<div className="mt-3">
+							<TeamMembersList />
+						</div>
 					</div>
+				</div>
+				<div className="px-10 py-5">
+					<Link href="/home/participants">
+						<Button variant="login">CHECK ALL PARTICIPANTS</Button>
+					</Link>
 				</div>
 			</div>
 		</div>
