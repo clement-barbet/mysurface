@@ -171,6 +171,9 @@
 			"button": "SEND RESET EMAIL"
 		}
 	},
+	"homeresults": {
+		"title": "All Executed Reports"
+	},
 	"navbar": {
 		"dashboard": "Dashboard",
 		"participants": "Participants",

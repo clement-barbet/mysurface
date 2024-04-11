@@ -171,6 +171,9 @@
 			"button": "ENVIAR CORREO DE RESTABLECIMIENTO"
 		}
 	},
+	"homeresults": {
+		"title": "Todos los Informes Ejecutados"
+	},	
 	"navbar": {
 		"dashboard": "Panel",
 		"participants": "Participantes",

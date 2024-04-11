@@ -171,6 +171,9 @@
 			"button": "ODESLAT E-MAIL K RESETU HESLA"
 		}
 	},
+	"homeresults": {
+		"title": "Všechny Provedené Zprávy"
+	},	
 	"navbar": {
 		"dashboard": "Nástěnka",
 		"participants": "Účastníci",
