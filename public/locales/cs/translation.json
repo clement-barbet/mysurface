@@ -49,6 +49,128 @@
 			"nodata": "Žádná oznámení, jste aktuální."
 		}
 	},
+	"participants": {
+		"table": {
+			"headers": {
+				"name": "Jméno",
+				"email": "E-mail",
+				"status": "Stav",
+				"questionnaire": "Dotazník",
+				"delete": "Smazat"
+			},
+			"nodata": "Zatím nebyli přidáni žádní účastníci.",
+			"status": {
+				"undefined": "Nedefinováno",
+				"completed": "Dokončeno",
+				"tocomplete": "K dokončení"
+			},
+			"buttons": {
+				"copy": "Kopírovat Odkaz",
+				"delete": "Smazat"
+			}
+		},
+		"form": {
+			"title": "Přidat nového účastníka",
+			"labels": {
+				"name": "Jméno",
+				"email": "E-mail"
+			},
+			"buttons": {
+				"add": "Přidat Účastníka",
+				"questionnaire": {
+					"text": "Vytvořit Dotazníky",
+					"tooltip": "Před generováním dotazníků musíte přidat alespoň 2 účastníky."
+				},
+				"reset": "Resetovat Fázi",
+				"result": "Generovat Výsledek"
+			}
+		}
+	},
+	"faq": {
+		"title": "Často Kladené Otázky",
+		"questions": {
+			"q1": {
+				"q": "- Jak mohu přidat nové účastníky po vygenerování dotazníků?",
+				"a": {
+					"a1": "Pokud jste zapomněli přidat nějakého účastníka do týmu, nebojte se, můžete se vrátit a postupovat podle následujícího procesu:",
+					"a2": "Klikněte na tlačítko Resetovat fázi, což vám umožní pokračovat v přidávání členů do týmu.",
+					"a3": "Jakmile dokončíte přidávání účastníků, můžete znovu vygenerovat dotazníky kliknutím na tlačítko Vytvořit dotazníky."
+				}
+			},
+			"q2": {
+				"q": "- Jak mohu změnit své heslo?",
+				"a": "Můžete přistoupit přímo k Můj účet, kde budete moci aktualizovat své heslo. Pokud zapomenete své heslo, můžete jej obnovit na obrazovce s přihlášením kliknutím na Zapomněli jste heslo?. Poté obdržíte e-mail k nastavení nového hesla."
+			}
+		}
+	},
+	"account": {
+		"password": {
+			"title": "Změnit Heslo",
+			"labels": {
+				"new": "Nové Heslo"
+			},
+			"placeholders": {
+				"new": "Vaše Nové Heslo"
+			},
+			"button": "ZMĚNIT HESLO"
+		}
+	},
+	"results": {
+		"tabs": {
+			"2d": "Graf 2D",
+			"3d": "Graf 3D"
+		}
+	},
+	"login": {
+		"slogan": "Připojte se, Spolupracujte, Vizuálně zobrazujte: Váš Tým, Vaše Povrch.",
+		"title": "Vítejte zpět!",
+		"form": {
+			"labels": {
+				"email": "E-mail",
+				"password": "Heslo"
+			},
+			"placeholders": {
+				"email": "Váš e-mail",
+				"password": "Vaše heslo"
+			},
+			"buttons": {
+				"login": "PŘIHLÁSIT SE",
+				"signup": "REGISTRACE",
+				"forgot": "Zapomněli jste heslo?"
+			}
+		}
+	},
+	"registration": {
+		"title": "Začněme!",
+		"form": {
+			"labels": {
+				"email": "E-mail",
+				"password": "Heslo",
+				"confirm": "Potvrdit heslo"
+			},
+			"placeholders": {
+				"email": "Váš e-mail",
+				"password": "Vaše heslo",
+				"confirm": "Potvrďte své heslo"
+			},
+			"buttons": {
+				"login": "PŘIHLÁSIT SE",
+				"signup": "REGISTRACE"
+			}
+		}
+	},
+	"emailconfirmation": {
+		"title": "Potvrzení e-mailu",
+		"button": "PŘIHLÁSIT SE"
+	},
+	"forgotpassword": {
+		"title": "Obnovit heslo",
+		"form": {
+			"label": "E-mail",
+			"placeholder": "Váš e-mail",
+			"button": "ODESLAT E-MAIL K RESETU HESLA"
+		}
+	},
 	"navbar": {
 		"dashboard": "Nástěnka",
 		"participants": "Účastníci",

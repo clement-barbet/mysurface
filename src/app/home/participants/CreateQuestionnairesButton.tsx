@@ -8,7 +8,8 @@ import {
 	TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { useState } from "react";
-import {LoadingMessage} from "@/components/ui/msg/loading_msg";
+import { LoadingMessage } from "@/components/ui/msg/loading_msg";
+import T from "@/components/translations/translation";
 
 export default function CreateQuestionnairesButton({
 	phase,
@@ -63,15 +64,14 @@ export default function CreateQuestionnairesButton({
 								onClick={createQuestionnaires}
 								disabled={!canCreateQuestionnaires}
 							>
-								Create Questionnaires
+								<T tkey="participants.form.buttons.questionnaire.text" />
 							</Button>
 						</div>
 					</TooltipTrigger>
 					{!canCreateQuestionnaires && (
 						<TooltipContent>
 							<p>
-								You need to add at least 2 participants before
-								generating the questionnaires.
+								<T tkey="participants.form.buttons.questionnaire.tooltip" />
 							</p>
 						</TooltipContent>
 					)}

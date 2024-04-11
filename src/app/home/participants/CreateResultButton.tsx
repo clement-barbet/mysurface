@@ -2,6 +2,7 @@
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
+import T from "@/components/translations/translation";
 
 export default function CreateResultButton({
   phase,
@@ -47,5 +48,5 @@ export default function CreateResultButton({
     return null;
   }
 
-  return <Button className="mt-5" onClick={generateResult}>Generate Result</Button>;
+  return <Button className="mt-5" onClick={generateResult}><T tkey="participants.form.buttons.result"/></Button>;
 }

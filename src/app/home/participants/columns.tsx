@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ColumnDef } from "@tanstack/react-table";
-import Link from "next/link";
 import { z } from "zod";
+import T from "@/components/translations/translation";
 
 const participantsSchema = z.object({
 	id: z.string().uuid(),
@@ -35,7 +35,7 @@ export const columns = (questionnaires: any[]): ColumnDef<Participants>[] => [
 			if (questionnaire === null) {
 				return (
 					<div className="bg-gray-300 text-white px-2 py-1 rounded">
-						Undefined
+						<T tkey="participants.table.status.undefined" />
 					</div>
 				);
 			}
@@ -46,20 +46,20 @@ export const columns = (questionnaires: any[]): ColumnDef<Participants>[] => [
 				if (linkedQuestionnaire.completed) {
 					return (
 						<div className="bg-green-500 text-white px-2 py-1 rounded">
-							Completed
+							<T tkey="participants.table.status.completed" />
 						</div>
 					);
 				} else {
 					return (
 						<div className="bg-yellow-500 text-white px-2 py-1 rounded">
-							To Complete
+							<T tkey="participants.table.status.tocomplete" />
 						</div>
 					);
 				}
 			}
 			return (
 				<div className="bg-gray-300 text-white px-2 py-1 rounded">
-					Undefined
+					<T tkey="participants.table.status.undefined" />
 				</div>
 			);
 		},
@@ -79,7 +79,7 @@ export const columns = (questionnaires: any[]): ColumnDef<Participants>[] => [
 					}
 					className=" bg-blue-500 px-2 py-1 rounded text-white"
 				>
-					Copy Link
+					<T tkey="participants.table.buttons.copy" />
 				</Button>
 			) : null;
 		},
@@ -112,7 +112,7 @@ export const columns = (questionnaires: any[]): ColumnDef<Participants>[] => [
 						}}
 						className="bg-red-500 px-2 py-1 rounded text-white"
 					>
-						Delete
+						<T tkey="participants.table.buttons.delete" />
 					</Button>
 				</>
 			) : null;

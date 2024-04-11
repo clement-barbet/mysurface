@@ -14,6 +14,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { LoadingMessage } from "@/components/ui/msg/loading_msg";
+import T from "@/components/translations/translation";
 
 const formSchema = z.object({
 	name: z.string().min(2, {
@@ -75,7 +76,9 @@ export function CreateParticipantForm({ phase }: { phase: string }) {
 						name="name"
 						render={({ field }) => (
 							<FormItem>
-								<FormLabel>Name</FormLabel>
+								<FormLabel>
+									<T tkey="participants.form.labels.name" />
+								</FormLabel>
 								<FormControl>
 									<Input
 										placeholder="John Doe"
@@ -92,7 +95,9 @@ export function CreateParticipantForm({ phase }: { phase: string }) {
 						name="email"
 						render={({ field }) => (
 							<FormItem>
-								<FormLabel>Email</FormLabel>
+								<FormLabel>
+									<T tkey="participants.form.labels.email" />
+								</FormLabel>
 								<FormControl>
 									<Input
 										placeholder="john@example.com"
@@ -105,7 +110,7 @@ export function CreateParticipantForm({ phase }: { phase: string }) {
 						)}
 					/>
 					<Button type="submit" disabled={!isEnrollmentPhase}>
-						Add Participant
+						<T tkey="participants.form.buttons.add" />
 					</Button>
 				</form>
 			</Form>

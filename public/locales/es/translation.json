@@ -49,6 +49,128 @@
 			"nodata": "No hay notificaciones, estás al día."
 		}
 	},
+	"participants": {
+		"table": {
+			"headers": {
+				"name": "Nombre",
+				"email": "Correo electrónico",
+				"status": "Estado",
+				"questionnaire": "Cuestionario",
+				"delete": "Eliminar"
+			},
+			"nodata": "Aún no se han añadido participantes.",
+			"status": {
+				"undefined": "Indefinido",
+				"completed": "Completado",
+				"tocomplete": "Por completar"
+			},
+			"buttons": {
+				"copy": "Copiar Enlace",
+				"delete": "Eliminar"
+			}
+		},
+		"form": {
+			"title": "Agregar un nuevo participante",
+			"labels": {
+				"name": "Nombre",
+				"email": "Correo electrónico"
+			},
+			"buttons": {
+				"add": "Agregar Participante",
+				"questionnaire": {
+					"text": "Crear Cuestionarios",
+					"tooltip": "Necesitas agregar al menos 2 participantes antes de generar los cuestionarios."
+				},
+				"reset": "Reiniciar Fase",
+				"result": "Generar Resultado"
+			}
+		}
+	},
+	"faq": {
+		"title": "Preguntas Frecuentes",
+		"questions": {
+			"q1": {
+				"q": "- ¿Cómo puedo agregar nuevos participantes después de generar los cuestionarios?",
+				"a": {
+					"a1": "Si olvidaste agregar algún participante al equipo, no te preocupes, puedes retroceder y seguir el siguiente proceso:",
+					"a2": "Haz clic en Reiniciar Fase, esto te permitirá continuar agregando miembros al equipo.",
+					"a3": "Una vez que hayas terminado de agregar participantes, puedes regenerar los cuestionarios haciendo clic en Crear Cuestionarios."
+				}
+			},
+			"q2": {
+				"q": "- ¿Cómo puedo cambiar mi contraseña?",
+				"a": "Puedes acceder directamente a Mi Cuenta, donde podrás actualizar tu contraseña. Si olvidas tu contraseña, puedes restablecerla en la pantalla de inicio de sesión haciendo clic en ¿Olvidaste tu contraseña?. Luego, recibirás un correo electrónico para establecer una nueva contraseña."
+			}
+		}
+	},
+	"account": {
+		"password": {
+			"title": "Cambiar Contraseña",
+			"labels": {
+				"new": "Nueva Contraseña"
+			},
+			"placeholders": {
+				"new": "Tu Nueva Contraseña"
+			},
+			"button": "CAMBIAR CONTRASEÑA"
+		}
+	},
+	"results": {
+		"tabs": {
+			"2d": "Gráfico 2D",
+			"3d": "Gráfico 3D"
+		}
+	},
+	"login": {
+		"slogan": "Conecta, Colabora, Visualiza: Tu Equipo, Tu Superficie.",
+		"title": "¡Bienvenido de nuevo!",
+		"form": {
+			"labels": {
+				"email": "Correo electrónico",
+				"password": "Contraseña"
+			},
+			"placeholders": {
+				"email": "Tu correo electrónico",
+				"password": "Tu contraseña"
+			},
+			"buttons": {
+				"login": "INICIAR SESIÓN",
+				"signup": "REGISTRARSE",
+				"forgot": "¿Olvidaste tu contraseña?"
+			}
+		}
+	},
+	"registration": {
+		"title": "¡Comencemos!",
+		"form": {
+			"labels": {
+				"email": "Correo electrónico",
+				"password": "Contraseña",
+				"confirm": "Confirmación de Contraseña"
+			},
+			"placeholders": {
+				"email": "Tu correo electrónico",
+				"password": "Tu contraseña",
+				"confirm": "Confirma tu contraseña"
+			},
+			"buttons": {
+				"login": "INICIAR SESIÓN",
+				"signup": "REGISTRARSE"
+			}
+		}
+	},
+	"emailconfirmation": {
+		"title": "Correo electrónico confirmado",
+		"button": "INICIAR SESIÓN"
+	},
+	"forgotpassword": {
+		"title": "Restablecer tu contraseña",
+		"form": {
+			"label": "Correo electrónico",
+			"placeholder": "Tu correo electrónico",
+			"button": "ENVIAR CORREO DE RESTABLECIMIENTO"
+		}
+	},
 	"navbar": {
 		"dashboard": "Panel",
 		"participants": "Participantes",

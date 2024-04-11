@@ -2,7 +2,7 @@ import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faYinYang } from "@fortawesome/free-solid-svg-icons";
-import T from "@/components/translation";
+import T from "@/components/translations/translation";
 
 async function getParticipants() {
 	const supabase = createClientComponentClient();

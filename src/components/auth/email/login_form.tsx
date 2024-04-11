@@ -21,6 +21,8 @@ import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Link from "next/link";
+import T from "@/components/translations/translation";
+import { useTranslation } from "react-i18next";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
@@ -31,6 +33,7 @@ const formSchema = z.object({
 });
 
 export default function LoginForm() {
+	const { t } = useTranslation();
 	const [errorMessage, setErrorMessage] = useState<string | undefined>(
 		undefined
 	);
@@ -91,7 +94,7 @@ export default function LoginForm() {
 					<div className="bg-mid_gray w-full md:w-1/2 h-full flex flex-column items-center justify-center py-10 md:py-0">
 						<div className="rounded-lg font-glory w-4/5 lg:w-3/5">
 							<h2 className="text-4xl pb-4 h-[56px]" id="welcome">
-								Welcome Back!
+								<T tkey="login.title" />
 							</h2>
 							<Form {...form}>
 								<form
@@ -103,10 +106,12 @@ export default function LoginForm() {
 										name="email"
 										render={({ field }) => (
 											<FormItem>
-												<FormLabel>E-Mail</FormLabel>
+												<FormLabel>
+													<T tkey="login.form.labels.email" />
+												</FormLabel>
 												<FormControl>
 													<Input
-														placeholder="Your E-Mail"
+														placeholder={t('login.form.placeholders.email')}
 														{...field}
 													/>
 												</FormControl>
@@ -121,7 +126,7 @@ export default function LoginForm() {
 											render={({ field }) => (
 												<FormItem>
 													<FormLabel htmlFor="password">
-														Password
+														<T tkey="login.form.labels.password" />
 													</FormLabel>
 													<FormControl>
 														<div className="relative">
@@ -130,7 +135,7 @@ export default function LoginForm() {
 																type={
 																	passwordType
 																}
-																placeholder="Your Password"
+																placeholder={t('login.form.placeholders.password')}
 																{...field}
 															/>
 															<button
@@ -163,13 +168,13 @@ export default function LoginForm() {
 												href="/forgot-password"
 												className="text-sm text-blue-700 border-b-2 border-transparent hover:border-b-2 hover:border-blue-700 transition-all duration-200 ease-linear"
 											>
-												Forgot password?
+												<T tkey="login.form.buttons.forgot" />
 											</Link>
 										</div>
 									</div>
 									<div className=" flex justify-center items-center">
 										<Button type="submit" variant="login">
-											LOG IN
+											<T tkey="login.form.buttons.login" />
 										</Button>
 									</div>
 									<div className=" flex justify-center items-center">
@@ -178,7 +183,7 @@ export default function LoginForm() {
 											className="w-full"
 										>
 											<Button variant="signup">
-												SIGN UP
+												<T tkey="login.form.buttons.signup" />
 											</Button>
 										</Link>
 									</div>

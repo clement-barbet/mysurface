@@ -16,12 +16,15 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { ErrorMessage } from "@/components/ui/msg/error_msg";
 import { SuccessMessage } from "@/components/ui/msg/success_msg";
+import T from "@/components/translations/translation";
+import { useTranslation } from "react-i18next";
 
 const formSchema = z.object({
 	email: z.string().email(),
 });
 
 export default function ForgotPassword() {
+	const { t } = useTranslation();
 	const supabase = createClientComponentClient();
 	const [errorMessage, setErrorMessage] = useState<string | undefined>(
 		undefined
@@ -72,10 +75,12 @@ export default function ForgotPassword() {
 						name="email"
 						render={({ field }) => (
 							<FormItem>
-								<FormLabel>Email</FormLabel>
+								<FormLabel>
+									<T tkey="forgotpassword.form.label" />
+								</FormLabel>
 								<FormControl>
 									<Input
-										placeholder="Your Email"
+										placeholder={t('forgotpassword.form.placeholder')}
 										{...field}
 									/>
 								</FormControl>
@@ -85,7 +90,7 @@ export default function ForgotPassword() {
 					/>
 					<div className="flex justify-center items-center">
 						<Button type="submit" variant="login">
-							SEND RESET EMAIL
+							<T tkey="forgotpassword.form.button" />
 						</Button>
 					</div>
 				</form>

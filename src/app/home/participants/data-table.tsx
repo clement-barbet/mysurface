@@ -17,6 +17,8 @@ import {
 	TBodyRow,
 } from "@/components/ui/table";
 
+import T from "@/components/translations/translation";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faYinYang } from "@fortawesome/free-solid-svg-icons";
 
@@ -90,7 +92,7 @@ export function DataTable<TData, TValue>({
 								colSpan={columns.length}
 								className="h-24 text-center"
 							>
-								No results.
+								<T tkey="participants.table.nodata" />
 							</TableCell>
 						</TBodyRow>
 					)}

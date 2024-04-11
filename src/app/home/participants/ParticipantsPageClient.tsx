@@ -6,6 +6,7 @@ import CreateQuestionnairesButton from "./CreateQuestionnairesButton";
 import { CreateParticipantForm } from "./CreateParticipantForm";
 import CreateResultButton from "./CreateResultButton";
 import ResetPhaseButton from "./ResetPhaseButton";
+import T from "@/components/translations/translation";
 
 export default function ParticipantsPageClient({
 	initialParticipants,
@@ -63,7 +64,7 @@ export default function ParticipantsPageClient({
 				questionnaires={questionnaires}
 			/>
 			<div className="mt-10 p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
-				<h2 className="mb-2">Add a new participant</h2>
+				<h2 className="mb-2"><T tkey="participants.form.title" /></h2>
 				<div className="flex flex-row justify-between items-end">
 					<CreateParticipantForm phase={appSettings?.setting_value} />
 					<CreateQuestionnairesButton

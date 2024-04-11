@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Pie } from "react-chartjs-2";
-import T from "@/components/translation";
+import T from "@/components/translations/translation";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 

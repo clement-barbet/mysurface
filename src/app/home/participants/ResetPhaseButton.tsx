@@ -1,6 +1,7 @@
 "use client";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { Button } from "@/components/ui/button";
+import T from "@/components/translations/translation";
 
 const ResetPhaseButton = ({ phase }: { phase: string }) => {
 	const handleClick = async () => {
@@ -40,7 +41,7 @@ const ResetPhaseButton = ({ phase }: { phase: string }) => {
 		return null;
 	}
 
-	return <Button onClick={handleClick}>Reset Process Phase</Button>;
+	return <Button onClick={handleClick}><T tkey="participants.form.buttons.reset" /></Button>;
 };
 
 export default ResetPhaseButton;

@@ -1,6 +1,6 @@
 "use client";
 import { Notification } from "@/components/home/notification";
-import T from "@/components/translation";
+import T from "@/components/translations/translation";
 
 export default function Home() {
 	return (

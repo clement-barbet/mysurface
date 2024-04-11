@@ -4,7 +4,7 @@ import { DashboardPieChart } from "@/components/dashboard/pie_chart";
 import TeamMembersList from "@/components/dashboard/team_members_list";
 import { Notification } from "@/components/dashboard/notification";
 import Link from "next/link";
-import T from "@/components/translation";
+import T from "@/components/translations/translation";
 
 export default function Dashboard() {
 	return (

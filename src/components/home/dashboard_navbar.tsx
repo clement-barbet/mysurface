@@ -9,7 +9,7 @@ import { AiOutlineQuestion } from "react-icons/ai";
 import { BsArrowRightCircleFill, BsArrowLeftCircleFill } from "react-icons/bs";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
-import T from "@/components/translation";
+import T from "@/components/translations/translation";
 
 export default function DashboardNavbar() {
 	const pathname = usePathname();

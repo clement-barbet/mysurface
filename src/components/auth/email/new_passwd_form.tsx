@@ -18,6 +18,9 @@ import {
 } from "@/components/ui/form";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import T from "@/components/translations/translation";
+import { useTranslation } from 'react-i18next';
+
 
 const formSchema = z.object({
 	newPassword: z.string(),
@@ -28,6 +31,7 @@ export default function NewPasswordForm() {
 	const [password, setPassword] = useState("");
 	const [successMessage, setSuccessMessage] = useState("");
 	const [errorMessage, setErrorMessage] = useState("");
+	const { t } = useTranslation();
 
 	const handleChangePassword = async (data: z.infer<typeof formSchema>) => {
 		const { newPassword } = data;
@@ -71,7 +75,7 @@ export default function NewPasswordForm() {
 				setSuccessMessage={setSuccessMessage}
 			/>
 			<div>
-				<h2 className="pb-5 text-xl">Change Password</h2>
+				<h2 className="pb-5 text-xl"><T tkey="account.password.title" /></h2>
 				<Form {...form}>
 					<form
 						onSubmit={form.handleSubmit(handleChangePassword)}
@@ -83,14 +87,14 @@ export default function NewPasswordForm() {
 							render={({ field }) => (
 								<FormItem>
 									<FormLabel htmlFor="newPassword">
-										New Password
+										<T tkey="account.password.labels.new" />
 									</FormLabel>
 									<FormControl>
 										<div className="relative">
 											<Input
 												id="newPassword"
 												type={passwordType}
-												placeholder="Your New Password"
+												placeholder={t('account.password.placeholders.new')}
 												className=" dark:bg-mid_blue"
 												{...field}
 											/>
@@ -117,7 +121,7 @@ export default function NewPasswordForm() {
 							)}
 						/>
 						<Button type="submit" variant="login">
-							CHANGE PASSWORD
+							<T tkey="account.password.button" />
 						</Button>
 					</form>
 				</Form>

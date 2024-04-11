@@ -1,4 +1,4 @@
-import withTranslation from '../hoc/withTranslation';
+import withTranslation from '../../hoc/withTranslation';
 
 const T = ({ t, tkey }) => {
   return t(tkey);

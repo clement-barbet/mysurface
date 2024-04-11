@@ -23,6 +23,8 @@ import { LeftSideLogin } from "@/components/login/left_side_login";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import T from "@/components/translations/translation";
+import { useTranslation } from "react-i18next";
 
 const formSchema = z.object({
 	email: z.string().email(),
@@ -31,6 +33,7 @@ const formSchema = z.object({
 });
 
 export default function RegisterForm() {
+	const { t } = useTranslation();
 	const [errorMessage, setErrorMessage] = useState<string | undefined>(
 		undefined
 	);
@@ -123,7 +126,7 @@ export default function RegisterForm() {
 					<div className="bg-mid_gray w-full md:w-1/2 h-full flex flex-column items-center justify-center py-10 md:py-0">
 						<div className="rounded-lg font-glory w-4/5 lg:w-3/5">
 							<h2 className="text-4xl pb-4 h-[56px]" id="welcome">
-								Let&apos;s get started!
+								<T tkey="registration.title" />
 							</h2>
 							<Form {...form}>
 								<form
@@ -135,10 +138,12 @@ export default function RegisterForm() {
 										name="email"
 										render={({ field }) => (
 											<FormItem>
-												<FormLabel>Email</FormLabel>
+												<FormLabel>
+													<T tkey="registration.form.labels.email" />
+												</FormLabel>
 												<FormControl>
 													<Input
-														placeholder="Your Email"
+														placeholder={t('registration.form.placeholders.email')}
 														{...field}
 													/>
 												</FormControl>
@@ -153,7 +158,7 @@ export default function RegisterForm() {
 											render={({ field }) => (
 												<FormItem>
 													<FormLabel htmlFor="password">
-														Password
+														<T tkey="registration.form.labels.password" />
 													</FormLabel>
 													<FormControl>
 														<div className="relative">
@@ -162,7 +167,7 @@ export default function RegisterForm() {
 																type={
 																	passwordType
 																}
-																placeholder="Your Password"
+																placeholder={t('registration.form.placeholders.password')}
 																{...field}
 															/>
 															<button
@@ -199,7 +204,7 @@ export default function RegisterForm() {
 											render={({ field }) => (
 												<FormItem>
 													<FormLabel htmlFor="confirmPassword">
-														Confirm Password
+														<T tkey="registration.form.labels.confirm" />
 													</FormLabel>
 													<FormControl>
 														<div className="relative">
@@ -208,7 +213,7 @@ export default function RegisterForm() {
 																type={
 																	confirmPasswordType
 																}
-																placeholder="Confirm Your Password"
+																placeholder={t('registration.form.placeholders.confirm')}
 																{...field}
 															/>
 															<button
@@ -240,13 +245,13 @@ export default function RegisterForm() {
 									</div>
 									<div className="flex justify-center items-center">
 										<Button type="submit" variant="login">
-											SIGN UP
+											<T tkey="registration.form.buttons.signup" />
 										</Button>
 									</div>
 									<div className="flex justify-center items-center">
 										<Link href="/login" className="w-full">
 											<Button variant="signup">
-												LOG IN
+												<T tkey="registration.form.buttons.login" />
 											</Button>
 										</Link>
 									</div>

@@ -49,6 +49,128 @@
 			"nodata": "No notifications, you're up to date."
 		}
 	},
+	"participants": {
+		"table": {
+			"headers": {
+				"name": "Name",
+				"email": "Email",
+				"status": "Status",
+				"questionnaire": "Questionnaire",
+				"delete": "Delete"
+			},
+			"nodata": "No participants added yet.",
+			"status": {
+				"undefined": "Undefined",
+				"completed": "Completed",
+				"tocomplete": "To complete"
+			},
+			"buttons": {
+				"copy": "Copy Link",
+				"delete": "Delete"
+			}
+		},
+		"form": {
+			"title": "Add a new participant",
+			"labels": {
+				"name": "Name",
+				"email": "Email"
+			},
+			"buttons": {
+				"add": "Add Participant",
+				"questionnaire": {
+					"text": "Create Questionnaires",
+					"tooltip": "You need to add at least 2 participants before generating the questionnaires."
+				},
+				"reset": "Reset Phase",
+				"result": "Generate Result"
+			}
+		}
+	},
+	"faq": {
+		"title": "Frequently Asked Questions",
+		"questions": {
+			"q1": {
+				"q": "- How can I add new participants after generating the questionnaires?",
+				"a": {
+					"a1": "If you forgot to add any participant to the team, don't worry, you can backtrack and follow the next process:",
+					"a2": "Click on Reset Phase, this will allow you to continue adding members to the team.",
+					"a3": "Once you have finished adding participants, you can regenerate the questionnaires by clicking on Create Questionnaires."
+				}
+			},
+			"q2": {
+				"q": "- How can I change my password?",
+				"a": "You can access My Account directly, where you'll be able to update your password. If you forget your password, you can reset it at the login screen by clicking on Forgot password?. Then, you'll receive an email to set a new password."
+			}
+		}
+	},
+	"account": {
+		"password": {
+			"title": "Change Password",
+			"labels": {
+				"new": "New Password"
+			},
+			"placeholders": {
+				"new": "Your New Password"
+			},
+			"button": "CHANGE PASSWORD"
+		}
+	},
+	"results": {
+		"tabs": {
+			"2d": "2D Graph",
+			"3d": "3D Graph"
+		}
+	},
+	"login": {
+		"slogan": "Connect, Collaborate, Visualize: Your Team, Your Surface.",
+		"title": "Welcome back!",
+		"form": {
+			"labels": {
+				"email": "Email",
+				"password": "Password"
+			},
+			"placeholders": {
+				"email": "Your email",
+				"password": "Your password"
+			},
+			"buttons": {
+				"login": "LOG IN",
+				"signup": "SIGN UP",
+				"forgot": "Forgot password?"
+			}
+		}
+	},
+	"registration": {
+		"title": "Let's get started!",
+		"form": {
+			"labels": {
+				"email": "Email",
+				"password": "Password",
+				"confirm": "Confirm Password"
+			},
+			"placeholders": {
+				"email": "Your email",
+				"password": "Your password",
+				"confirm": "Confirm your password"
+			},
+			"buttons": {
+				"login": "LOG IN",
+				"signup": "SIGN UP"
+			}
+		}
+	},
+	"emailconfirmation": {
+		"title": "Email confirmed",
+		"button": "LOG IN"
+	},
+	"forgotpassword": {
+		"title": "Reset your password",
+		"form": {
+			"label" : "Email",
+			"placeholder": "Your email",
+			"button": "SEND RESET EMAIL"
+		}
+	},
 	"navbar": {
 		"dashboard": "Dashboard",
 		"participants": "Participants",
