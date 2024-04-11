@@ -30,18 +30,16 @@ export default function Results() {
 			<div className="w-full m-auto p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
 				<ul>
 					{results.map((result) => (
-						<li className="my-2">
+						<li className="my-2" key={result.id}>
 							<Link
-								key={result.id}
 								href={`/home/results/${result.id}`}
 								className="hover:font-semibold transition-all duration-200 ease-linear"
 							>
-								{result.report_name} ({result.id}) -{" "}
-								{
+								{`${result.report_name} (${result.id}) - ${
 									new Date(result.created_at)
 										.toISOString()
 										.split("T")[0]
-								}
+								}`}
 							</Link>
 						</li>
 					))}
