@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Pie } from "react-chartjs-2";
+import T from "@/components/translation";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -41,7 +42,7 @@ const DashboardPieChart = () => {
 	}, []);
 
 	if (completedPercentage === null) {
-        return <p className="text-sm italic text-center">No data yet.</p>;
+        return <p className="text-sm italic text-center"><T tkey="dashboard.piechart.nodata"/></p>;
     }
 
 	const notCompletedPercentage = 100 - completedPercentage;

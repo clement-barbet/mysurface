@@ -2,6 +2,7 @@ import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faYinYang } from "@fortawesome/free-solid-svg-icons";
+import T from "@/components/translation";
 
 async function getParticipants() {
 	const supabase = createClientComponentClient();
@@ -31,7 +32,7 @@ export default function TeamMembersList() {
 	}, []);
 
 	if (participants.length === 0) {
-		return <p className="text-sm italic text-center">No members yet.</p>;
+		return <p className="text-sm italic text-center"><T tkey="dashboard.team.nodata"/></p>;
 	}
 
 	return (

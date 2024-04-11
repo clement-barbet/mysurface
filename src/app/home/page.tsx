@@ -106,9 +106,9 @@ export default function Home() {
 			<div className="h-auto w-full flex flex-col shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
 				<div className="px-10 py-5">
 					<div className="mb-2">
-						<h2 className="font-bold text-lg">Updates</h2>
+						<h2 className="font-bold text-lg"><T tkey="home.updates.title"/></h2>
 						<p className="text-gray-600 dark:text-gray-400">
-							Check platform updates and news.
+							<T tkey="home.updates.subtitle"/>
 						</p>
 					</div>
 					<Notification

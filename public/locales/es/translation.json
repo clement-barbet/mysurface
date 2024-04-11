@@ -25,6 +25,28 @@
 					"s4": "Envía los resultados a tu administrador"
 				}
 			}
+		},
+		"updates": {
+			"title": "Actualizaciones",
+			"subtitle": "Últimas actualizaciones y noticias sobre la plataforma."
+		}
+	},
+	"dashboard": {
+		"piechart": {
+			"title": "Estado de Completado de Formularios",
+			"subtitle": "Visión general del estado de completado de formularios entre los miembros del equipo.",
+			"nodata": "Aún no hay datos."
+		},
+		"team": {
+			"title": "Miembros del Equipo",
+			"subtitle": "Miembros reales del equipo que contribuyen al análisis.",
+			"nodata": "Todavía no se han agregado usuarios.",
+			"link": "Ver todos los participantes"
+		},
+		"notifications": {
+			"title": "Notificaciones",
+			"subtitle": "Comprueba actualizaciones y alertas.",
+			"nodata": "No hay notificaciones, estás al día."
 		}
 	},
 	"navbar": {

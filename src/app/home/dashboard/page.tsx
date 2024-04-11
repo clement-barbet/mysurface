@@ -4,7 +4,7 @@ import { DashboardPieChart } from "@/components/dashboard/pie_chart";
 import TeamMembersList from "@/components/dashboard/team_members_list";
 import { Notification } from "@/components/dashboard/notification";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import T from "@/components/translation";
 
 export default function Dashboard() {
 	return (
@@ -13,11 +13,10 @@ export default function Dashboard() {
 				<div className="h-auto w-full sm:w-1/2 xl:w-full flex flex-col shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
 					<div className="px-10 py-5">
 						<h2 className="font-bold text-lg">
-							Form Completion Status
+							<T tkey="dashboard.piechart.title" />
 						</h2>
 						<p className="text-gray-600 dark:text-gray-400">
-							Overview of form completion status across team
-							members.
+							<T tkey="dashboard.piechart.subtitle" />
 						</p>
 						<div className="mt-4">
 							<DashboardPieChart />
@@ -27,9 +26,11 @@ export default function Dashboard() {
 				<div className="h-auto w-full sm:w-1/2 xl:w-full flex flex-col shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
 					<div className="px-10 py-5">
 						<div className="mb-2">
-							<h2 className="font-bold text-lg">Notifications</h2>
+							<h2 className="font-bold text-lg">
+								<T tkey="dashboard.notifications.title" />
+							</h2>
 							<p className="text-gray-600 dark:text-gray-400">
-								Check updates and alerts.
+								<T tkey="dashboard.notifications.subtitle" />
 							</p>
 						</div>
 						<Notification type="add" name="John Doe" />
@@ -42,11 +43,11 @@ export default function Dashboard() {
 				<div>
 					<div className="px-10 py-5">
 						<h2 className="font-bold text-lg hover:text-blue-500 transition-colors duration-200 ease-linear">
-							Team members
+							<T tkey="dashboard.team.title" />
 						</h2>
 
 						<p className="text-gray-600 dark:text-gray-400">
-							Actual team members, contributing to the analysis.
+							<T tkey="dashboard.team.subtitle" />
 						</p>
 						<div className="mt-3">
 							<TeamMembersList />
@@ -54,8 +55,11 @@ export default function Dashboard() {
 					</div>
 				</div>
 				<div className="px-10 py-5">
-					<Link href="/home/participants">
-						<Button variant="login">CHECK ALL PARTICIPANTS</Button>
+					<Link
+						href="/home/participants"
+						className="text-gray-600 dark:text-gray-400 block w-full text-center hover:font-semibold transition-all duration-200 ease-linear"
+					>
+						<T tkey="dashboard.team.link" />
 					</Link>
 				</div>
 			</div>
