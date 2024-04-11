@@ -37,9 +37,11 @@ export default function Results() {
 								className="hover:font-semibold transition-all duration-200 ease-linear"
 							>
 								{result.report_name} ({result.id}) -{" "}
-								{new Date(
-									result.created_at
-								).toLocaleDateString()}
+								{
+									new Date(result.created_at)
+										.toISOString()
+										.split("T")[0]
+								}
 							</Link>
 						</li>
 					))}
