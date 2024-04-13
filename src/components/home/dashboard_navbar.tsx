@@ -53,7 +53,7 @@ export default function DashboardNavbar() {
 			<Link onClick={handleLinkClick} href="/home" className="w-full">
 				<div
 					className={clsx(
-						"flex items-center justify-center w-full h-12 bg-mid_blue gap-x-3 drop-shadow-sm rounded-bl-2xl mb-5",
+						"flex items-center justify-center w-full h-10 bg-mid_blue gap-x-3 drop-shadow-sm rounded-bl-2xl mb-5",
 						{ hidden: !isMenuOpen, "md:flex": true }
 					)}
 				>

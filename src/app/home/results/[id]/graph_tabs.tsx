@@ -17,14 +17,14 @@ export default function GraphTabs({ graphData }: GraphTabsProps) {
 		<Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
 			<TabList className="flex border-b">
 				<Tab
-					className={`box-border hover:cursor-pointer mr-1 py-2 px-4 bg-white hover:bg-gray-100 rounded-t-lg border border-gray-400 text-gray-800 ${
+					className={`box-border hover:cursor-pointer mr-1 px-4 bg-white hover:bg-gray-100 rounded-t-lg border border-gray-400 text-gray-800 ${
 						tabIndex === 0 ? "font-semibold border-2" : ""
 					}`}
 				>
 					<T tkey="results.tabs.2d" />
 				</Tab>
 				<Tab
-					className={`box-border hover:cursor-pointer mr-1 py-2 px-4 bg-white hover:bg-gray-100 rounded-t-lg border border-gray-400 text-gray-800 ${
+					className={`box-border hover:cursor-pointer mr-1 px-4 bg-white hover:bg-gray-100 rounded-t-lg border border-gray-400 text-gray-800 ${
 						tabIndex === 1 ? "font-semibold border-2" : ""
 					}`}
 				>
