@@ -65,7 +65,7 @@ export default function ParticipantsPageClient({
 			/>
 			<div className="mt-10 p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
 				<h2 className="mb-2"><T tkey="participants.form.title" /></h2>
-				<div className="flex flex-row justify-between items-end">
+				<div className="flex flex-col gap-y-2 md:flex-row md:justify-between md:items-end">
 					<CreateParticipantForm phase={appSettings?.setting_value} />
 					<CreateQuestionnairesButton
 						phase={appSettings?.setting_value}
