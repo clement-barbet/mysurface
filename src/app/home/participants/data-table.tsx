@@ -109,7 +109,7 @@ export function DataTable<TData, TValue>({
 				table.getRowModel().rows.map((row, rowIndex) => (
 					<div
 						key={rowIndex}
-						className="md:hidden rounded-md border shadow-md bg-white p-3 mb-4"
+						className="md:hidden rounded-md border shadow-md bg-white dark:bg-black p-3 mb-4"
 					>
 						{row.getVisibleCells().map((cell, cellIndex) => (
 							<div key={cellIndex} className="py-2">
