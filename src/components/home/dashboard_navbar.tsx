@@ -60,7 +60,7 @@ export default function DashboardNavbar() {
 				</div>
 			</Link>
 			<ul
-				className={clsx("flex flex-col w-full", {
+				className={clsx("flex flex-col h-full", {
 					hidden: !isMenuOpen,
 					"md:flex": true,
 				})}
@@ -127,18 +127,15 @@ export default function DashboardNavbar() {
 				</li>
 				<li
 					onClick={() => setIsLanguageMenuOpen(!isLanguageMenuOpen)}
-					className="py-4 px-4 tracking-wider relative"
+					className="py-4 px-4 tracking-wider relative mt-auto"
 				>
-					<span className="hover:font-bold hover:cursor-pointer transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase">
-						<IoLanguageOutline className="h-6 w-6" />
-						<T tkey="navbar.language" />
-					</span>
 					{isLanguageMenuOpen && (
-						<ul className="mt-2 ms-8">
+						<ul className="mb-2 ms-8">
 							<li
 								onClick={() => {
 									i18n.changeLanguage("cs");
 									localStorage.setItem("i18nextLng", "cs");
+									handleLinkClick();
 								}}
 								className="hover:font-semibold cursor-pointer transition-all duration-200 ease-linear"
 							>
@@ -148,6 +145,7 @@ export default function DashboardNavbar() {
 								onClick={() => {
 									i18n.changeLanguage("en");
 									localStorage.setItem("i18nextLng", "en");
+									handleLinkClick();
 								}}
 								className="hover:font-semibold cursor-pointer transition-all duration-200 ease-linear"
 							>
@@ -157,6 +155,7 @@ export default function DashboardNavbar() {
 								onClick={() => {
 									i18n.changeLanguage("es");
 									localStorage.setItem("i18nextLng", "es");
+									handleLinkClick();
 								}}
 								className="hover:font-semibold cursor-pointer transition-all duration-200 ease-linear"
 							>
@@ -164,6 +163,10 @@ export default function DashboardNavbar() {
 							</li>
 						</ul>
 					)}
+					<span className="hover:font-bold hover:cursor-pointer transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase">
+						<IoLanguageOutline className="h-6 w-6" />
+						<T tkey="navbar.language" />
+					</span>
 				</li>
 			</ul>
 		</nav>
