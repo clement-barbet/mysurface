@@ -17,6 +17,10 @@ export default function DashboardNavbar() {
 	const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false);
 	const { i18n } = useTranslation();
 
+	const handleLinkClick = () => {
+		setIsMenuOpen(false);
+	};
+
 	return (
 		<nav
 			className={clsx(
@@ -44,7 +48,7 @@ export default function DashboardNavbar() {
 					<BsArrowRightCircleFill className="h-6 w-6" />
 				)}
 			</div>
-			<Link href="/home" className="w-full">
+			<Link onClick={handleLinkClick} href="/home" className="w-full">
 				<div
 					className={clsx(
 						"flex items-center justify-center w-full h-12 bg-mid_blue gap-x-3 drop-shadow-sm rounded-bl-2xl mb-5",
@@ -68,6 +72,7 @@ export default function DashboardNavbar() {
 					})}
 				>
 					<Link
+						onClick={handleLinkClick}
 						href="/home/dashboard/"
 						className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase"
 					>
@@ -82,6 +87,7 @@ export default function DashboardNavbar() {
 					})}
 				>
 					<Link
+						onClick={handleLinkClick}
 						href="/home/participants"
 						className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase"
 					>
@@ -96,6 +102,7 @@ export default function DashboardNavbar() {
 					})}
 				>
 					<Link
+						onClick={handleLinkClick}
 						href="/home/results"
 						className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase"
 					>
@@ -110,6 +117,7 @@ export default function DashboardNavbar() {
 					})}
 				>
 					<Link
+						onClick={handleLinkClick}
 						href="/home/faq"
 						className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase"
 					>
