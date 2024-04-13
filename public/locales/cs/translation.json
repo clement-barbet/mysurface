@@ -178,9 +178,11 @@
 		"dashboard": "Nástěnka",
 		"participants": "Účastníci",
 		"results": "Výsledky",
+		"models": "Modely",
+		"patterns": "Vzory",
 		"faq": "FAQ",
 		"language": "Jazyk"
-	},
+	},	
 	"topbar": {
 		"search": "Hledat",
 		"account": "Můj účet",

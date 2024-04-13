@@ -178,9 +178,11 @@
 		"dashboard": "Panel",
 		"participants": "Participantes",
 		"results": "Resultados",
+		"models": "Modelos",
+		"patterns": "Patrones",
 		"faq": "FAQ",
 		"language": "Idioma"
-	},
+	},	
 	"topbar": {
 		"search": "Buscar",
 		"account": "Mi cuenta",

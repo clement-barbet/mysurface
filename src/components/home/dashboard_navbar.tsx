@@ -7,6 +7,8 @@ import { IoPeople, IoLanguageOutline } from "react-icons/io5";
 import { PiGraph } from "react-icons/pi";
 import { AiOutlineQuestion } from "react-icons/ai";
 import { BsArrowRightCircleFill, BsArrowLeftCircleFill } from "react-icons/bs";
+import { BiTrendingUp } from "react-icons/bi";
+import { TbVectorTriangle } from "react-icons/tb";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import T from "@/components/translations/translation";
@@ -108,6 +110,36 @@ export default function DashboardNavbar() {
 					>
 						<PiGraph className="h-6 w-6" />
 						<T tkey="navbar.results" />
+					</Link>
+				</li>
+				<li
+					className={clsx("py-4 px-4 tracking-wider", {
+						"border-l-4 border-light_gray":
+							pathname === "/home/models",
+					})}
+				>
+					<Link
+						onClick={handleLinkClick}
+						href="/home/models"
+						className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase"
+					>
+						<TbVectorTriangle className="h-6 w-6" />
+						<T tkey="navbar.models" />
+					</Link>
+				</li>
+				<li
+					className={clsx("py-4 px-4 tracking-wider", {
+						"border-l-4 border-light_gray":
+							pathname === "/home/patterns",
+					})}
+				>
+					<Link
+						onClick={handleLinkClick}
+						href="/home/patterns"
+						className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase"
+					>
+						<BiTrendingUp className="h-6 w-6" />
+						<T tkey="navbar.patterns" />
 					</Link>
 				</li>
 				<li
