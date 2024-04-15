@@ -109,7 +109,7 @@ export function CreateParticipantForm({ phase }: { phase: string }) {
 							</FormItem>
 						)}
 					/>
-					<Button type="submit" disabled={!isEnrollmentPhase}>
+					<Button type="submit" id="addParticipantBtn" disabled={!isEnrollmentPhase}>
 						<T tkey="participants.form.buttons.add" />
 					</Button>
 				</form>

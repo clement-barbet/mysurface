@@ -41,7 +41,7 @@ const ResetPhaseButton = ({ phase }: { phase: string }) => {
 		return null;
 	}
 
-	return <Button onClick={handleClick}><T tkey="participants.form.buttons.reset" /></Button>;
+	return <Button id="resetPhaseBtn" onClick={handleClick}><T tkey="participants.form.buttons.reset" /></Button>;
 };
 
 export default ResetPhaseButton;

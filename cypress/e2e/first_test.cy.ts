@@ -1,5 +1,3 @@
-import 'cypress-clipboard';
-
 describe("template spec", () => {
 	it("passes", () => {
 		cy.visit("http://localhost:3000/login").then(() => {
@@ -18,26 +16,27 @@ describe("template spec", () => {
 		cy.url({ timeout: 20000 })
 			.should("include", "/client/participants")
 			.then(() => {
-				cy.get("button").then(($btn) => {
-					if ($btn.text().includes("Reset Phase")) {
+				cy.get("#resetPhaseBtn").then(($btn) => {
+					if ($btn) {
 						$btn.click();
+            cy.wait(10000);
 					}
 				});
-		  });
 
-		for (let i = 1; i <= 5; i++) {
-			let randomNum = Math.floor(Math.random() * 1000);
-			let name = `user${randomNum}`;
-			let email = `user${randomNum}@example.com`;
+				for (let i = 1; i <= 5; i++) {
+					let randomNum = Math.floor(Math.random() * 1000);
+					let name = `user${randomNum}`;
+					let email = `user${randomNum}@example.com`;
 
-			cy.get("input[name=name]").type(name);
-			cy.get("input[name=email]").type(email);
-			cy.get("button[type=submit]").click();
+					cy.get("input[name=name]").type(name);
+					cy.get("input[name=email]").type(email);
+					cy.get("#addParticipantBtn").click();
 
-			cy.wait(20000);
-		}
+					cy.wait(10000);
+				}
 
-		cy.contains("button", "Create Questionnaires").click();
-    cy.wait(20000);
+				cy.contains("button", "Create Questionnaires").click();
+				cy.wait(10000);
+			});
 	});
 });

@@ -4,6 +4,7 @@ import { serialize, parse } from "cookie";
 
 export async function middleware(req: NextRequest) {
 	const res = NextResponse.next();
+
 	const supabase = createMiddlewareClient({ req, res });
 	const { data: session, error } = await supabase.auth.getSession();
 
@@ -77,6 +78,10 @@ export async function middleware(req: NextRequest) {
 				return NextResponse.redirect(`${req.nextUrl.origin}/client`);
 			}
 		}
+	}
+
+	if (req.nextUrl.href === req.nextUrl.origin + req.nextUrl.pathname) {
+		return res;
 	}
 
 	return res;
