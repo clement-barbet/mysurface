@@ -100,7 +100,7 @@ export default function DashboardNavbar() {
 				<li
 					className={clsx("py-4 px-4 tracking-wider", {
 						"border-l-4 border-light_gray":
-							pathname === "/home/results",
+							pathname.startsWith("/client/results"),
 					})}
 				>
 					<Link
