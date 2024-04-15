@@ -43,7 +43,9 @@ export default function HomeLayout({
 				)}
 				<div
 					style={{ flex: "1 0 auto" }}
-					className="relative py-2 px-2"
+					className={`relative py-2 px-2 ${
+						isSmallScreen && !isResultsIdPage ? "px-0 ps-12 pe-2" : ""
+					}`}
 				>
 					{children}
 				</div>
