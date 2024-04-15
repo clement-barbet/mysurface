@@ -10,7 +10,7 @@ export default function HomeLayout({
 	children: React.ReactNode;
 }>) {
 	const pathname = usePathname();
-	const isResultsIdPage = /^\/client\/results\/[^\/]+$/.test(pathname);
+	const isResultsIdPage = /^\/home\/results\/[^\/]+$/.test(pathname);
 
 	const [isSmallScreen, setIsSmallScreen] = useState(false);
 

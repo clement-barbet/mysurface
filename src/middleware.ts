@@ -79,14 +79,5 @@ export async function middleware(req: NextRequest) {
 		}
 	}
 
-	// Redirect from /login to /home or /client if the user is logged in
-	if (req.nextUrl.pathname === "/login" && session?.session) {
-		if (isAdmin) {
-			return NextResponse.redirect(`${req.nextUrl.origin}/home`);
-		} else {
-			return NextResponse.redirect(`${req.nextUrl.origin}/client`);
-		}
-	}
-
 	return res;
 }
