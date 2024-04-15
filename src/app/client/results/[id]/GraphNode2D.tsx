@@ -19,11 +19,11 @@ export default function GraphNode2D({ graphData }: GraphNode2DProps) {
 		const resizeGraph = () => {
 			const width =
 				window.innerWidth < 768
-					? window.innerWidth - 90
-					: window.innerWidth - 242;
+					? window.innerWidth -20
+					: window.innerWidth - 210;
 			setDimensions({
 				width,
-				height: window.innerHeight - 110,
+				height: window.innerHeight - 90,
 			});
 		};
 		resizeGraph();
