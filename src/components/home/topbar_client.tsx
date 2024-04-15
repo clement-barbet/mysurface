@@ -65,7 +65,7 @@ export default function TopBar() {
 				className="fixed right-0 left-0 md:left-48 w-auto dark:bg-black dark:bg-opacity-50 bg-light_gray bg-opacity-80 md:bg-white dark:md:bg-mid_blue text-dark_blue dark:text-light_gray md:ps-4 md:pe-8 ps-14 pe-4 h-10 flex items-center justify-between drop-shadow-sm rounded-br-2xl"
 				style={{ zIndex: 100 }}
 			>
-				<p className="px-2">Admin</p>
+				<p className="px-2">Not Admin</p>
 				<div className="md:mr-14">
 					<DarkModeButton />
 				</div>
@@ -92,7 +92,7 @@ export default function TopBar() {
 							className="absolute right-0 top-10 w-40 bg-white dark:bg-dark_blue rounded-lg shadow-lg mt-2 overflow-hidden"
 							style={{ zIndex: 101 }}
 						>
-							<Link href="/home/account">
+							<Link href="/client/account">
 								<div className="flex items-center justify-start gap-x-1 px-4 py-3 hover:font-medium hover:bg-light_gray dark:hover:bg-mid_blue transition-all duration-100 ease-linear">
 									<div className="w-8 h-8 flex justify-center items-center dark:border-light_gray">
 										<IoMdSettings className="w-5 h-5" />
@@ -102,7 +102,7 @@ export default function TopBar() {
 									</p>
 								</div>
 							</Link>
-							<Link href="/home/participants">
+							<Link href="/client/participants">
 								<div className="flex items-center justify-start gap-x-1 px-4 py-3 hover:font-medium hover:bg-light_gray dark:hover:bg-mid_blue transition-all duration-100 ease-linear">
 									<div className="w-8 h-8 flex justify-center items-center dark:border-light_gray">
 										<IoPeople className="h-5 w-5" />

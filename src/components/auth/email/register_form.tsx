@@ -91,7 +91,7 @@ export default function RegisterForm() {
 			email: email,
 			password: password,
 			options: {
-				emailRedirectTo: "https://mysurface.vercel.app/confirm-email",
+				emailRedirectTo: "https://mysurface-eight.vercel.app/confirm-email",
 			},
 		});
 

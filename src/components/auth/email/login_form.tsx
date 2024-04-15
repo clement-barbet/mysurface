@@ -26,6 +26,7 @@ import { useTranslation } from "react-i18next";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import { serialize } from "cookie";
 
 const formSchema = z.object({
 	email: z.string().email(),
@@ -75,6 +76,22 @@ export default function LoginForm() {
 			setErrorMessage(response.error?.message);
 			return;
 		} else {
+			// Get the user's isAdmin status from the database
+			const userId = response.data.user.id;
+			const { data: data, error: userError } = await supabase
+				.from("app_users")
+				.select("isAdmin")
+				.eq("id", userId)
+				.single();
+
+			const isAdmin = data?.isAdmin;
+
+			// Set the isAdmin cookie to expire in 30 days
+			document.cookie = serialize("isAdmin", JSON.stringify(isAdmin), {
+				path: "/",
+				maxAge: 30 * 24 * 60 * 60,
+			});
+
 			return router.push("/home");
 		}
 	}
@@ -111,7 +128,9 @@ export default function LoginForm() {
 												</FormLabel>
 												<FormControl>
 													<Input
-														placeholder={t('login.form.placeholders.email')}
+														placeholder={t(
+															"login.form.placeholders.email"
+														)}
 														{...field}
 													/>
 												</FormControl>
@@ -135,7 +154,9 @@ export default function LoginForm() {
 																type={
 																	passwordType
 																}
-																placeholder={t('login.form.placeholders.password')}
+																placeholder={t(
+																	"login.form.placeholders.password"
+																)}
 																{...field}
 															/>
 															<button

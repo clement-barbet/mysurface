@@ -1,10 +1,10 @@
 "use client";
-import DashboardNavbar from "@/components/home/dashboard_navbar";
-import TopBar from "@/components/home/topbar";
+import DashboardNavbar from "@/components/home/dashboard_navbar_client";
+import TopBar from "@/components/home/topbar_client";
 import { usePathname } from "next/navigation";
 import React, { useState, useEffect } from "react";
 
-export default function HomeLayout({
+export default function ClientLayout({
 	children,
 }: Readonly<{
 	children: React.ReactNode;

@@ -50,7 +50,7 @@ export default function DashboardNavbar() {
 					<BsArrowRightCircleFill className="h-6 w-6" />
 				)}
 			</div>
-			<Link onClick={handleLinkClick} href="/home" className="w-full">
+			<Link onClick={handleLinkClick} href="/client" className="w-full">
 				<div
 					className={clsx(
 						"flex items-center justify-center w-full h-10 bg-mid_blue gap-x-3 drop-shadow-sm rounded-bl-2xl mb-5",
@@ -70,12 +70,12 @@ export default function DashboardNavbar() {
 				<li
 					className={clsx("py-4 px-4 w-full tracking-wider", {
 						"border-l-4 border-light_gray":
-							pathname === "/home/dashboard",
+							pathname === "/client/dashboard",
 					})}
 				>
 					<Link
 						onClick={handleLinkClick}
-						href="/home/dashboard"
+						href="/client/dashboard/"
 						className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase"
 					>
 						<MdDashboard className="h-6 w-6" />
@@ -85,12 +85,12 @@ export default function DashboardNavbar() {
 				<li
 					className={clsx("py-4 px-4 tracking-wider", {
 						"border-l-4 border-light_gray":
-							pathname === "/home/participants",
+							pathname === "/client/participants",
 					})}
 				>
 					<Link
 						onClick={handleLinkClick}
-						href="/home/participants"
+						href="/client/participants"
 						className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase"
 					>
 						<IoPeople className="h-6 w-6" />
@@ -100,12 +100,12 @@ export default function DashboardNavbar() {
 				<li
 					className={clsx("py-4 px-4 tracking-wider", {
 						"border-l-4 border-light_gray":
-							pathname === "/home/results",
+							pathname === "/client/results",
 					})}
 				>
 					<Link
 						onClick={handleLinkClick}
-						href="/home/results"
+						href="/client/results"
 						className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase"
 					>
 						<PiGraph className="h-6 w-6" />
@@ -115,12 +115,12 @@ export default function DashboardNavbar() {
 				<li
 					className={clsx("py-4 px-4 tracking-wider", {
 						"border-l-4 border-light_gray":
-							pathname === "/home/models",
+							pathname === "/client/models",
 					})}
 				>
 					<Link
 						onClick={handleLinkClick}
-						href="/home/models"
+						href="/client/models"
 						className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase"
 					>
 						<TbVectorTriangle className="h-6 w-6" />
@@ -130,12 +130,12 @@ export default function DashboardNavbar() {
 				<li
 					className={clsx("py-4 px-4 tracking-wider", {
 						"border-l-4 border-light_gray":
-							pathname === "/home/patterns",
+							pathname === "/client/patterns",
 					})}
 				>
 					<Link
 						onClick={handleLinkClick}
-						href="/home/patterns"
+						href="/client/patterns"
 						className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase"
 					>
 						<BiTrendingUp className="h-6 w-6" />
@@ -145,12 +145,12 @@ export default function DashboardNavbar() {
 				<li
 					className={clsx("py-4 px-4 tracking-wider", {
 						"border-l-4 border-light_gray":
-							pathname === "/home/faq",
+							pathname === "/client/faq",
 					})}
 				>
 					<Link
 						onClick={handleLinkClick}
-						href="/home/faq"
+						href="/client/faq"
 						className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase"
 					>
 						<AiOutlineQuestion className="h-6 w-6" />
