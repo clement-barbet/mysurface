@@ -16,10 +16,14 @@ describe("template spec", () => {
 		cy.url({ timeout: 20000 })
 			.should("include", "/client/participants")
 			.then(() => {
-				cy.get("#resetPhaseBtn").then(($btn) => {
-					if ($btn) {
-						$btn.click();
-            cy.wait(10000);
+				cy.get("table > tbody > tr").then(($rows) => {
+					if ($rows.length >= 2) {
+						cy.get("#resetPhaseBtn").then(($btn) => {
+							if ($btn.length > 0) {
+								$btn.click();
+								cy.wait(10000);
+							}
+						});
 					}
 				});
 
