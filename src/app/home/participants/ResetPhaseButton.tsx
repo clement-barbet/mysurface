@@ -1,8 +1,7 @@
 "use client";
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { Button } from "@/components/ui/button";
 import T from "@/components/translations/translation";
-import { resetPhase } from "./ResetPhase";
+import { resetPhase } from "./resetPhase";
 
 const ResetPhaseButton = ({ phase }: { phase: string }) => {
 	const handleClick = async () => {
