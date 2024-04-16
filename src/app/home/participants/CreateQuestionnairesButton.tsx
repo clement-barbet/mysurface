@@ -61,6 +61,7 @@ export default function CreateQuestionnairesButton({
 					<TooltipTrigger asChild>
 						<div className=" w-fit">
 							<Button
+								id="createQuestionnairesBtn"
 								onClick={createQuestionnaires}
 								disabled={!canCreateQuestionnaires}
 							>

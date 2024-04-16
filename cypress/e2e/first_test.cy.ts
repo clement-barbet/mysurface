@@ -13,7 +13,7 @@ describe("template spec", () => {
 
 		cy.contains("a", "Participants").should("be.visible").click();
 
-		cy.url({ timeout: 20000 })
+		cy.url({ timeout: 30000 })
 			.should("include", "/home/participants")
 			.then(() => {
 				cy.get("table > tbody > tr").then(($rows) => {
@@ -27,7 +27,7 @@ describe("template spec", () => {
 					}
 				});
 
-				for (let i = 1; i <= 5; i++) {
+				for (let i = 1; i <= 10; i++) {
 					let randomNum = Math.floor(Math.random() * 1000);
 					let name = `user${randomNum}`;
 					let email = `user${randomNum}@example.com`;
@@ -39,8 +39,59 @@ describe("template spec", () => {
 					cy.wait(10000);
 				}
 
-				cy.contains("button", "Create Questionnaires").click();
+				cy.get("#createQuestionnairesBtn").click();
+				cy.wait(30000);
+
+				function processRow(index) {
+					cy.get("table tbody tr")
+						.eq(index)
+						.find("td:nth-last-child(3)")
+						.then(($td) => {
+							if ($td.text() === "To complete") {
+								cy.get("table tbody tr")
+									.eq(index)
+									.find(
+										"td:nth-last-child(2) .linkToQuestionnaire"
+									)
+									.click();
+								cy.url({ timeout: 20000 }).should(
+									"include",
+									"/questionnaire"
+								);
+
+								cy.get(".question").each(($question) => {
+									const randomNumber = Math.floor(
+										Math.random() * 11
+									);
+									cy.wrap($question)
+										.find("button")
+										.filter((index, button) => {
+											return (
+												button.textContent.trim() ===
+												randomNumber.toString()
+											);
+										})
+										.click();
+								});
+
+								cy.get('button:contains("SUBMIT")').click();
+
+								cy.visit(
+									"http://localhost:3000/home/participants"
+								);
+								cy.wait(10000);
+							}
+						});
+				}
+
+				cy.get("table tbody tr").then(($rows) => {
+					for (let i = 0; i < $rows.length; i++) {
+						processRow(i);
+					}
+				});
+
 				cy.wait(10000);
+				cy.get("#generateResultBtn").click();
 			});
 	});
 });

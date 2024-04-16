@@ -20,7 +20,7 @@ export default function QuestionComponent({
   return (
     <div>
       <h3>{question}</h3>
-      <div className="mt-4 space-x-2">
+      <div className="mt-4 space-x-2 question">
         {[...Array(11)].map((_, index) => (
           <Button
             key={index}

@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { ColumnDef } from "@tanstack/react-table";
 import { z } from "zod";
 import T from "@/components/translations/translation";
+import Link from "next/link";
 
 const participantsSchema = z.object({
 	id: z.string().uuid(),
@@ -70,17 +71,18 @@ export const columns = (questionnaires: any[]): ColumnDef<Participants>[] => [
 		cell: ({ row }) => {
 			const questionnaireId = row.original.questionnaire;
 			const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+			const url = `${baseUrl}/questionnaire/${questionnaireId}`;
 			return questionnaireId ? (
-				<Button
-					onClick={() =>
-						navigator.clipboard.writeText(
-							`${baseUrl}/questionnaire/${questionnaireId}`
-						)
-					}
-					className=" bg-blue-500 px-2 py-1 rounded text-white"
-				>
-					<T tkey="participants.table.buttons.copy" />
-				</Button>
+				<Link href={url}>
+					<Button
+						onClick={() => {
+							navigator.clipboard.writeText(url);
+						}}
+						className="linkToQuestionnaire bg-blue-500 px-2 py-1 rounded text-white"
+					>
+						<T tkey="participants.table.buttons.copy" />
+					</Button>
+				</Link>
 			) : null;
 		},
 	},
