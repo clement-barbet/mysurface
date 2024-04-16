@@ -6,7 +6,7 @@ export async function middleware(req: NextRequest) {
 	const res = NextResponse.next();
 
 	const supabase = createMiddlewareClient({ req, res });
-	const { data: session, error } = await supabase.auth.getSession();
+	const { data: user, error } = await supabase.auth.getUser();
 
 	/*
 	const userId = session?.session?.user?.id;
@@ -48,13 +48,13 @@ export async function middleware(req: NextRequest) {
 	// Protect the /home route and its children
 	if (req.nextUrl.pathname.startsWith("/home")) {
 		// Redirect to /login if the user is not logged in
-		if (error || !session?.session) {
+		if (error || !user?.user) {
 			return NextResponse.redirect(`${req.nextUrl.origin}/login`);
 		}
 	}
 
 	if (req.nextUrl.pathname === "/") {
-		if (error || !session?.session) {
+		if (error || !user?.user) {
 			return NextResponse.redirect(`${req.nextUrl.origin}/login`);
 		} else {
 			return NextResponse.redirect(`${req.nextUrl.origin}/home`);

@@ -2,6 +2,7 @@
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { Button } from "@/components/ui/button";
 import T from "@/components/translations/translation";
+import { resetPhase } from "./ResetPhase";
 
 const DeleteAllParticipantsButton = ({
 	participantCount,
@@ -12,25 +13,28 @@ const DeleteAllParticipantsButton = ({
 	if (participantCount === 0) {
 		return null;
 	}
-	
+
 	const handleClick = async () => {
 		const supabase = createClientComponentClient();
 
 		// Delete all records from participants
-		const { error: deleteError } = await supabase
+		const { error: deleteParticipantsError } = await supabase
 			.from("participants")
 			.delete()
 			.neq("id", "00000000-0000-0000-0000-000000000000");
 
-		if (deleteError) {
-			console.error("Error deleting participants:", deleteError);
+		if (deleteParticipantsError) {
+			console.error("Error deleting participants:", deleteParticipantsError);
 		} else {
 			console.log("Participants deleted successfully");
 		}
 
-		// Reload the page to show updated table
-		if (!deleteError) {
+		// Reset the phase and delete all questionnaires
+		const { updateError, deleteError } = await resetPhase();
+		if (!updateError && !deleteError && !deleteParticipantsError) {
 			location.reload();
+		} else {
+			console.error("Error deleting all participants:", updateError, deleteError, deleteParticipantsError);
 		}
 	};
 

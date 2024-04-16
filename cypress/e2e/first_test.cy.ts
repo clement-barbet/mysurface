@@ -8,13 +8,13 @@ describe("template spec", () => {
 			cy.get("input[name=password]").type(access_password);
 			cy.get("button[type=submit]").click();
 
-			cy.url({ timeout: 20000 }).should("include", "/client");
+			cy.url({ timeout: 20000 }).should("include", "/home");
 		});
 
 		cy.contains("a", "Participants").should("be.visible").click();
 
 		cy.url({ timeout: 20000 })
-			.should("include", "/client/participants")
+			.should("include", "/home/participants")
 			.then(() => {
 				cy.get("table > tbody > tr").then(($rows) => {
 					if ($rows.length >= 2) {
