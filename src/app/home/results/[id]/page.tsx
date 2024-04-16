@@ -30,15 +30,17 @@ export default async function ResultPage({
   const nodes = parsedResult.map((participant) => ({
     id: participant.participantName,
     name: participant.participantName,
-    val: Math.log(
-      participant.data.reduce((sum, dataPoint) => {
-        const influenceRating =
-          dataPoint.answers.find((answer) =>
-            answer.questionText.includes("influence on you")
-          )?.rating || 0;
-        return sum + influenceRating;
-      }, 0)
-    ),
+    val:
+      1 *
+      Math.log(
+        participant.data.reduce((sum, dataPoint) => {
+          const influenceRating =
+            dataPoint.answers.find((answer) =>
+              answer.questionText.includes("influence on you")
+            )?.rating || 0;
+          return sum + influenceRating;
+        }, 0)
+      ),
   }));
 
   const links = [];
@@ -70,7 +72,7 @@ export default async function ResultPage({
           links.push({
             source: sourceParticipant.participantName,
             target: targetParticipant.participantName,
-            value: Math.log(linkScore),
+            value: 4 * Math.log(linkScore),
           });
         }
       }

@@ -38,6 +38,8 @@
     "react-tabs": "^6.0.2",
     "tailwind-merge": "^2.2.1",
     "tailwindcss-animate": "^1.0.7",
+    "three": "^0.163.0",
+    "three-forcegraph": "^1.41.13",
     "use-resize-observer": "^9.1.0",
     "zod": "^3.22.4"
   },
