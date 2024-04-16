@@ -119,7 +119,8 @@
 		"tabs": {
 			"2d": "Graf 2D",
 			"3d": "Graf 3D"
-		}
+		},
+		"nodata": "Zatím žádné výsledky."
 	},
 	"login": {
 		"slogan": "Připojte se, Spolupracujte, Vizuálně zobrazujte: Váš Tým, Vaše Povrch.",
@@ -173,7 +174,7 @@
 	},
 	"homeresults": {
 		"title": "Všechny Provedené Zprávy"
-	},	
+	},
 	"navbar": {
 		"dashboard": "Nástěnka",
 		"participants": "Účastníci",
@@ -182,7 +183,7 @@
 		"patterns": "Vzory",
 		"faq": "FAQ",
 		"language": "Jazyk"
-	},	
+	},
 	"topbar": {
 		"search": "Hledat",
 		"account": "Můj účet",

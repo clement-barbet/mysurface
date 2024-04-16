@@ -119,7 +119,8 @@
 		"tabs": {
 			"2d": "Gráfico 2D",
 			"3d": "Gráfico 3D"
-		}
+		},
+		"nodata": "Sin resultados aún."
 	},
 	"login": {
 		"slogan": "Conecta, Colabora, Visualiza: Tu Equipo, Tu Superficie.",
@@ -173,7 +174,7 @@
 	},
 	"homeresults": {
 		"title": "Todos los Informes Ejecutados"
-	},	
+	},
 	"navbar": {
 		"dashboard": "Panel",
 		"participants": "Participantes",
@@ -182,7 +183,7 @@
 		"patterns": "Patrones",
 		"faq": "FAQ",
 		"language": "Idioma"
-	},	
+	},
 	"topbar": {
 		"search": "Buscar",
 		"account": "Mi cuenta",

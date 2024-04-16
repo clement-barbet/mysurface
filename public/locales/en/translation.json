@@ -119,7 +119,8 @@
 		"tabs": {
 			"2d": "2D Graph",
 			"3d": "3D Graph"
-		}
+		},
+		"nodata": "No results yet."
 	},
 	"login": {
 		"slogan": "Connect, Collaborate, Visualize: Your Team, Your Surface.",
