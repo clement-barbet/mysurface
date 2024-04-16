@@ -20,8 +20,8 @@ async function getCompletionPercentage() {
 	}
 
 	if (questionnaires.length === 0) {
-        return null;
-    }
+		return null;
+	}
 
 	const completedCount = questionnaires.filter((q) => q.completed).length;
 	const totalCount = questionnaires.length;
@@ -30,7 +30,9 @@ async function getCompletionPercentage() {
 }
 
 const DashboardPieChart = () => {
-	const [completedPercentage, setCompletedPercentage] = useState<number | null>(null);
+	const [completedPercentage, setCompletedPercentage] = useState<
+		number | null
+	>(null);
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -42,8 +44,12 @@ const DashboardPieChart = () => {
 	}, []);
 
 	if (completedPercentage === null) {
-        return <p className="text-sm italic text-center"><T tkey="dashboard.piechart.nodata"/></p>;
-    }
+		return (
+			<p className="text-sm italic text-center">
+				<T tkey="dashboard.piechart.nodata" />
+			</p>
+		);
+	}
 
 	const notCompletedPercentage = 100 - completedPercentage;
 
@@ -62,6 +68,8 @@ const DashboardPieChart = () => {
 		],
 	};
 
+	console.log(data);
+
 	const options = {
 		plugins: {
 			legend: {
@@ -71,6 +79,15 @@ const DashboardPieChart = () => {
 						size: 12,
 					},
 					padding: 20,
+				},
+			},
+			tooltip: {
+				callbacks: {
+					label: function (context) {
+						const dataset = context.dataset;
+						const currentValue = dataset.data[context.dataIndex];
+						return `${currentValue}%`;
+					},
 				},
 			},
 		},
