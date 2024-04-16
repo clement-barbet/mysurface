@@ -9,10 +9,9 @@ import { IoMdSettings } from "react-icons/io";
 import { IoMdLogOut } from "react-icons/io";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import T from "@/components/translations/translation";
 import { useTranslation } from "react-i18next";
-import { serialize } from 'cookie';
+//import { serialize } from 'cookie';
 
 export default function TopBar() {
 	const [email, setEmail] = useState("");
@@ -38,20 +37,21 @@ export default function TopBar() {
 		const { error } = await supabase.auth.signOut();
 		if (error) {
 			setErrorMessage("Error logging out: " + error.message);
-		} else {
+		} 
+		/*
+		else {
 			document.cookie = serialize("isAdmin", "", {
 				path: "/",
 				expires: new Date(0),
 			});
 		}
+		*/
 	};
 
 	const [isOpen, setIsOpen] = useState(false);
 	const handleDivClick = () => {
 		setIsOpen(!isOpen);
 	};
-
-	const pathname = usePathname();
 
 	return (
 		<>
@@ -65,7 +65,6 @@ export default function TopBar() {
 				className="fixed right-0 left-0 md:left-48 w-auto dark:bg-black dark:bg-opacity-50 bg-light_gray bg-opacity-80 md:bg-white dark:md:bg-mid_blue text-dark_blue dark:text-light_gray md:ps-4 md:pe-8 ps-14 pe-4 h-10 flex items-center justify-between drop-shadow-sm rounded-br-2xl"
 				style={{ zIndex: 100 }}
 			>
-				<p className="px-2">Admin</p>
 				<div className="md:mr-14">
 					<DarkModeButton />
 				</div>

@@ -10,7 +10,6 @@ import { ErrorMessage } from "@/components/ui/msg/error_msg";
 import {
 	Form,
 	FormControl,
-	FormDescription,
 	FormField,
 	FormItem,
 	FormLabel,
@@ -26,7 +25,7 @@ import { useTranslation } from "react-i18next";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import { serialize } from "cookie";
+//import { serialize } from "cookie";
 
 const formSchema = z.object({
 	email: z.string().email(),
@@ -76,6 +75,7 @@ export default function LoginForm() {
 			setErrorMessage(response.error?.message);
 			return;
 		} else {
+			/*
 			// Get the user's isAdmin status from the database
 			const userId = response.data.user.id;
 			const { data: data, error: userError } = await supabase
@@ -91,7 +91,7 @@ export default function LoginForm() {
 				path: "/",
 				maxAge: 30 * 24 * 60 * 60,
 			});
-
+			*/
 			return router.push("/home");
 		}
 	}

@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createMiddlewareClient } from "@supabase/auth-helpers-nextjs";
-import { serialize, parse } from "cookie";
+//import { serialize, parse } from "cookie";
 
 export async function middleware(req: NextRequest) {
 	const res = NextResponse.next();
@@ -8,6 +8,7 @@ export async function middleware(req: NextRequest) {
 	const supabase = createMiddlewareClient({ req, res });
 	const { data: session, error } = await supabase.auth.getSession();
 
+	/*
 	const userId = session?.session?.user?.id;
 
 	const cookieHeader = req.headers.get("Cookie");
@@ -42,6 +43,7 @@ export async function middleware(req: NextRequest) {
 	} else {
 		isAdmin = JSON.parse(isAdmin);
 	}
+	*/
 
 	// Protect the /home route and its children
 	if (req.nextUrl.pathname.startsWith("/home")) {
@@ -49,34 +51,13 @@ export async function middleware(req: NextRequest) {
 		if (error || !session?.session) {
 			return NextResponse.redirect(`${req.nextUrl.origin}/login`);
 		}
-		// Redirect to /client if the user is not an admin
-		else if (!isAdmin) {
-			return NextResponse.redirect(`${req.nextUrl.origin}/client`);
-		}
 	}
 
-	// Protect the /client route and its children
-	if (req.nextUrl.pathname.startsWith("/client")) {
-		// Redirect to /login if the user is not logged in
-		if (error || !session?.session) {
-			return NextResponse.redirect(`${req.nextUrl.origin}/login`);
-		}
-		// If the user is an admin, redirect to /home
-		else if (isAdmin) {
-			return NextResponse.redirect(`${req.nextUrl.origin}/home`);
-		}
-	}
-
-	// Redirect from root to /login if the user is not logged in or to /home or /client if they are
 	if (req.nextUrl.pathname === "/") {
 		if (error || !session?.session) {
 			return NextResponse.redirect(`${req.nextUrl.origin}/login`);
 		} else {
-			if (isAdmin) {
-				return NextResponse.redirect(`${req.nextUrl.origin}/home`);
-			} else {
-				return NextResponse.redirect(`${req.nextUrl.origin}/client`);
-			}
+			return NextResponse.redirect(`${req.nextUrl.origin}/home`);
 		}
 	}
 
