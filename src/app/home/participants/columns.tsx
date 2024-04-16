@@ -92,6 +92,7 @@ export const columns = (questionnaires: any[]): ColumnDef<Participants>[] => [
 			return participantId ? (
 				<>
 					<Button
+						variant="delete"
 						onClick={async () => {
 							const response = await fetch("/api/participants", {
 								method: "DELETE",
@@ -110,7 +111,6 @@ export const columns = (questionnaires: any[]): ColumnDef<Participants>[] => [
 								);
 							}
 						}}
-						className="bg-red-500 px-2 py-1 rounded text-white"
 					>
 						<T tkey="participants.table.buttons.delete" />
 					</Button>

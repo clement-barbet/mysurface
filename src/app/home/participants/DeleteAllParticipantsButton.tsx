@@ -42,7 +42,7 @@ const DeleteAllParticipantsButton = ({
 		<Button
 			id="resetPhaseBtn"
 			onClick={handleClick}
-			className="bg-red-500 px-2 py-1 rounded text-white"
+			variant="delete"
 		>
 			<T tkey="participants.form.buttons.deleteAll" />
 		</Button>
