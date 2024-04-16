@@ -28,8 +28,8 @@ export default function Results() {
 
 	return (
 		!loading && (
-			<div className="w-full m-auto p-5">
-				<h2 className="text-3xl pb-5">
+			<div className="w-full m-auto">
+				<h2 className="text-3xl pb-2">
 					<T tkey="homeresults.title" />
 				</h2>
 				<div className="w-full m-auto p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">

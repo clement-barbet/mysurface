@@ -8,8 +8,8 @@ import T from "@/components/translations/translation";
 
 export default function Dashboard() {
 	return (
-		<div className="flex flex-col xl:flex-row gap-y-4 xl:gap-x-4">
-			<div className="flex flex-col sm:flex-row xl:flex-col gap-y-4 sm:gap-x-4 xl:w-3/5">
+		<div className="flex flex-col xl:flex-row gap-y-2 xl:gap-x-2">
+			<div className="flex flex-col sm:flex-row xl:flex-col gap-y-2 sm:gap-x-2 xl:w-3/5">
 				<div className="h-auto w-full sm:w-1/2 xl:w-full flex flex-col shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
 					<div className="px-10 py-5">
 						<h2 className="font-bold text-lg">

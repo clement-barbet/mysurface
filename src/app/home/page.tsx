@@ -4,8 +4,8 @@ import T from "@/components/translations/translation";
 
 export default function Home() {
 	return (
-		<div className="flex flex-col gap-y-4">
-			<div className="flex flex-col md:flex-row md:gap-x-4 gap-y-4">
+		<div className="flex flex-col gap-y-2">
+			<div className="flex flex-col md:flex-row md:gap-x-2 gap-y-2">
 				<div className="h-auto w-full flex flex-col shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
 					<div className="px-10 py-5">
 						<h2 className="font-bold text-lg">
