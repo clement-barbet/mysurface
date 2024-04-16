@@ -82,7 +82,8 @@
 					"tooltip": "You need to add at least 2 participants before generating the questionnaires."
 				},
 				"reset": "Reset Phase",
-				"result": "Generate Result"
+				"result": "Generate Result",
+				"deleteAll": "Delete All Participants"
 			}
 		}
 	},

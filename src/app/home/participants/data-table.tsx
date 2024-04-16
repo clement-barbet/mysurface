@@ -130,7 +130,7 @@ export function DataTable<TData, TValue>({
 					</div>
 				))
 			) : (
-				<div>
+				<div className="md:hidden block text-center pt-2">
 					<T tkey="participants.table.nodata" />
 				</div>
 			)}

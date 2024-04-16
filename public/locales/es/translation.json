@@ -82,7 +82,8 @@
 					"tooltip": "Necesitas agregar al menos 2 participantes antes de generar los cuestionarios."
 				},
 				"reset": "Reiniciar Fase",
-				"result": "Generar Resultado"
+				"result": "Generar Resultado",
+				"deleteAll": "Eliminar todos los participantes"
 			}
 		}
 	},

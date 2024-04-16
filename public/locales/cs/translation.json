@@ -82,7 +82,8 @@
 					"tooltip": "Před generováním dotazníků musíte přidat alespoň 2 účastníky."
 				},
 				"reset": "Resetovat Fázi",
-				"result": "Generovat Výsledek"
+				"result": "Generovat Výsledek",
+				"deleteAll": "Smazat všechny účastníky"
 			}
 		}
 	},
