@@ -71,9 +71,6 @@ const GraphNode3D: React.FC<GraphNode3DProps> = ({ graphData }) => {
       linkOpacity={0.02}
       linkWidth={0.5}
       linkColor={() => "#ffffff"}
-      linkDirectionalParticles={1}
-      linkDirectionalParticleWidth={1}
-      linkDirectionalParticleColor={() => "#ffffff"}
     />
   );
 };
