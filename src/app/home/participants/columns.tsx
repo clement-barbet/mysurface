@@ -75,9 +75,12 @@ export const columns = (questionnaires: any[]): ColumnDef<Participants>[] => [
 			return questionnaireId ? (
 				<Link href={url}>
 					<Button
+						/*
+						COMMENTED OUT BECAUSE IT DOESN'T WORK WELL IN CYPRESS FOR TESTING
 						onClick={() => {
 							navigator.clipboard.writeText(url);
 						}}
+						*/
 						className="linkToQuestionnaire bg-blue-500 px-2 py-1 rounded text-white"
 					>
 						<T tkey="participants.table.buttons.copy" />
