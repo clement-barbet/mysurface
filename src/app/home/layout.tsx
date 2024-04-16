@@ -3,6 +3,8 @@ import DashboardNavbar from "@/components/home/dashboard_navbar";
 import TopBar from "@/components/home/topbar";
 import { usePathname } from "next/navigation";
 import React, { useState, useEffect } from "react";
+import { FaTimes } from "react-icons/fa";
+import Link from "next/link";
 
 export default function HomeLayout({
 	children,
@@ -27,6 +29,13 @@ export default function HomeLayout({
 
 	return (
 		<div className="flex relative">
+			{isSmallScreen && isResultsIdPage && (
+				<div className="absolute top-0 right-0 p-2 z-10">
+					<Link href="/home/results">
+						<FaTimes className="h-6 w-6 cursor-pointer hover:text-red-500 transition-all duration-200 ease-linear" />
+					</Link>
+				</div>
+			)}
 			{!(isSmallScreen && isResultsIdPage) && (
 				<div
 					style={{ flex: "0 0 auto" }}
@@ -44,7 +53,9 @@ export default function HomeLayout({
 				<div
 					style={{ flex: "1 0 auto" }}
 					className={`relative py-2 px-2 ${
-						isSmallScreen && !isResultsIdPage ? "px-0 ps-12 pe-2" : ""
+						isSmallScreen && !isResultsIdPage
+							? "px-0 ps-12 pe-2"
+							: ""
 					}`}
 				>
 					{children}

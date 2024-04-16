@@ -21,11 +21,11 @@ const GraphNode3D: React.FC<GraphNode3DProps> = ({ graphData }) => {
     const resizeGraph = () => {
       const width =
         window.innerWidth < 768
-          ? window.innerWidth - 90
-          : window.innerWidth - 242;
+          ? window.innerWidth - 20
+          : window.innerWidth - 210;
       setDimensions({
         width,
-        height: window.innerHeight - 120,
+        height: window.innerHeight - 90,
       });
     };
 
