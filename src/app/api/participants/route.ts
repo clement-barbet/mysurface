@@ -24,9 +24,7 @@ export async function POST(request: Request) {
 			throw error;
 		}
 
-		return NextResponse.json({
-			message: "Participant created successfully",
-		});
+		return NextResponse.json(data);
 	} catch (error) {
 		if (error instanceof z.ZodError) {
 			return NextResponse.json(

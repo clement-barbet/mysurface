@@ -3,6 +3,16 @@ import { useEffect, useState } from "react";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import T from "@/components/translations/translation";
 import Link from "next/link";
+import {
+	Table,
+	TableBody,
+	TableCell,
+	TableHead,
+	TableHeader,
+	THeadRow,
+	TBodyRow,
+} from "@/components/ui/table";
+import { Button } from "@/components/ui/button";
 
 export default function Results() {
 	const [loading, setLoading] = useState(true);
@@ -26,38 +36,78 @@ export default function Results() {
 		fetchData();
 	}, []);
 
+	const deleteReport = async (id: string) => {
+		const { error } = await supabase.from("results").delete().eq("id", id);
+
+		if (error) console.error("Error deleting report", error);
+		else {
+			setResults(results.filter((result) => result.id !== id));
+		}
+	};
+
 	return (
 		!loading && (
 			<div className="w-full m-auto">
 				<h2 className="text-3xl pb-2">
 					<T tkey="homeresults.title" />
 				</h2>
-				<div className="w-full m-auto p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
-					{results.length > 0 ? (
-						<ul>
+				{results.length > 0 ? (
+					<Table className="w-full">
+						<TableHeader>
+							<THeadRow>
+								{["ID", "Name", "Date", "Link", "Delete"].map(
+									(header, index) => (
+										<TableHead key={index}>
+											{header}
+										</TableHead>
+									)
+								)}
+							</THeadRow>
+						</TableHeader>
+						<TableBody className="bg-white divide-y divide-gray-200">
 							{results.map((result) => {
 								const date = new Date(result.created_at);
 								const formattedDate =
 									date.toLocaleDateString("en-CA");
 
 								return (
-									<li className="my-2" key={result.id}>
-										<Link
-											href={`/home/results/${result.id}`}
-											className="hover:font-semibold transition-all duration-200 ease-linear"
-										>
-											{`${result.report_name} (${result.id}) - ${formattedDate}`}
-										</Link>
-									</li>
+									<TBodyRow key={result.id}>
+										<TableCell className="px-6 py-4 whitespace-nowrap">
+											{result.id}
+										</TableCell>
+										<TableCell className="px-6 py-4 whitespace-nowrap">
+											{result.report_name}
+										</TableCell>
+										<TableCell className="px-6 py-4 whitespace-nowrap">
+											{formattedDate}
+										</TableCell>
+										<TableCell className="px-6 py-4 whitespace-nowrap">
+											<Button>
+												<Link
+													href={`/home/results/${result.id}`}
+												>
+													View
+												</Link>
+											</Button>
+										</TableCell>
+										<TableCell className="px-6 py-4 whitespace-nowrap">
+											<Button
+												variant="delete"
+												onClick={() =>
+													deleteReport(result.id)
+												}
+											>
+												Delete
+											</Button>
+										</TableCell>
+									</TBodyRow>
 								);
 							})}
-						</ul>
-					) : (
-						<p>
-							<T tkey="results.nodata" />
-						</p>
-					)}
-				</div>
+						</TableBody>
+					</Table>
+				) : (
+					<p>No data</p>
+				)}
 			</div>
 		)
 	);

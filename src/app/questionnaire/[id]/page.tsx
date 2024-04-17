@@ -25,7 +25,8 @@ export default async function QuestionnairePage({
 	const { data: participants, error: participantsError } = await supabase
 		.from("participants")
 		.select("*")
-		.neq("questionnaire", params.id);
+		.neq("questionnaire", params.id)
+		.order("name");
 
 	if (participantsError) {
 		console.error("Error fetching participants:", participantsError);
@@ -60,7 +61,7 @@ export default async function QuestionnairePage({
 					<b>Questionnaire</b>: {params.id}
 				</h2>
 				<h2>
-					<b>Evaluator</b>: {owner.name}
+					<b>Evaluator</b>: <span className="evaluator">{owner.name}</span>
 				</h2>
 				<QuestionnaireForm
 					questionnaireId={params.id}

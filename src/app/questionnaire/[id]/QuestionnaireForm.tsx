@@ -128,7 +128,7 @@ export default function QuestionnaireForm({
 									: "none",
 						}}
 					>
-						<b>Participant</b>: {participant.name}
+						<b>Participant</b>: <span className="participant">{participant.name}</span>
 					</h2>
 					{questions.map((question, questionIndex) => (
 						<div
