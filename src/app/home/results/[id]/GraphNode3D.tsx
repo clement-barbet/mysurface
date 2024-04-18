@@ -68,7 +68,7 @@ const GraphNode3D: React.FC<GraphNode3DProps> = ({ graphData }) => {
       height={dimensions.height}
       nodeOpacity={0.5}
       nodeResolution={50}
-      linkOpacity={1}
+      linkOpacity={0.02}
       linkWidth={0.5}
       linkColor={() => "#ffffff"}
     />
