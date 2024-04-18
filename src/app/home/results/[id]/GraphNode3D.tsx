@@ -50,7 +50,7 @@ const GraphNode3D: React.FC<GraphNode3DProps> = ({ graphData }) => {
     const normalizedSize = (node.val - minSize) / (maxSize - minSize);
     const hue = 0; // Red hue (0 degrees)
     const saturation = 0.8; // High saturation
-    const lightness = 0.5 - normalizedSize * 0.5; // Bigger = dark
+    //const lightness = 0.5 - normalizedSize * 0.5; // Bigger = dark
     const lightness = 0.5 + normalizedSize * 0.4; // Bigger = light
     const color = new THREE.Color().setHSL(hue, saturation, lightness);
     return color.getStyle();
@@ -68,7 +68,7 @@ const GraphNode3D: React.FC<GraphNode3DProps> = ({ graphData }) => {
       height={dimensions.height}
       nodeOpacity={0.5}
       nodeResolution={50}
-      linkOpacity={0.02}
+      linkOpacity={1}
       linkWidth={0.5}
       linkColor={() => "#ffffff"}
     />
