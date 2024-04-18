@@ -57,6 +57,7 @@ export default function GraphNode2D({ graphData }: GraphNode2DProps) {
 			nodeVal={(node) => node.val}
 			nodeLabel="name"
 			linkWidth={(link) => 2 / link.length}
+			linkOpacity={(link) => 0.3 }
 			nodeRelSize={(node) => 3 }
 		/>
 	);
