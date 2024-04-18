@@ -14,7 +14,9 @@ describe("template spec", () => {
 		cy.visit("http://localhost:3000/home/members").then(() => {
 			cy.wait(10000);
 
+			// Array of all participants
 			let participants = [];
+			// Array of pairs of participants that will have a mutual 0 score
 			let pairs = [];
 			cy.get("table tbody tr")
 				.each(($row) => {
@@ -78,6 +80,7 @@ describe("template spec", () => {
 
 							let participant = "";
 							cy.get(".question").each(($question, index) => {
+								// Get the participant name every 3 questions
 								if (index % 3 === 0) {
 									cy.get(".participant")
 										.eq(Math.floor(index / 3))
@@ -95,12 +98,14 @@ describe("template spec", () => {
 								cy.wait(500).then(() => {
 									let answer = Math.floor(Math.random() * 11);
 									pairs.forEach((pair) => {
+										// If the pair is in the list
 										if (
 											(evaluator === pair[0] &&
 												participant === pair[1]) ||
 											(evaluator === pair[1] &&
 												participant === pair[0])
 										) {
+											// If the question is the first or second question, set the score to 0
 											if (index % 3 < 2) {
 												answer = 0;
 											}
@@ -109,6 +114,7 @@ describe("template spec", () => {
 										console.log("answer", answer);
 									});
 
+									// Select the button that matches the answer
 									cy.wrap($question)
 										.find("button")
 										.filter((index, button) => {

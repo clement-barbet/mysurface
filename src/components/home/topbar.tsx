@@ -19,6 +19,7 @@ export default function TopBar() {
 	const supabase = createClientComponentClient();
 	const { t } = useTranslation();
 
+	/*
 	useEffect(() => {
 		const fetchUser = async () => {
 			const { data: user, error } = await supabase.auth.getUser();
@@ -32,6 +33,9 @@ export default function TopBar() {
 
 		fetchUser();
 	}, []);
+
+	Should add this: <p>{email}</p>
+	*/
 
 	const handleLogout = async () => {
 		const { error } = await supabase.auth.signOut();
@@ -84,7 +88,7 @@ export default function TopBar() {
 					<div className="flex items-center justify-center w-8 h-8 border-2 rounded-full border-dark_blue p-2 bg-mid_blue drop-shadow-md hover:bg-dark_blue transition-all duration-200 ease-linear">
 						<FaUser className="w-5 h-5 text-light_gray" />
 					</div>
-					<p className="hidden md:block">{email}</p>
+					
 
 					{isOpen && (
 						<div

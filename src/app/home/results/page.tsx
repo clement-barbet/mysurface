@@ -55,7 +55,7 @@ export default function Results() {
 					<Table className="w-full">
 						<TableHeader>
 							<THeadRow>
-								{["ID", "Name", "Date", "Link", "Delete"].map(
+								{["ID", "Name", "Date", "Delete report"].map(
 									(header, index) => (
 										<TableHead key={index}>
 											{header}
@@ -69,26 +69,26 @@ export default function Results() {
 								const date = new Date(result.created_at);
 								const formattedDate =
 									date.toLocaleDateString("en-CA");
+								const formattedTime =
+									date.toLocaleTimeString("en-CA");
 
 								return (
 									<TBodyRow key={result.id}>
 										<TableCell className="px-6 py-4 whitespace-nowrap">
-											{result.id}
+											<Link
+												href={`/home/results/${result.id}`}
+												className="font-semibold text-blue-500 hover:text-blue-800 underline hover:underline-offset-4 underline-offset-2 transition-all duration-200 ease-linear"
+											>
+												{result.id}
+											</Link>
 										</TableCell>
 										<TableCell className="px-6 py-4 whitespace-nowrap">
 											{result.report_name}
 										</TableCell>
 										<TableCell className="px-6 py-4 whitespace-nowrap">
 											{formattedDate}
-										</TableCell>
-										<TableCell className="px-6 py-4 whitespace-nowrap">
-											<Button>
-												<Link
-													href={`/home/results/${result.id}`}
-												>
-													View
-												</Link>
-											</Button>
+											<br />
+											{formattedTime}
 										</TableCell>
 										<TableCell className="px-6 py-4 whitespace-nowrap">
 											<Button
