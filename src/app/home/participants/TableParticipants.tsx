@@ -80,56 +80,150 @@ function TableParticipants({
 	};
 
 	return (
-		<div className="rounded-md border overflow-auto w-full hidden md:block">
-			<Table className="w-full">
-				<TableHeader>
-					<THeadRow>
-						{headers_T.map((header, index) => {
-							return (
-								<TableHead key={index}>
-									<T tkey={header} />
-								</TableHead>
-							);
-						})}
-					</THeadRow>
-				</TableHeader>
-				<TableBody className="bg-white divide-y divide-gray-200">
-					{participants.length ? (
-						participants.map((participant) => {
+		<>
+			<div className="rounded-md border overflow-auto w-full hidden md:block">
+				<Table className="w-full">
+					<TableHeader>
+						<THeadRow>
+							{headers_T.map((header, index) => {
+								return (
+									<TableHead key={index}>
+										<T tkey={header} />
+									</TableHead>
+								);
+							})}
+						</THeadRow>
+					</TableHeader>
+					<TableBody className="bg-white dark:bg-black divide-y divide-gray-200 dark:divide-gray-500">
+						{participants.length ? (
+							participants.map((participant) => {
+								if (participant) {
+									return (
+										<TBodyRow key={participant.id}>
+											<TableCell className="px-6 py-4 whitespace-nowrap hidden">
+												{participant.id}
+											</TableCell>
+											<TableCell className="px-6 py-4 whitespace-nowrap">
+												<div className="flex items-center">
+													<div className="inline-block mr-5">
+														<div className="border-2 border-gray-200 shadow-sm dark:opacity-80 rounded-full w-10 h-10 flex items-center justify-center bg-gradient-to-br from-cyan-500 to-sky-800">
+															<FontAwesomeIcon
+																icon={faYinYang}
+																className="w-5 h-5 text-white"
+															/>
+														</div>
+													</div>
+													<div className="ml-4">
+														<div className="evaluator-name text-sm font-medium text-gray-900 dark:text-white">
+															{participant.name}
+														</div>
+													</div>
+												</div>
+											</TableCell>
+											<TableCell className="px-6 py-4 whitespace-nowrap">
+												<div className="text-sm text-gray-500">
+													{participant.email}
+												</div>
+											</TableCell>
+											<TableCell className="px-6 py-4 whitespace-nowrap">
+												{renderQuestionnaireStatus(
+													participant.questionnaireStatus
+												)}
+											</TableCell>
+											<TableCell className="px-6 py-4 whitespace-nowrap">
+												{(() => {
+													const questionnaireId =
+														participant.questionnaire;
+													const baseUrl =
+														process.env
+															.NEXT_PUBLIC_BASE_URL;
+													const url = `${baseUrl}/questionnaire/${questionnaireId}`;
+													return questionnaireId ? (
+														<Link href={url}>
+															<Button
+																/*
+															COMMENTED OUT BECAUSE IT DOESN'T WORK WELL IN CYPRESS FOR TESTING
+															onClick={() => {
+																navigator.clipboard.writeText(url);
+															}}
+															*/
+																className="linkToQuestionnaire bg-blue-500 px-2 py-1 rounded text-white"
+															>
+																<T tkey="participants.table.buttons.copy" />
+															</Button>
+														</Link>
+													) : null;
+												})()}
+											</TableCell>
+											<TableCell className="px-6 py-4 text-sm text-left whitespace-nowrap">
+												<Button
+													disabled={
+														!isEnrollmentPhase
+													}
+													variant="delete"
+													onClick={() =>
+														deleteParticipant(
+															participant.id
+														)
+													}
+												>
+													<T tkey="participants.table.buttons.delete" />
+												</Button>
+											</TableCell>
+										</TBodyRow>
+									);
+								}
+								return null;
+							})
+						) : (
+							<TBodyRow>
+								<TableCell
+									colSpan={headers_T.length}
+									className="px-6 py-4 whitespace-nowrap text-center"
+								>
+									<T tkey="participants.table.nodata" />
+								</TableCell>
+							</TBodyRow>
+						)}
+					</TableBody>
+				</Table>
+			</div>
+			<div className="block md:hidden">
+				{participants.length
+					? participants.map((participant) => {
 							if (participant) {
 								return (
-									<TBodyRow key={participant.id}>
-										<TableCell className="px-6 py-4 whitespace-nowrap hidden">
+									<div
+										key={participant.id}
+										className="md:hidden rounded-md border shadow-md bg-white dark:bg-black p-3 mb-4 flex flex-col gap-y-2"
+									>
+										<p className="hidden">
 											{participant.id}
-										</TableCell>
-										<TableCell className="px-6 py-4 whitespace-nowrap">
-											<div className="flex items-center">
-												<div className="inline-block mr-5">
-													<div className="border-2 border-gray-200 shadow-sm dark:opacity-80 rounded-full w-10 h-10 flex items-center justify-center bg-gradient-to-br from-cyan-500 to-sky-800">
-														<FontAwesomeIcon
-															icon={faYinYang}
-															className="w-5 h-5 text-white"
-														/>
-													</div>
-												</div>
-												<div className="ml-4">
-													<div className="evaluator-name text-sm font-medium text-gray-900">
-														{participant.name}
-													</div>
-												</div>
-											</div>
-										</TableCell>
-										<TableCell className="px-6 py-4 whitespace-nowrap">
-											<div className="text-sm text-gray-500">
-												{participant.email}
-											</div>
-										</TableCell>
-										<TableCell className="px-6 py-4 whitespace-nowrap">
+										</p>
+										<p>
+											<strong>
+												<T tkey={headers_T[0]} />:{" "}
+											</strong>
+											{participant.name}
+										</p>
+										<p>
+											<strong>
+												<T tkey={headers_T[1]} />:{" "}
+											</strong>
+											{participant.email}
+										</p>
+										<p>
+											<strong>
+												<T tkey={headers_T[2]} />:{" "}
+											</strong>
 											{renderQuestionnaireStatus(
 												participant.questionnaireStatus
 											)}
-										</TableCell>
-										<TableCell className="px-6 py-4 whitespace-nowrap">
+										</p>
+										<p>
+											<strong>
+												<T tkey={headers_T[3]} />:{" "}
+											</strong>
 											{(() => {
 												const questionnaireId =
 													participant.questionnaire;
@@ -153,9 +247,10 @@ function TableParticipants({
 													</Link>
 												) : null;
 											})()}
-										</TableCell>
-										<TableCell className="px-6 py-4 text-sm text-left whitespace-nowrap">
+										</p>
+										<p>
 											<Button
+												className="w-full"
 												disabled={!isEnrollmentPhase}
 												variant="delete"
 												onClick={() =>
@@ -164,27 +259,17 @@ function TableParticipants({
 													)
 												}
 											>
-												<T tkey="participants.table.buttons.delete" />
+												<T tkey={headers_T[4]} />
 											</Button>
-										</TableCell>
-									</TBodyRow>
+										</p>
+									</div>
 								);
 							}
 							return null;
-						})
-					) : (
-						<TBodyRow>
-							<TableCell
-								colSpan={headers_T.length}
-								className="px-6 py-4 whitespace-nowrap text-center"
-							>
-								<T tkey="participants.table.nodata" />
-							</TableCell>
-						</TBodyRow>
-					)}
-				</TableBody>
-			</Table>
-		</div>
+					  })
+					: null}
+			</div>
+		</>
 	);
 }
 
