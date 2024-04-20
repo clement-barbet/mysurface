@@ -5,10 +5,10 @@ import { Button } from "@/components/ui/button";
 import T from "@/components/translations/translation";
 
 export default function CreateResultButton({
-  phase,
+  isEnrollmentPhase,
   allQuestionnairesCompleted,
 }: {
-  phase: string;
+  isEnrollmentPhase: boolean;
   allQuestionnairesCompleted: boolean;
 }) {
   const router = useRouter();
@@ -24,10 +24,11 @@ export default function CreateResultButton({
 
         // Update the phase to "enrollment"
         const supabase = createClientComponentClient();
+        const user = await supabase.auth.getUser();
         await supabase
           .from("app_settings")
-          .update({ setting_value: "enrollment" })
-          .eq("setting_name", "phase");
+          .update({ isEnrollmentPhase: true })
+          .eq("user_id", user.data.user.id);
 
         // Redirect to the result page
         const resultResponse = await response.json();
@@ -41,12 +42,11 @@ export default function CreateResultButton({
     }
   };
 
-  const isQuestionnairePhase = phase === "questionnaire";
-  const canGenerateResult = isQuestionnairePhase && allQuestionnairesCompleted;
+  const canGenerateResult = !isEnrollmentPhase && allQuestionnairesCompleted;
 
   if (!canGenerateResult) {
     return null;
   }
 
-  return <Button id="generateResultBtn" className="mt-5" onClick={generateResult}><T tkey="participants.form.buttons.result"/></Button>;
+  return <Button id="generateResultBtn" variant="login" className="mt-2 md:mt-5 uppercase md:w-auto w-full" onClick={generateResult}><T tkey="participants.form.buttons.result"/></Button>;
 }

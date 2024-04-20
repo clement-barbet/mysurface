@@ -10,12 +10,25 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 async function getCompletionPercentage() {
 	const supabase = createClientComponentClient();
 
-	const { data: questionnaires, error } = await supabase
-		.from("questionnaires")
-		.select("completed");
+	// Get participants with the correct user_id
+	const { data: participants, error: participantsError } = await supabase
+		.from("participants")
+		.select("questionnaire");
 
-	if (error) {
-		console.error("Error fetching questionnaires:", error);
+	if (participantsError) {
+		console.error("Error fetching participants:", participantsError);
+		return null;
+	}
+
+	// Get questionnaires for those participants
+	const questionnaireIds = participants.map((p) => p.questionnaire);
+	const { data: questionnaires, error: questionnairesError } = await supabase
+		.from("questionnaires")
+		.select("completed")
+		.in("id", questionnaireIds);
+
+	if (questionnairesError) {
+		console.error("Error fetching questionnaires:", questionnairesError);
 		return null;
 	}
 

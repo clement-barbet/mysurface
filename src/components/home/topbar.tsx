@@ -11,15 +11,13 @@ import { FaMagnifyingGlass } from "react-icons/fa6";
 import Link from "next/link";
 import T from "@/components/translations/translation";
 import { useTranslation } from "react-i18next";
-//import { serialize } from 'cookie';
 
 export default function TopBar() {
-	const [email, setEmail] = useState("");
 	const [errorMessage, setErrorMessage] = useState("");
 	const supabase = createClientComponentClient();
 	const { t } = useTranslation();
+	const [email, setEmail] = useState("");
 
-	/*
 	useEffect(() => {
 		const fetchUser = async () => {
 			const { data: user, error } = await supabase.auth.getUser();
@@ -34,22 +32,11 @@ export default function TopBar() {
 		fetchUser();
 	}, []);
 
-	Should add this: <p>{email}</p>
-	*/
-
 	const handleLogout = async () => {
 		const { error } = await supabase.auth.signOut();
 		if (error) {
 			setErrorMessage("Error logging out: " + error.message);
-		} 
-		/*
-		else {
-			document.cookie = serialize("isAdmin", "", {
-				path: "/",
-				expires: new Date(0),
-			});
 		}
-		*/
 	};
 
 	const [isOpen, setIsOpen] = useState(false);
@@ -88,7 +75,7 @@ export default function TopBar() {
 					<div className="flex items-center justify-center w-8 h-8 border-2 rounded-full border-dark_blue p-2 bg-mid_blue drop-shadow-md hover:bg-dark_blue transition-all duration-200 ease-linear">
 						<FaUser className="w-5 h-5 text-light_gray" />
 					</div>
-					
+					<p>{email}</p>
 
 					{isOpen && (
 						<div

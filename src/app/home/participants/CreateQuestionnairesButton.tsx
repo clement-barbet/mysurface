@@ -8,15 +8,11 @@ import {
 	TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { useState } from "react";
-import { LoadingMessage } from "@/components/ui/msg/loading_msg";
 import T from "@/components/translations/translation";
 
 export default function CreateQuestionnairesButton({
-	phase,
+	isEnrollmentPhase,
 	participantCount,
-}: {
-	phase: string;
-	participantCount: number;
 }) {
 	const [isLoading, setIsLoading] = useState(false);
 	const createQuestionnaires = async () => {
@@ -31,22 +27,21 @@ export default function CreateQuestionnairesButton({
 
 				// Update the phase to "questionnaire"
 				const supabase = createClientComponentClient();
+				const user = await supabase.auth.getUser();
 				await supabase
 					.from("app_settings")
-					.update({ setting_value: "questionnaire" })
-					.eq("setting_name", "phase");
-				location.reload();
+					.update({ isEnrollmentPhase: false })
+					.eq("user_id", user.data.user.id);
 			} else {
 				console.error("Error creating questionnaires");
 			}
 		} catch (error) {
 			console.error("Error creating questionnaires:", error);
 		} finally {
-			setIsLoading(false);
+			location.reload();
 		}
 	};
 
-	const isEnrollmentPhase = phase === "enrollment";
 	const canCreateQuestionnaires = isEnrollmentPhase && participantCount >= 2;
 
 	if (!isEnrollmentPhase) {
@@ -55,7 +50,6 @@ export default function CreateQuestionnairesButton({
 
 	return (
 		<>
-			<LoadingMessage isLoading={isLoading} setIsLoading={setIsLoading} />
 			<TooltipProvider>
 				<Tooltip>
 					<TooltipTrigger asChild>

@@ -16,34 +16,39 @@ const DeleteAllParticipantsButton = ({
 
 	const handleClick = async () => {
 		const supabase = createClientComponentClient();
-
-		// Delete all records from participants
-		const { error: deleteParticipantsError } = await supabase
-			.from("participants")
-			.delete()
-			.neq("id", "00000000-0000-0000-0000-000000000000");
-
-		if (deleteParticipantsError) {
-			console.error("Error deleting participants:", deleteParticipantsError);
-		} else {
-			console.log("Participants deleted successfully");
-		}
+		const user = await supabase.auth.getUser();
+		let deleteParticipantsError = null;
 
 		// Reset the phase and delete all questionnaires
 		const { updateError, deleteError } = await resetPhase();
-		if (!updateError && !deleteError && !deleteParticipantsError) {
-			location.reload();
+		if (!updateError && !deleteError) {
+			// Delete all records from participants
+			const { error: deleteParticipantsError } = await supabase
+				.from("participants")
+				.delete()
+				.eq("user_id", user.data.user.id);
+
+			if (deleteParticipantsError) {
+				console.error(
+					"Error deleting participants:",
+					deleteParticipantsError
+				);
+			} else {
+				console.log("Participants deleted successfully");
+				location.reload();
+			}
 		} else {
-			console.error("Error deleting all participants:", updateError, deleteError, deleteParticipantsError);
+			console.error(
+				"Error deleting all participants:",
+				updateError,
+				deleteError,
+				deleteParticipantsError
+			);
 		}
 	};
 
 	return (
-		<Button
-			id="resetPhaseBtn"
-			onClick={handleClick}
-			variant="delete"
-		>
+		<Button id="resetPhaseBtn" onClick={handleClick} variant="delete">
 			<T tkey="participants.form.buttons.deleteAll" />
 		</Button>
 	);

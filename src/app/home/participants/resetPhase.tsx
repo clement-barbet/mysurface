@@ -2,12 +2,14 @@ import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 
 export const resetPhase = async () => {
 	const supabase = createClientComponentClient();
+	const user = await supabase.auth.getUser();
+	let deleteError = null;
 
 	// Update phase to enrollment
 	const { error: updateError } = await supabase
 		.from("app_settings")
-		.update({ setting_value: "enrollment" })
-		.eq("setting_name", "phase");
+		.update({ isEnrollmentPhase: true })
+		.eq("user_id", user.data.user.id);
 
 	if (updateError) {
 		console.error("Error updating phase:", updateError);
@@ -15,16 +17,29 @@ export const resetPhase = async () => {
 		console.log("Phase updated successfully");
 	}
 
-	// Delete all records from questionnaires
-	const { error: deleteError } = await supabase
-		.from("questionnaires")
-		.delete()
-		.neq("id", "00000000-0000-0000-0000-000000000000");
+	// Get questionnaire IDs for the logged in user
+	const { data: questionnaireData, error: questionnaireError } =
+		await supabase
+			.from("participants")
+			.select("questionnaire")
+			.eq("user_id", user.data.user.id);
 
-	if (deleteError) {
-		console.error("Error deleting questionnaires:", deleteError);
+	if (questionnaireError) {
+		console.error("Error getting questionnaires:", questionnaireError);
 	} else {
-		console.log("Questionnaires deleted successfully");
+		const questionnaireIds = questionnaireData.map((q) => q.questionnaire);
+
+		// Delete all records from questionnaires
+		const { error: deleteError } = await supabase
+			.from("questionnaires")
+			.delete()
+			.in("id", questionnaireIds);
+
+		if (deleteError) {
+			console.error("Error deleting questionnaires:", deleteError);
+		} else {
+			console.log("Questionnaires deleted successfully");
+		}
 	}
 
 	return {

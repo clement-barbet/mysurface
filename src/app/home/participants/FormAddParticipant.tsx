@@ -14,7 +14,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import T from "@/components/translations/translation";
 
-function FormAddParticipant({ onParticipantAdded, phase }) {
+function FormAddParticipant({ onParticipantAdded, isEnrollmentPhase }) {
 	const [newParticipant, setNewParticipant] = useState({
 		name: "",
 		email: "",
@@ -59,8 +59,6 @@ function FormAddParticipant({ onParticipantAdded, phase }) {
 			console.error("Error creating participant:", error);
 		}
 	};
-
-	const isEnrollmentPhase = phase === "enrollment";
 
 	return (
 		<Form {...form}>

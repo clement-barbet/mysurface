@@ -18,7 +18,7 @@ import Link from "next/link";
 function TableParticipants({
 	participants: initialParticipants,
 	questionnaires,
-	phase,
+	isEnrollmentPhase,
 }) {
 	const headers_T = [
 		"participants.table.headers.name",
@@ -78,8 +78,6 @@ function TableParticipants({
 			</div>
 		);
 	};
-
-	const isEnrollmentPhase = phase === "enrollment";
 
 	return (
 		<div className="rounded-md border overflow-auto w-full hidden md:block">

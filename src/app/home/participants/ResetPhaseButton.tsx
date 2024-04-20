@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import T from "@/components/translations/translation";
 import { resetPhase } from "./resetPhase";
 
-const ResetPhaseButton = ({ phase }: { phase: string }) => {
+const ResetPhaseButton = ({ isEnrollmentPhase }: { isEnrollmentPhase: boolean }) => {
 	const handleClick = async () => {
 		const { updateError, deleteError } = await resetPhase();
 		if (!updateError && !deleteError) {
@@ -13,7 +13,7 @@ const ResetPhaseButton = ({ phase }: { phase: string }) => {
 		}
 	};
 
-	if (phase !== "questionnaire") {
+	if (isEnrollmentPhase) {
 		return null;
 	}
 
