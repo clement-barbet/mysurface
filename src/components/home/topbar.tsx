@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { ErrorMessage } from "@/components/ui/msg/error_msg";
 import { DarkModeButton } from "@/components/home/dark_mode_btn";
@@ -17,6 +17,22 @@ export default function TopBar() {
 	const supabase = createClientComponentClient();
 	const { t } = useTranslation();
 	const [email, setEmail] = useState("");
+	const menuRef = useRef(null);
+
+	useEffect(() => {
+		function handleClickOutside(event) {
+			if (menuRef.current && !menuRef.current.contains(event.target)) {
+				setIsOpen(false);
+			}
+		}
+
+		// Bind the event listener
+		document.addEventListener("mousedown", handleClickOutside);
+		return () => {
+			// Unbind the event listener on clean up
+			document.removeEventListener("mousedown", handleClickOutside);
+		};
+	}, [menuRef]);
 
 	useEffect(() => {
 		const fetchUser = async () => {
@@ -79,6 +95,7 @@ export default function TopBar() {
 
 					{isOpen && (
 						<div
+							ref={menuRef}
 							className="absolute right-0 top-10 w-40 bg-white dark:bg-dark_blue rounded-lg shadow-lg mt-2 overflow-hidden"
 							style={{ zIndex: 101 }}
 						>
