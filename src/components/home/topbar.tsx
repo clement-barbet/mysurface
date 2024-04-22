@@ -18,21 +18,26 @@ export default function TopBar() {
 	const { t } = useTranslation();
 	const [email, setEmail] = useState("");
 	const menuRef = useRef(null);
+	const divRef = useRef(null);
+	const [isOpen, setIsOpen] = useState(false);
 
 	useEffect(() => {
 		function handleClickOutside(event) {
-			if (menuRef.current && !menuRef.current.contains(event.target)) {
+			if (
+				isOpen &&
+				menuRef.current &&
+				!menuRef.current.contains(event.target) &&
+				!divRef.current.contains(event.target)
+			) {
 				setIsOpen(false);
 			}
 		}
 
-		// Bind the event listener
 		document.addEventListener("mousedown", handleClickOutside);
 		return () => {
-			// Unbind the event listener on clean up
 			document.removeEventListener("mousedown", handleClickOutside);
 		};
-	}, [menuRef]);
+	}, [menuRef, isOpen]);
 
 	useEffect(() => {
 		const fetchUser = async () => {
@@ -55,9 +60,9 @@ export default function TopBar() {
 		}
 	};
 
-	const [isOpen, setIsOpen] = useState(false);
-	const handleDivClick = () => {
-		setIsOpen(!isOpen);
+	const handleDivClick = (event) => {
+		event.stopPropagation();
+		setIsOpen((prevIsOpen) => !prevIsOpen);
 	};
 
 	return (
@@ -87,6 +92,7 @@ export default function TopBar() {
 				<div
 					className="relative flex justify-center items-center gap-x-3 cursor-pointer md:ml-auto"
 					onClick={handleDivClick}
+					ref={divRef}
 				>
 					<div className="flex items-center justify-center w-8 h-8 border-2 rounded-full border-dark_blue p-2 bg-mid_blue drop-shadow-md hover:bg-dark_blue transition-all duration-200 ease-linear">
 						<FaUser className="w-5 h-5 text-light_gray" />
