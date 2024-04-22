@@ -106,14 +106,26 @@
 	},
 	"account": {
 		"password": {
-			"title": "Změnit Heslo",
+			"title": "Obnovit Heslo",
 			"labels": {
-				"new": "Nové Heslo"
+				"new": "Nové Heslo",
+				"confirm": "Potvrdit Heslo"
 			},
 			"placeholders": {
-				"new": "Vaše Nové Heslo"
+				"new": "Vaše Nové Heslo",
+				"confirm": "Potvrďte Své Nové Heslo"
 			},
-			"button": "ZMĚNIT HESLO"
+			"button": "OBNOVIT HESLO"
+		},
+		"organization": {
+			"title": "Změnit Organizaci",
+			"label": "Vyberte Svou Organizaci",
+			"options": {
+				"company": "Společnost",
+				"school": "Škola",
+				"city": "Město"
+			},
+			"button": "ZMĚNIT ORGANIZACI"
 		}
 	},
 	"results": {
@@ -148,7 +160,7 @@
 			"labels": {
 				"email": "E-mail",
 				"password": "Heslo",
-				"confirm": "Potvrdit heslo"
+				"confirm": "Potvrdit Heslo"
 			},
 			"placeholders": {
 				"email": "Váš e-mail",

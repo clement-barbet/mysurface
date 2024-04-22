@@ -19,6 +19,8 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from "next/navigation";
+import T from "@/components/translations/translation";
+import { useTranslation } from "react-i18next";
 
 const formSchema = z.object({
 	newPassword: z.string(),
@@ -30,6 +32,7 @@ export default function ResetPasswordForm() {
 	const supabase = createClientComponentClient();
 	const [successMessage, setSuccessMessage] = useState("");
 	const [errorMessage, setErrorMessage] = useState("");
+	const { t } = useTranslation();
 
 	const handleChangePassword = async (data: z.infer<typeof formSchema>) => {
 		const { newPassword, confirmPassword } = data;
@@ -81,7 +84,9 @@ export default function ResetPasswordForm() {
 				setSuccessMessage={setSuccessMessage}
 			/>
 			<div>
-				<h2 className="pb-5 text-xl">Reset Password</h2>
+				<h2 className="pb-5 text-xl">
+					<T tkey="account.password.title" />
+				</h2>
 				<Form {...form}>
 					<form
 						onSubmit={form.handleSubmit(handleChangePassword)}
@@ -93,14 +98,16 @@ export default function ResetPasswordForm() {
 							render={({ field }) => (
 								<FormItem>
 									<FormLabel htmlFor="newPassword">
-										New Password
+										<T tkey="account.password.labels.new" />
 									</FormLabel>
 									<FormControl>
 										<div className="relative">
 											<Input
 												id="newPassword"
 												type={passwordType}
-												placeholder="Your New Password"
+												placeholder={t(
+													"account.password.placeholders.new"
+												)}
 												className=" dark:bg-mid_blue"
 												{...field}
 											/>
@@ -133,14 +140,16 @@ export default function ResetPasswordForm() {
 							render={({ field }) => (
 								<FormItem>
 									<FormLabel htmlFor="confirmPassword">
-										New Password
+										<T tkey="account.password.labels.confirm" />
 									</FormLabel>
 									<FormControl>
 										<div className="relative">
 											<Input
 												id="confirmPassword"
 												type={passwordType}
-												placeholder="Confirm Your New Password"
+												placeholder={t(
+													"account.password.placeholders.confirm"
+												)}
 												className=" dark:bg-mid_blue"
 												{...field}
 											/>
@@ -168,7 +177,7 @@ export default function ResetPasswordForm() {
 							)}
 						/>
 						<Button type="submit" variant="login">
-							RESET PASSWORD
+							<T tkey="account.password.button" />
 						</Button>
 					</form>
 				</Form>

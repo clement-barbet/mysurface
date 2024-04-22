@@ -106,14 +106,26 @@
 	},
 	"account": {
 		"password": {
-			"title": "Change Password",
+			"title": "Reset Password",
 			"labels": {
-				"new": "New Password"
+				"new": "New Password",
+				"confirm": "Confirm Password"
 			},
 			"placeholders": {
-				"new": "Your New Password"
+				"new": "Your New Password",
+				"confirm": "Confirm Your New Password"
 			},
-			"button": "CHANGE PASSWORD"
+			"button": "RESET PASSWORD"
+		},
+		"organization": {
+			"title": "Change Organization",
+			"label": "Select Your Organization",
+			"options": {
+				"company": "Company",
+				"school": "School",
+				"city": "City"
+			},
+			"button": "CHANGE ORGANIZATION"
 		}
 	},
 	"results": {
@@ -168,7 +180,7 @@
 	"forgotpassword": {
 		"title": "Reset your password",
 		"form": {
-			"label" : "Email",
+			"label": "Email",
 			"placeholder": "Your email",
 			"button": "SEND RESET EMAIL"
 		}

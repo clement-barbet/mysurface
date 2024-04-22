@@ -106,14 +106,26 @@
 	},
 	"account": {
 		"password": {
-			"title": "Cambiar Contraseña",
+			"title": "Restablecer Contraseña",
 			"labels": {
-				"new": "Nueva Contraseña"
+				"new": "Nueva Contraseña",
+				"confirm": "Confirmar Contraseña"
 			},
 			"placeholders": {
-				"new": "Tu Nueva Contraseña"
+				"new": "Tu Nueva Contraseña",
+				"confirm": "Confirma Tu Nueva Contraseña"
 			},
-			"button": "CAMBIAR CONTRASEÑA"
+			"button": "RESTABLECER CONTRASEÑA"
+		},		
+		"organization": {
+			"title": "Cambiar Organización",
+			"label": "Selecciona Tu Organización",
+			"options": {
+				"company": "Empresa",
+				"school": "Escuela",
+				"city": "Ciudad"
+			},
+			"button": "CAMBIAR ORGANIZACIÓN"
 		}
 	},
 	"results": {
@@ -146,7 +158,7 @@
 		"title": "¡Comencemos!",
 		"form": {
 			"labels": {
-				"email": "Correo electrónico",
+				"email": "Correo Electrónico",
 				"password": "Contraseña",
 				"confirm": "Confirmación de Contraseña"
 			},

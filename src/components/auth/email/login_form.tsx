@@ -25,7 +25,6 @@ import { useTranslation } from "react-i18next";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-//import { serialize } from "cookie";
 
 const formSchema = z.object({
 	email: z.string().email(),
@@ -90,11 +89,11 @@ export default function LoginForm() {
 			)}
 			<FormBg />
 			<div className="relative md:absolute top-0 left-0 right-0 flex md:flex-row flex-col items-center justify-center md:h-screen">
-				<div className="md:rounded-2xl w-full md:w-4/5 flex flex-col md:flex-row md:drop-shadow-xl md:h-4/5 md:overflow-hidden hover:drop-shadow-2xl transition-all duration-200 ease-linear">
+				<div className="md:rounded-2xl w-full md:w-4/5 flex flex-col md:flex-row md:drop-shadow-xl md:overflow-hidden hover:drop-shadow-2xl transition-all duration-200 ease-linear">
 					<LeftSideLogin />
-					<div className="bg-mid_gray w-full md:w-1/2 h-full flex flex-column items-center justify-center py-10 md:py-0">
+					<div className="bg-mid_gray w-full md:w-1/2 min-content flex flex-column items-center justify-center py-10 md:py-10">
 						<div className="rounded-lg font-glory w-4/5 lg:w-3/5">
-							<h2 className="text-4xl pb-4 h-[56px]" id="welcome">
+							<h2 className="text-4xl pb-4" id="welcome">
 								<T tkey="login.title" />
 							</h2>
 							<Form {...form}>

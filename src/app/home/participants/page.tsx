@@ -49,7 +49,11 @@ export default function Page() {
 	const fetchQuestionnaires = async () => {
 		try {
 			const questionnaireIds = participants
-				.filter((p) => p.questionnaire !== null)
+				.filter(
+					(p) =>
+						p.questionnaire !== null &&
+						p.questionnaire !== undefined
+				)
 				.map((p) => p.questionnaire);
 			const { data, error } = await supabase
 				.from("questionnaires")

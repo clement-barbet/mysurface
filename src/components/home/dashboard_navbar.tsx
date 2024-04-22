@@ -9,15 +9,34 @@ import { AiOutlineQuestion } from "react-icons/ai";
 import { BsArrowRightCircleFill, BsArrowLeftCircleFill } from "react-icons/bs";
 import { BiTrendingUp } from "react-icons/bi";
 import { TbVectorTriangle } from "react-icons/tb";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import T from "@/components/translations/translation";
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 
 export default function DashboardNavbar() {
 	const pathname = usePathname();
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false);
 	const { i18n } = useTranslation();
+	const supabase = createClientComponentClient();
+	const [languages, setLanguages] = useState([]);
+
+	useEffect(() => {
+		const fetchLanguages = async () => {
+			const { data, error } = await supabase
+				.from("languages")
+				.select("*");
+
+			if (error) {
+				console.error("Error fetching languages:", error);
+			} else {
+				setLanguages(data);
+			}
+		};
+
+		fetchLanguages();
+	}, []);
 
 	const handleLinkClick = () => {
 		setIsMenuOpen(false);
@@ -163,36 +182,42 @@ export default function DashboardNavbar() {
 				>
 					{isLanguageMenuOpen && (
 						<ul className="mb-2 ms-8">
-							<li
-								onClick={() => {
-									i18n.changeLanguage("cs");
-									localStorage.setItem("i18nextLng", "cs");
-									handleLinkClick();
-								}}
-								className="hover:font-semibold cursor-pointer transition-all duration-200 ease-linear"
-							>
-								Česky
-							</li>
-							<li
-								onClick={() => {
-									i18n.changeLanguage("en");
-									localStorage.setItem("i18nextLng", "en");
-									handleLinkClick();
-								}}
-								className="hover:font-semibold cursor-pointer transition-all duration-200 ease-linear"
-							>
-								English
-							</li>
-							<li
-								onClick={() => {
-									i18n.changeLanguage("es");
-									localStorage.setItem("i18nextLng", "es");
-									handleLinkClick();
-								}}
-								className="hover:font-semibold cursor-pointer transition-all duration-200 ease-linear"
-							>
-								Español
-							</li>
+							{languages.map((language) => (
+								<li
+									key={language.id}
+									onClick={() => {
+										const changeLanguage = async () => {
+											i18n.changeLanguage(language.code);
+											localStorage.setItem(
+												"i18nextLng",
+												language.code
+											);
+											handleLinkClick();
+
+											const user = await supabase.auth.getUser();
+
+											const { error } = await supabase
+												.from("app_settings")
+												.update({
+													language_id: language.id,
+												})
+												.eq("user_id", user.data.user.id);
+
+											if (error) {
+												console.error(
+													"Error updating language:",
+													error
+												);
+											}
+										};
+
+										changeLanguage();
+									}}
+									className="hover:font-semibold cursor-pointer transition-all duration-200 ease-linear"
+								>
+									{language.name}
+								</li>
+							))}
 						</ul>
 					)}
 					<span className="hover:font-bold hover:cursor-pointer transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase">
