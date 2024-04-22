@@ -208,10 +208,6 @@ export default function DashboardNavbar() {
 									onClick={() => {
 										const changeLanguage = async () => {
 											i18n.changeLanguage(language.code);
-											localStorage.setItem(
-												"i18nextLng",
-												language.code
-											);
 											handleLinkClick();
 
 											const user =

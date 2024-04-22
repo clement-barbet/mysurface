@@ -32,6 +32,7 @@ const formSchema = z.object({
 });
 
 export default function LoginForm() {
+	const { i18n } = useTranslation();
 	const { t } = useTranslation();
 	const [errorMessage, setErrorMessage] = useState<string | undefined>(
 		undefined
@@ -74,7 +75,29 @@ export default function LoginForm() {
 			setErrorMessage(response.error?.message);
 			return;
 		} else {
-			console.log(response);
+			const { data: settings, error: settingsError } = await supabase
+				.from("app_settings")
+				.select("language_id")
+				.single();
+
+			if (settingsError) {
+				console.error("Error fetching user language:", settingsError);
+			} else if (settings) {
+				const { data: language, error: languageError } = await supabase
+					.from("languages")
+					.select("code")
+					.eq("id", settings.language_id)
+					.single();
+
+				if (languageError) {
+					console.error(
+						"Error fetching language code:",
+						languageError
+					);
+				} else if (language) {
+					i18n.changeLanguage(language.code);
+				}
+			}
 			return router.push("/home");
 		}
 	}

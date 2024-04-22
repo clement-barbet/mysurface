@@ -33,7 +33,6 @@ const LeftSideLogin = () => {
 						key={language.id}
 						onClick={() => {
 							i18n.changeLanguage(language.code);
-							localStorage.setItem("i18nextLng", language.code);
 						}}
 						className="hover:font-semibold cursor-pointer transition-all duration-200 ease-linear mx-2"
 					>
