@@ -8,10 +8,10 @@ export default function Home() {
 			<div className="flex flex-col md:flex-row md:gap-x-2 gap-y-2">
 				<div className="h-auto w-full flex flex-col shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
 					<div className="px-10 py-5">
-						<h2 className="font-bold text-lg">
+						<h2 className="font-bold text-xl md:text-lg">
 							<T tkey="home.guide.admin.title" />
 						</h2>
-						<p className="text-gray-600 dark:text-gray-400">
+						<p className="text-gray-600 dark:text-gray-400 text-lg md:text-base">
 							<T tkey="home.guide.admin.subtitle" />
 						</p>
 						<ol className="text-gray-600 dark:text-gray-400 list-inside py-4">
@@ -68,10 +68,10 @@ export default function Home() {
 				</div>
 				<div className="h-auto w-full flex flex-col shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
 					<div className="px-10 py-5">
-						<h2 className="font-bold text-lg">
+						<h2 className="font-bold text-xl md:text-lg">
 							<T tkey="home.guide.user.title" />
 						</h2>
-						<p className="text-gray-600 dark:text-gray-400">
+						<p className="text-gray-600 dark:text-gray-400 text-lg md:text-base">
 							<T tkey="home.guide.user.subtitle" />
 						</p>
 						<ol className="text-gray-600 dark:text-gray-400 list-inside py-4">
@@ -106,8 +106,8 @@ export default function Home() {
 			<div className="h-auto w-full flex flex-col shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
 				<div className="px-10 py-5">
 					<div className="mb-2">
-						<h2 className="font-bold text-lg"><T tkey="home.updates.title"/></h2>
-						<p className="text-gray-600 dark:text-gray-400">
+						<h2 className="font-bold text-xl md:text-lg"><T tkey="home.updates.title"/></h2>
+						<p className="text-gray-600 dark:text-gray-400 text-lg md:text-base">
 							<T tkey="home.updates.subtitle"/>
 						</p>
 					</div>

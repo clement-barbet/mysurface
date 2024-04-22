@@ -37,9 +37,9 @@ const Notification = ({ type, name }) => {
 			<div className={`border-2 border-gray-200 shadow-sm dark:opacity-80 rounded-full min-w-10 min-h-10 flex items-center justify-center bg-gradient-to-br ${gradient}`}>
 				{icon}
 			</div>
-			<div className='md:text-base text-sm'>
-				<h3 className="font-semibold">{title}</h3>
-				<p>{message}</p>
+			<div>
+				<h3 className="font-semibold md:text-base text-lg">{title}</h3>
+				<p className='md:text-sm text-base"'>{message}</p>
 			</div>
 			<button 
 				onClick={() => setIsVisible(false)} 

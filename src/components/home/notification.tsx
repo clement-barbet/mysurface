@@ -31,9 +31,9 @@ const Notification = ({ type, msg, link }) => {
 			<div className={`border-2 border-gray-200 shadow-sm dark:opacity-80 rounded-full min-w-10 min-h-10 flex items-center justify-center bg-gradient-to-br ${gradient}`}>
 				{icon}
 			</div>
-			<div className='md:text-base text-sm'>
-				<h3 className="font-semibold">{title}</h3>
-				<p>{message} <i>(Check <a className='text-blue-500 font-semibold' href={link}>HERE</a>)</i></p>
+			<div>
+				<h3 className="font-semibold md:text-base text-lg">{title}</h3>
+				<p className='md:text-sm text-base'>{message} <i>(Check <a className=' text-blue-500 font-semibold' href={link}>HERE</a>)</i></p>
 			</div>
 			<button 
 				onClick={() => setIsVisible(false)} 

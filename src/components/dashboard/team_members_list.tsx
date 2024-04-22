@@ -51,10 +51,10 @@ export default function TeamMembersList() {
 									/>
 								</div>
 							</td>
-							<td className="p-2 font-bold">
+							<td className="p-2 font-bold text-lg md:text-base">
 								{participant.name}
 							</td>
-							<td className="p-2">{participant.email}</td>
+							<td className="p-2 text-lg md:text-base">{participant.email}</td>
 						</tr>
 					))}
 				</tbody>
