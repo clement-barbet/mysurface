@@ -21,6 +21,7 @@ export default function DashboardNavbar() {
 	const { i18n } = useTranslation();
 	const supabase = createClientComponentClient();
 	const [languages, setLanguages] = useState([]);
+	const [isAdmin, setIsAdmin] = useState(false);
 
 	useEffect(() => {
 		const fetchLanguages = async () => {
@@ -37,6 +38,25 @@ export default function DashboardNavbar() {
 
 		fetchLanguages();
 	}, []);
+/*
+	hide or show admin link based on user role
+	useEffect(() => {
+		const fetchSettings = async () => {
+			const { data, error } = await supabase
+				.from("app_settings")
+				.select("isAdmin")
+				.single();
+
+			if (error) {
+				console.error("Error fetching settings:", error);
+			} else {
+				setIsAdmin(data.isAdmin);
+			}
+		};
+
+		fetchSettings();
+	}, []);
+	*/
 
 	const handleLinkClick = () => {
 		setIsMenuOpen(false);
@@ -194,14 +214,18 @@ export default function DashboardNavbar() {
 											);
 											handleLinkClick();
 
-											const user = await supabase.auth.getUser();
+											const user =
+												await supabase.auth.getUser();
 
 											const { error } = await supabase
 												.from("app_settings")
 												.update({
 													language_id: language.id,
 												})
-												.eq("user_id", user.data.user.id);
+												.eq(
+													"user_id",
+													user.data.user.id
+												);
 
 											if (error) {
 												console.error(

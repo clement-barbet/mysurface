@@ -10,10 +10,6 @@ const config = {
 	],
 	prefix: "",
 	theme: {
-		fontSize: {
-			base: "1.2rem",
-			md: "1rem",
-		},
 		container: {
 			center: true,
 			padding: "2rem",
