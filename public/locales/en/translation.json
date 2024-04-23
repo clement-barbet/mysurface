@@ -201,6 +201,12 @@
 		"search": "Search",
 		"account": "My account",
 		"team": "My team",
-		"logout": "Log out"
+		"logout": "Log out",
+		"selected": "Selected organization",
+		"organizations": {
+			"company": "Company",
+			"school": "School",
+			"city": "City"
+		}
 	}
 }

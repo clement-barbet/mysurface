@@ -7,7 +7,7 @@ import { IoPeople } from "react-icons/io5";
 import { FaUser } from "react-icons/fa6";
 import { IoMdSettings } from "react-icons/io";
 import { IoMdLogOut } from "react-icons/io";
-import { FaMagnifyingGlass } from "react-icons/fa6";
+import { FaArrowRight } from "react-icons/fa";
 import Link from "next/link";
 import T from "@/components/translations/translation";
 import { useTranslation } from "react-i18next";
@@ -17,6 +17,7 @@ export default function TopBar() {
 	const supabase = createClientComponentClient();
 	const { t } = useTranslation();
 	const [email, setEmail] = useState("");
+	const [organization, setOrganization] = useState("");
 	const menuRef = useRef(null);
 	const divRef = useRef(null);
 	const [isOpen, setIsOpen] = useState(false);
@@ -53,6 +54,31 @@ export default function TopBar() {
 		fetchUser();
 	}, []);
 
+	useEffect(() => {
+		const fetchOrganization = async () => {
+			const { data: appSettings, error } = await supabase
+				.from("app_settings")
+				.select("organization_id")
+				.single();
+
+			if (appSettings) {
+				if (appSettings.organization_id === 1) {
+					setOrganization("topbar.organizations.company");
+				} else if (appSettings.organization_id === 2) {
+					setOrganization("topbar.organizations.school");
+				} else if (appSettings.organization_id === 3) {
+					setOrganization("topbar.organizations.city");
+				}
+			} else if (error) {
+				setErrorMessage(
+					"No organization found: Please contact support."
+				);
+			}
+		};
+
+		fetchOrganization();
+	}, []);
+
 	const handleLogout = async () => {
 		const { error } = await supabase.auth.signOut();
 		if (error) {
@@ -77,20 +103,22 @@ export default function TopBar() {
 				className="fixed right-0 left-0 md:left-48 w-auto dark:bg-black dark:bg-opacity-50 bg-light_gray bg-opacity-80 md:bg-white dark:md:bg-mid_blue text-dark_blue dark:text-light_gray md:ps-4 md:pe-8 ps-14 pe-4 h-10 flex items-center justify-between drop-shadow-sm rounded-br-2xl"
 				style={{ zIndex: 100 }}
 			>
-				<div className="md:mr-14">
+				<div className="md:w-1/4">
 					<DarkModeButton />
 				</div>
-				<div className="hidden md:flex justify-center items-center gap-x-3">
-					<FaMagnifyingGlass className="w-5 h-5" />
-					{/* TODO - Develop search functionality */}
-					<input
-						type="text"
-						className="w-64 bg-transparent border-none focus:border-none focus:outline-none"
-						placeholder={t("topbar.search")}
-					/>
+				<div className="hidden md:block md:w-2/4 text-center">
+					<p>
+						<T tkey="topbar.selected" />
+						<FaArrowRight className="inline-block mx-2 w-4 h-4 pb-1" />
+						<Link href="/home/account">
+							<span className="uppercase text-blue-500 hover:text-blue-700 font-semibold transition-color duration-200 ease-linear">
+								<T tkey={organization} />
+							</span>
+						</Link>
+					</p>
 				</div>
 				<div
-					className="relative flex justify-center items-center gap-x-3 cursor-pointer md:ml-auto"
+					className="relative flex justify-end items-center gap-x-3 cursor-pointer md:w-1/4"
 					onClick={handleDivClick}
 					ref={divRef}
 				>
@@ -102,7 +130,7 @@ export default function TopBar() {
 					{isOpen && (
 						<div
 							ref={menuRef}
-							className="absolute right-0 top-10 w-40 bg-white dark:bg-dark_blue rounded-lg shadow-lg mt-2 overflow-hidden"
+							className="absolute right-[-10px] top-10 w-40 bg-white dark:bg-dark_blue rounded-lg shadow-lg mt-2 overflow-hidden"
 							style={{ zIndex: 101 }}
 						>
 							<Link href="/home/account">

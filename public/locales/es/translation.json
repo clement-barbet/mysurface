@@ -201,6 +201,12 @@
 		"search": "Buscar",
 		"account": "Mi cuenta",
 		"team": "Mi equipo",
-		"logout": "Cerrar sesión"
+		"logout": "Cerrar sesión",
+		"selected": "Organización seleccionada",
+		"organizations": {
+			"company": "Empresa",
+			"school": "Escuela",
+			"city": "Ciudad"
+		}
 	}
 }

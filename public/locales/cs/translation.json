@@ -201,6 +201,12 @@
 		"search": "Hledat",
 		"account": "Můj účet",
 		"team": "Moje týmy",
-		"logout": "Odhlásit se"
+		"logout": "Odhlásit se",
+		"selected": "Vybraná organizace",
+		"organizations": {
+			"company": "Společnost",
+			"school": "Škola",
+			"city": "Město"
+		}
 	}
 }
