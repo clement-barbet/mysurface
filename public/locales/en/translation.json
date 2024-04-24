@@ -177,12 +177,14 @@
 			"labels": {
 				"email": "Email",
 				"password": "Password",
-				"confirm": "Confirm Password"
+				"confirm": "Confirm Password",
+				"code": "Registration Code"
 			},
 			"placeholders": {
 				"email": "Your email",
 				"password": "Your password",
-				"confirm": "Confirm your password"
+				"confirm": "Confirm your password",
+				"code": "Enter the registration code"
 			},
 			"buttons": {
 				"login": "LOG IN",
