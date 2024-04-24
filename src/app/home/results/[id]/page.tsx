@@ -44,7 +44,6 @@ export default async function ResultPage({
     );
     const sum = list.reduce((acc, curr) => acc + curr.influenceGrade, 0);
     const length = list.length;
-    console.log(sum / length);
 
     return {
       id: name,
