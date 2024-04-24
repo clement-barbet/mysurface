@@ -21,6 +21,11 @@ export default async function QuestionnairePage({
 		console.error("Error fetching questionnaire:", questionnaireError);
 		notFound();
 	}
+	
+	if (questionnaire.completed) {
+		console.error("Questionnaire already completed");
+		notFound();
+	}
 
 	const { data: participants, error: participantsError } = await supabase
 		.from("participants")

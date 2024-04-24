@@ -5,6 +5,7 @@ import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useState } from "react";
 import QuestionComponent from "./QuestionComponent";
 import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 
 interface Participant {
 	id: string;
@@ -42,6 +43,7 @@ export default function QuestionnaireForm({
 	}>({});
 	const [currentParticipantIndex, setCurrentParticipantIndex] = useState(0);
 	const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+	const router = useRouter();
 
 	const handleAnswer = (
 		participantId: string,
@@ -110,8 +112,7 @@ export default function QuestionnaireForm({
 		if (updateError) {
 			console.error("Error updating questionnaire:", updateError);
 		} else {
-			// Questionnaire updated successfully
-			// You can perform any additional actions or show a success message
+			return router.push("/thank-you");
 		}
 	};
 

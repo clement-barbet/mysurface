@@ -225,5 +225,9 @@
 			"school": "Escuela",
 			"city": "Ciudad"
 		}
-	}
+	},
+	"thankyou": {
+		"title": "¡Gracias por completar el cuestionario!",
+		"text": "Tus respuestas han sido enviadas al administrador."
+	}	
 }

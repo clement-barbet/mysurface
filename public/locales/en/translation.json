@@ -227,5 +227,9 @@
 			"school": "School",
 			"city": "City"
 		}
+	},
+	"thankyou": {
+		"title": "Thank you for filling out the questionnaire!",
+		"text": "Your answers have been sent to the administrator."
 	}
 }

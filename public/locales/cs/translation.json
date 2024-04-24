@@ -225,5 +225,9 @@
 			"school": "Škola",
 			"city": "Město"
 		}
-	}
+	},
+	"thankyou": {
+		"title": "Děkujeme vám za vyplnění dotazníku!",
+		"text": "Vaše odpovědi byly odeslány administrátorovi."
+	}	
 }
