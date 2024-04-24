@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createMiddlewareClient } from "@supabase/auth-helpers-nextjs";
 
+//TODO: Control routes based on roles of database.
 export async function middleware(req: NextRequest) {
 	const res = NextResponse.next();
 

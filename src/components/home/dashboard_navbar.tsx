@@ -21,7 +21,7 @@ export default function DashboardNavbar() {
 	const { i18n } = useTranslation();
 	const supabase = createClientComponentClient();
 	const [languages, setLanguages] = useState([]);
-	const [isAdmin, setIsAdmin] = useState(false);
+	const [isSuperAdmin, setIsSuperAdmin] = useState(false);
 
 	useEffect(() => {
 		const fetchLanguages = async () => {
@@ -38,25 +38,23 @@ export default function DashboardNavbar() {
 
 		fetchLanguages();
 	}, []);
-/*
-	hide or show admin link based on user role
+
 	useEffect(() => {
 		const fetchSettings = async () => {
 			const { data, error } = await supabase
 				.from("app_settings")
-				.select("isAdmin")
+				.select("isSuperAdmin")
 				.single();
 
 			if (error) {
 				console.error("Error fetching settings:", error);
 			} else {
-				setIsAdmin(data.isAdmin);
+				setIsSuperAdmin(data.isSuperAdmin);
 			}
 		};
 
 		fetchSettings();
 	}, []);
-	*/
 
 	const handleLinkClick = () => {
 		setIsMenuOpen(false);
@@ -151,36 +149,40 @@ export default function DashboardNavbar() {
 						<T tkey="navbar.results" />
 					</Link>
 				</li>
-				<li
-					className={clsx("py-4 px-4 tracking-wider", {
-						"border-l-4 border-light_gray":
-							pathname === "/home/models",
-					})}
-				>
-					<Link
-						onClick={handleLinkClick}
-						href="/home/models"
-						className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase"
-					>
-						<TbVectorTriangle className="h-6 w-6" />
-						<T tkey="navbar.models" />
-					</Link>
-				</li>
-				<li
-					className={clsx("py-4 px-4 tracking-wider", {
-						"border-l-4 border-light_gray":
-							pathname === "/home/patterns",
-					})}
-				>
-					<Link
-						onClick={handleLinkClick}
-						href="/home/patterns"
-						className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase"
-					>
-						<BiTrendingUp className="h-6 w-6" />
-						<T tkey="navbar.patterns" />
-					</Link>
-				</li>
+				{isSuperAdmin ? (
+					<>
+						<li
+							className={clsx("py-4 px-4 tracking-wider", {
+								"border-l-4 border-light_gray":
+									pathname === "/home/models",
+							})}
+						>
+							<Link
+								onClick={handleLinkClick}
+								href="/home/models"
+								className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase"
+							>
+								<TbVectorTriangle className="h-6 w-6" />
+								<T tkey="navbar.models" />
+							</Link>
+						</li>
+						<li
+							className={clsx("py-4 px-4 tracking-wider", {
+								"border-l-4 border-light_gray":
+									pathname === "/home/patterns",
+							})}
+						>
+							<Link
+								onClick={handleLinkClick}
+								href="/home/patterns"
+								className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase"
+							>
+								<BiTrendingUp className="h-6 w-6" />
+								<T tkey="navbar.patterns" />
+							</Link>
+						</li>
+					</>
+				) : null}
 				<li
 					className={clsx("py-4 px-4 tracking-wider", {
 						"border-l-4 border-light_gray":
