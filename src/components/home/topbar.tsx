@@ -108,7 +108,7 @@ export default function TopBar() {
 				</div>
 				<div className="hidden md:block md:w-2/4 text-center">
 					<p>
-						<T tkey="topbar.selected" />
+						<T tkey="topbar.organization" />
 						<FaArrowRight className="inline-block mx-2 w-4 h-4 pb-1" />
 						<Link href="/home/account">
 							<span className="uppercase text-blue-500 hover:text-blue-700 font-semibold transition-color duration-200 ease-linear">

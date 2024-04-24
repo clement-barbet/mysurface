@@ -126,6 +126,23 @@
 				"city": "Město"
 			},
 			"button": "ZMĚNIT ORGANIZACI"
+		},
+		"language": {
+			"title": "Změnit Jazyk",
+			"label": "Vyberte Váš Jazyk",
+			"button": "ZMĚNIT JAZYK"
+		},
+		"name": {
+			"title": "Změnit Jméno a Název Organizace",
+			"labels": {
+				"name": "Jméno",
+				"organization": "Název Organizace"
+			},
+			"placeholders": {
+				"name": "Vaše Jméno",
+				"organization": "Název Vaší Organizace"
+			},
+			"button": "ZMĚNIT JMÉNO A NÁZEV ORGANIZACE"
 		}
 	},
 	"results": {
@@ -202,7 +219,7 @@
 		"account": "Můj účet",
 		"team": "Moje týmy",
 		"logout": "Odhlásit se",
-		"selected": "Vybraná organizace",
+		"organization": "Organizace",
 		"organizations": {
 			"company": "Společnost",
 			"school": "Škola",

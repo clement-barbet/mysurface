@@ -116,7 +116,7 @@
 				"confirm": "Confirma Tu Nueva Contraseña"
 			},
 			"button": "RESTABLECER CONTRASEÑA"
-		},		
+		},
 		"organization": {
 			"title": "Cambiar Organización",
 			"label": "Selecciona Tu Organización",
@@ -126,6 +126,23 @@
 				"city": "Ciudad"
 			},
 			"button": "CAMBIAR ORGANIZACIÓN"
+		},
+		"language": {
+			"title": "Cambiar Idioma",
+			"label": "Selecciona Tu Idioma",
+			"button": "CAMBIAR IDIOMA"
+		},
+		"name": {
+			"title": "Cambiar Nombre y Nombre de la Organización",
+			"labels": {
+				"name": "Nombre",
+				"organization": "Nombre de la Organización"
+			},
+			"placeholders": {
+				"name": "Tu Nombre",
+				"organization": "Nombre de tu Organización"
+			},
+			"button": "CAMBIAR NOMBRE Y NOMBRE DE LA ORGANIZACIÓN"
 		}
 	},
 	"results": {
@@ -202,7 +219,7 @@
 		"account": "Mi cuenta",
 		"team": "Mi equipo",
 		"logout": "Cerrar sesión",
-		"selected": "Organización seleccionada",
+		"organization": "Organización",
 		"organizations": {
 			"company": "Empresa",
 			"school": "Escuela",

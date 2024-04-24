@@ -126,6 +126,23 @@
 				"city": "City"
 			},
 			"button": "CHANGE ORGANIZATION"
+		},
+		"language": {
+			"title": "Change Language",
+			"label": "Select Your Language",
+			"button": "CHANGE LANGUAGE"
+		},
+		"name": {
+			"title": "Change Name and Organization's Name",
+			"labels": { 
+				"name": "Name",
+				"organization": "Organization's Name"
+			},
+			"placeholders": {
+				"name": "Your Name",
+				"organization": "Your Organization's Name"
+			},
+			"button": "CHANGE NAME AND ORGANIZATION'S NAME"
 		}
 	},
 	"results": {
@@ -202,7 +219,7 @@
 		"account": "My account",
 		"team": "My team",
 		"logout": "Log out",
-		"selected": "Selected organization",
+		"organization": "Organization",
 		"organizations": {
 			"company": "Company",
 			"school": "School",

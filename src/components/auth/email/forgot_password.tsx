@@ -41,7 +41,7 @@ export default function ForgotPassword() {
 	const handleResetPassword = async (values: z.infer<typeof formSchema>) => {
 		const { error: resetError } = await supabase.auth.resetPasswordForEmail(
 			values.email,
-			{ redirectTo: "https://mysurface-eight.vercel.app/reset-password" }
+			{ redirectTo: "https://mysurface-rho.vercel.app/reset-password" }
 		);
 
 		if (resetError) {

@@ -100,6 +100,8 @@ export default function RegisterForm() {
 
 		if (error) {
 			setErrorMessage("Error signing up. Please try again.");
+			console.log("Here is the error:", error)
+			console.log("Here is the error message:", error.message)
 		} else {
 			setSuccessMessage("Registration successful!");
 			console.log(data);

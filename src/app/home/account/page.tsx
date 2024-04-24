@@ -1,13 +1,25 @@
 import ResetPasswordFrom from "@/components/auth/email/reset_password";
 import ChangeOrganization from "@/components/account/change_organization";
+import ChangeLanguage from "@/components/account/change_language";
+import ChangeNames from "@/components/account/change_names";
 export default function Dashboard() {
 	return (
-		<div className="flex flex-col gap-y-2 lg:flex-row lg:gap-x-2">
-			<div className="w-full p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
-				<ResetPasswordFrom />
+		<div className="flex flex-col gap-y-2">
+			<div className="flex flex-col gap-y-2 lg:flex-row lg:gap-x-2">
+				<div className="w-full p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
+					<ResetPasswordFrom />
+				</div>
+				<div className="w-full p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
+					<ChangeNames />
+				</div>
 			</div>
-			<div className="w-full p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
-				<ChangeOrganization />
+			<div className="flex flex-col gap-y-2 lg:flex-row lg:gap-x-2">
+				<div className="w-full p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
+					<ChangeOrganization />
+				</div>
+				<div className="w-full p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
+					<ChangeLanguage />
+				</div>
 			</div>
 		</div>
 	);
