@@ -26,22 +26,34 @@ export default async function ResultPage({
 
   const parsedResult = JSON.parse(result.result);
 
+  const participantsNames = parsedResult.map(
+    (participants) => participants.participantName
+  );
+
+  const influenceGradeList = parsedResult
+    .flatMap((participants) => participants.data)
+    .map((data) => ({
+      participantId: data.participantId,
+      participantName: data.participantName,
+      influenceGrade: data.influenceGrade,
+    }));
+
+  const nodes = participantsNames.map((name) => {
+    const list = influenceGradeList.filter(
+      (influenceGradeEl) => influenceGradeEl.participantName === name
+    );
+    const sum = list.reduce((acc, curr) => acc + curr.influenceGrade, 0);
+    const length = list.length;
+
+    return {
+      id: name,
+      name: name,
+      val: sum / length,
+    };
+  });
+
   // Process the result data to generate nodes and links
-  const nodes = parsedResult.map((participant) => ({
-    id: participant.participantName,
-    name: participant.participantName,
-    val:
-      1 *
-      Math.log(
-        participant.data.reduce((sum, dataPoint) => {
-          const influenceRating =
-            dataPoint.answers.find((answer) =>
-              answer.questionText.includes("influence on you")
-            )?.rating || 0;
-          return sum + influenceRating;
-        }, 0)
-      ),
-  }));
+  // Process the result data to generate nodes and links
 
   const links = [];
   parsedResult.forEach((sourceParticipant) => {
@@ -51,28 +63,12 @@ export default async function ResultPage({
           participant.participantName === dataPoint.participantName
       );
       if (targetParticipant) {
-        const collaborationScore =
-          dataPoint.answers.find((answer) =>
-            answer.questionText.includes("collaborate with")
-          )?.rating || 0;
-
-        const oppositeCollaborationScore =
-          targetParticipant.data
-            .find(
-              (targetData) =>
-                targetData.participantName === sourceParticipant.participantName
-            )
-            ?.answers.find((answer) =>
-              answer.questionText.includes("collaborate with")
-            )?.rating || 0;
-
-        const linkScore = collaborationScore + oppositeCollaborationScore;
-
+        const linkScore = dataPoint.interactionGrade;
         if (linkScore > 0) {
           links.push({
             source: sourceParticipant.participantName,
             target: targetParticipant.participantName,
-            value: 4 * Math.log(linkScore),
+            value: linkScore,
           });
         }
       }
@@ -96,6 +92,7 @@ export default async function ResultPage({
     <div className="w-full">
       <h2 className="mb-2 hidden">Result: {params.id}</h2>
       <GraphTabs graphData={graphData} />
+      <GraphData graphData={graphData} />
       <pre className="hidden">{JSON.stringify(graphData, null, 2)}</pre>
     </div>
   );
