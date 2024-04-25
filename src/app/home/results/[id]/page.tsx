@@ -80,7 +80,8 @@ export default async function ResultPage({
   const minNodeValue = Math.min(...nodeValuesArray);
   const maxNodeValue = Math.max(...nodeValuesArray);
   nodes.forEach((node) => {
-    node.val = (node.val - minNodeValue) / (maxNodeValue - minNodeValue);
+    node.val =
+      (node.val - (minNodeValue - 0.1)) / (maxNodeValue - minNodeValue);
   });
 
   const graphData = {
