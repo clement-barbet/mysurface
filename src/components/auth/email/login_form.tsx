@@ -96,6 +96,7 @@ export default function LoginForm() {
 					);
 				} else if (language) {
 					i18n.changeLanguage(language.code);
+					localStorage.setItem("i18nextLng", language.code);
 				}
 			}
 			return router.push("/home");

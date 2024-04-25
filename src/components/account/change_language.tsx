@@ -102,6 +102,7 @@ export default function ChangeLanguage() {
 
 			if (selectedLanguage) {
 				i18n.changeLanguage(selectedLanguage.code);
+				localStorage.setItem("i18nextLng", selectedLanguage.code);
 			}
 		}
 	};
