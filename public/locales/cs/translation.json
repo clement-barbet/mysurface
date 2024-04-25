@@ -177,12 +177,14 @@
 			"labels": {
 				"email": "E-mail",
 				"password": "Heslo",
-				"confirm": "Potvrdit Heslo"
+				"confirm": "Potvrdit Heslo",
+				"code": "Registrační Kód"
 			},
 			"placeholders": {
 				"email": "Váš e-mail",
 				"password": "Vaše heslo",
-				"confirm": "Potvrďte své heslo"
+				"confirm": "Potvrďte své heslo",
+				"code": "Zadejte Registrační Kód"
 			},
 			"buttons": {
 				"login": "PŘIHLÁSIT SE",

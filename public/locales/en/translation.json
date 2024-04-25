@@ -184,7 +184,7 @@
 				"email": "Your email",
 				"password": "Your password",
 				"confirm": "Confirm your password",
-				"code": "Enter the registration code"
+				"code": "Enter your registration code"
 			},
 			"buttons": {
 				"login": "LOG IN",

@@ -177,12 +177,14 @@
 			"labels": {
 				"email": "Correo Electrónico",
 				"password": "Contraseña",
-				"confirm": "Confirmación de Contraseña"
+				"confirm": "Confirmación de Contraseña",
+				"code": "Código de Registro"
 			},
 			"placeholders": {
 				"email": "Tu correo electrónico",
 				"password": "Tu contraseña",
-				"confirm": "Confirma tu contraseña"
+				"confirm": "Confirma tu contraseña",
+				"code": "Introduce tu código de registro"
 			},
 			"buttons": {
 				"login": "INICIAR SESIÓN",
