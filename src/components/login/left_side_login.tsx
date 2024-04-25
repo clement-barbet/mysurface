@@ -1,5 +1,5 @@
 import React from "react";
-import T from "@/components/translations/translation";
+import TS from "@/components/translations/inside_tags/translation_safe";
 import { useTranslation } from "react-i18next";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useState, useEffect } from "react";
@@ -53,7 +53,7 @@ const LeftSideLogin = () => {
 				</h1>
 				<hr className="w-1/2 mx-auto mb-5 border-2 border-light_gray" />
 				<p className="text-light_gray font-glory text-center font-light text-xl w-4/5 lg:w-3/5 mx-auto">
-					<T tkey="login.slogan" />
+					<TS tkey="login.slogan" />
 				</p>
 			</div>
 		</div>

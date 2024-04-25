@@ -153,7 +153,7 @@
 		"nodata": "No results yet."
 	},
 	"login": {
-		"slogan": "Connect, Collaborate, Visualize: Your Team, Your Surface.",
+		"slogan": "Connect, Collaborate, Visualize:<br> Your Team, Your Surface.",
 		"title": "Welcome back!",
 		"form": {
 			"labels": {
@@ -231,5 +231,105 @@
 	"thankyou": {
 		"title": "Thank you for filling out the questionnaire!",
 		"text": "Your answers have been sent to the administrator."
+	},
+	"patterns": {
+		"p1": {
+			"title": "Pattern 1",
+			"subtitle": "Description of the pattern 1."
+		},
+		"p2": {
+			"title": "Pattern 2",
+			"subtitle": "Description of the pattern 2."
+		},
+		"p3": {
+			"title": "Pattern 3",
+			"subtitle": "Description of the pattern 3."
+		},
+		"p4": {
+			"title": "Pattern 4",
+			"subtitle": "Description of the pattern 4."
+		},
+		"p5": {
+			"title": "Pattern 5",
+			"subtitle": "Description of the pattern 5."
+		},
+		"p6": {
+			"title": "Pattern 6",
+			"subtitle": "Description of the pattern 6."
+		},
+		"p7": {
+			"title": "Pattern 7",
+			"subtitle": "Description of the pattern 7."
+		},
+		"p8": {
+			"title": "Pattern 8",
+			"subtitle": "Description of the pattern 8."
+		},
+		"p9": {
+			"title": "Pattern 9",
+			"subtitle": "Description of the pattern 9."
+		},
+		"p10": {
+			"title": "Pattern 10",
+			"subtitle": "Description of the pattern 10."
+		},
+		"p11": {
+			"title": "Pattern 11",
+			"subtitle": "Description of the pattern 11."
+		},
+		"p12": {
+			"title": "Pattern 12",
+			"subtitle": "Description of the pattern 12."
+		}
+	},
+	"models": {
+		"m1": {
+			"title": "Model 1",
+			"subtitle": "Description of the model 1."
+		},
+		"m2": {
+			"title": "Model 2",
+			"subtitle": "Description of the model 2."
+		},
+		"m3": {
+			"title": "Model 3",
+			"subtitle": "Description of the model 3."
+		},
+		"m4": {
+			"title": "Model 4",
+			"subtitle": "Description of the model 4."
+		},
+		"m5": {
+			"title": "Model 5",
+			"subtitle": "Description of the model 5."
+		},
+		"m6": {
+			"title": "Model 6",
+			"subtitle": "Description of the model 6."
+		},
+		"m7": {
+			"title": "Model 7",
+			"subtitle": "Description of the model 7."
+		},
+		"m8": {
+			"title": "Model 8",
+			"subtitle": "Description of the model 8."
+		},
+		"m9": {
+			"title": "Model 9",
+			"subtitle": "Description of the model 9."
+		},
+		"m10": {
+			"title": "Model 10",
+			"subtitle": "Description of the model 10."
+		},
+		"m11": {
+			"title": "Model 11",
+			"subtitle": "Description of the model 11."
+		},
+		"m12": {
+			"title": "Model 12",
+			"subtitle": "Description of the model 12."
+		}
 	}
 }

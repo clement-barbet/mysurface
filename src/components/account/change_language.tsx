@@ -118,7 +118,7 @@ export default function ChangeLanguage() {
 				setSuccessMessage={setSuccessMessage}
 			/>
 			<div>
-				<h2 className="pb-5 text-xl">
+				<h2 className="pb-5 text-xl font-semibold">
 					<T tkey="account.language.title" />
 				</h2>
 				<Form {...form}>

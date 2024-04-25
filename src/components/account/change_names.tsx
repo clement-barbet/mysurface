@@ -110,7 +110,7 @@ export default function ChangeNames() {
 				setSuccessMessage={setSuccessMessage}
 			/>
 			<div>
-				<h2 className="pb-5 text-xl">
+				<h2 className="pb-5 text-xl font-semibold">
 					<T tkey="account.name.title" />
 				</h2>
 				<Form {...form}>
