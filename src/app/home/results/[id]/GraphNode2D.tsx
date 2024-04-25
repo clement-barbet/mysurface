@@ -20,7 +20,7 @@ export default function GraphNode2D({ graphData }: GraphNode2DProps) {
 			const width =
 				window.innerWidth < 768
 					? window.innerWidth -20
-					: window.innerWidth - 210;
+					: window.innerWidth - 230;
 			setDimensions({
 				width,
 				height: window.innerHeight - 90,

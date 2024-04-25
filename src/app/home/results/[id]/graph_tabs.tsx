@@ -21,22 +21,22 @@ export default function GraphTabs({ graphData }: GraphTabsProps) {
 						tabIndex === 0 ? "font-semibold border-2" : ""
 					}`}
 				>
-					<T tkey="results.tabs.2d" />
+					<T tkey="results.tabs.3d" />
 				</Tab>
 				<Tab
 					className={`box-border hover:cursor-pointer mr-1 px-4 bg-white hover:bg-gray-100 rounded-t-lg border border-gray-400 text-gray-800 ${
 						tabIndex === 1 ? "font-semibold border-2" : ""
 					}`}
 				>
-					<T tkey="results.tabs.3d" />
+					<T tkey="results.tabs.2d" />
 				</Tab>
 			</TabList>
 
 			<TabPanel>
-				<GraphNode2D graphData={graphData} />
+				<GraphNode3D graphData={graphData} />
 			</TabPanel>
 			<TabPanel>
-				<GraphNode3D graphData={graphData} />
+				<GraphNode2D graphData={graphData} />
 			</TabPanel>
 		</Tabs>
 	);
