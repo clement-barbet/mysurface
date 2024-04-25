@@ -194,7 +194,7 @@ export default function Results() {
 							component="h2"
 							sx={{ mb: 2 }}
 						>
-							Update Report's Name
+							Update Report Name
 						</Typography>
 						<TextField
 							autoFocus

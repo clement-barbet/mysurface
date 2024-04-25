@@ -2,7 +2,7 @@ import ResetPasswordFrom from "@/components/auth/email/reset_password";
 import ChangeOrganization from "@/components/account/change_organization";
 import ChangeLanguage from "@/components/account/change_language";
 import ChangeNames from "@/components/account/change_names";
-export default function Dashboard() {
+export default function Account() {
 	return (
 		<div className="flex flex-col gap-y-2">
 			<div className="flex flex-col gap-y-2 lg:flex-row lg:gap-x-2">

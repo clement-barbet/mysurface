@@ -109,7 +109,7 @@ export default function RegisterForm() {
 			password: password,
 			options: {
 				emailRedirectTo:
-					"https://mysurface-rho.vercel.app/confirm-email",
+					"https://localhost:3000/my-info",
 			},
 		});
 
