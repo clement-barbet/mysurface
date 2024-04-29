@@ -187,6 +187,13 @@ export default function Results() {
 							</Table>
 							<div className="pt-4 flex flex-row gap-x-4 items-center justify-center">
 								<Button
+									onClick={() => setCurrentPage(1)}
+									disabled={currentPage === 1}
+									variant="delete"
+								>
+									First
+								</Button>
+								<Button
 									onClick={() =>
 										setCurrentPage(currentPage - 1)
 									}
@@ -206,6 +213,24 @@ export default function Results() {
 									}
 								>
 									Next
+								</Button>
+								<Button
+									onClick={() =>
+										setCurrentPage(
+											Math.ceil(
+												results.length / resultsPerPage
+											)
+										)
+									}
+									disabled={
+										currentPage ===
+										Math.ceil(
+											results.length / resultsPerPage
+										)
+									}
+									variant="delete"
+								>
+									Last
 								</Button>
 							</div>
 						</>
