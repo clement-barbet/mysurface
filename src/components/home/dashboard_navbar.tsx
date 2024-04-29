@@ -102,7 +102,7 @@ export default function DashboardNavbar() {
 				</div>
 			</Link>
 			<ul
-				className={clsx("flex flex-col h-full", {
+				className={clsx("flex flex-col h-full w-full", {
 					hidden: !isMenuOpen,
 					"md:flex": true,
 				})}
@@ -153,8 +153,24 @@ export default function DashboardNavbar() {
 						<T tkey="navbar.results" />
 					</Link>
 				</li>
+				<li
+					className={clsx("py-4 px-4 tracking-wider", {
+						"border-l-4 border-light_gray":
+							pathname === "/home/faq",
+					})}
+				>
+					<Link
+						onClick={handleLinkClick}
+						href="/home/faq"
+						className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase"
+					>
+						<AiOutlineQuestion className="h-6 w-6" />
+						<T tkey="navbar.faq" />
+					</Link>
+				</li>
 				{userRole === "superadmin" ? (
 					<>
+						<hr className="w-full border-light_gray border-dashed" />
 						<li
 							className={clsx("py-4 px-4 tracking-wider", {
 								"border-l-4 border-light_gray":
@@ -220,21 +236,6 @@ export default function DashboardNavbar() {
 						</li>
 					</>
 				) : null}
-				<li
-					className={clsx("py-4 px-4 tracking-wider", {
-						"border-l-4 border-light_gray":
-							pathname === "/home/faq",
-					})}
-				>
-					<Link
-						onClick={handleLinkClick}
-						href="/home/faq"
-						className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase"
-					>
-						<AiOutlineQuestion className="h-6 w-6" />
-						<T tkey="navbar.faq" />
-					</Link>
-				</li>
 				<li
 					onClick={() => setIsLanguageMenuOpen(!isLanguageMenuOpen)}
 					className="py-4 px-4 tracking-wider relative mt-auto"
