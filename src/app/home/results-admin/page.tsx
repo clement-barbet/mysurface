@@ -22,6 +22,8 @@ export default function Results() {
 	const [selectedResult, setSelectedResult] = useState(null);
 	const [open, setOpen] = useState(false);
 	const [reportName, setReportName] = useState("");
+	const [currentPage, setCurrentPage] = useState(1);
+	const resultsPerPage = 5;
 
 	const handleOpen = (result) => {
 		setSelectedResult(result);
@@ -96,6 +98,10 @@ export default function Results() {
 		}
 	};
 
+	const indexOfLastResult = currentPage * resultsPerPage;
+	const indexOfFirstResult = indexOfLastResult - resultsPerPage;
+	const currentResults = results.slice(indexOfFirstResult, indexOfLastResult);
+
 	return (
 		!loading && (
 			<>
@@ -104,76 +110,105 @@ export default function Results() {
 						<T tkey="homeresults.title" />
 					</h2>
 					{results.length > 0 ? (
-						<Table className="w-full">
-							<TableHeader>
-								<THeadRow>
-									{[
-										"ID",
-										"Name",
-										"Owner's Email",
-										"Date",
-										"Edit report's name",
-										"Delete report",
-									].map((header, index) => (
-										<TableHead key={index}>
-											{header}
-										</TableHead>
-									))}
-								</THeadRow>
-							</TableHeader>
-							<TableBody className="bg-white dark:bg-black divide-y divide-gray-200 dark:divide-gray-500">
-								{results.map((result) => {
-									const date = new Date(result.created_at);
-									const formattedDate =
-										date.toLocaleDateString("en-CA");
-									const formattedTime =
-										date.toLocaleTimeString("en-CA");
+						<>
+							<Table className="w-full">
+								<TableHeader>
+									<THeadRow>
+										{[
+											"ID",
+											"Name",
+											"Owner's Email",
+											"Date",
+											"Edit report's name",
+											"Delete report",
+										].map((header, index) => (
+											<TableHead key={index}>
+												{header}
+											</TableHead>
+										))}
+									</THeadRow>
+								</TableHeader>
+								<TableBody className="bg-white dark:bg-black divide-y divide-gray-200 dark:divide-gray-500">
+									{currentResults.map((result) => {
+										const date = new Date(
+											result.created_at
+										);
+										const formattedDate =
+											date.toLocaleDateString("en-CA");
+										const formattedTime =
+											date.toLocaleTimeString("en-CA");
 
-									return (
-										<TBodyRow key={result.id}>
-											<TableCell className="px-6 py-2 whitespace-nowrap">
-												<Link
-													href={`/home/results-admin/${result.id}`}
-													className="font-semibold text-blue-500 hover:text-blue-800 underline hover:underline-offset-4 underline-offset-2 transition-all duration-200 ease-linear"
-												>
-													{result.id}
-												</Link>
-											</TableCell>
-											<TableCell className="px-6 py-2 whitespace-nowrap">
-												{result.report_name}
-											</TableCell>
-											<TableCell className="px-6 py-2 whitespace-nowrap">
-												{result.user_email}
-											</TableCell>
-											<TableCell className="px-6 py-2 whitespace-nowrap">
-												{formattedDate}
-												<br />
-												{formattedTime}
-											</TableCell>
-											<TableCell className="px-6 py-2 whitespace-nowrap">
-												<Button
-													onClick={() =>
-														handleOpen(result)
-													}
-												>
-													Edit
-												</Button>
-											</TableCell>
-											<TableCell className="px-6 py-2 whitespace-nowrap">
-												<Button
-													variant="delete"
-													onClick={() =>
-														deleteReport(result.id)
-													}
-												>
-													Delete
-												</Button>
-											</TableCell>
-										</TBodyRow>
-									);
-								})}
-							</TableBody>
-						</Table>
+										return (
+											<TBodyRow key={result.id}>
+												<TableCell className="px-6 py-2 whitespace-nowrap">
+													<Link
+														href={`/home/results-admin/${result.id}`}
+														className="font-semibold text-blue-500 hover:text-blue-800 underline hover:underline-offset-4 underline-offset-2 transition-all duration-200 ease-linear"
+													>
+														{result.id}
+													</Link>
+												</TableCell>
+												<TableCell className="px-6 py-2 whitespace-nowrap">
+													{result.report_name}
+												</TableCell>
+												<TableCell className="px-6 py-2 whitespace-nowrap">
+													{result.user_email}
+												</TableCell>
+												<TableCell className="px-6 py-2 whitespace-nowrap">
+													{formattedDate}
+													<br />
+													{formattedTime}
+												</TableCell>
+												<TableCell className="px-6 py-2 whitespace-nowrap">
+													<Button
+														onClick={() =>
+															handleOpen(result)
+														}
+													>
+														Edit
+													</Button>
+												</TableCell>
+												<TableCell className="px-6 py-2 whitespace-nowrap">
+													<Button
+														variant="delete"
+														onClick={() =>
+															deleteReport(
+																result.id
+															)
+														}
+													>
+														Delete
+													</Button>
+												</TableCell>
+											</TBodyRow>
+										);
+									})}
+								</TableBody>
+							</Table>
+							<div className="pt-4 flex flex-row gap-x-4 items-center justify-center">
+								<Button
+									onClick={() =>
+										setCurrentPage(currentPage - 1)
+									}
+									disabled={currentPage === 1}
+								>
+									Previous
+								</Button>
+								<Button
+									onClick={() =>
+										setCurrentPage(currentPage + 1)
+									}
+									disabled={
+										currentPage ===
+										Math.ceil(
+											results.length / resultsPerPage
+										)
+									}
+								>
+									Next
+								</Button>
+							</div>
+						</>
 					) : (
 						<p>No data</p>
 					)}
