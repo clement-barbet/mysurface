@@ -223,7 +223,8 @@
 		"models": "Models",
 		"patterns": "Patterns",
 		"faq": "FAQ",
-		"language": "Language"
+		"language": "Language",
+		"customers": "Customers"
 	},
 	"topbar": {
 		"search": "Search",

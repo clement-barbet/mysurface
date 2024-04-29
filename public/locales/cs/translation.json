@@ -223,7 +223,8 @@
 		"models": "Modely",
 		"patterns": "Vzory",
 		"faq": "FAQ",
-		"language": "Jazyk"
+		"language": "Jazyk",
+		"customers": "Zákazníci"
 	},
 	"topbar": {
 		"search": "Hledat",

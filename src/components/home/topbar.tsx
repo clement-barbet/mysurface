@@ -56,9 +56,11 @@ export default function TopBar() {
 
 	useEffect(() => {
 		const fetchOrganization = async () => {
+			const user = await supabase.auth.getUser();
 			const { data: appSettings, error } = await supabase
 				.from("app_settings")
 				.select("organization_id")
+				.eq("user_id", user.data.user.id)
 				.single();
 
 			if (appSettings) {

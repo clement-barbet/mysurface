@@ -107,7 +107,7 @@ export default function Results() {
 									))}
 								</THeadRow>
 							</TableHeader>
-							<TableBody className="bg-white divide-y divide-gray-200">
+							<TableBody className="bg-white dark:bg-black divide-y divide-gray-200 dark:divide-gray-500">
 								{results.map((result) => {
 									const date = new Date(result.created_at);
 									const formattedDate =

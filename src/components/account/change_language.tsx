@@ -57,11 +57,12 @@ export default function ChangeLanguage() {
 				await supabase
 					.from("app_settings")
 					.select("language_id")
+					.eq("user_id", user.data.user.id)
 					.single();
 
 			if (appSettingsError) {
 				console.error(
-					"Error fetching organization from app_settings:",
+					"Error fetching language from app_settings:",
 					appSettingsError
 				);
 				return;
@@ -81,7 +82,7 @@ export default function ChangeLanguage() {
 		}
 	}, [languageId]);
 
-	const handleChangeOrganization = async (
+	const handleChangeLanguage = async (
 		data: z.infer<typeof formSchema>
 	) => {
 		const { language } = data;
@@ -123,7 +124,7 @@ export default function ChangeLanguage() {
 				</h2>
 				<Form {...form}>
 					<form
-						onSubmit={form.handleSubmit(handleChangeOrganization)}
+						onSubmit={form.handleSubmit(handleChangeLanguage)}
 						className="space-y-8"
 					>
 						<FormField

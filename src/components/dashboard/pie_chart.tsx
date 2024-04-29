@@ -9,11 +9,13 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 async function getCompletionPercentage() {
 	const supabase = createClientComponentClient();
+	const user = await supabase.auth.getUser();
 
 	// Get participants with the correct user_id
 	const { data: participants, error: participantsError } = await supabase
 		.from("participants")
-		.select("questionnaire");
+		.select("questionnaire")
+		.eq("user_id", user.data.user.id);
 
 	if (participantsError) {
 		console.error("Error fetching participants:", participantsError);

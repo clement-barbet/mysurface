@@ -6,11 +6,13 @@ import T from "@/components/translations/translation";
 
 async function getParticipants() {
 	const supabase = createClientComponentClient();
+	const user = await supabase.auth.getUser();
 	const { data, error } = await supabase
 		.from("participants")
 		.select("id, name, email")
 		.order("name")
-		.range(0, 6);
+		.range(0, 6)
+		.eq("user_id", user.data.user.id);
 
 	if (error) {
 		console.error("Error fetching participants:", error);

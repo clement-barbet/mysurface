@@ -44,6 +44,7 @@ export default function ChangeOrganization() {
 				await supabase
 					.from("app_settings")
 					.select("organization_id")
+					.eq("user_id", user.data.user.id)
 					.single();
 
 			if (appSettingsError) {

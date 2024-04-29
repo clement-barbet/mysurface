@@ -13,6 +13,7 @@ import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import T from "@/components/translations/translation";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import { PiSuitcaseSimple } from "react-icons/pi";
 
 export default function DashboardNavbar() {
 	const pathname = usePathname();
@@ -21,7 +22,7 @@ export default function DashboardNavbar() {
 	const { i18n } = useTranslation();
 	const supabase = createClientComponentClient();
 	const [languages, setLanguages] = useState([]);
-	const [isSuperAdmin, setIsSuperAdmin] = useState(false);
+	const [userRole, setUserRole] = useState("");
 
 	useEffect(() => {
 		const fetchLanguages = async () => {
@@ -41,15 +42,17 @@ export default function DashboardNavbar() {
 
 	useEffect(() => {
 		const fetchSettings = async () => {
+			const user = await supabase.auth.getUser();
 			const { data, error } = await supabase
-				.from("app_settings")
-				.select("isSuperAdmin")
+				.from("roles")
+				.select("role")
+				.eq("user_id", user.data.user.id)
 				.single();
 
 			if (error) {
 				console.error("Error fetching settings:", error);
 			} else {
-				setIsSuperAdmin(data.isSuperAdmin);
+				setUserRole(data.role);
 			}
 		};
 
@@ -150,13 +153,15 @@ export default function DashboardNavbar() {
 						<T tkey="navbar.results" />
 					</Link>
 				</li>
-				{isSuperAdmin ? (
+				{userRole === "superadmin" ? (
 					<>
 						<li
 							className={clsx("py-4 px-4 tracking-wider", {
 								"border-l-4 border-light_gray":
-								pathname === "/home/results-admin" ||
-								/^\/home\/results-admin(\/\d+)?$/.test(pathname),
+									pathname === "/home/results-admin" ||
+									/^\/home\/results-admin(\/\d+)?$/.test(
+										pathname
+									),
 							})}
 						>
 							<Link
@@ -166,6 +171,21 @@ export default function DashboardNavbar() {
 							>
 								<PiGraph className="h-6 w-6" />
 								<T tkey="navbar.results-admin" />
+							</Link>
+						</li>
+						<li
+							className={clsx("py-4 px-4 tracking-wider", {
+								"border-l-4 border-light_gray":
+									pathname === "/home/customers-admin",
+							})}
+						>
+							<Link
+								onClick={handleLinkClick}
+								href="/home/customers-admin"
+								className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase"
+							>
+								<PiSuitcaseSimple className="h-6 w-6" />
+								<T tkey="navbar.customers" />
 							</Link>
 						</li>
 						<li

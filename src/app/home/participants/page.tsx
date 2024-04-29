@@ -69,8 +69,13 @@ export default function Page() {
 
 	const fetchPhase = async () => {
 		try {
+			const user = await supabase.auth.getUser();
 			const { data: appSettings, error: appSettingsError } =
-				await supabase.from("app_settings").select("*").single();
+				await supabase
+					.from("app_settings")
+					.select("*")
+					.eq("user_id", user.data.user.id)
+					.single();
 			if (appSettingsError) throw appSettingsError;
 			setIsEnrollmentPhase(appSettings.isEnrollmentPhase);
 		} catch (error) {

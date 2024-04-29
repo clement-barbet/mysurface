@@ -223,7 +223,8 @@
 		"models": "Modelos",
 		"patterns": "Patrones",
 		"faq": "FAQ",
-		"language": "Idioma"
+		"language": "Idioma",
+		"customers": "Clientes"
 	},
 	"topbar": {
 		"search": "Buscar",

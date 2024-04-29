@@ -50,6 +50,7 @@ export default function ChangeNames() {
 				await supabase
 					.from("app_settings")
 					.select("name, organization")
+					.eq("user_id", user.data.user.id)
 					.single();
 
 			if (appSettingsError) {
