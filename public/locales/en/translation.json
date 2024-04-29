@@ -149,6 +149,8 @@
 			"button": "CHANGE NAME AND ORGANIZATION'S NAME"
 		},
 		"delete": {
+			"title": "Delete Account",
+			"subtitle": "Once you delete your account, there is no going back. Please be certain.",
 			"button": "DELETE MY ACCOUNT",
 			"confirmation": "Are you sure you want to delete your account?",
 			"options": {

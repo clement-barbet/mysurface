@@ -20,7 +20,7 @@ export default function Account() {
 			<div className="w-full p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
 				<ChangeLanguage />
 			</div>
-			<div>
+			<div className="w-full p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
 				<DeleteAccountButton />
 			</div>
 		</div>

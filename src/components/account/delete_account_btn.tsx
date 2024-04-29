@@ -9,7 +9,6 @@ import T from "@/components/translations/translation";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import { FaTimes } from 'react-icons/fa';
 
 export default function DeleteAccountButton() {
 	const supabase = createClientComponentClient();
@@ -85,23 +84,26 @@ export default function DeleteAccountButton() {
 				successMessage={successMessage}
 				setSuccessMessage={setSuccessMessage}
 			/>
-			<Button
-				onClick={handleConfirmOpen}
-				variant="delete"
-				className="w-full uppercase"
-			>
-				<T tkey="account.delete.button" />
-			</Button>
+			<div>
+				<h2 className="pb-5 text-xl font-semibold">
+					<T tkey="account.delete.title" />
+				</h2>
+				<p className="text-gray-600 dark:text-gray-400 text-lg md:text-base mb-4">
+					<T tkey="account.delete.subtitle" />
+				</p>
+				<Button
+					onClick={handleConfirmOpen}
+					variant="delete"
+					className="w-full uppercase"
+				>
+					<T tkey="account.delete.button" />
+				</Button>
+			</div>
 			<Modal
 				open={confirmOpen}
 				onClose={handleConfirmClose}
 				aria-labelledby="modal-modal-title"
 				aria-describedby="modal-modal-description"
-				BackdropProps={{
-					onClick: (event) => {
-						event.stopPropagation();
-					},
-				}}
 			>
 				<Box
 					sx={{
@@ -116,18 +118,11 @@ export default function DeleteAccountButton() {
 						p: 4,
 					}}
 				>
-					<Button
-						onClick={handleConfirmClose}
-						className="absolute top-1 right-1"
-						variant={"delete"}
-					>
-						<FaTimes className="w-3 h-3" />
-					</Button>
 					<Typography
 						id="modal-modal-title"
 						variant="h6"
 						component="h2"
-						sx={{ mb: 2 }}
+						sx={{ mb: 2, textAlign: "center", fontFamily: "inherit" }}
 					>
 						<T tkey="account.delete.confirmation" />
 					</Typography>

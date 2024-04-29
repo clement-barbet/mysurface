@@ -35,7 +35,7 @@
 		"results": {
 			"title": "Nejnovější Provedené Zprávy",
 			"subtitle": "Zkontrolujte nejnovější výsledky a grafy."
-		},		
+		},
 		"piechart": {
 			"title": "Stav vyplňování formuláře",
 			"subtitle": "Přehled stavu vyplňování formulářů mezi členy týmu.",
@@ -149,6 +149,8 @@
 			"button": "ZMĚNIT JMÉNO A NÁZEV ORGANIZACE"
 		},
 		"delete": {
+			"title": "Smazat Účet",
+			"subtitle": "Jakmile smažete svůj účet, není návratu zpět. Buďte prosím jistí.",
 			"button": "SMAZAT MŮJ ÚČET",
 			"confirmation": "Jste si jisti, že chcete smazat svůj účet?",
 			"options": {

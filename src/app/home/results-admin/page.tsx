@@ -14,7 +14,6 @@ import {
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 import { Modal, Box, Typography, TextField } from "@mui/material";
-import { FaTimes } from "react-icons/fa";
 
 export default function Results() {
 	const [loading, setLoading] = useState(true);
@@ -162,11 +161,6 @@ export default function Results() {
 					onClose={handleClose}
 					aria-labelledby="modal-modal-title"
 					aria-describedby="modal-modal-description"
-					BackdropProps={{
-						onClick: (event) => {
-							event.stopPropagation();
-						},
-					}}
 				>
 					<Box
 						sx={{
@@ -181,18 +175,11 @@ export default function Results() {
 							p: 4,
 						}}
 					>
-						<Button
-							onClick={handleClose}
-							className="absolute top-1 right-1"
-							variant={"delete"}
-						>
-							<FaTimes className="w-3 h-3" />
-						</Button>
 						<Typography
 							id="modal-modal-title"
 							variant="h6"
 							component="h2"
-							sx={{ mb: 2 }}
+							sx={{ mb: 2, textAlign: "center", fontFamily: "inherit"}}
 						>
 							Update Report Name
 						</Typography>

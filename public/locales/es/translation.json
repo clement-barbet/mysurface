@@ -35,7 +35,7 @@
 		"results": {
 			"title": "Últimos Informes Ejecutados",
 			"subtitle": "Compruebe los últimos resultados y gráficos."
-		},		
+		},
 		"piechart": {
 			"title": "Estado de Completado de Formularios",
 			"subtitle": "Visión general del estado de completado de formularios entre los miembros del equipo.",
@@ -149,6 +149,8 @@
 			"button": "CAMBIAR NOMBRE Y NOMBRE DE LA ORGANIZACIÓN"
 		},
 		"delete": {
+			"title": "Eliminar Cuenta",
+			"subtitle": "Una vez que elimine su cuenta, no hay vuelta atrás. Por favor, esté seguro.",
 			"button": "ELIMINAR MI CUENTA",
 			"confirmation": "¿Estás seguro de que deseas eliminar tu cuenta?",
 			"options": {
