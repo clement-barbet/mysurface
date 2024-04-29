@@ -32,6 +32,10 @@
 		}
 	},
 	"dashboard": {
+		"results": {
+			"title": "Últimos Informes Ejecutados",
+			"subtitle": "Compruebe los últimos resultados y gráficos."
+		},		
 		"piechart": {
 			"title": "Estado de Completado de Formularios",
 			"subtitle": "Visión general del estado de completado de formularios entre los miembros del equipo.",

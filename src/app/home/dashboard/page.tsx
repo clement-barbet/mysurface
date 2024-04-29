@@ -43,15 +43,17 @@ export default function Dashboard() {
 
 	return (
 		<>
-			<div className="w-full m-auto mb-2">
+			<div className="w-full m-auto mb-2 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90 px-4 md:px-10 py-5">
+				<h2 className="font-bold text-xl md:text-lg">
+					<T tkey="dashboard.results.title" />
+				</h2>
+				<p className="text-gray-600 dark:text-gray-400 text-lg md:text-base mb-2">
+					<T tkey="dashboard.results.subtitle" />
+				</p>
 				<Table className="w-full">
 					<TableHeader>
 						<THeadRow>
-							{[
-								"ID",
-								"Name",
-								"Date"
-							].map((header, index) => (
+							{["ID", "Name", "Date"].map((header, index) => (
 								<TableHead key={index}>{header}</TableHead>
 							))}
 						</THeadRow>

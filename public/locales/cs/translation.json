@@ -32,6 +32,10 @@
 		}
 	},
 	"dashboard": {
+		"results": {
+			"title": "Nejnovější Provedené Zprávy",
+			"subtitle": "Zkontrolujte nejnovější výsledky a grafy."
+		},		
 		"piechart": {
 			"title": "Stav vyplňování formuláře",
 			"subtitle": "Přehled stavu vyplňování formulářů mezi členy týmu.",

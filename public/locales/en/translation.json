@@ -32,6 +32,10 @@
 		}
 	},
 	"dashboard": {
+		"results": {
+			"title": "Latest Executed Reports",
+			"subtitle": "Check the latest results and graphics."
+		},
 		"piechart": {
 			"title": "Form Completion Status",
 			"subtitle": "Overview of form completion status across team members.",
@@ -134,7 +138,7 @@
 		},
 		"name": {
 			"title": "Change Name and Organization's Name",
-			"labels": { 
+			"labels": {
 				"name": "Name",
 				"organization": "Organization's Name"
 			},
