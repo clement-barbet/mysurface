@@ -50,49 +50,51 @@ export default function Dashboard() {
 				<p className="text-gray-600 dark:text-gray-400 text-lg md:text-base mb-2">
 					<T tkey="dashboard.results.subtitle" />
 				</p>
-				<Table className="w-full">
-					<TableBody className="bg-white dark:bg-black divide-y divide-gray-200 dark:divide-gray-500">
-						{results.length > 0 ? (
-							results.map((result) => {
-								const date = new Date(result.created_at);
-								const formattedDate =
-									date.toLocaleDateString("en-CA");
-								const formattedTime =
-									date.toLocaleTimeString("en-CA");
+				<div className="overflow-auto rounded-md bg-white bg-opactity-90 dark:bg-black dark:bg-opacity-90">
+					<table className="w-full text-sm">
+						<TableBody className="bg-white dark:bg-black divide-y divide-gray-200 dark:divide-gray-500">
+							{results.length > 0 ? (
+								results.map((result) => {
+									const date = new Date(result.created_at);
+									const formattedDate =
+										date.toLocaleDateString("en-CA");
+									const formattedTime =
+										date.toLocaleTimeString("en-CA");
 
-								return (
-									<TBodyRow key={result.id}>
-										<TableCell className="px-6 py-2 whitespace-nowrap">
-											<Link
-												href={`/home/results/${result.id}`}
-												className="font-semibold text-blue-500 hover:text-blue-800 underline hover:underline-offset-4 underline-offset-2 transition-all duration-200 ease-linear"
-											>
-												{result.id}
-											</Link>
-										</TableCell>
-										<TableCell className="px-6 py-2 whitespace-nowrap">
-											{result.report_name}
-										</TableCell>
-										<TableCell className="px-6 py-2 whitespace-nowrap">
-											{formattedDate}
-											<br />
-											{formattedTime}
-										</TableCell>
-									</TBodyRow>
-								);
-							})
-						) : (
-							<TBodyRow>
-								<TableCell
-									colSpan={5}
-									className="px-6 py-4 text-center"
-								>
-									No tests executed yet.
-								</TableCell>
-							</TBodyRow>
-						)}
-					</TableBody>
-				</Table>
+									return (
+										<TBodyRow key={result.id}>
+											<TableCell className="px-6 py-2 whitespace-nowrap">
+												<Link
+													href={`/home/results/${result.id}`}
+													className="font-semibold text-blue-500 hover:text-blue-800 underline hover:underline-offset-4 underline-offset-2 transition-all duration-200 ease-linear"
+												>
+													{result.id}
+												</Link>
+											</TableCell>
+											<TableCell className="px-6 py-2 whitespace-nowrap">
+												{result.report_name}
+											</TableCell>
+											<TableCell className="px-6 py-2 whitespace-nowrap">
+												{formattedDate}
+												<br />
+												{formattedTime}
+											</TableCell>
+										</TBodyRow>
+									);
+								})
+							) : (
+								<TBodyRow>
+									<TableCell
+										colSpan={5}
+										className="px-6 py-4 text-center"
+									>
+										No tests executed yet.
+									</TableCell>
+								</TBodyRow>
+							)}
+						</TableBody>
+					</table>
+				</div>
 			</div>
 
 			<div className="flex flex-col xl:flex-row gap-y-2 xl:gap-x-2">
