@@ -16,6 +16,30 @@ export async function middleware(req: NextRequest) {
 		}
 	}
 
+	// Check for admin routes
+	if (
+		req.nextUrl.pathname.startsWith("/home/results-admin") ||
+		req.nextUrl.pathname.startsWith("/home/customers-admin") ||
+		req.nextUrl.pathname.startsWith("/home/models") ||
+		req.nextUrl.pathname.startsWith("/home/pattern")
+
+	) {
+		// Check if the user has the "authenticated" role
+		const { data: role, error: roleError } = await supabase
+			.from("roles")
+			.select("role")
+			.eq("user_id", user.user.id)
+			.single();
+
+		if (roleError) {
+			console.error(roleError);
+		}
+
+		if (role && role.role === "authenticated") {
+			return NextResponse.error('Not Found', 404);
+		}
+	}
+
 	if (req.nextUrl.pathname === "/") {
 		if (error || !user?.user) {
 			return NextResponse.redirect(`${req.nextUrl.origin}/login`);
