@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 import { Modal, Box, Typography, TextField } from "@mui/material";
-import { FaTimes } from 'react-icons/fa';
+import { FaTimes } from "react-icons/fa";
 
 export default function Results() {
 	const [loading, setLoading] = useState(true);
@@ -51,7 +51,7 @@ export default function Results() {
 
 	const handleClose = () => {
 		setOpen(false);
-	}
+	};
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -131,21 +131,21 @@ export default function Results() {
 											</TableCell>
 											<TableCell className="px-6 py-4 whitespace-nowrap">
 												<Button
+													onClick={() =>
+														handleOpen(result)
+													}
+												>
+													Edit
+												</Button>
+											</TableCell>
+											<TableCell className="px-6 py-4 whitespace-nowrap">
+												<Button
 													variant="delete"
 													onClick={() =>
 														deleteReport(result.id)
 													}
 												>
 													Delete
-												</Button>
-											</TableCell>
-											<TableCell className="px-6 py-4 whitespace-nowrap">
-												<Button
-													onClick={() =>
-														handleOpen(result)
-													}
-												>
-													Edit
 												</Button>
 											</TableCell>
 										</TBodyRow>
@@ -165,7 +165,7 @@ export default function Results() {
 					BackdropProps={{
 						onClick: (event) => {
 							event.stopPropagation();
-						}
+						},
 					}}
 				>
 					<Box
@@ -186,7 +186,7 @@ export default function Results() {
 							className="absolute top-1 right-1"
 							variant={"delete"}
 						>
-							<FaTimes className="w-3 h-3"/>
+							<FaTimes className="w-3 h-3" />
 						</Button>
 						<Typography
 							id="modal-modal-title"

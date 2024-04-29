@@ -16,45 +16,10 @@ import {
 	THeadRow,
 	TBodyRow,
 } from "@/components/ui/table";
-import { Button } from "@/components/ui/button";
-import { Modal, Box, Typography, TextField } from "@mui/material";
-import { FaTimes } from "react-icons/fa";
 
 export default function Dashboard() {
 	const [results, setResults] = useState([]);
 	const supabase = createClientComponentClient();
-	const [selectedResult, setSelectedResult] = useState(null);
-	const [open, setOpen] = useState(false);
-	const [reportName, setReportName] = useState("");
-
-	const handleOpen = (result) => {
-		setSelectedResult(result);
-		setReportName(result.report_name);
-		setOpen(true);
-	};
-	const handleSave = async () => {
-		const { error } = await supabase
-			.from("results")
-			.update({ report_name: reportName })
-			.eq("id", selectedResult.id);
-
-		if (error) console.error("Error updating report name", error);
-		else {
-			setResults(
-				results.map((result) =>
-					result.id === selectedResult.id
-						? { ...result, report_name: reportName }
-						: result
-				)
-			);
-		}
-
-		setOpen(false);
-	};
-
-	const handleClose = () => {
-		setOpen(false);
-	};
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -72,14 +37,6 @@ export default function Dashboard() {
 		fetchData();
 	}, []);
 
-	const deleteReport = async (id: string) => {
-		const { error } = await supabase.from("results").delete().eq("id", id);
-
-		if (error) console.error("Error deleting report", error);
-		else {
-			setResults(results.filter((result) => result.id !== id));
-		}
-	};
 	return (
 		<>
 			<div className="w-full m-auto mb-2">
@@ -89,9 +46,7 @@ export default function Dashboard() {
 							{[
 								"ID",
 								"Name",
-								"Date",
-								"Delete report",
-								"Edit report's name",
+								"Date"
 							].map((header, index) => (
 								<TableHead key={index}>{header}</TableHead>
 							))}
@@ -124,25 +79,6 @@ export default function Dashboard() {
 											<br />
 											{formattedTime}
 										</TableCell>
-										<TableCell className="px-6 py-4 whitespace-nowrap">
-											<Button
-												variant="delete"
-												onClick={() =>
-													deleteReport(result.id)
-												}
-											>
-												Delete
-											</Button>
-										</TableCell>
-										<TableCell className="px-6 py-4 whitespace-nowrap">
-											<Button
-												onClick={() =>
-													handleOpen(result)
-												}
-											>
-												Edit
-											</Button>
-										</TableCell>
 									</TBodyRow>
 								);
 							})
@@ -159,64 +95,6 @@ export default function Dashboard() {
 					</TableBody>
 				</Table>
 			</div>
-			<Modal
-				open={open}
-				onClose={handleClose}
-				aria-labelledby="modal-modal-title"
-				aria-describedby="modal-modal-description"
-				BackdropProps={{
-					onClick: (event) => {
-						event.stopPropagation();
-					},
-				}}
-			>
-				<Box
-					sx={{
-						position: "absolute",
-						top: "50%",
-						left: "50%",
-						transform: "translate(-50%, -50%)",
-						width: 400,
-						bgcolor: "background.paper",
-						borderRadius: "10px",
-						boxShadow: 24,
-						p: 4,
-					}}
-				>
-					<Button
-						onClick={handleClose}
-						className="absolute top-1 right-1"
-						variant={"delete"}
-					>
-						<FaTimes className="w-3 h-3" />
-					</Button>
-					<Typography
-						id="modal-modal-title"
-						variant="h6"
-						component="h2"
-						sx={{ mb: 2 }}
-					>
-						Update Report Name
-					</Typography>
-					<TextField
-						autoFocus
-						margin="dense"
-						id="name"
-						label="Name"
-						type="text"
-						fullWidth
-						value={reportName}
-						onChange={(e) => setReportName(e.target.value)}
-					/>
-					<Button
-						onClick={handleSave}
-						variant="login"
-						className="mt-2"
-					>
-						SAVE
-					</Button>
-				</Box>
-			</Modal>
 
 			<div className="flex flex-col xl:flex-row gap-y-2 xl:gap-x-2">
 				<div className="flex flex-col sm:flex-row xl:flex-col gap-y-2 sm:gap-x-2 xl:w-3/5">
