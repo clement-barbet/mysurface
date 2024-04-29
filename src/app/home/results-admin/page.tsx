@@ -93,8 +93,8 @@ export default function Results() {
 										"ID",
 										"Name",
 										"Date",
-										"Delete report",
 										"Edit report's name",
+										"Delete report",
 									].map((header, index) => (
 										<TableHead key={index}>
 											{header}
@@ -179,7 +179,11 @@ export default function Results() {
 							id="modal-modal-title"
 							variant="h6"
 							component="h2"
-							sx={{ mb: 2, textAlign: "center", fontFamily: "inherit"}}
+							sx={{
+								mb: 2,
+								textAlign: "center",
+								fontFamily: "inherit",
+							}}
 						>
 							Update Report Name
 						</Typography>
