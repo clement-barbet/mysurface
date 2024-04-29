@@ -1,6 +1,17 @@
 describe("template spec", () => {
 	it("passes", () => {
-		cy.visit("http://localhost:3000/home/members").then(() => {
+		cy.visit("http://localhost:3000/login").then(() => {
+			let access_email = "not@admin.com";
+			let access_password = "test1234";
+
+			cy.get("input[name=email]").type(access_email);
+			cy.get("input[name=password]").type(access_password);
+			cy.get("button[type=submit]").click();
+
+			cy.url({ timeout: 30000 }).should("include", "/home");
+		});
+		
+		cy.visit("http://localhost:3000/home/participants").then(() => {
 			cy.wait(10000);
 
 			// Array of all participants
@@ -228,7 +239,7 @@ describe("template spec", () => {
 							cy.get('button:contains("SUBMIT")').click();
 							cy.wait(10000);
 
-							cy.visit("http://localhost:3000/home/members");
+							cy.visit("http://localhost:3000/home/participants");
 							cy.wait(10000);
 						}
 					});
