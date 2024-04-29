@@ -48,8 +48,8 @@ export default function Customers() {
 			return;
 		}
 
-		let usersWithLanguageAndOrganizationNames = appSettings.map(
-			(setting) => {
+		let usersWithLanguageAndOrganizationNames = appSettings
+			.map((setting) => {
 				let language = languagesData.find(
 					(language) => language.id === setting.language_id
 				);
@@ -66,11 +66,10 @@ export default function Customers() {
 						? organization.name
 						: "Organization not found",
 				};
-			}
-		);
+			})
+			.filter((user) => user.organization !== "BAAART");
 
 		setUsers(usersWithLanguageAndOrganizationNames);
-		console.log("users", usersWithLanguageAndOrganizationNames);
 		setLoading(false);
 	};
 
