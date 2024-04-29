@@ -60,9 +60,27 @@ export default function Results() {
 				.select("*")
 				.order("created_at", { ascending: false });
 
+			let { data: fetchedAppSettings, error: appSettingsError } =
+				await supabase.from("app_settings").select("*");
+
 			if (resultsError)
 				console.error("Error loading results", resultsError);
-			else setResults(fetchedResults || []);
+			else if (appSettingsError)
+				console.error("Error loading app settings", appSettingsError);
+			else {
+				let resultsWithUserEmail = fetchedResults.map((result) => {
+					let appSetting = fetchedAppSettings.find(
+						(setting) => setting.user_id === result.user_id
+					);
+					return {
+						...result,
+						user_email: appSetting
+							? appSetting.email
+							: "Email not found",
+					};
+				});
+				setResults(resultsWithUserEmail || []);
+			}
 			setLoading(false);
 		};
 
@@ -92,6 +110,7 @@ export default function Results() {
 									{[
 										"ID",
 										"Name",
+										"Owner's Email",
 										"Date",
 										"Edit report's name",
 										"Delete report",
@@ -122,6 +141,9 @@ export default function Results() {
 											</TableCell>
 											<TableCell className="px-6 py-2 whitespace-nowrap">
 												{result.report_name}
+											</TableCell>
+											<TableCell className="px-6 py-2 whitespace-nowrap">
+												{result.user_email}
 											</TableCell>
 											<TableCell className="px-6 py-2 whitespace-nowrap">
 												{formattedDate}
