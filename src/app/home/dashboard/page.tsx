@@ -63,7 +63,7 @@ export default function Dashboard() {
 
 								return (
 									<TBodyRow key={result.id}>
-										<TableCell className="px-6 py-4 whitespace-nowrap">
+										<TableCell className="px-6 py-2 whitespace-nowrap">
 											<Link
 												href={`/home/results/${result.id}`}
 												className="font-semibold text-blue-500 hover:text-blue-800 underline hover:underline-offset-4 underline-offset-2 transition-all duration-200 ease-linear"
@@ -71,10 +71,10 @@ export default function Dashboard() {
 												{result.id}
 											</Link>
 										</TableCell>
-										<TableCell className="px-6 py-4 whitespace-nowrap">
+										<TableCell className="px-6 py-2 whitespace-nowrap">
 											{result.report_name}
 										</TableCell>
-										<TableCell className="px-6 py-4 whitespace-nowrap">
+										<TableCell className="px-6 py-2 whitespace-nowrap">
 											{formattedDate}
 											<br />
 											{formattedTime}
