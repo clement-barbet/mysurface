@@ -23,11 +23,15 @@ export default function Dashboard() {
 
 	useEffect(() => {
 		const fetchData = async () => {
+			const user = await supabase.auth.getUser();
+			const userId = user.data.user.id;
+
 			let { data: fetchedResults, error: resultsError } = await supabase
 				.from("results")
 				.select("*")
 				.order("created_at", { ascending: false })
-				.limit(3);
+				.limit(3)
+				.eq("user_id", userId);
 
 			if (resultsError)
 				console.error("Error loading results", resultsError);

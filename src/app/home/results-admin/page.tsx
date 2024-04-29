@@ -55,15 +55,11 @@ export default function Results() {
 
 	useEffect(() => {
 		const fetchData = async () => {
-			const user = await supabase.auth.getUser();
-			const userId = user.data.user.id;
-
 			setLoading(true);
 			let { data: fetchedResults, error: resultsError } = await supabase
 				.from("results")
 				.select("*")
-				.order("created_at", { ascending: false })
-				.eq("user_id", userId);
+				.order("created_at", { ascending: false });
 
 			if (resultsError)
 				console.error("Error loading results", resultsError);
@@ -119,7 +115,7 @@ export default function Results() {
 										<TBodyRow key={result.id}>
 											<TableCell className="px-6 py-2 whitespace-nowrap">
 												<Link
-													href={`/home/results/${result.id}`}
+													href={`/home/results-admin/${result.id}`}
 													className="font-semibold text-blue-500 hover:text-blue-800 underline hover:underline-offset-4 underline-offset-2 transition-all duration-200 ease-linear"
 												>
 													{result.id}

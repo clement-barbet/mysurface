@@ -137,7 +137,8 @@ export default function DashboardNavbar() {
 				<li
 					className={clsx("py-4 px-4 tracking-wider", {
 						"border-l-4 border-light_gray":
-							pathname.startsWith("/home/results"),
+							pathname === "/home/results" ||
+							/^\/home\/results(\/\d+)?$/.test(pathname),
 					})}
 				>
 					<Link
@@ -151,6 +152,22 @@ export default function DashboardNavbar() {
 				</li>
 				{isSuperAdmin ? (
 					<>
+						<li
+							className={clsx("py-4 px-4 tracking-wider", {
+								"border-l-4 border-light_gray":
+								pathname === "/home/results-admin" ||
+								/^\/home\/results-admin(\/\d+)?$/.test(pathname),
+							})}
+						>
+							<Link
+								onClick={handleLinkClick}
+								href="/home/results-admin"
+								className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase"
+							>
+								<PiGraph className="h-6 w-6" />
+								<T tkey="navbar.results-admin" />
+							</Link>
+						</li>
 						<li
 							className={clsx("py-4 px-4 tracking-wider", {
 								"border-l-4 border-light_gray":
@@ -210,7 +227,10 @@ export default function DashboardNavbar() {
 									onClick={() => {
 										const changeLanguage = async () => {
 											i18n.changeLanguage(language.code);
-											localStorage.setItem("i18nextLng", language.code);
+											localStorage.setItem(
+												"i18nextLng",
+												language.code
+											);
 											handleLinkClick();
 
 											const user =
