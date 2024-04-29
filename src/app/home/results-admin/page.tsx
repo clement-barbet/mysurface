@@ -185,11 +185,12 @@ export default function Results() {
 									})}
 								</TableBody>
 							</Table>
-							<div className="pt-4 flex flex-row gap-x-4 items-center justify-center">
+							<div className="w-1/3 m-auto pt-4 flex flex-row gap-x-6 items-center justify-center">
 								<Button
 									onClick={() => setCurrentPage(1)}
 									disabled={currentPage === 1}
 									variant="delete"
+									className="w-full inline-block"
 								>
 									First
 								</Button>
@@ -198,6 +199,7 @@ export default function Results() {
 										setCurrentPage(currentPage - 1)
 									}
 									disabled={currentPage === 1}
+									className="w-full inline-block"
 								>
 									Previous
 								</Button>
@@ -211,6 +213,7 @@ export default function Results() {
 											results.length / resultsPerPage
 										)
 									}
+									className="w-full inline-block"
 								>
 									Next
 								</Button>
@@ -229,6 +232,7 @@ export default function Results() {
 										)
 									}
 									variant="delete"
+									className="w-full inline-block"
 								>
 									Last
 								</Button>
