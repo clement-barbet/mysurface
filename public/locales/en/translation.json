@@ -143,6 +143,14 @@
 				"organization": "Your Organization's Name"
 			},
 			"button": "CHANGE NAME AND ORGANIZATION'S NAME"
+		},
+		"delete": {
+			"button": "DELETE MY ACCOUNT",
+			"confirmation": "Are you sure you want to delete your account?",
+			"options": {
+				"yes": "Yes",
+				"no": "No"
+			}
 		}
 	},
 	"results": {

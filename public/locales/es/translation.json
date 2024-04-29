@@ -143,6 +143,14 @@
 				"organization": "Nombre de tu Organización"
 			},
 			"button": "CAMBIAR NOMBRE Y NOMBRE DE LA ORGANIZACIÓN"
+		},
+		"delete": {
+			"button": "ELIMINAR MI CUENTA",
+			"confirmation": "¿Estás seguro de que deseas eliminar tu cuenta?",
+			"options": {
+				"yes": "Sí",
+				"no": "No"
+			}
 		}
 	},
 	"results": {
@@ -331,5 +339,5 @@
 			"title": "Model 12",
 			"subtitle": "Description of the model 12."
 		}
-	}	
+	}
 }

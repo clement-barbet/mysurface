@@ -2,6 +2,8 @@ import ResetPasswordFrom from "@/components/auth/email/reset_password";
 import ChangeOrganization from "@/components/account/change_organization";
 import ChangeLanguage from "@/components/account/change_language";
 import ChangeNames from "@/components/account/change_names";
+import DeleteAccountButton from "@/components/account/delete_account_btn";
+
 export default function Account() {
 	return (
 		<div className="flex flex-col gap-y-4">
@@ -17,6 +19,9 @@ export default function Account() {
 			</div>
 			<div className="w-full p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
 				<ChangeLanguage />
+			</div>
+			<div>
+				<DeleteAccountButton />
 			</div>
 		</div>
 	);

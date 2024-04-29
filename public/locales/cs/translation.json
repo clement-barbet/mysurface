@@ -143,6 +143,14 @@
 				"organization": "Název Vaší Organizace"
 			},
 			"button": "ZMĚNIT JMÉNO A NÁZEV ORGANIZACE"
+		},
+		"delete": {
+			"button": "SMAZAT MŮJ ÚČET",
+			"confirmation": "Jste si jisti, že chcete smazat svůj účet?",
+			"options": {
+				"yes": "Ano",
+				"no": "Ne"
+			}
 		}
 	},
 	"results": {
