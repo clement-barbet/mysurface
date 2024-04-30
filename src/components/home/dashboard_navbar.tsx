@@ -153,6 +153,40 @@ export default function DashboardNavbar() {
 						<T tkey="navbar.results" />
 					</Link>
 				</li>
+				{userRole === "superadmin" ? (
+					<>
+						<li
+							className={clsx("py-4 px-4 tracking-wider", {
+								"border-l-4 border-light_gray":
+									pathname === "/home/models",
+							})}
+						>
+							<Link
+								onClick={handleLinkClick}
+								href="/home/models"
+								className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase"
+							>
+								<TbVectorTriangle className="h-6 w-6" />
+								<T tkey="navbar.models" />
+							</Link>
+						</li>
+						<li
+							className={clsx("py-4 px-4 tracking-wider", {
+								"border-l-4 border-light_gray":
+									pathname === "/home/patterns",
+							})}
+						>
+							<Link
+								onClick={handleLinkClick}
+								href="/home/patterns"
+								className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase"
+							>
+								<BiTrendingUp className="h-6 w-6" />
+								<T tkey="navbar.patterns" />
+							</Link>
+						</li>
+					</>
+				) : null}
 				<li
 					className={clsx("py-4 px-4 tracking-wider", {
 						"border-l-4 border-light_gray":
@@ -202,36 +236,6 @@ export default function DashboardNavbar() {
 							>
 								<PiSuitcaseSimple className="h-6 w-6" />
 								<T tkey="navbar.customers" />
-							</Link>
-						</li>
-						<li
-							className={clsx("py-4 px-4 tracking-wider", {
-								"border-l-4 border-light_gray":
-									pathname === "/home/models",
-							})}
-						>
-							<Link
-								onClick={handleLinkClick}
-								href="/home/models"
-								className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase"
-							>
-								<TbVectorTriangle className="h-6 w-6" />
-								<T tkey="navbar.models" />
-							</Link>
-						</li>
-						<li
-							className={clsx("py-4 px-4 tracking-wider", {
-								"border-l-4 border-light_gray":
-									pathname === "/home/patterns",
-							})}
-						>
-							<Link
-								onClick={handleLinkClick}
-								href="/home/patterns"
-								className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase"
-							>
-								<BiTrendingUp className="h-6 w-6" />
-								<T tkey="navbar.patterns" />
 							</Link>
 						</li>
 					</>

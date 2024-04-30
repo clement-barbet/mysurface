@@ -150,7 +150,7 @@
 		},
 		"delete": {
 			"title": "Smazat Účet",
-			"subtitle": "Jakmile smažete svůj účet, není návratu zpět. Buďte prosím jistí.",
+			"subtitle": "Jakmile smažete svůj účet, všechna vaše data budou ztracena. Prosím, buďte opatrní a promyšleně před pokračováním v této akci.",
 			"button": "SMAZAT MŮJ ÚČET",
 			"confirmation": "Jste si jisti, že chcete smazat svůj účet?",
 			"options": {

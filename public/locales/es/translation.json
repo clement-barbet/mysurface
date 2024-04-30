@@ -150,7 +150,7 @@
 		},
 		"delete": {
 			"title": "Eliminar Cuenta",
-			"subtitle": "Una vez que elimine su cuenta, no hay vuelta atrás. Por favor, esté seguro.",
+			"subtitle": "Una vez que elimines tu cuenta, todos tus datos se perderán. Por favor, ten cuidado y sé consciente antes de proceder con esta acción.",
 			"button": "ELIMINAR MI CUENTA",
 			"confirmation": "¿Estás seguro de que deseas eliminar tu cuenta?",
 			"options": {

@@ -150,7 +150,7 @@
 		},
 		"delete": {
 			"title": "Delete Account",
-			"subtitle": "Once you delete your account, there is no going back. Please be certain.",
+			"subtitle": "Once you delete your account, all your data will be lost. Please, take caution and be mindful before proceeding with this action.",
 			"button": "DELETE MY ACCOUNT",
 			"confirmation": "Are you sure you want to delete your account?",
 			"options": {
