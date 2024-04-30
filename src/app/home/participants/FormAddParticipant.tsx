@@ -185,7 +185,7 @@ function FormAddParticipant({ onParticipantAdded, isEnrollmentPhase }) {
 				<input type="file" onChange={handleFileChange} />
 				<Button
 					type="submit"
-					id="addParticipantBtn"
+					id="uploadCsvBtn"
 					className="md:w-auto w-full"
 					disabled={!isEnrollmentPhase}
 					onClick={handleFileUpload}
