@@ -204,7 +204,7 @@ export default function DashboardNavbar() {
 				</li>
 				{userRole === "superadmin" ? (
 					<>
-						<hr className="w-full border-light_gray border-dashed" />
+						<hr className="w-full border-light_gray border border-opacity-50" />
 						<li
 							className={clsx("py-4 px-4 tracking-wider", {
 								"border-l-4 border-light_gray":
