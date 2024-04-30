@@ -76,7 +76,7 @@ export default function Dashboard() {
 											</TableCell>
 											<TableCell className="px-6 py-2 whitespace-nowrap">
 												{formattedDate}
-												<br />
+												&nbsp;&nbsp;&nbsp;
 												{formattedTime}
 											</TableCell>
 										</TBodyRow>
