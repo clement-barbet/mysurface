@@ -48,7 +48,7 @@ function FormAddParticipant({ onParticipantAdded, isEnrollmentPhase }) {
 		Papa.parse(file, {
 			header: true,
 			complete: async (results) => {
-				const maxRows = 100; // Reemplaza esto con tu límite
+				const maxRows = 200;
 				if (results.data.length > maxRows) {
 					console.error(
 						`Too many rows: ${results.data.length}. The limit is ${maxRows}.`
