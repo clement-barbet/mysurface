@@ -135,13 +135,13 @@ export default function Page() {
 				<h2 className="mb-2">
 					<T tkey="participants.form.title" />
 				</h2>
+				<div className="w-full my-4">
+					<FormAddParticipant
+						onParticipantAdded={onParticipantAdded}
+						isEnrollmentPhase={isEnrollmentPhase}
+					/>
+				</div>
 				<div className="flex flex-col gap-y-2 md:flex-row md:justify-between md:items-end flex-wrap">
-					<div className="mb-4 md:mb-0">
-						<FormAddParticipant
-							onParticipantAdded={onParticipantAdded}
-							isEnrollmentPhase={isEnrollmentPhase}
-						/>
-					</div>
 					<CreateQuestionnairesButton
 						isEnrollmentPhase={isEnrollmentPhase}
 						participantCount={participantCount}

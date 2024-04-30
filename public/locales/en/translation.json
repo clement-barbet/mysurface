@@ -89,6 +89,9 @@
 				"result": "Generate Result",
 				"deleteAll": "Delete All Participants"
 			}
+		},
+		"csv": {
+			"button": "Upload CSV"
 		}
 	},
 	"faq": {

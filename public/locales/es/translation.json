@@ -89,6 +89,9 @@
 				"result": "Generar Resultado",
 				"deleteAll": "Eliminar todos los participantes"
 			}
+		},
+		"csv": {
+			"button": "Subir CSV"
 		}
 	},
 	"faq": {

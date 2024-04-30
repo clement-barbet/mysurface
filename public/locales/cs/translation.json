@@ -89,6 +89,9 @@
 				"result": "Generovat Výsledek",
 				"deleteAll": "Smazat všechny účastníky"
 			}
+		},
+		"csv": {
+			"button": "UNahrát CSV"
 		}
 	},
 	"faq": {
