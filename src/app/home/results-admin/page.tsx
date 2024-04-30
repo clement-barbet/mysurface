@@ -13,7 +13,14 @@ import {
 	TBodyRow,
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
-import { Modal, Box, Typography, TextField } from "@mui/material";
+import {
+	Modal,
+	Box,
+	Typography,
+	TextField,
+	Select,
+	MenuItem,
+} from "@mui/material";
 
 export default function Results() {
 	const [loading, setLoading] = useState(true);
@@ -23,7 +30,12 @@ export default function Results() {
 	const [open, setOpen] = useState(false);
 	const [reportName, setReportName] = useState("");
 	const [currentPage, setCurrentPage] = useState(1);
-	const resultsPerPage = 5;
+	const [resultsPerPage, setResultsPerPage] = useState(5);
+
+	const handleResultsPerPageChange = (event) => {
+		setResultsPerPage(event.target.value);
+		setCurrentPage(1);
+	};
 
 	const handleOpen = (result) => {
 		setSelectedResult(result);
@@ -101,6 +113,18 @@ export default function Results() {
 	const indexOfLastResult = currentPage * resultsPerPage;
 	const indexOfFirstResult = indexOfLastResult - resultsPerPage;
 	const currentResults = results.slice(indexOfFirstResult, indexOfLastResult);
+	const totalRows = results.length;
+	const resultsPerPageOptions = Array.from(
+		{ length: Math.ceil(totalRows / 5) },
+		(_, i) => (i + 1) * 5
+	);
+
+	if (totalRows % 5 !== 0) {
+		resultsPerPageOptions.push(totalRows);
+	}
+
+	console.log("total rows: ", totalRows);
+	console.log("per page: ", resultsPerPage);
 
 	return (
 		!loading && (
@@ -185,57 +209,88 @@ export default function Results() {
 									})}
 								</TableBody>
 							</Table>
-							<div className="w-1/3 m-auto pt-4 flex flex-row gap-x-6 items-center justify-center">
-								<Button
-									onClick={() => setCurrentPage(1)}
-									disabled={currentPage === 1}
-									variant="delete"
-									className="w-full inline-block"
-								>
-									First
-								</Button>
-								<Button
-									onClick={() =>
-										setCurrentPage(currentPage - 1)
-									}
-									disabled={currentPage === 1}
-									className="w-full inline-block"
-								>
-									Previous
-								</Button>
-								<Button
-									onClick={() =>
-										setCurrentPage(currentPage + 1)
-									}
-									disabled={
-										currentPage ===
-										Math.ceil(
-											results.length / resultsPerPage
-										)
-									}
-									className="w-full inline-block"
-								>
-									Next
-								</Button>
-								<Button
-									onClick={() =>
-										setCurrentPage(
+							<div className="flex flex-row flex-wrap justify-between">
+								<div className="flex flex-row justify-center items-baseline gap-x-2 mt-4">
+									<p>Results per page: </p>
+									<div>
+										<Select
+											value={resultsPerPage}
+											onChange={
+												handleResultsPerPageChange
+											}
+											sx={{
+												margin: "auto",
+												fontFamily: "inherit",
+												fontWeight: "bold",
+												backgroundColor: "white",
+											}}
+										>
+											{resultsPerPageOptions.map(
+												(option) => (
+													<MenuItem
+														key={option}
+														value={option}
+													>
+														{option}
+													</MenuItem>
+												)
+											)}
+										</Select>
+									</div>
+								</div>
+								<div className="w-1/3 m-auto pt-4 flex flex-row gap-x-6 items-center justify-center">
+									<Button
+										onClick={() => setCurrentPage(1)}
+										disabled={currentPage === 1}
+										variant="delete"
+										className="w-full inline-block"
+									>
+										First
+									</Button>
+									<Button
+										onClick={() =>
+											setCurrentPage(currentPage - 1)
+										}
+										disabled={currentPage === 1}
+										className="w-full inline-block"
+									>
+										Previous
+									</Button>
+									<Button
+										onClick={() =>
+											setCurrentPage(currentPage + 1)
+										}
+										disabled={
+											currentPage ===
 											Math.ceil(
 												results.length / resultsPerPage
 											)
-										)
-									}
-									disabled={
-										currentPage ===
-										Math.ceil(
-											results.length / resultsPerPage
-										)
-									}
-									variant="delete"
-									className="w-full inline-block"
-								>
-									Last
-								</Button>
+										}
+										className="w-full inline-block"
+									>
+										Next
+									</Button>
+									<Button
+										onClick={() =>
+											setCurrentPage(
+												Math.ceil(
+													results.length /
+														resultsPerPage
+												)
+											)
+										}
+										disabled={
+											currentPage ===
+											Math.ceil(
+												results.length / resultsPerPage
+											)
+										}
+										variant="delete"
+										className="w-full inline-block"
+									>
+										Last
+									</Button>
+								</div>
 							</div>
 						</>
 					) : (
