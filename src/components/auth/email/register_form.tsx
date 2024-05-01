@@ -104,12 +104,14 @@ export default function RegisterForm() {
 
 		const supabase = createClientComponentClient();
 
+		const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+		const url = `${baseUrl}/my-info`;
+
 		let { data, error } = await supabase.auth.signUp({
 			email: email,
 			password: password,
 			options: {
-				emailRedirectTo:
-					"https://localhost:3000/my-info",
+				emailRedirectTo: url,
 			},
 		});
 
