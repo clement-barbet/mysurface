@@ -35,6 +35,74 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
+## Database
+
+In the MySurface project, we utilize the Supabase database along with its integrated authentication system and RLS policies to control access to the information stored in our tables. 
+
+### Design
+
+These are the tables forming the backbone of our database design:
+- **Languages**: Stores the languages available for the app.
+	- **id**: Unique identifier for each language entry.
+ 	- **code**: Code representing the language.
+	- **name**: Name of the language.
+- **Organizations**: Stores the potential organizations to which a user may belong.
+	- **id**: Unique identifier for each organization entry.
+ 	- **name**: Name of the organization type.
+- **App_settings**: Stores the information related to the user.
+	- **id**: Unique identifier for each app_settings entry.
+ 	- **isEnrollmentPhase**: Boolean value that controls whether the actual test that a user is running is in _enrollment_ or _questionnaires_ phase. Default value is TRUE.
+	- **user_id**: UUID that references the auth.users id column.
+	- **language_id**: ID that references the languages id column. Sets the language preference for a user. Default value is 1 (English).
+	- **organization_id**: ID that references the organizations id column. Sets the organization selected by a user. Default value is 1 (Company).
+	- **name**: Name of the user.
+	- **organization**: Name of the organization to which the user belongs.
+	- **email**: Email account of the user.
+- **Roles**: Stores the role of the user.
+	- **user_id**: UUID that references the auth.users id column.
+ 	- **role**: Actual role of the user; _authenticated_ is the default value and _superadmin_ must be set for higher level of accounts.
+- **Questions**: NEEDS TO BE UPDATED.
+- **Questionnaires**: Stores the questionnaire related to a participant. **After completing the report, the related questionnaires records will be deleted.**
+	- **id**: Unique identifier for each questionnaire entry.
+ 	- **created_at**: The timestamp indicating when the entry was created.
+ 	- **completed**: Boolean value that controles whether the actual questionnaire has been completed or not.
+ 	- **data**: JSON file that stores the needed information with questions and answers for each participant.
+- **Participants**: Stores the information for each participant that will complete a questionnaire. **After completing the report, the related participants records will be deleted.**
+	- **id**: Unique identifier for each participant entry.
+ 	- **created_at**: The timestamp indicating when the entry was created.
+ 	- **name**: Name of the participant.
+ 	- **email**: Email of the participant.
+ 	- **questionnaire**: UUID that references the questionnaires id column. Set default as NULL.
+ 	- **user_id**: UUID that references the auth.users id column. Represents the manager of the team who added the participant.
+- **Results**: Stores the information of a report's results.
+	- **id**: Unique identifier for each result entry.
+ 	- **created_at**: The timestamp indicating when the entry was created.
+ 	- **result**: JSON file that stores the needed information for the graph generation.
+ 	- **report_name**: Name of the report.
+ 	- **user_id**: UUID that references the auth.users id column. Represents owner ot the report.
+
+### Authentication
+
+When a user signs up, a trigger is activated to add the required information to the public database schema. In Supabase, user information is stored in a separate table called **auth.users**, which is governed by strict policies to ensure the security of sensitive data. Consequently, any additional user information must be stored in the separate public database schema.
+
+The trigger, named **new_user_trigger**, activates upon the insertion of a record into the _auth.users_ table, executing the function **handle_new_user**. This function inserts the user's ID and email into the _public.app_settings_ table and subsequently adds the user's ID into the _public.roles_ table. Any unspecified values are automatically set to default.
+
+### RLS Policies
+
+Row-Level Security (RLS) policies in Supabase provide a powerful mechanism for controlling access to rows within database tables based on specified criteria. 
+
+While every user is automatically assigned the 'authenticated' role in Supabase, the 'role' column in the roles table is utilized for managing policies and determining access permissions. This setup enables the management of access control for displaying or concealing elements within the interface, enhancing data security and user privacy compliance. To distinguish between the default "authenticated" role and custom roles defined in the roles table, a convention is used: if the role is italicized, it signifies a predefined role.
+
+These are the defined RLS policies for each table:
+- **Languages**: Languages are viewable (SELECT) by _authenticated_ or _anon_ users.
+- **Organizations**: Organizations are viewable (SELECT) by _authenticated_ users.
+- **App_settings**: Authenticated users can SELECT, INSERT, UPDATE and DELETE only the records matching the user_id. Superadmin users can SELECT every record, but only INSERT, UPDATE and DELETE the records matching the user_id.
+- **Roles**: Users can SELECT, INSERT, UPDATE and DELETE only the records matching the user_id.
+- **Questions**: No policies created yet.
+- **Questionnaires**: No policies created yet.
+- **Participants**: Users can SELECT, INSERT, UPDATE and DELETE only the records matching the user_id.
+- **Results**: Authenticated users can SELECT, INSERT, UPDATE and DELETE only the records matching the user_id. Superadmin users can SELECT, INSERT, UPDATE and DELETE every record.
+
 ## Editing Texts with i18n using JSON Files (Patterns and Models)
 
 ### Overview
