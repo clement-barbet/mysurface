@@ -233,7 +233,8 @@
 		"patterns": "Patterns",
 		"faq": "FAQ",
 		"language": "Language",
-		"customers": "Customers"
+		"customers": "Customers",
+		"backup": "Backup"
 	},
 	"topbar": {
 		"search": "Search",

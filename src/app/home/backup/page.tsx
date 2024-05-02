@@ -44,7 +44,7 @@ export default function Results() {
 	};
 	const handleSave = async () => {
 		const { error } = await supabase
-			.from("results")
+			.from("deleted_reports")
 			.update({ report_name: reportName })
 			.eq("id", selectedResult.id);
 
@@ -70,30 +70,14 @@ export default function Results() {
 		const fetchData = async () => {
 			setLoading(true);
 			let { data: fetchedResults, error: resultsError } = await supabase
-				.from("results")
+				.from("deleted_reports")
 				.select("*")
 				.order("created_at", { ascending: false });
 
-			let { data: fetchedAppSettings, error: appSettingsError } =
-				await supabase.from("app_settings").select("*");
-
 			if (resultsError)
 				console.error("Error loading results", resultsError);
-			else if (appSettingsError)
-				console.error("Error loading app settings", appSettingsError);
 			else {
-				let resultsWithUserEmail = fetchedResults.map((result) => {
-					let appSetting = fetchedAppSettings.find(
-						(setting) => setting.user_id === result.user_id
-					);
-					return {
-						...result,
-						user_email: appSetting
-							? appSetting.email
-							: "Email not found",
-					};
-				});
-				setResults(resultsWithUserEmail || []);
+				setResults(fetchedResults || []);
 			}
 			setLoading(false);
 		};
@@ -102,7 +86,10 @@ export default function Results() {
 	}, []);
 
 	const deleteReport = async (id: string) => {
-		const { error } = await supabase.from("results").delete().eq("id", id);
+		const { error } = await supabase
+			.from("deleted_reports")
+			.delete()
+			.eq("id", id);
 
 		if (error) console.error("Error deleting report", error);
 		else {
@@ -141,9 +128,11 @@ export default function Results() {
 									<THeadRow>
 										{[
 											"ID",
-											"Name",
-											"Owner's Email",
-											"Date",
+											"Report name",
+											"Deletion date",
+											"Creation date",
+											"User name",
+											"Organization",
 											"Edit report's name",
 											"Delete report",
 										].map((header, index) => (
@@ -156,18 +145,25 @@ export default function Results() {
 								<TableBody className="bg-white dark:bg-black divide-y divide-gray-200 dark:divide-gray-500">
 									{currentResults.map((result) => {
 										const date = new Date(
-											result.created_at
+											result.deleted_at
 										);
 										const formattedDate =
 											date.toLocaleDateString("en-CA");
 										const formattedTime =
 											date.toLocaleTimeString("en-CA");
+										const date2 = new Date(
+											result.created_at
+										);
+										const formattedDate2 =
+											date2.toLocaleDateString("en-CA");
+										const formattedTime2 =
+											date2.toLocaleTimeString("en-CA");
 
 										return (
 											<TBodyRow key={result.id}>
 												<TableCell className="px-6 py-2 whitespace-nowrap">
 													<Link
-														href={`/home/results-admin/${result.id}`}
+														href={`/home/backup/${result.id}`}
 														className="font-semibold text-blue-500 hover:text-blue-800 underline hover:underline-offset-4 underline-offset-2 transition-all duration-200 ease-linear"
 													>
 														{result.id}
@@ -177,12 +173,20 @@ export default function Results() {
 													{result.report_name}
 												</TableCell>
 												<TableCell className="px-6 py-2 whitespace-nowrap">
-													{result.user_email}
-												</TableCell>
-												<TableCell className="px-6 py-2 whitespace-nowrap">
 													{formattedDate}
 													<br />
 													{formattedTime}
+												</TableCell>
+												<TableCell className="px-6 py-2 whitespace-nowrap">
+													{formattedDate2}
+													<br />
+													{formattedTime2}
+												</TableCell>
+												<TableCell className="px-6 py-2 whitespace-nowrap">
+													{result.user_name}
+												</TableCell>
+												<TableCell className="px-6 py-2 whitespace-nowrap">
+													{result.organization}
 												</TableCell>
 												<TableCell className="px-6 py-2 whitespace-nowrap">
 													<Button

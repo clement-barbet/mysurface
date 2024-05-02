@@ -233,7 +233,8 @@
 		"patterns": "Vzory",
 		"faq": "FAQ",
 		"language": "Jazyk",
-		"customers": "Zákazníci"
+		"customers": "Zákazníci",
+		"backup": "Záloha"
 	},
 	"topbar": {
 		"search": "Hledat",

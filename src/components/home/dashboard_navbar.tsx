@@ -14,6 +14,7 @@ import { useTranslation } from "react-i18next";
 import T from "@/components/translations/translation";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { PiSuitcaseSimple } from "react-icons/pi";
+import { MdOutlineSettingsBackupRestore } from "react-icons/md";
 
 export default function DashboardNavbar() {
 	const pathname = usePathname();
@@ -221,6 +222,24 @@ export default function DashboardNavbar() {
 							>
 								<PiGraph className="h-6 w-6" />
 								<T tkey="navbar.results-admin" />
+							</Link>
+						</li>
+						<li
+							className={clsx("py-4 px-4 tracking-wider", {
+								"border-l-4 border-light_gray":
+									pathname === "/home/backup" ||
+									/^\/home\/backup(\/\d+)?$/.test(
+										pathname
+									),
+							})}
+						>
+							<Link
+								onClick={handleLinkClick}
+								href="/home/backup"
+								className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase"
+							>
+								<MdOutlineSettingsBackupRestore className="h-6 w-6" />
+								<T tkey="navbar.backup" />
 							</Link>
 						</li>
 						<li
