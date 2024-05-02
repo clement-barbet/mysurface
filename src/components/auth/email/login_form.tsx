@@ -75,9 +75,11 @@ export default function LoginForm() {
 			setErrorMessage(response.error?.message);
 			return;
 		} else {
+			const user = await supabase.auth.getUser();
 			const { data: settings, error: settingsError } = await supabase
 				.from("app_settings")
 				.select("language_id")
+				.eq("user_id", user.data.user.id)
 				.single();
 
 			if (settingsError) {

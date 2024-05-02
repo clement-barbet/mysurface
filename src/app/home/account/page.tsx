@@ -1,9 +1,9 @@
 "use client";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import ResetPasswordFrom from "@/components/auth/email/reset_password";
-import ChangeOrganization from "@/components/my-info/change_organization";
-import ChangeLanguage from "@/components/my-info/change_language";
-import ChangeNames from "@/components/my-info/change_names";
+import ChangeOrganization from "@/components/account/change_organization";
+import ChangeLanguage from "@/components/account/change_language";
+import ChangeNames from "@/components/account/change_names";
 import DeleteAccountButton from "@/components/account/delete_account_btn";
 import { useEffect, useState } from "react";
 

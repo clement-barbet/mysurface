@@ -79,7 +79,7 @@ export default function ChangeNames({ userId }: { userId: string }) {
 	}, [name]);
 
 	const handleChange = async (data: z.infer<typeof formSchema>) => {
-		const { organization } = data;
+		const { organization, name } = data;
 
 		const { error: updateError } = await supabase
 			.from("app_settings")
