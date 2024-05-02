@@ -104,7 +104,13 @@ The trigger, named **new_user_trigger**, activates upon the insertion of a recor
 - **Description**:
 This trigger is designed to execute before a user is deleted from the _auth.users_ table. Upon activation, it calls the function before_delete_user_trigger, which retrieves the user's name and organization from the _app_settings_ table. Additionally, it retrieves the user's activity data, including the creation timestamp, result, and report name, from the _results_ table. Subsequently, it inserts a record into the _deleted_reports_ table, capturing relevant information about the user's activities prior to deletion.
 
-#### 2. Delete user function
+#### 2. Create report backup after its deletion
+- **Trigger Name**: report_before_delete_trigger
+- **Function Name**: before_delete_report_trigger
+- **Description**:
+The report_before_delete_trigger trigger is designed to execute before a row is deleted from the _results_ table. It automatically invokes the before_delete_report_trigger function. This trigger function retrieves the user's name and organization from the _app_settings_ table based on the provided user_id. It then inserts the deleted report's data along with the user's name and organization into the _deleted_reports_ table.
+
+#### 3. Delete user function
 - **Function Name**: delete_user
 - **Parameters**:
 	- **user_id**: The unique identifier of the user to be deleted from the _auth.users_ table.
