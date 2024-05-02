@@ -80,12 +80,36 @@ These are the tables forming the backbone of our database design:
  	- **result**: JSON file that stores the needed information for the graph generation.
  	- **report_name**: Name of the report.
  	- **user_id**: UUID that references the auth.users id column. Represents owner ot the report.
+- **Deleted_reports**: Stores the information of a report that has been deleted.
+	- **id**: Unique identifier for each result entry.
+  	- **deleted_at**: The timestamp indicating when the report was deleted.
+ 	- **created_at**: The timestamp indicating when the report was created.
+ 	- **result**: JSON file that stores the needed information for the graph generation.
+ 	- **report_name**: Name of the report.
+ 	- **user_name**: Name of the user that owned the report.
+	- **organization**: Name of the organization of the owner.
+
 
 ### Authentication
 
 When a user signs up, a trigger is activated to add the required information to the public database schema. In Supabase, user information is stored in a separate table called **auth.users**, which is governed by strict policies to ensure the security of sensitive data. Consequently, any additional user information must be stored in the separate public database schema.
 
 The trigger, named **new_user_trigger**, activates upon the insertion of a record into the _auth.users_ table, executing the function **handle_new_user**. This function inserts the user's ID and email into the _public.app_settings_ table and subsequently adds the user's ID into the _public.roles_ table. Any unspecified values are automatically set to default.
+
+### Additional Triggers and Functions
+
+#### 1. Create report backup after user deletion
+- **Trigger Name**: user_before_delete_trigger
+- **Function Name**: before_delete_user_trigger
+- **Description**:
+This trigger is designed to execute before a user is deleted from the _auth.users_ table. Upon activation, it calls the function before_delete_user_trigger, which retrieves the user's name and organization from the _app_settings_ table. Additionally, it retrieves the user's activity data, including the creation timestamp, result, and report name, from the _results_ table. Subsequently, it inserts a record into the _deleted_reports_ table, capturing relevant information about the user's activities prior to deletion.
+
+#### 2. Delete user function
+- **Function Name**: delete_user
+- **Parameters**:
+	- **user_id**: The unique identifier of the user to be deleted from the _auth.users_ table.
+- **Description**:
+The delete_user function is a standalone function designed to delete a user from the _auth.users_ table based on the provided user_id. When invoked with a valid user_id, the function deletes the corresponding user record from the _auth.users_ table.
 
 ### RLS Policies
 
