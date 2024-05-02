@@ -14,10 +14,8 @@ export default function MyInfo() {
 	useEffect(() => {
 		const fetchUser = async () => {
 			const session = await supabase.auth.getSession();
-			console.log(session);
 			if (session) {
 				setUserSB(session.data.session.user);
-				console.log(session.data.session.user.id);
 			}
 		};
 
@@ -33,13 +31,13 @@ export default function MyInfo() {
 					</h2>
 					<div className="w-full p-2 md:w-1/2 md:m-auto flex flex-col gap-y-2">
 						<div className="w-full p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
+							<ChangeLanguage userId={userSB.id} />
+						</div>
+						<div className="w-full p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
 							<ChangeNames userId={userSB.id} />
 						</div>
 						<div className="w-full p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
 							<ChangeOrganization userId={userSB.id} />
-						</div>
-						<div className="w-full p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
-							<ChangeLanguage userId={userSB.id} />
 						</div>
 						<Link href="/login" className="py-4">
 							<Button

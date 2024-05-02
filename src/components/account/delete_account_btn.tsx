@@ -10,7 +10,7 @@ import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 
-export default function DeleteAccountButton() {
+export default function DeleteAccountButton({ userId }: { userId: string }) {
 	const supabase = createClientComponentClient();
 	const [successMessage, setSuccessMessage] = useState("");
 	const [errorMessage, setErrorMessage] = useState("");
@@ -27,11 +27,6 @@ export default function DeleteAccountButton() {
 
 	const handleDelete = async () => {
 		try {
-			const user = await supabase.auth.getUser();
-			const userId = user.data.user.id;
-
-			console.log("deleting user:", userId);
-
 			const { data: participants, error: participantsError } =
 				await supabase
 					.from("participants")

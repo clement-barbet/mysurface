@@ -135,7 +135,7 @@ export default function ChangeLanguage({ userId }: { userId: string }) {
 										<select
 											name="language"
 											id="language"
-											className="appearance-none box-border w-full px-3 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 bg-dark_gray cursor-pointer"
+											className="appearance-none box-border w-full px-3 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 bg-dark_gray cursor-pointer dark:bg-mid_blue"
 											value={languageId}
 											onChange={(e) =>
 												setLanguageId(

@@ -114,7 +114,7 @@ export default function ChangeOrganization({ userId }: { userId: string }) {
 										<select
 											name="organization"
 											id="organization"
-											className="appearance-none box-border w-full px-3 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 bg-dark_gray cursor-pointer"
+											className="dark:bg-mid_blue appearance-none box-border w-full px-3 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 bg-dark_gray cursor-pointer"
 											value={organizationId}
 											onChange={(e) =>
 												setOrganizationId(

@@ -123,7 +123,7 @@ export default function ChangeNames({ userId }: { userId: string }) {
 									<FormLabel htmlFor="name">
 										<T tkey="account.name.labels.name" />
 									</FormLabel>
-									<FormControl>
+									<FormControl className="dark:bg-mid_blue">
 										<Input
 											name="name"
 											id="name"
@@ -148,7 +148,7 @@ export default function ChangeNames({ userId }: { userId: string }) {
 									<FormLabel htmlFor="organization">
 										<T tkey="account.name.labels.organization" />
 									</FormLabel>
-									<FormControl>
+									<FormControl className="dark:bg-mid_blue">
 										<Input
 											name="organization"
 											id="organization"
