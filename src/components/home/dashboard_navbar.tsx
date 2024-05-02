@@ -109,7 +109,7 @@ export default function DashboardNavbar() {
 				})}
 			>
 				<li
-					className={clsx("py-4 px-4 w-full tracking-wider", {
+					className={clsx("py-2 px-4 w-full tracking-wider", {
 						"border-l-4 border-light_gray":
 							pathname === "/home/dashboard",
 					})}
@@ -124,7 +124,7 @@ export default function DashboardNavbar() {
 					</Link>
 				</li>
 				<li
-					className={clsx("py-4 px-4 tracking-wider", {
+					className={clsx("py-2 px-4 tracking-wider", {
 						"border-l-4 border-light_gray":
 							pathname === "/home/participants",
 					})}
@@ -139,7 +139,7 @@ export default function DashboardNavbar() {
 					</Link>
 				</li>
 				<li
-					className={clsx("py-4 px-4 tracking-wider", {
+					className={clsx("py-2 px-4 tracking-wider", {
 						"border-l-4 border-light_gray":
 							pathname === "/home/results" ||
 							/^\/home\/results(\/\d+)?$/.test(pathname),
@@ -157,7 +157,7 @@ export default function DashboardNavbar() {
 				{userRole === "superadmin" ? (
 					<>
 						<li
-							className={clsx("py-4 px-4 tracking-wider", {
+							className={clsx("py-2 px-4 tracking-wider", {
 								"border-l-4 border-light_gray":
 									pathname === "/home/models",
 							})}
@@ -172,7 +172,7 @@ export default function DashboardNavbar() {
 							</Link>
 						</li>
 						<li
-							className={clsx("py-4 px-4 tracking-wider", {
+							className={clsx("py-2 px-4 tracking-wider", {
 								"border-l-4 border-light_gray":
 									pathname === "/home/patterns",
 							})}
@@ -189,7 +189,7 @@ export default function DashboardNavbar() {
 					</>
 				) : null}
 				<li
-					className={clsx("py-4 px-4 tracking-wider", {
+					className={clsx("py-2 px-4 tracking-wider", {
 						"border-l-4 border-light_gray":
 							pathname === "/home/faq",
 					})}
@@ -207,7 +207,7 @@ export default function DashboardNavbar() {
 					<>
 						<hr className="w-full border-light_gray border border-opacity-50" />
 						<li
-							className={clsx("py-4 px-4 tracking-wider", {
+							className={clsx("py-2 px-4 tracking-wider", {
 								"border-l-4 border-light_gray":
 									pathname === "/home/results-admin" ||
 									/^\/home\/results-admin(\/\d+)?$/.test(
@@ -225,7 +225,7 @@ export default function DashboardNavbar() {
 							</Link>
 						</li>
 						<li
-							className={clsx("py-4 px-4 tracking-wider", {
+							className={clsx("py-2 px-4 tracking-wider", {
 								"border-l-4 border-light_gray":
 									pathname === "/home/backup" ||
 									/^\/home\/backup(\/\d+)?$/.test(
@@ -243,7 +243,7 @@ export default function DashboardNavbar() {
 							</Link>
 						</li>
 						<li
-							className={clsx("py-4 px-4 tracking-wider", {
+							className={clsx("py-2 px-4 tracking-wider", {
 								"border-l-4 border-light_gray":
 									pathname === "/home/customers-admin",
 							})}
@@ -261,7 +261,7 @@ export default function DashboardNavbar() {
 				) : null}
 				<li
 					onClick={() => setIsLanguageMenuOpen(!isLanguageMenuOpen)}
-					className="py-4 px-4 tracking-wider relative mt-auto"
+					className="py-2 px-4 tracking-wider relative mt-auto"
 				>
 					{isLanguageMenuOpen && (
 						<ul className="mb-2 ms-8">
