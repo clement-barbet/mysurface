@@ -131,14 +131,15 @@ Row-Level Security (RLS) policies in Supabase provide a powerful mechanism for c
 While every user is automatically assigned the 'authenticated' role in Supabase, the 'role' column in the roles table is utilized for managing policies and determining access permissions. This setup enables the management of access control for displaying or concealing elements within the interface, enhancing data security and user privacy compliance. To distinguish between the default "authenticated" role and custom roles defined in the roles table, a convention is used: if the role is italicized, it signifies a predefined role.
 
 These are the defined RLS policies for each table:
-- **Languages**: Languages are viewable (SELECT) by _authenticated_ or _anon_ users.
+- **Languages**: Languages are viewable (SELECT) by any user.
 - **Organizations**: Organizations are viewable (SELECT) by _authenticated_ users.
 - **App_settings**: Authenticated users can SELECT, INSERT, UPDATE and DELETE only the records matching the user_id. Superadmin users can SELECT every record, but only INSERT, UPDATE and DELETE the records matching the user_id.
 - **Roles**: Users can SELECT, INSERT, UPDATE and DELETE only the records matching the user_id.
-- **Questions**: No policies created yet.
-- **Questionnaires**: No policies created yet.
-- **Participants**: Users can SELECT, INSERT, UPDATE and DELETE only the records matching the user_id.
+- **Questions**: Languages are viewable (SELECT) by any user.
+- **Questionnaires**: Languages are viewable (SELECT) and editable (UPDATE) by _authenticated_ or _anon_ users. Just _authenticated_ users can INSERT or DELETE questionnaires.
+- **Participants**: Users can INSERT, UPDATE and DELETE only the records matching the user_id. Every user can SELECT participants.
 - **Results**: Authenticated users can SELECT, INSERT, UPDATE and DELETE only the records matching the user_id. Superadmin users can SELECT, INSERT, UPDATE and DELETE every record.
+- **Deleted_reports**: Superadmin users can SELECT, INSERT, UPDATE and DELETE every record.
 
 ## Editing Texts with i18n using JSON Files (Patterns and Models)
 
