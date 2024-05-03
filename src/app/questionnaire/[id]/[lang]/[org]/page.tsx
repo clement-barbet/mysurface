@@ -19,23 +19,23 @@ export default async function QuestionnairePage({
 
 	if (questionnaireError) {
 		console.error("Error fetching questionnaire:", questionnaireError);
-		//notFound();
+		notFound();
 	}
 	
 	if (questionnaire.completed) {
 		console.error("Questionnaire already completed");
-		//notFound();
+		notFound();
 	}
 
 	const { data: participants, error: participantsError } = await supabase
-		.from("participants_view")
+		.from("participants")
 		.select("*")
 		.neq("questionnaire", params.id)
 		.order("name");
 
 	if (participantsError) {
 		console.error("Error fetching participants:", participantsError);
-		//notFound();
+		notFound();
 	}
 
 	const { data: questions, error: questionsError } = await supabase
@@ -46,7 +46,7 @@ export default async function QuestionnairePage({
 
 	if (questionsError) {
 		console.error("Error fetching questions:", questionsError);
-		//notFound();
+		notFound();
 	}
 
 	const { data: owner, error: ownerError } = await supabase
@@ -57,7 +57,7 @@ export default async function QuestionnairePage({
 
 	if (ownerError) {
 		console.error("Error fetching owner:", ownerError);
-		//notFound();
+		notFound();
 	}
 
 	return (
