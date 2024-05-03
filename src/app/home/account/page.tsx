@@ -26,7 +26,7 @@ export default function Account() {
 	return (
 		<>
 			{userSB && userSB.id ? (
-				<div className="flex flex-col gap-y-4">
+				<div className="flex flex-col gap-y-14 my-12 mx-12">
 					{" "}
 					<div className="w-full p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
 						<ResetPasswordFrom />

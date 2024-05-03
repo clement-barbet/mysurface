@@ -210,37 +210,7 @@ export default function Results() {
 									})}
 								</TableBody>
 							</Table>
-							<div className="flex flex-row flex-wrap justify-between">
-								{totalRows > 5 && (
-									<div className="flex flex-row justify-center items-baseline gap-x-2 mt-4">
-										<p>Results per page: </p>
-										<div>
-											<Select
-												value={resultsPerPage}
-												onChange={
-													handleResultsPerPageChange
-												}
-												sx={{
-													margin: "auto",
-													fontFamily: "inherit",
-													fontWeight: "bold",
-													backgroundColor: "white",
-												}}
-											>
-												{resultsPerPageOptions.map(
-													(option) => (
-														<MenuItem
-															key={option}
-															value={option}
-														>
-															{option}
-														</MenuItem>
-													)
-												)}
-											</Select>
-										</div>
-									</div>
-								)}
+							<div className="flex flex-col flex-wrap justify-center">
 								<div className="w-1/3 m-auto pt-4 flex flex-row gap-x-6 items-center justify-center">
 									<Button
 										onClick={() => setCurrentPage(1)}
@@ -295,6 +265,36 @@ export default function Results() {
 									</Button>
 								</div>
 							</div>
+							{totalRows > 5 && (
+								<div className="flex flex-row justify-center items-baseline gap-x-2 mt-4">
+									<p>Results per page: </p>
+									<div>
+										<Select
+											value={resultsPerPage}
+											onChange={
+												handleResultsPerPageChange
+											}
+											sx={{
+												margin: "auto",
+												fontFamily: "inherit",
+												fontWeight: "bold",
+												backgroundColor: "white",
+											}}
+										>
+											{resultsPerPageOptions.map(
+												(option) => (
+													<MenuItem
+														key={option}
+														value={option}
+													>
+														{option}
+													</MenuItem>
+												)
+											)}
+										</Select>
+									</div>
+								</div>
+							)}
 						</>
 					) : (
 						<p>No data</p>
