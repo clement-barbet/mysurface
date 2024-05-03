@@ -7,7 +7,7 @@ import QuestionnaireForm from "./QuestionnaireForm";
 export default async function QuestionnairePage({
 	params,
 }: {
-	params: { id: string };
+	params: { id: string, lang: string, org: string};
 }) {
 	const supabase = createServerComponentClient({ cookies });
 
@@ -40,7 +40,9 @@ export default async function QuestionnairePage({
 
 	const { data: questions, error: questionsError } = await supabase
 		.from("questions")
-		.select("*");
+		.select("*")
+		.eq("language_id", params.lang)
+		.eq("organization_id", params.org);
 
 	if (questionsError) {
 		console.error("Error fetching questions:", questionsError);

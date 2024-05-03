@@ -14,6 +14,8 @@ export default function Page() {
 	const [participants, setParticipants] = useState([]);
 	const [questionnaires, setQuestionnaires] = useState(null);
 	const [isEnrollmentPhase, setIsEnrollmentPhase] = useState(true);
+	const [lang, setLang] = useState(null);
+	const [org, setOrg] = useState(null);
 
 	const fetchParticipants = async () => {
 		try {
@@ -78,6 +80,8 @@ export default function Page() {
 					.single();
 			if (appSettingsError) throw appSettingsError;
 			setIsEnrollmentPhase(appSettings.isEnrollmentPhase);
+			setLang(appSettings.language_id);
+			setOrg(appSettings.organization_id);
 		} catch (error) {
 			console.error("Error fetching phase:", error.message);
 		}
@@ -130,6 +134,8 @@ export default function Page() {
 				participants={participants}
 				questionnaires={questionnaires}
 				isEnrollmentPhase={isEnrollmentPhase}
+				lang={lang}
+				org={org}
 			/>
 			<div className="mt-2 p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
 				<h2 className="mb-2">

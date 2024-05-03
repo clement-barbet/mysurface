@@ -19,6 +19,8 @@ function TableParticipants({
 	participants: initialParticipants,
 	questionnaires,
 	isEnrollmentPhase,
+	lang,
+	org,
 }) {
 	const headers_T = [
 		"participants.table.headers.name",
@@ -137,7 +139,7 @@ function TableParticipants({
 													const baseUrl =
 														process.env
 															.NEXT_PUBLIC_BASE_URL;
-													const url = `${baseUrl}/questionnaire/${questionnaireId}`;
+													const url = `${baseUrl}/questionnaire/${questionnaireId}/${lang}/${org}`;
 													return questionnaireId ? (
 														<Link href={url}>
 															<Button
