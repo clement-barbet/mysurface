@@ -28,7 +28,7 @@ export default async function QuestionnairePage({
 	}
 
 	const { data: participants, error: participantsError } = await supabase
-		.from("participants")
+		.from("participants_view")
 		.select("*")
 		.neq("questionnaire", params.id)
 		.order("name");
