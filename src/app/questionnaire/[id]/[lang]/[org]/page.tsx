@@ -4,10 +4,18 @@ import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
 import QuestionnaireForm from "./QuestionnaireForm";
 
+/*
+ * Anon users access this route with the questionnaire.
+ * We need to make sure that the questionnaire is not completed.
+ * We also need to get the participants and questions for the questionnaire.
+ * We also need to get the owner of the questionnaire.
+ * But anon users cannot access participants table directly (RLS policies).
+ * So we need to get participants through participants view.
+ */
 export default async function QuestionnairePage({
 	params,
 }: {
-	params: { id: string, lang: string, org: string};
+	params: { id: string; lang: string; org: string };
 }) {
 	const supabase = createServerComponentClient({ cookies });
 
@@ -21,12 +29,12 @@ export default async function QuestionnairePage({
 		console.error("Error fetching questionnaire:", questionnaireError);
 		notFound();
 	}
-	
+
 	if (questionnaire.completed) {
 		console.error("Questionnaire already completed");
 		notFound();
 	}
-
+	// Get participants through participants view
 	const { data: participants, error: participantsError } = await supabase
 		.from("participants_view")
 		.select("*")
@@ -49,8 +57,9 @@ export default async function QuestionnairePage({
 		notFound();
 	}
 
+	// Get owner through participants view
 	const { data: owner, error: ownerError } = await supabase
-		.from("participants")
+		.from("participants_view")
 		.select("*")
 		.eq("questionnaire", params.id)
 		.single();
@@ -68,7 +77,8 @@ export default async function QuestionnairePage({
 					<b>Questionnaire</b>: {params.id}
 				</h2>
 				<h2>
-					<b>Evaluator</b>: <span className="evaluator">{owner.name}</span>
+					<b>Evaluator</b>:{" "}
+					<span className="evaluator">{owner.name}</span>
 				</h2>
 				<QuestionnaireForm
 					questionnaireId={params.id}
