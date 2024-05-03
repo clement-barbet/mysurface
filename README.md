@@ -61,7 +61,14 @@ These are the tables forming the backbone of our database design:
 - **Roles**: Stores the role of the user.
 	- **user_id**: UUID that references the auth.users id column.
  	- **role**: Actual role of the user; _authenticated_ is the default value and _superadmin_ must be set for higher level of accounts.
-- **Questions**: NEEDS TO BE UPDATED.
+- **Questions**: Stores the different questions available, depending on language and organization.
+	- **id**: Unique identifier for each questionnaire entry.
+ 	- **created_at**: The timestamp indicating when the entry was created.
+ 	- **question**: Text containing the question.
+ 	- **weight**: Weight value of the question. Set default to 0.5.
+ 	- **question_type**: Type of the question can be set to interaction or influence.
+ 	- **language_id**: ID that references the languages id column.
+ 	- **organization_id**: ID that references the organizations id column.
 - **Questionnaires**: Stores the questionnaire related to a participant. **After completing the report, the related questionnaires records will be deleted.**
 	- **id**: Unique identifier for each questionnaire entry.
  	- **created_at**: The timestamp indicating when the entry was created.
