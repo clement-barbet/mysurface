@@ -23,6 +23,7 @@ export default function Results() {
 	const supabase = createClientComponentClient();
 	const [currentPage, setCurrentPage] = useState(1);
 	const [participantsPerPage, setParticipantsPerPage] = useState(5);
+	const [totalRows, setTotalRows] = useState(0);
 
 	const handleResultsPerPageChange = (event) => {
 		setParticipantsPerPage(event.target.value);
@@ -123,7 +124,9 @@ export default function Results() {
 		indexOfFirstParticipant,
 		indexOfLastParticipant
 	);
-	const totalRows = participants.length;
+	useEffect(() => {
+		setTotalRows(participants.length);
+	}, [participants]);
 	let participantsPerPageOptions;
 
 	if (totalRows >= 5) {
