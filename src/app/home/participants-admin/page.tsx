@@ -30,6 +30,10 @@ export default function Results() {
 	};
 
 	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, [participantsPerPage]);
+
+	useEffect(() => {
 		const fetchData = async () => {
 			setLoading(true);
 			const { data: fetchedParticipants, error: participantsError } = await supabase

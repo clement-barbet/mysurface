@@ -31,11 +31,16 @@ export default function Results() {
 	const [reportName, setReportName] = useState("");
 	const [currentPage, setCurrentPage] = useState(1);
 	const [resultsPerPage, setResultsPerPage] = useState(5);
+	const [totalRows, setTotalRows] = useState(0);
 
 	const handleResultsPerPageChange = (event) => {
 		setResultsPerPage(event.target.value);
 		setCurrentPage(1);
 	};
+
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, [resultsPerPage]);
 
 	const handleOpen = (result) => {
 		setSelectedResult(result);
@@ -107,13 +112,20 @@ export default function Results() {
 		if (error) console.error("Error deleting report", error);
 		else {
 			setResults(results.filter((result) => result.id !== id));
+			const updatedTotalRows = totalRows - 1;
+			setTotalRows(updatedTotalRows);
+			if (resultsPerPage > updatedTotalRows) {
+				setResultsPerPage(updatedTotalRows);
+			}
 		}
 	};
 
 	const indexOfLastResult = currentPage * resultsPerPage;
 	const indexOfFirstResult = indexOfLastResult - resultsPerPage;
 	const currentResults = results.slice(indexOfFirstResult, indexOfLastResult);
-	const totalRows = results.length;
+	useEffect(() => {
+		setTotalRows(results.length);
+	}, [results]);
 	let resultsPerPageOptions;
 
 	if (totalRows >= 5) {
