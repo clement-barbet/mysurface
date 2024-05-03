@@ -19,6 +19,7 @@ export default function Page() {
 
 	const fetchParticipants = async () => {
 		try {
+			const user = await supabase.auth.getUser();
 			const { data, error } = await supabase
 				.from("participants")
 				.select(
@@ -30,6 +31,7 @@ export default function Page() {
               )
             `
 				)
+				.eq("user_id", user.data.user.id)
 				.order("name");
 			if (error) throw error;
 			const updatedParticipants = data.map((participant) => {
