@@ -103,7 +103,7 @@ export default function DashboardNavbar() {
 				</div>
 			</Link>
 			<ul
-				className={clsx("flex flex-col h-full w-full", {
+				className={clsx("flex flex-col h-full w-full text-sm", {
 					hidden: !isMenuOpen,
 					"md:flex": true,
 				})}
@@ -206,6 +206,21 @@ export default function DashboardNavbar() {
 				{userRole === "superadmin" ? (
 					<>
 						<hr className="w-full my-6 border-light_gray border border-opacity-50" />
+						<li
+							className={clsx("py-2 ps-4 tracking-wider", {
+								"border-l-4 border-light_gray":
+									pathname === "/home/participants-admin"
+							})}
+						>
+							<Link
+								onClick={handleLinkClick}
+								href="/home/participants-admin"
+								className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase"
+							>
+								<IoPeople className="h-6 w-6" />
+								<T tkey="navbar.participants-admin" />
+							</Link>
+						</li>
 						<li
 							className={clsx("py-2 px-4 tracking-wider", {
 								"border-l-4 border-light_gray":

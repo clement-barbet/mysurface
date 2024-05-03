@@ -118,7 +118,7 @@ export default function Results() {
 
 	if (totalRows >= 5) {
 		resultsPerPageOptions = Array.from(
-			{ length: Math.ceil(totalRows / 5) },
+			{ length: Math.floor(totalRows / 5) },
 			(_, i) => (i + 1) * 5
 		);
 
