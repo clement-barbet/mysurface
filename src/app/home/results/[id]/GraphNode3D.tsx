@@ -1,7 +1,6 @@
 "use client";
-
+import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass.js";
 import { ForceGraph3D } from "react-force-graph";
-import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass";
 import * as THREE from "three";
 import React, { useRef, useEffect, useState } from "react";
 
