@@ -7,11 +7,6 @@ module.exports = {
       };
     }
 
-    config.module.rules.push({
-      test: /UnrealBloomPass\.js$/,
-      use: 'raw-loader',
-    });
-
     return config;
   },
   typescript: {

@@ -36,10 +36,7 @@ const GraphNode3D: React.FC<GraphNode3DProps> = ({ graphData }) => {
   }, []);
 
   useEffect(() => {
-    const bloomPass = new UnrealBloomPass();
-    bloomPass.strength = 0.5;
-    bloomPass.radius = 0.3;
-    bloomPass.threshold = 0.2;
+    const bloomPass = new UnrealBloomPass(new THREE.Vector2(dimensions.width, dimensions.height), 0.5, 0.3, 0.2);
     fgRef.current.postProcessingComposer().addPass(bloomPass);
   }, []);
 
