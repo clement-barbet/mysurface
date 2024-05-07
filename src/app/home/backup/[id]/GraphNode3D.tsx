@@ -1,8 +1,8 @@
 "use client";
 
 import { ForceGraph3D } from "react-force-graph";
-import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass";
 import * as THREE from "three";
+import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass";
 import React, { useRef, useEffect, useState } from "react";
 
 interface GraphNode3DProps {
@@ -11,7 +11,6 @@ interface GraphNode3DProps {
 
 const GraphNode3D: React.FC<GraphNode3DProps> = ({ graphData }) => {
   const fgRef = useRef(null);
-
   const [dimensions, setDimensions] = useState({
     width: typeof window !== "undefined" ? window.innerWidth : 0,
     height: typeof window !== "undefined" ? window.innerHeight : 0,
@@ -28,7 +27,6 @@ const GraphNode3D: React.FC<GraphNode3DProps> = ({ graphData }) => {
         height: window.innerHeight - 90,
       });
     };
-
     resizeGraph();
     window.addEventListener("resize", resizeGraph);
     return () => {
