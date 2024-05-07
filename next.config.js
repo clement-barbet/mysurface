@@ -1,7 +1,5 @@
-const withTM = require('next-transpile-modules')(['three/examples/jsm/postprocessing/UnrealBloomPass']);
-
-module.exports = withTM({
+module.exports = {
   typescript: {
     ignoreBuildErrors: true,
   },
-});
+};

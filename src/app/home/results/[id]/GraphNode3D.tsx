@@ -1,5 +1,5 @@
 "use client";
-import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass.js";
+import { UnrealBloomPass } from "./utils/UnrealBloomPass";
 import { ForceGraph3D } from "react-force-graph";
 import * as THREE from "three";
 import React, { useRef, useEffect, useState } from "react";
@@ -36,7 +36,12 @@ const GraphNode3D: React.FC<GraphNode3DProps> = ({ graphData }) => {
   }, []);
 
   useEffect(() => {
-    const bloomPass = new UnrealBloomPass(new THREE.Vector2(dimensions.width, dimensions.height), 0.5, 0.3, 0.2);
+    const bloomPass = new UnrealBloomPass(
+      new THREE.Vector2(dimensions.width, dimensions.height),
+      0.5,
+      0.3,
+      0.2
+    );
     fgRef.current.postProcessingComposer().addPass(bloomPass);
   }, []);
 
