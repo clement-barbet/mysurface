@@ -13,6 +13,9 @@ import { Pass, FullScreenQuad } from './Pass.js';
 import { CopyShader } from './CopyShader.js';
 import { LuminosityHighPassShader } from './LuminosityHighPassShader.js';
 
+const _global = typeof self !== 'undefined' ? self : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : {};
+const THREE = _global.THREE || (_global.THREE = {});
+
 /**
  * UnrealBloomPass is inspired by the bloom pass of Unreal Engine. It creates a
  * mip map chain of bloom textures and blurs them with different radii. Because
