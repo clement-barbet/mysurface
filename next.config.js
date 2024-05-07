@@ -1,18 +1,7 @@
-module.exports = {
-<<<<<<< HEAD
-  webpack: (config, { isServer }) => {
-    if (!isServer) {
-      config.resolve.fallback = {
-        ...config.resolve.fallback,
-        fs: false,
-      };
-    }
+const withTM = require('next-transpile-modules')(['three/examples/jsm/postprocessing/UnrealBloomPass']);
 
-    return config;
-  },
-=======
->>>>>>> 7e68b56 ("Imported UnrealBloomPass" from CDN)
+module.exports = withTM({
   typescript: {
     ignoreBuildErrors: true,
   },
-};
+});
