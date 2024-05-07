@@ -13,7 +13,7 @@ export async function POST() {
 			await supabase
 				.from("participants")
 				.select("id, name, questionnaire")
-				.eq("user_id", user.data.user.id);
+				.eq("user_id", user.data.user?.id);
 
 		if (fetchParticipantError) {
 			throw fetchParticipantError;
@@ -63,7 +63,7 @@ export async function POST() {
 			await supabase
 				.from("participants")
 				.select("questionnaire")
-				.eq("user_id", user.data.user.id);
+				.eq("user_id", user.data.user?.id);
 
 		if (questionnaireError) {
 			console.error("Error getting questionnaires:", questionnaireError);
@@ -83,16 +83,18 @@ export async function POST() {
 			}
 
 			// Delete all records from participants
-			const { error: deleteParticipantsError } = await supabase
-				.from("participants")
-				.delete()
-				.eq("user_id", user.data.user.id);
+			if (user.data.user) {
+				const { error: deleteParticipantsError } = await supabase
+					.from("participants")
+					.delete()
+					.eq("user_id", user.data.user.id);
 
-			if (deleteParticipantsError) {
-				console.error(
-					"Error deleting participants:",
-					deleteParticipantsError
-				);
+				if (deleteParticipantsError) {
+					console.error(
+						"Error deleting participants:",
+						deleteParticipantsError
+					);
+				}
 			}
 		}
 
