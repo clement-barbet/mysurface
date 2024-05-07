@@ -1,25 +1,30 @@
 "use client";
-
-import { ForceGraph2D } from "react-force-graph";
+import dynamic from "next/dynamic";
+//import { ForceGraph2D } from "react-force-graph"
 import React, { useEffect, useRef, useState } from "react";
 
 interface GraphNode2DProps {
 	graphData: any;
 }
 
+const ForceGraph2D = dynamic(
+	() => import("react-force-graph").then((mod) => mod.ForceGraph2D),
+	{ ssr: false }
+);
+
 export default function GraphNode2D({ graphData }: GraphNode2DProps) {
 	const forceGraphRef = useRef(null);
 
 	const [dimensions, setDimensions] = useState({
-		width: window.innerWidth,
-		height: window.innerHeight,
+		width: typeof window !== "undefined" ? window.innerWidth : 0,
+		height: typeof window !== "undefined" ? window.innerHeight : 0,
 	});
 
 	useEffect(() => {
 		const resizeGraph = () => {
 			const width =
 				window.innerWidth < 768
-					? window.innerWidth -20
+					? window.innerWidth - 20
 					: window.innerWidth - 230;
 			setDimensions({
 				width,
@@ -57,7 +62,7 @@ export default function GraphNode2D({ graphData }: GraphNode2DProps) {
 			nodeVal={(node) => node.val}
 			nodeLabel="name"
 			linkWidth={(link) => 6 / link.length}
-			linkOpacity={(link) => 0.3 }
+			linkOpacity={(link) => 0.3}
 		/>
 	);
 }
