@@ -91,6 +91,7 @@
 			}
 		},
 		"csv": {
+			"label": "Vybrat soubor",
 			"button": "UNahrát CSV"
 		}
 	},

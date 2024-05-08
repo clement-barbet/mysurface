@@ -20,9 +20,11 @@ import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 function FormAddParticipant({ onParticipantAdded, isEnrollmentPhase }) {
 	const [file, setFile] = useState(null);
 	const supabase = createClientComponentClient();
+	const [fileName, setFileName] = useState("");
 
 	const handleFileChange = (event) => {
 		setFile(event.target.files[0]);
+		setFileName(event.target.files[0].name);
 	};
 
 	const addParticipantToDatabase = async (participant) => {
@@ -176,7 +178,21 @@ function FormAddParticipant({ onParticipantAdded, isEnrollmentPhase }) {
 			</Form>
 			<div className="mt-4 w-full flex flex-col md:flex-row md:space-x-8 justify-between gap-y-2 md:gap-y-0">
 				<div className="md:w-2/3">
-					<input type="file" onChange={handleFileChange} />
+					<input
+						type="file"
+						id="fileUpload"
+						onChange={handleFileChange}
+						className="hidden"
+					/>
+					<label
+						htmlFor="fileUpload"
+						className="cursor-pointer text-sm border border-accent_color hover:bg-accent_light py-2 px-4 rounded inline-block transition-all duration-300 ease-in-out font-medium"
+					>
+						<T tkey="participants.csv.label" />
+					</label>
+					{fileName && (
+						<span className="ms-2 text-sm text-gray-500">{fileName}</span>
+					)}
 				</div>
 				<Button
 					type="submit"

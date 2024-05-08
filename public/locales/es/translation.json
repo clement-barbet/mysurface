@@ -91,6 +91,7 @@
 			}
 		},
 		"csv": {
+			"label": "Selecciona un archivo",
 			"button": "Subir CSV"
 		}
 	},

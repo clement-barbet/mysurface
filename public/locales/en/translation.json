@@ -91,6 +91,7 @@
 			}
 		},
 		"csv": {
+			"label": "Select file",
 			"button": "Upload CSV"
 		}
 	},
