@@ -113,7 +113,7 @@ export default function TopBar() {
 						<T tkey="topbar.organization" />
 						<FaArrowRight className="inline-block mx-2 w-4 h-4 pb-1" />
 						<Link href="/home/account">
-							<span className="uppercase text-blue-500 hover:text-blue-700 font-semibold transition-color duration-200 ease-linear">
+							<span className="uppercase text-accent_color hover:text-accent_hover font-semibold transition-color duration-200 ease-linear">
 								<T tkey={organization} />
 							</span>
 						</Link>

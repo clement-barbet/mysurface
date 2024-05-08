@@ -196,7 +196,7 @@ export default function LoginForm() {
 										<div className="flex justify-end items-center mt-0 pe-1">
 											<Link
 												href="/forgot-password"
-												className="text-sm text-blue-700 border-b-2 border-transparent hover:border-b-2 hover:border-blue-700 transition-all duration-200 ease-linear"
+												className="text-sm text-accent_color hover:text-accent_hover border-b-2 border-transparent hover:border-b-2 hover:border-accent_hover transition-all duration-200 ease-linear"
 											>
 												<T tkey="login.form.buttons.forgot" />
 											</Link>
