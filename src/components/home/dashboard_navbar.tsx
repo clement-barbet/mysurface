@@ -94,16 +94,16 @@ export default function DashboardNavbar() {
 			<Link onClick={handleLinkClick} href="/home" className="w-full">
 				<div
 					className={clsx(
-						"flex items-center justify-center w-full h-10 bg-mid_blue gap-x-3 drop-shadow-sm rounded-bl-2xl mb-5",
+						"flex items-center justify-start ps-4 w-full h-10 bg-mid_blue gap-x-3 drop-shadow-sm rounded-bl-2xl",
 						{ hidden: !isMenuOpen, "md:flex": true }
 					)}
 				>
-					<img src="/logo.svg" alt="mysurface_logo" className="w-8" />
+					<img src="/logo.svg" alt="mysurface_logo" className="w-7" />
 					<h1 className="text-xl font-fjalla">MySurface</h1>
 				</div>
 			</Link>
 			<ul
-				className={clsx("flex flex-col h-full w-full text-sm", {
+				className={clsx("flex flex-col h-full w-full text-sm mt-4", {
 					hidden: !isMenuOpen,
 					"md:flex": true,
 				})}
