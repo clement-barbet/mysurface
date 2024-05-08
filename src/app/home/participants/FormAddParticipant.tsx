@@ -26,20 +26,20 @@ function FormAddParticipant({ onParticipantAdded, isEnrollmentPhase }) {
 	};
 
 	const addParticipantToDatabase = async (participant) => {
-		try {
-			const { data, error } = await supabase
-				.from("participants")
-				.insert([participant]);
+		const { data: insertedParticipant, error } = await supabase.rpc(
+			"insert_participant_and_return",
+			{ new_email: participant.email, new_name: participant.name }
+		);
 
-			if (error) {
-				console.error("Error adding participant:", error);
-				return;
-			}
-
-			console.log("Participant added successfully:", data);
-		} catch (error) {
-			console.error("Error adding participant:", error);
+		if (error) {
+			console.error(
+				"Error adding participant in addParticipantToDatabase:",
+				error
+			);
+			return;
 		}
+
+		return insertedParticipant;
 	};
 
 	const handleFileUpload = async () => {
@@ -72,17 +72,16 @@ function FormAddParticipant({ onParticipantAdded, isEnrollmentPhase }) {
 						continue;
 					}
 
-					await addParticipantToDatabase(newParticipant);
+					const insertedParticipants = await addParticipantToDatabase(
+						newParticipant
+					);
+					const insertedParticipant = insertedParticipants[0];
+					newParticipant.id = insertedParticipant.participant_id;
 					onParticipantAdded(newParticipant);
 				}
 			},
 		});
 	};
-
-	const [newParticipant, setNewParticipant] = useState({
-		name: "",
-		email: "",
-	});
 
 	const formSchema = z.object({
 		name: z.string().min(2, {
@@ -102,25 +101,21 @@ function FormAddParticipant({ onParticipantAdded, isEnrollmentPhase }) {
 	});
 
 	const onSubmit = async (data: z.infer<typeof formSchema>) => {
-		try {
-			const response = await fetch("/api/participants", {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify(data),
-			});
+		let newParticipant = { name: data.name, email: data.email };
+		const insertedParticipants = await addParticipantToDatabase(
+			newParticipant
+		);
 
-			if (response.ok) {
-				const newParticipant = await response.json();
-				onParticipantAdded(newParticipant);
-				form.reset();
-				console.log("Participant created successfully");
-			} else {
-				console.error("Error creating participant");
-			}
-		} catch (error) {
-			console.error("Error creating participant:", error);
+		if (insertedParticipants && insertedParticipants.length > 0) {
+			const insertedParticipant = insertedParticipants[0];
+			newParticipant.id = insertedParticipant.participant_id;
+			onParticipantAdded(newParticipant);
+			form.reset();
+		} else {
+			console.error(
+				"Error adding participant onSubmit:",
+				insertedParticipants
+			);
 		}
 	};
 
@@ -134,7 +129,6 @@ function FormAddParticipant({ onParticipantAdded, isEnrollmentPhase }) {
 					<FormField
 						control={form.control}
 						name="name"
-						value={newParticipant.name}
 						render={({ field }) => (
 							<FormItem>
 								<FormLabel>
@@ -154,7 +148,6 @@ function FormAddParticipant({ onParticipantAdded, isEnrollmentPhase }) {
 					<FormField
 						control={form.control}
 						name="email"
-						value={newParticipant.email}
 						render={({ field }) => (
 							<FormItem>
 								<FormLabel>

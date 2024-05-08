@@ -132,14 +132,7 @@ export default function Page() {
 
 	return (
 		<div>
-			<TableParticipants
-				participants={participants}
-				questionnaires={questionnaires}
-				isEnrollmentPhase={isEnrollmentPhase}
-				lang={lang}
-				org={org}
-			/>
-			<div className="mt-2 p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
+			<div className="mb-2 p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
 				<h2 className="mb-2">
 					<T tkey="participants.form.title" />
 				</h2>
@@ -164,6 +157,13 @@ export default function Page() {
 					allQuestionnairesCompleted={allQuestionnairesCompleted}
 				/>
 			</div>
+			<TableParticipants
+				participants={participants}
+				questionnaires={questionnaires}
+				isEnrollmentPhase={isEnrollmentPhase}
+				lang={lang}
+				org={org}
+			/>
 		</div>
 	);
 }

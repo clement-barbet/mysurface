@@ -11,44 +11,39 @@ import {
 	THeadRow,
 	TBodyRow,
 } from "@/components/ui/table";
-import { Button } from "@/components/ui/button";
-import {
-	Select,
-	MenuItem,
-} from "@mui/material";
+import usePagination from "@/components/ui/pagination/usePagination";
+import Pagination from "@/components/ui/pagination/pagination";
 
 export default function Results() {
 	const [loading, setLoading] = useState(true);
 	const [participants, setParticipants] = useState([]);
 	const supabase = createClientComponentClient();
-	const [currentPage, setCurrentPage] = useState(1);
-	const [participantsPerPage, setParticipantsPerPage] = useState(5);
-	const [totalRows, setTotalRows] = useState(0);
 
-	const handleResultsPerPageChange = (event) => {
-		setParticipantsPerPage(event.target.value);
-		setCurrentPage(1);
-	};
-
-	useEffect(() => {
-		window.scrollTo(0, 0);
-	}, [participantsPerPage]);
+	const {
+		currentPage,
+		setCurrentPage,
+		itemsPerPage,
+		handleItemsPerPageChange,
+		currentItems,
+		itemsPerPageOptions,
+	} = usePagination(participants, 10);
 
 	useEffect(() => {
 		const fetchData = async () => {
 			setLoading(true);
-			const { data: fetchedParticipants, error: participantsError } = await supabase
-				.from("participants")
-				.select(
-					`
+			const { data: fetchedParticipants, error: participantsError } =
+				await supabase
+					.from("participants")
+					.select(
+						`
               *,
               questionnaires:questionnaire (
                 id,
                 completed
               )
             `
-				)
-				.order("created_at", { ascending: false });
+					)
+					.order("created_at", { ascending: false });
 			if (participantsError) throw participantsError;
 			const updatedParticipants = fetchedParticipants.map(
 				(participant) => {
@@ -112,33 +107,10 @@ export default function Results() {
 
 		return (
 			<div className={`${color} text-white px-2 py-1 rounded`}>
-				<T tkey={tkey}/>
+				<T tkey={tkey} />
 			</div>
 		);
 	};
-
-	const indexOfLastParticipant = currentPage * participantsPerPage;
-	const indexOfFirstParticipant =
-		indexOfLastParticipant - participantsPerPage;
-	const currentParticipants = participants.slice(
-		indexOfFirstParticipant,
-		indexOfLastParticipant
-	);
-	useEffect(() => {
-		setTotalRows(participants.length);
-	}, [participants]);
-	let participantsPerPageOptions;
-
-	if (totalRows >= 5) {
-		participantsPerPageOptions = Array.from(
-			{ length: Math.floor(totalRows / 5) },
-			(_, i) => (i + 1) * 5
-		);
-
-		if (totalRows % 5 !== 0) {
-			participantsPerPageOptions.push(totalRows);
-		}
-	}
 
 	return (
 		!loading && (
@@ -164,7 +136,7 @@ export default function Results() {
 									</THeadRow>
 								</TableHeader>
 								<TableBody className="bg-white dark:bg-black divide-y divide-gray-200 dark:divide-gray-500">
-									{currentParticipants.map((participant) => {
+									{currentItems.map((participant) => {
 										const date = new Date(
 											participant.created_at
 										);
@@ -199,93 +171,16 @@ export default function Results() {
 									})}
 								</TableBody>
 							</Table>
-							<div className="flex flex-col flex-wrap justify-center">
-								<div className="w-1/3 m-auto pt-4 flex flex-row gap-x-6 items-center justify-center">
-									<Button
-										onClick={() => setCurrentPage(1)}
-										disabled={currentPage === 1}
-										variant="delete"
-										className="w-full inline-block"
-									>
-										First
-									</Button>
-									<Button
-										onClick={() =>
-											setCurrentPage(currentPage - 1)
-										}
-										disabled={currentPage === 1}
-										className="w-full inline-block"
-									>
-										Previous
-									</Button>
-									<Button
-										onClick={() =>
-											setCurrentPage(currentPage + 1)
-										}
-										disabled={
-											currentPage ===
-											Math.ceil(
-												participants.length /
-													participantsPerPage
-											)
-										}
-										className="w-full inline-block"
-									>
-										Next
-									</Button>
-									<Button
-										onClick={() =>
-											setCurrentPage(
-												Math.ceil(
-													participants.length /
-														participantsPerPage
-												)
-											)
-										}
-										disabled={
-											currentPage ===
-											Math.ceil(
-												participants.length /
-													participantsPerPage
-											)
-										}
-										variant="delete"
-										className="w-full inline-block"
-									>
-										Last
-									</Button>
-								</div>
-							</div>
-							{totalRows > 5 && (
-								<div className="flex flex-row justify-center items-baseline gap-x-2 mt-4">
-									<p>Results per page: </p>
-									<div>
-										<Select
-											value={participantsPerPage}
-											onChange={
-												handleResultsPerPageChange
-											}
-											sx={{
-												margin: "auto",
-												fontFamily: "inherit",
-												fontWeight: "bold",
-												backgroundColor: "white",
-											}}
-										>
-											{participantsPerPageOptions.map(
-												(option) => (
-													<MenuItem
-														key={option}
-														value={option}
-													>
-														{option}
-													</MenuItem>
-												)
-											)}
-										</Select>
-									</div>
-								</div>
-							)}
+							<Pagination
+								currentPage={currentPage}
+								setCurrentPage={setCurrentPage}
+								items={participants}
+								itemsPerPage={itemsPerPage}
+								handleItemsPerPageChange={
+									handleItemsPerPageChange
+								}
+								itemsPerPageOptions={itemsPerPageOptions}
+							/>
 						</>
 					) : (
 						<p>No data</p>
