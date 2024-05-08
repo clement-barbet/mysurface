@@ -99,7 +99,7 @@ function TableParticipants({
 
 	return (
 		<>
-			<div className="rounded-md border overflow-auto w-full hidden md:block">
+			<div className="rounded-md overflow-auto w-full hidden md:block">
 				<Table className="w-full">
 					<TableHeader>
 						<THeadRow>
