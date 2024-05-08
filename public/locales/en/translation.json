@@ -122,7 +122,7 @@
 				"new": "Your New Password",
 				"confirm": "Confirm Your New Password"
 			},
-			"button": "RESET PASSWORD"
+			"button": "RESET"
 		},
 		"organization": {
 			"title": "Change Organization",
@@ -132,12 +132,12 @@
 				"school": "School",
 				"city": "City"
 			},
-			"button": "CHANGE ORGANIZATION"
+			"button": "UPDATE"
 		},
 		"language": {
 			"title": "Change Language",
 			"label": "Select Your Language",
-			"button": "CHANGE LANGUAGE"
+			"button": "UPDATE"
 		},
 		"name": {
 			"title": "Change Name and Organization's Name",
@@ -149,7 +149,7 @@
 				"name": "Your Name",
 				"organization": "Your Organization's Name"
 			},
-			"button": "CHANGE NAME AND ORGANIZATION'S NAME"
+			"button": "UPDATE"
 		},
 		"delete": {
 			"title": "Delete Account",

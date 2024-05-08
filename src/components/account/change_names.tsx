@@ -30,7 +30,7 @@ export default function ChangeNames({ userId }: { userId: string }) {
 	const [errorMessage, setErrorMessage] = useState("");
 	const [name, setName] = useState<string | null>(null);
 	const [organization, setOrganization] = useState<string | null>(null);
-    const { t } = useTranslation();
+	const { t } = useTranslation();
 
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
@@ -127,12 +127,12 @@ export default function ChangeNames({ userId }: { userId: string }) {
 										<Input
 											name="name"
 											id="name"
-                                            placeholder={t('account.name.labels.name')}
+											placeholder={t(
+												"account.name.labels.name"
+											)}
 											value={name}
 											onChange={(e) =>
-												setName(
-													e.target.value
-												)
+												setName(e.target.value)
 											}
 										/>
 									</FormControl>
@@ -152,12 +152,12 @@ export default function ChangeNames({ userId }: { userId: string }) {
 										<Input
 											name="organization"
 											id="organization"
-                                            placeholder={t('account.name.labels.organization')}
+											placeholder={t(
+												"account.name.labels.organization"
+											)}
 											value={organization}
 											onChange={(e) =>
-												setOrganization(
-													e.target.value
-												)
+												setOrganization(e.target.value)
 											}
 										/>
 									</FormControl>
@@ -165,9 +165,11 @@ export default function ChangeNames({ userId }: { userId: string }) {
 								</FormItem>
 							)}
 						/>
-						<Button type="submit" variant="login">
-							<T tkey="account.name.button" />
-						</Button>
+						<div className="w-full flex justify-end">
+							<Button type="submit" variant="login" className="w-full md:w-1/2 lg:w-1/3">
+								<T tkey="account.name.button" />
+							</Button>
+						</div>
 					</form>
 				</Form>
 			</div>

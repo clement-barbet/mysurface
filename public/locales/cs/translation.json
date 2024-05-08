@@ -122,7 +122,7 @@
 				"new": "Vaše Nové Heslo",
 				"confirm": "Potvrďte Své Nové Heslo"
 			},
-			"button": "OBNOVIT HESLO"
+			"button": "OBNOVIT"
 		},
 		"organization": {
 			"title": "Změnit Organizaci",
@@ -132,12 +132,12 @@
 				"school": "Škola",
 				"city": "Město"
 			},
-			"button": "ZMĚNIT ORGANIZACI"
+			"button": "AKTUALIZOVAT"
 		},
 		"language": {
 			"title": "Změnit Jazyk",
 			"label": "Vyberte Váš Jazyk",
-			"button": "ZMĚNIT JAZYK"
+			"button": "AKTUALIZOVAT"
 		},
 		"name": {
 			"title": "Změnit Jméno a Název Organizace",
@@ -149,7 +149,7 @@
 				"name": "Vaše Jméno",
 				"organization": "Název Vaší Organizace"
 			},
-			"button": "ZMĚNIT JMÉNO A NÁZEV ORGANIZACE"
+			"button": "AKTUALIZOVAT"
 		},
 		"delete": {
 			"title": "Smazat Účet",

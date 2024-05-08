@@ -122,7 +122,7 @@
 				"new": "Tu Nueva Contraseña",
 				"confirm": "Confirma Tu Nueva Contraseña"
 			},
-			"button": "RESTABLECER CONTRASEÑA"
+			"button": "RESTABLECER"
 		},
 		"organization": {
 			"title": "Cambiar Organización",
@@ -132,12 +132,12 @@
 				"school": "Escuela",
 				"city": "Ciudad"
 			},
-			"button": "CAMBIAR ORGANIZACIÓN"
+			"button": "ACTUALIZAR"
 		},
 		"language": {
 			"title": "Cambiar Idioma",
 			"label": "Selecciona Tu Idioma",
-			"button": "CAMBIAR IDIOMA"
+			"button": "ACTUALIZAR"
 		},
 		"name": {
 			"title": "Cambiar Nombre y Nombre de la Organización",
@@ -149,7 +149,7 @@
 				"name": "Tu Nombre",
 				"organization": "Nombre de tu Organización"
 			},
-			"button": "CAMBIAR NOMBRE Y NOMBRE DE LA ORGANIZACIÓN"
+			"button": "ACTUALIZAR"
 		},
 		"delete": {
 			"title": "Eliminar Cuenta",

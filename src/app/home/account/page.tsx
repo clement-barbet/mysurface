@@ -29,11 +29,8 @@ export default function Account() {
   return (
     <>
       {userSB && userSB.id ? (
-        <div className="flex flex-col gap-y-14 my-12 mx-12">
+        <div className="flex flex-col gap-y-4 md:gap-y-10 md:my-8 md:mx-8">
           {" "}
-          <div className="w-full p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
-            <ResetPasswordFrom />
-          </div>
           <div className="w-full p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
             <ChangeNames userId={userSB.id} />
           </div>
@@ -42,6 +39,9 @@ export default function Account() {
           </div>
           <div className="w-full p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
             <ChangeLanguage userId={userSB.id} />
+          </div>
+          <div className="w-full p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
+            <ResetPasswordFrom />
           </div>
           <div className="w-full p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
             <DeleteAccountButton userId={userSB.id} />

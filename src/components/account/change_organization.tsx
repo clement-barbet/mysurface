@@ -137,9 +137,11 @@ export default function ChangeOrganization({ userId }: { userId: string }) {
 								</FormItem>
 							)}
 						/>
-						<Button type="submit" variant="login">
-							<T tkey="account.organization.button" />
-						</Button>
+						<div className="w-full flex justify-end">
+							<Button type="submit" variant="login" className="w-full md:w-1/2 lg:w-1/3">
+								<T tkey="account.organization.button" />
+							</Button>
+						</div>
 					</form>
 				</Form>
 			</div>

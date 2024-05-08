@@ -28,7 +28,7 @@ export default function ChangeLanguage({ userId }: { userId: string }) {
 	const [errorMessage, setErrorMessage] = useState("");
 	const [languageId, setLanguageId] = useState<number | null>(null);
 	const [languages, setLanguages] = useState([]);
-    const { i18n } = useTranslation();
+	const { i18n } = useTranslation();
 
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
@@ -78,9 +78,7 @@ export default function ChangeLanguage({ userId }: { userId: string }) {
 		}
 	}, [languageId]);
 
-	const handleChangeLanguage = async (
-		data: z.infer<typeof formSchema>
-	) => {
+	const handleChangeLanguage = async (data: z.infer<typeof formSchema>) => {
 		const { language } = data;
 
 		const { error: updateError } = await supabase
@@ -157,9 +155,15 @@ export default function ChangeLanguage({ userId }: { userId: string }) {
 								</FormItem>
 							)}
 						/>
-						<Button type="submit" variant="login">
-							<T tkey="account.language.button" />
-						</Button>
+						<div className="w-full flex justify-end">
+							<Button
+								type="submit"
+								variant="login"
+								className="w-full md:w-1/2 lg:w-1/3"
+							>
+								<T tkey="account.language.button" />
+							</Button>
+						</div>
 					</form>
 				</Form>
 			</div>

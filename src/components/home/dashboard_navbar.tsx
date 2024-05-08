@@ -207,6 +207,21 @@ export default function DashboardNavbar() {
 					<>
 						<hr className="w-full my-4 border-light_gray border border-opacity-50" />
 						<li
+							className={clsx("py-2 px-4 tracking-wider", {
+								"border-l-4 border-light_gray":
+									pathname === "/home/customers-admin",
+							})}
+						>
+							<Link
+								onClick={handleLinkClick}
+								href="/home/customers-admin"
+								className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase"
+							>
+								<PiSuitcaseSimple className="h-6 w-6" />
+								<T tkey="navbar.customers" />
+							</Link>
+						</li>
+						<li
 							className={clsx("py-2 ps-4 tracking-wider", {
 								"border-l-4 border-light_gray":
 									pathname === "/home/participants-admin"
@@ -255,21 +270,6 @@ export default function DashboardNavbar() {
 							>
 								<MdOutlineSettingsBackupRestore className="h-6 w-6" />
 								<T tkey="navbar.backup" />
-							</Link>
-						</li>
-						<li
-							className={clsx("py-2 px-4 tracking-wider", {
-								"border-l-4 border-light_gray":
-									pathname === "/home/customers-admin",
-							})}
-						>
-							<Link
-								onClick={handleLinkClick}
-								href="/home/customers-admin"
-								className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase"
-							>
-								<PiSuitcaseSimple className="h-6 w-6" />
-								<T tkey="navbar.customers" />
 							</Link>
 						</li>
 					</>
