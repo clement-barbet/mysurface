@@ -179,6 +179,7 @@ export default function Results() {
 														onClick={() =>
 															handleOpen(result)
 														}
+														variant="blue"
 													>
 														Edit
 													</Button>

@@ -91,7 +91,7 @@ function TableParticipants({
 		}
 
 		return (
-			<div className={`${color} text-white px-2 py-1 rounded`}>
+			<div className={`${color} text-white px-2 py-2 rounded`}>
 				<T tkey={tkey} />
 			</div>
 		);
@@ -165,7 +165,8 @@ function TableParticipants({
 																navigator.clipboard.writeText(url);
 															}}
 															*/
-																className="linkToQuestionnaire bg-blue-500 px-2 py-1 rounded text-white"
+																className="linkToQuestionnaire"
+																variant="blue"
 															>
 																<T tkey="participants.table.buttons.copy" />
 															</Button>

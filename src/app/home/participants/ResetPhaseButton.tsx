@@ -18,7 +18,7 @@ const ResetPhaseButton = ({ isEnrollmentPhase }: { isEnrollmentPhase: boolean })
 	}
 
 	return (
-		<Button id="resetPhaseBtn" onClick={handleClick}>
+		<Button id="resetPhaseBtn" onClick={handleClick} className="w-full">
 			<T tkey="participants.form.buttons.reset" />
 		</Button>
 	);

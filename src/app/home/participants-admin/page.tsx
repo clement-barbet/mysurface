@@ -106,7 +106,7 @@ export default function Results() {
 		}
 
 		return (
-			<div className={`${color} text-white px-2 py-1 rounded`}>
+			<div className={`${color} text-white px-2 py-2 rounded`}>
 				<T tkey={tkey} />
 			</div>
 		);

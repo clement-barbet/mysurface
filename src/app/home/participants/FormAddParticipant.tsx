@@ -130,7 +130,7 @@ function FormAddParticipant({ onParticipantAdded, isEnrollmentPhase }) {
 						control={form.control}
 						name="name"
 						render={({ field }) => (
-							<FormItem>
+							<FormItem className="md:w-1/3 w-full">
 								<FormLabel>
 									<T tkey="participants.form.labels.name" />
 								</FormLabel>
@@ -149,7 +149,7 @@ function FormAddParticipant({ onParticipantAdded, isEnrollmentPhase }) {
 						control={form.control}
 						name="email"
 						render={({ field }) => (
-							<FormItem>
+							<FormItem className="md:w-1/3 w-full">
 								<FormLabel>
 									<T tkey="participants.form.labels.email" />
 								</FormLabel>
@@ -167,19 +167,21 @@ function FormAddParticipant({ onParticipantAdded, isEnrollmentPhase }) {
 					<Button
 						type="submit"
 						id="addParticipantBtn"
-						className="md:w-auto w-full"
+						className="md:w-1/3 w-full"
 						disabled={!isEnrollmentPhase}
 					>
 						<T tkey="participants.form.buttons.add" />
 					</Button>
 				</form>
 			</Form>
-			<div className="mt-4 w-full flex flex-col md:flex-row justify-between gap-y-2 md:gap-y-0">
-				<input type="file" onChange={handleFileChange} />
+			<div className="mt-4 w-full flex flex-col md:flex-row md:space-x-8 justify-between gap-y-2 md:gap-y-0">
+				<div className="md:w-2/3">
+					<input type="file" onChange={handleFileChange} />
+				</div>
 				<Button
 					type="submit"
 					id="uploadCsvBtn"
-					className="md:w-auto w-full"
+					className="w-full md:w-1/3"
 					disabled={!isEnrollmentPhase}
 					onClick={handleFileUpload}
 				>

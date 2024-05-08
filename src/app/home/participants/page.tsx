@@ -142,7 +142,7 @@ export default function Page() {
 						isEnrollmentPhase={isEnrollmentPhase}
 					/>
 				</div>
-				<div className="flex flex-col gap-y-2 md:flex-row md:justify-between md:items-end flex-wrap">
+				<div className="flex flex-col gap-y-2 md:space-x-4 md:flex-row md:justify-between">
 					<CreateQuestionnairesButton
 						isEnrollmentPhase={isEnrollmentPhase}
 						participantCount={participantCount}
@@ -151,11 +151,11 @@ export default function Page() {
 					<DeleteAllParticipantsButton
 						participantCount={participantCount}
 					/>
+					<CreateResultButton
+						isEnrollmentPhase={isEnrollmentPhase}
+						allQuestionnairesCompleted={allQuestionnairesCompleted}
+					/>
 				</div>
-				<CreateResultButton
-					isEnrollmentPhase={isEnrollmentPhase}
-					allQuestionnairesCompleted={allQuestionnairesCompleted}
-				/>
 			</div>
 			<TableParticipants
 				participants={participants}

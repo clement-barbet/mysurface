@@ -48,5 +48,5 @@ export default function CreateResultButton({
     return null;
   }
 
-  return <Button id="generateResultBtn" variant="login" className="mt-2 md:mt-5 uppercase w-full" onClick={generateResult}><T tkey="participants.form.buttons.result"/></Button>;
+  return <Button id="generateResultBtn" variant="login" className="uppercase w-full" onClick={generateResult}><T tkey="participants.form.buttons.result"/></Button>;
 }

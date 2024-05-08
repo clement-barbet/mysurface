@@ -53,9 +53,9 @@ export default function CreateQuestionnairesButton({
 			<TooltipProvider>
 				<Tooltip>
 					<TooltipTrigger asChild>
-						<div className="md:w-fit w-full">
+						<div className="w-full">
 							<Button
-								className="md:w-auto w-full"
+								className="w-full"
 								id="createQuestionnairesBtn"
 								onClick={createQuestionnaires}
 								disabled={!canCreateQuestionnaires}
