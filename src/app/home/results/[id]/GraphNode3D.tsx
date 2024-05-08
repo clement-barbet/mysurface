@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import { UnrealBloomPass } from "./utils/UnrealBloomPass";
 import * as THREE from "three";
 import React, { useRef, useEffect, useState } from "react";
+import ColorLegend from "./ColorLegend";
 
 const ForceGraph3D = dynamic(
 	() => import("react-force-graph").then((mod) => mod.ForceGraph3D),
@@ -15,6 +16,7 @@ interface GraphNode3DProps {
 }
 
 const GraphNode3D: React.FC<GraphNode3DProps> = ({ graphData }) => {
+
 	const fgRef = useRef(null);
 
 	const [dimensions, setDimensions] = useState({
@@ -30,7 +32,7 @@ const GraphNode3D: React.FC<GraphNode3DProps> = ({ graphData }) => {
 					: window.innerWidth - 230;
 			setDimensions({
 				width,
-				height: window.innerHeight - 90,
+				height: window.innerHeight - 130,
 			});
 		};
 
@@ -41,7 +43,7 @@ const GraphNode3D: React.FC<GraphNode3DProps> = ({ graphData }) => {
 		};
 	}, []);
 
-/*
+	/*
 	useEffect(() => {
 		const bloomPass = new UnrealBloomPass(
 			new THREE.Vector2(dimensions.width, dimensions.height),
@@ -53,9 +55,10 @@ const GraphNode3D: React.FC<GraphNode3DProps> = ({ graphData }) => {
 	}, []);
 */
 
+	const maxSize = Math.max(...graphData.nodes.map((node) => node.val));
+	const minSize = Math.min(...graphData.nodes.map((node) => node.val));
+
 	const getNodeColor = (node) => {
-		const maxSize = Math.max(...graphData.nodes.map((node) => node.val));
-		const minSize = Math.min(...graphData.nodes.map((node) => node.val));
 		const normalizedSize = (node.val - minSize) / (maxSize - minSize);
 		const hue = 0; // Red hue (0 degrees)
 		const saturation = 0.8; // High saturation
@@ -66,21 +69,24 @@ const GraphNode3D: React.FC<GraphNode3DProps> = ({ graphData }) => {
 	};
 
 	return (
-		<ForceGraph3D
-			ref={fgRef}
-			backgroundColor="#000003"
-			graphData={graphData}
-			nodeLabel="id"
-			// nodeAutoColorBy={getNodeColor}
-			nodeColor={getNodeColor}
-			width={dimensions.width}
-			height={dimensions.height}
-			nodeOpacity={0.5}
-			nodeResolution={50}
-			linkOpacity={0.02}
-			linkWidth={0.5}
-			linkColor={() => "#ffffff"}
-		/>
+		<div className="bg-black w-full">
+			<ForceGraph3D
+				ref={fgRef}
+				backgroundColor="#000000"
+				graphData={graphData}
+				nodeLabel="id"
+				// nodeAutoColorBy={getNodeColor}
+				nodeColor={getNodeColor}
+				width={dimensions.width}
+				height={dimensions.height}
+				nodeOpacity={0.5}
+				nodeResolution={50}
+				linkOpacity={0.02}
+				linkWidth={0.5}
+				linkColor={() => "#ffffff"}
+			/>
+			<ColorLegend minVal={minSize} maxVal={maxSize} />
+		</div>
 	);
 };
 
