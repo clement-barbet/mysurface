@@ -46,7 +46,7 @@ export default function TeamMembersList() {
 					{participants.map((participant) => (
 						<tr key={participant.id}>
 							<td className="py-2 flex justify-center items-center">
-								<div className="border-2 border-gray-200 shadow-sm dark:opacity-80 rounded-full w-10 h-10 flex items-center justify-center bg-gradient-to-br from-cyan-500 to-sky-800">
+								<div className="border-2 border-gray-200 shadow-sm dark:opacity-80 rounded-full w-10 h-10 flex items-center justify-center bg-gradient-to-br from-accent_color to-accent_hover">
 									<FontAwesomeIcon
 										icon={faYinYang}
 										className="w-5 h-5 text-white"

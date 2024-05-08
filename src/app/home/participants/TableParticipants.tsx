@@ -124,7 +124,7 @@ function TableParticipants({
 											<TableCell className="px-6 py-4 whitespace-nowrap">
 												<div className="flex items-center">
 													<div className="inline-block mr-5">
-														<div className="border-2 border-gray-200 shadow-sm dark:opacity-80 rounded-full w-10 h-10 flex items-center justify-center bg-gradient-to-br from-cyan-500 to-sky-800">
+														<div className="border-2 border-gray-200 shadow-sm dark:opacity-80 rounded-full w-10 h-10 flex items-center justify-center bg-gradient-to-br from-accent_color to-accent_hover">
 															<FontAwesomeIcon
 																icon={faYinYang}
 																className="w-5 h-5 text-white"

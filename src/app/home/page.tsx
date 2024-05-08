@@ -16,49 +16,49 @@ export default function Home() {
 						</p>
 						<ol className="text-gray-600 dark:text-gray-400 list-inside py-4">
 							<li className="font-semibold">
-								<span className="text-xl font-bold text-blue-500 inline-block w-6">
+								<span className="text-xl font-bold text-accent_color inline-block w-6">
 									1.
 								</span>
 								<T tkey="home.guide.admin.steps.s1" />
 							</li>
 							<li className="font-semibold">
-								<span className="text-xl font-bold text-blue-500 inline-block w-6">
+								<span className="text-xl font-bold text-accent_color inline-block w-6">
 									2.
 								</span>
 								<T tkey="home.guide.admin.steps.s2" />
 							</li>
 							<li className="font-semibold">
-								<span className="text-xl font-bold text-blue-500 inline-block w-6">
+								<span className="text-xl font-bold text-accent_color inline-block w-6">
 									3.
 								</span>
 								<T tkey="home.guide.admin.steps.s3" />
 							</li>
 							<li className="font-semibold">
-								<span className="text-xl font-bold text-blue-500 inline-block w-6">
+								<span className="text-xl font-bold text-accent_color inline-block w-6">
 									4.
 								</span>
 								<T tkey="home.guide.admin.steps.s4" />
 							</li>
 							<li className="font-semibold">
-								<span className="text-xl font-bold text-blue-500 inline-block w-6">
+								<span className="text-xl font-bold text-accent_color inline-block w-6">
 									5.
 								</span>
 								<T tkey="home.guide.admin.steps.s5" />
 							</li>
 							<li className="font-semibold">
-								<span className="text-xl font-bold text-blue-500 inline-block w-6">
+								<span className="text-xl font-bold text-accent_color inline-block w-6">
 									6.
 								</span>
 								<T tkey="home.guide.admin.steps.s6" />
 							</li>
 							<li className="font-semibold">
-								<span className="text-xl font-bold text-blue-500 inline-block w-6">
+								<span className="text-xl font-bold text-accent_color inline-block w-6">
 									7.
 								</span>
 								<T tkey="home.guide.admin.steps.s7" />
 							</li>
 							<li className="font-semibold">
-								<span className="text-xl font-bold text-blue-500 inline-block w-6">
+								<span className="text-xl font-bold text-accent_color inline-block w-6">
 									8.
 								</span>
 								<T tkey="home.guide.admin.steps.s8" />
@@ -76,25 +76,25 @@ export default function Home() {
 						</p>
 						<ol className="text-gray-600 dark:text-gray-400 list-inside py-4">
 							<li className="font-semibold">
-								<span className="text-xl font-bold text-blue-500 inline-block w-6">
+								<span className="text-xl font-bold text-accent_color inline-block w-6">
 									1.
 								</span>
 								<T tkey="home.guide.user.steps.s1" />
 							</li>
 							<li className="font-semibold">
-								<span className="text-xl font-bold text-blue-500 inline-block w-6">
+								<span className="text-xl font-bold text-accent_color inline-block w-6">
 									2.
 								</span>
 								<T tkey="home.guide.user.steps.s2" />
 							</li>
 							<li className="font-semibold">
-								<span className="text-xl font-bold text-blue-500 inline-block w-6">
+								<span className="text-xl font-bold text-accent_color inline-block w-6">
 									3.
 								</span>
 								<T tkey="home.guide.user.steps.s3" />
 							</li>
 							<li className="font-semibold">
-								<span className="text-xl font-bold text-blue-500 inline-block w-6">
+								<span className="text-xl font-bold text-accent_color inline-block w-6">
 									4.
 								</span>
 								<T tkey="home.guide.user.steps.s4" />

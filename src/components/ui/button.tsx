@@ -9,7 +9,7 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90",
+        default: "bg-mid_blue text-white dark:text-white hover:bg-dark_blue transition-all duration-300 ease-in-out",
         destructive:
           "bg-destructive text-destructive-foreground hover:bg-destructive/90",
         outline:
@@ -18,9 +18,9 @@ const buttonVariants = cva(
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        delete: "bg-red-500 px-2 py-1 rounded text-white hover:bg-red-700 transition-all duration-300 ease-in-out",
-        login: "w-full py-2 px-4 font-medium tracking-wider bg-accent_color text-white rounded-md hover:bg-accent_hover transition-all duration-300 ease-in-out hover:tracking-widest hover:drop-shadow-lg",
-        signup: "w-full py-2 px-4 font-medium tracking-wider bg-transparent text-black rounded-md hover:bg-light_buttons transition-all duration-300 ease-in-out hover:tracking-widest hover:drop-shadow-lg border-2 border-accent_color",
+        delete: "bg-accent_delete px-2 py-1 rounded-md text-white hover:bg-accent_delete_hover transition-all duration-300 ease-in-out",
+        login: "text-dark_blue w-full py-2 px-4 font-medium tracking-wider bg-accent_color text-white rounded-md hover:bg-accent_hover transition-all duration-300 ease-in-out hover:tracking-widest hover:drop-shadow-lg",
+        signup: "text-dark_blue w-full py-2 px-4 font-medium tracking-wider bg-transparent text-black rounded-md hover:bg-accent_light transition-all duration-300 ease-in-out hover:tracking-widest hover:drop-shadow-lg border-2 border-accent_color",
       },
       size: {
         default: "h-10 px-4 py-2",
