@@ -13,7 +13,7 @@ export default async function ResultPage({
 
   const { data: result, error: resultError } = await supabase
     .from("results")
-    .select("result")
+    .select("result, report_name")
     .eq("id", params.id)
     .single();
 
@@ -21,6 +21,8 @@ export default async function ResultPage({
     console.error("Error fetching result:", resultError);
     notFound();
   }
+
+  const reportName = result.report_name;
 
   const parsedResult = JSON.parse(result.result);
 
@@ -90,7 +92,7 @@ export default async function ResultPage({
   return (
     <div className="w-full">
       <h2 className="mb-2 hidden">Result: {params.id}</h2>
-      <GraphTabs graphData={graphData} />
+      <GraphTabs graphData={graphData} reportId={params.id} reportName={reportName} />
       <GraphData graphData={graphData} />
       <pre className="hidden">{JSON.stringify(graphData, null, 2)}</pre>
     </div>
