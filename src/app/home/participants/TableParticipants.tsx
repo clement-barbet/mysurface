@@ -57,13 +57,7 @@ function TableParticipants({
 			body: JSON.stringify({ id: participantId }),
 		});
 
-		if (response.ok) {
-			setParticipants(
-				participants.filter(
-					(participant) => participant.id !== participantId
-				)
-			);
-			
+		if (response.ok) {			
 			const updatedParticipants = participants.filter(participant => participant.id !== participantId);
 			setParticipants(updatedParticipants);
 		} else {

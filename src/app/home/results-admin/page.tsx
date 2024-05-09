@@ -13,14 +13,9 @@ import {
 	TBodyRow,
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
-import {
-	Modal,
-	Box,
-	Typography,
-	TextField,
-} from "@mui/material";
 import Pagination from "@/components/ui/pagination/pagination";
 import usePagination from "@/components/ui/pagination/usePagination";
+import ModalComponent from "@/components/results/ModalComponent";
 
 export default function Results() {
 	const [loading, setLoading] = useState(true);
@@ -43,29 +38,6 @@ export default function Results() {
 		setSelectedResult(result);
 		setReportName(result.report_name);
 		setOpen(true);
-	};
-	const handleSave = async () => {
-		const { error } = await supabase
-			.from("results")
-			.update({ report_name: reportName })
-			.eq("id", selectedResult.id);
-
-		if (error) console.error("Error updating report name", error);
-		else {
-			setResults(
-				results.map((result) =>
-					result.id === selectedResult.id
-						? { ...result, report_name: reportName }
-						: result
-				)
-			);
-		}
-
-		setOpen(false);
-	};
-
-	const handleClose = () => {
-		setOpen(false);
 	};
 
 	useEffect(() => {
@@ -103,17 +75,18 @@ export default function Results() {
 		fetchData();
 	}, []);
 
-	const deleteReport = async (id: string) => {
-		const { error } = await supabase.from("results").delete().eq("id", id);
+	const deleteReport = async (idResult: string) => {
+		const { error } = await supabase
+			.from("deleted_reports")
+			.delete()
+			.eq("id", idResult);
 
 		if (error) console.error("Error deleting report", error);
 		else {
-			setResults(results.filter((result) => result.id !== id));
-			const updatedTotalRows = totalRows - 1;
-			setTotalRows(updatedTotalRows);
-			if (resultsPerPage > updatedTotalRows) {
-				setResultsPerPage(updatedTotalRows);
-			}
+			const updatedResults = results.filter(
+				(result) => result.id !== idResult
+			);
+			setResults(updatedResults);
 		}
 	};
 
@@ -216,56 +189,15 @@ export default function Results() {
 						<p>No data</p>
 					)}
 				</div>
-				<Modal
+				<ModalComponent
 					open={open}
-					onClose={handleClose}
-					aria-labelledby="modal-modal-title"
-					aria-describedby="modal-modal-description"
-				>
-					<Box
-						sx={{
-							position: "absolute",
-							top: "50%",
-							left: "50%",
-							transform: "translate(-50%, -50%)",
-							width: 400,
-							bgcolor: "background.paper",
-							borderRadius: "10px",
-							boxShadow: 24,
-							p: 4,
-						}}
-					>
-						<Typography
-							id="modal-modal-title"
-							variant="h6"
-							component="h2"
-							sx={{
-								mb: 2,
-								textAlign: "center",
-								fontFamily: "inherit",
-							}}
-						>
-							Update Report Name
-						</Typography>
-						<TextField
-							autoFocus
-							margin="dense"
-							id="name"
-							label="Name"
-							type="text"
-							fullWidth
-							value={reportName}
-							onChange={(e) => setReportName(e.target.value)}
-						/>
-						<Button
-							onClick={handleSave}
-							variant="login"
-							className="mt-2"
-						>
-							SAVE
-						</Button>
-					</Box>
-				</Modal>
+					setOpen={setOpen}
+					reportName={reportName}
+					setReportName={setReportName}
+					results={results}
+					setResults={setResults}
+					selectedResult={selectedResult}
+				/>
 			</>
 		)
 	);

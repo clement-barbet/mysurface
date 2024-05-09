@@ -40,7 +40,6 @@ export default function Customers() {
 			return;
 		}
 
-		console.log("fetchedCustomers: ", fetchedCustomers);
 		setUsers(fetchedCustomers);
 		setLoading(false);
 	};
@@ -57,7 +56,11 @@ export default function Customers() {
 		if (error) {
 			console.log("Error deleting user: ", error);
 		} else {
-			fetchUsers();
+			console.log("users:", users);
+			const updatedUsers = users.filter(
+				(user) => user.user_id !== userId
+			);
+			setUsers(updatedUsers);
 		}
 	};
 
