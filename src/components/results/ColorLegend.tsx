@@ -29,7 +29,7 @@ const ColorLegend = ({ minVal, maxVal }) => {
 						}}
 						className="w-full h-3"
 					/>
-					<div className="absolute top-0 left-0 w-full h-3 bg-black opacity-30" />
+					<div className="absolute top-0 left-0 w-full h-3 bg-black opacity-20" />
 				</div>
 				<div className="flex flex-row justify-between px-2">
 					<div
