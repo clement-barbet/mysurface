@@ -93,7 +93,7 @@ const GraphNode3D: React.FC<GraphNode3DProps> = ({ graphData }) => {
 				saturation={saturation}
 				baseLightness={baseLightness}
 				bgColorClass="black"
-				textColorClass="dark_gray"
+				textColorClass="white"
 			/>
 		</div>
 	);
