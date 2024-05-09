@@ -156,7 +156,7 @@ export default function Results() {
 												<TableCell className="px-6 py-2 whitespace-nowrap">
 													<Link
 														href={`/home/backup/${result.id}`}
-														className="font-semibold text-blue-500 hover:text-blue-800 underline hover:underline-offset-4 underline-offset-2 transition-all duration-200 ease-linear"
+														className="font-semibold text-accent_color hover:text-accent_hover underline hover:underline-offset-4 underline-offset-2 transition-all duration-200 ease-linear"
 													>
 														{result.id}
 													</Link>

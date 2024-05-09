@@ -1,8 +1,8 @@
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
-import GraphData from "./GraphData";
-import GraphTabs from "./graph_tabs";
+import GraphData from "@/components/results/GraphData";
+import GraphTabs from "@/components/results/GraphTabs";
 
 export default async function ResultPage({
   params,
