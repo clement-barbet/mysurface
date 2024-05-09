@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 
 interface SuccessMessageProps {
 	successMessage: string;
@@ -9,6 +9,18 @@ const SuccessMessage: React.FC<SuccessMessageProps> = ({
 	successMessage,
 	setSuccessMessage,
 }) => {
+	useEffect(() => {
+		if (successMessage) {
+			const timer = setTimeout(() => {
+				setSuccessMessage("");
+			}, 5000);
+
+			return () => {
+				clearTimeout(timer);
+			};
+		}
+	}, [successMessage, setSuccessMessage]);
+
 	return (
 		successMessage && (
 			<div
