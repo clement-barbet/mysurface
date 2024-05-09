@@ -87,6 +87,10 @@
 			"buttons": {
 				"add": "Add Participant",
 				"csv": "Upload CSV"
+			},
+			"link": {
+				"text": "Check how to upload CSV file",
+				"here": "here"
 			}
 		},
 		"buttons-section": {
@@ -103,7 +107,6 @@
 		}
 	},
 	"faq": {
-		"title": "Frequently Asked Questions",
 		"questions": {
 			"q1": {
 				"q": "- How can I add new participants after generating the questionnaires?",
@@ -116,6 +119,16 @@
 			"q2": {
 				"q": "- How can I change my password?",
 				"a": "You can access My Account directly, where you'll be able to update your password. If you forget your password, you can reset it at the login screen by clicking on Forgot password?. Then, you'll receive an email to set a new password."
+			},
+			"q3": {
+				"q": "- How can I add multiple participants at once?",
+				"a": {
+					"a1": "You can upload a CSV file containing participants' emails and names in the Participants section. The CSV file should have the following format:",
+					"a2": "Column separator must be comma (,)",
+					"a3": "Add these headers to the columns: name, email. Order doesn't matter.",
+					"a4": "Rows below the headers should contain the participants' information.",
+					"a5": "The maximum number of participants you can upload at once is 200."
+				}
 			}
 		}
 	},

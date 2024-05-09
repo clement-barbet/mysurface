@@ -87,6 +87,10 @@
 			"buttons": {
 				"add": "Agregar Participante",
 				"csv": "Subir CSV"
+			},
+			"link": {
+				"text": "Consulta cómo cargar un archivo CSV",
+				"here": "aquí"
 			}
 		},
 		"buttons-section": {
@@ -103,7 +107,6 @@
 		}
 	},
 	"faq": {
-		"title": "Preguntas Frecuentes",
 		"questions": {
 			"q1": {
 				"q": "- ¿Cómo puedo agregar nuevos participantes después de generar los cuestionarios?",
@@ -116,7 +119,17 @@
 			"q2": {
 				"q": "- ¿Cómo puedo cambiar mi contraseña?",
 				"a": "Puedes acceder directamente a Mi Cuenta, donde podrás actualizar tu contraseña. Si olvidas tu contraseña, puedes restablecerla en la pantalla de inicio de sesión haciendo clic en ¿Olvidaste tu contraseña?. Luego, recibirás un correo electrónico para establecer una nueva contraseña."
-			}
+			},
+			"q3": {
+				"q": "- ¿Cómo puedo agregar múltiples participantes a la vez?",
+				"a": {
+					"a1": "Puedes cargar un archivo CSV que contenga correos electrónicos y nombres de participantes en la sección de Participantes. El archivo CSV debe tener el siguiente formato:",
+					"a2": "El separador de columnas debe ser la coma (,)",
+					"a3": "Agrega estos encabezados a las columnas: nombre, correo electrónico. El orden no importa.",
+					"a4": "Las filas debajo de los encabezados deben contener la información de los participantes.",
+					"a5": "El número máximo de participantes que puedes cargar de una vez es 200."
+				}
+			}			
 		}
 	},
 	"account": {

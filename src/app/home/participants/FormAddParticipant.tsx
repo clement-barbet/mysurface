@@ -16,6 +16,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import T from "@/components/translations/translation";
 import Papa from "papaparse";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import Link from "next/link";
 
 function FormAddParticipant({ onParticipantAdded, isEnrollmentPhase }) {
 	const [file, setFile] = useState(null);
@@ -204,6 +205,7 @@ function FormAddParticipant({ onParticipantAdded, isEnrollmentPhase }) {
 					<T tkey="participants.form.buttons.csv" />
 				</Button>
 			</div>
+			<p className="italic text-sm py-1 text-darkest_gray"><T tkey="participants.form.link.text" /> <Link href="/home/faq" className="font-semibold text-accent_color hover:text-accent_hover underline hover:underline-offset-4 underline-offset-2 transition-all duration-200 ease-linear"><T tkey="participants.form.link.here" />.</Link></p>
 		</>
 	);
 }

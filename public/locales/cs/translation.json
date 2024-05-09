@@ -87,6 +87,10 @@
 			"buttons": {
 				"add": "Přidat účastníka",
 				"csv": "Nahrát CSV"
+			},
+			"link": {
+				"text": "Zkontrolujte, jak nahrát soubor CSV",
+				"here": "zde"
 			}
 		},
 		"buttons-section": {
@@ -103,7 +107,6 @@
 		}
 	},
 	"faq": {
-		"title": "Často Kladené Otázky",
 		"questions": {
 			"q1": {
 				"q": "- Jak mohu přidat nové účastníky po vygenerování dotazníků?",
@@ -116,7 +119,17 @@
 			"q2": {
 				"q": "- Jak mohu změnit své heslo?",
 				"a": "Můžete přistoupit přímo k Můj účet, kde budete moci aktualizovat své heslo. Pokud zapomenete své heslo, můžete jej obnovit na obrazovce s přihlášením kliknutím na Zapomněli jste heslo?. Poté obdržíte e-mail k nastavení nového hesla."
-			}
+			},
+			"q3": {
+				"q": "- Jak mohu přidat více účastníků najednou?",
+				"a": {
+					"a1": "Můžete nahrát soubor CSV obsahující e-maily a jména účastníků v sekci Účastníci. Soubor CSV by měl mít následující formát:",
+					"a2": "Oddělovač sloupců musí být čárka (,)",
+					"a3": "Přidejte tyto záhlaví sloupců: jméno, e-mail. Pořadí nezáleží.",
+					"a4": "Řádky pod záhlavími by měly obsahovat informace o účastnících.",
+					"a5": "Maximální počet účastníků, které můžete nahrát najednou, je 200."
+				}
+			}			
 		}
 	},
 	"account": {
