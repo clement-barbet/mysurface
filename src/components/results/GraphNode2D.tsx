@@ -1,7 +1,9 @@
 "use client";
 import dynamic from "next/dynamic";
+import * as THREE from "three";
 //import { ForceGraph2D } from "react-force-graph"
 import React, { useEffect, useRef, useState } from "react";
+import ColorLegend from "./ColorLegend";
 
 interface GraphNode2DProps {
 	graphData: any;
@@ -28,7 +30,7 @@ export default function GraphNode2D({ graphData }: GraphNode2DProps) {
 					: window.innerWidth - 230;
 			setDimensions({
 				width,
-				height: window.innerHeight - 90,
+				height: window.innerHeight - 135,
 			});
 		};
 		resizeGraph();
@@ -49,20 +51,41 @@ export default function GraphNode2D({ graphData }: GraphNode2DProps) {
 		}
 	}, []);
 
-	graphData.nodes.forEach((node) => {
-		node.color = "#2C7EB5";
-	});
+	const maxSize = Math.max(...graphData.nodes.map((node) => node.val));
+	const minSize = Math.min(...graphData.nodes.map((node) => node.val));
+	const hue = 272 / 360;
+	const saturation = 0.6;
+	const baseLightness = 0.2;
+
+	// 	hsl(272, 45%, 15%) dark purple
+	const getNodeColor = (node) => {
+		const normalizedSize = (node.val - minSize) / (maxSize - minSize);
+		const lightness = baseLightness + normalizedSize * 0.5; // Bigger = light
+		const color = new THREE.Color().setHSL(hue, saturation, lightness);
+		return color.getStyle();
+	};
 
 	return (
-		<ForceGraph2D
-			ref={forceGraphRef}
-			graphData={graphData}
-			width={dimensions.width}
-			height={dimensions.height}
-			nodeVal={(node) => node.val}
-			nodeLabel="name"
-			linkWidth={0.7}
-			linkOpacity={0.02}
-		/>
+		<>
+			<ForceGraph2D
+				ref={forceGraphRef}
+				graphData={graphData}
+				width={dimensions.width}
+				height={dimensions.height}
+				nodeVal={(node) => node.val}
+				nodeLabel="name"
+				linkWidth={0.7}
+				nodeColor={getNodeColor}
+			/>
+			<ColorLegend
+				minVal={minSize}
+				maxVal={maxSize}
+				hue={hue}
+				saturation={saturation}
+				baseLightness={baseLightness}
+				bgColorClass=""
+				textColorClass="black"
+			/>
+		</>
 	);
 }

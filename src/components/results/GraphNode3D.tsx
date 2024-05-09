@@ -16,7 +16,6 @@ interface GraphNode3DProps {
 }
 
 const GraphNode3D: React.FC<GraphNode3DProps> = ({ graphData }) => {
-
 	const fgRef = useRef(null);
 
 	const [dimensions, setDimensions] = useState({
@@ -57,14 +56,14 @@ const GraphNode3D: React.FC<GraphNode3DProps> = ({ graphData }) => {
 
 	const maxSize = Math.max(...graphData.nodes.map((node) => node.val));
 	const minSize = Math.min(...graphData.nodes.map((node) => node.val));
+	const hue = 25 / 360;
+	const saturation = 1;
+	const baseLightness = 0.4;
 
 	// 	hsl(29, 100%, 47%) accent color orange
 	// hsl(189, 59%, 48%) accent color blue
 	const getNodeColor = (node) => {
 		const normalizedSize = (node.val - minSize) / (maxSize - minSize);
-		const hue = 25 / 360;
-		const saturation = 1;
-		const baseLightness = 0.4;
 		const lightness = baseLightness + normalizedSize * 0.5; // Bigger = light
 		const color = new THREE.Color().setHSL(hue, saturation, lightness);
 		return color.getStyle();
@@ -87,7 +86,15 @@ const GraphNode3D: React.FC<GraphNode3DProps> = ({ graphData }) => {
 				linkWidth={0.5}
 				linkColor={() => "#ffffff"}
 			/>
-			<ColorLegend minVal={minSize} maxVal={maxSize} />
+			<ColorLegend
+				minVal={minSize}
+				maxVal={maxSize}
+				hue={hue}
+				saturation={saturation}
+				baseLightness={baseLightness}
+				bgColorClass="black"
+				textColorClass="dark_gray"
+			/>
 		</div>
 	);
 };
