@@ -48,7 +48,7 @@ const ColorLegend = ({
 					{[...Array(3)].map((_, i) => (
 						<div
 							key={i}
-							className={`h-1 bg-${textColorClass} bg-opacity-90`}
+							className={`h-1 bg-${textColorClass} text-${textColorClass} bg-opacity-90`}
 							style={{ width: "1px" }}
 						/>
 					))}
