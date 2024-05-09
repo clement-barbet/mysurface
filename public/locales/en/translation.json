@@ -11,22 +11,21 @@
 				"steps": {
 					"s1": "Log-in with an administrator account",
 					"s2": "Go to 'Participants' section",
-					"s3": "Inside 'Participants' create new participants",
-					"s4": "Click 'Create Questionnaire' button to create questionnaires for the participants",
-					"s5": "Copy each participant link and share with them",
-					"s6": "Make participants complete the questionnaire",
-					"s7": "Go to 'Results' page",
-					"s8": "Click 'Generate report' button and the animation with analytics will show up"
+					"s3": "Inside 'Participants' create new participants, through the form or by uploading a CSV file",
+					"s4": "Click 'Create Questionnaires' button to create questionnaires for the participants",
+					"s5": "Copy each participant's questionnaire link and share it with them",
+					"s6": "After every participant has completed the questionnaire, go to 'Participants' section and click 'Generate Result' button",
+					"s7": "Once the report is generated, you'll be redirected to the report page with 2D and 3D graphs",
+					"s8": "You can check anytime the results in the 'Results' section"
 				}
 			},
 			"user": {
 				"title": "User's Guide",
 				"subtitle": "Steps to follow for users.",
 				"steps": {
-					"s1": "Access the link provided by your administrator",
-					"s2": "Access the questionnaire shared by your administrator",
-					"s3": "Complete the questionnaire questions about your teammates / classmates",
-					"s4": "Send the results to your administrator"
+					"s1": "Access the link provided by your administrator which contains the questionnaire",
+					"s2": "Complete the questionnaire questions",
+					"s3": "Submit the form"
 				}
 			}
 		},

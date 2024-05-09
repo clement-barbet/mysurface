@@ -22,56 +22,24 @@ export default function Home() {
 						<p className="text-gray-600 dark:text-gray-400 text-lg md:text-base">
 							<T tkey="home.guide.admin.subtitle" />
 						</p>
-						<ol className="text-gray-600 dark:text-gray-400 list-inside py-4">
-							<li className="font-semibold">
-								<span className="text-xl font-bold text-accent_color inline-block w-6">
-									1.
-								</span>
-								<T tkey="home.guide.admin.steps.s1" />
-							</li>
-							<li className="font-semibold">
-								<span className="text-xl font-bold text-accent_color inline-block w-6">
-									2.
-								</span>
-								<T tkey="home.guide.admin.steps.s2" />
-							</li>
-							<li className="font-semibold">
-								<span className="text-xl font-bold text-accent_color inline-block w-6">
-									3.
-								</span>
-								<T tkey="home.guide.admin.steps.s3" />
-							</li>
-							<li className="font-semibold">
-								<span className="text-xl font-bold text-accent_color inline-block w-6">
-									4.
-								</span>
-								<T tkey="home.guide.admin.steps.s4" />
-							</li>
-							<li className="font-semibold">
-								<span className="text-xl font-bold text-accent_color inline-block w-6">
-									5.
-								</span>
-								<T tkey="home.guide.admin.steps.s5" />
-							</li>
-							<li className="font-semibold">
-								<span className="text-xl font-bold text-accent_color inline-block w-6">
-									6.
-								</span>
-								<T tkey="home.guide.admin.steps.s6" />
-							</li>
-							<li className="font-semibold">
-								<span className="text-xl font-bold text-accent_color inline-block w-6">
-									7.
-								</span>
-								<T tkey="home.guide.admin.steps.s7" />
-							</li>
-							<li className="font-semibold">
-								<span className="text-xl font-bold text-accent_color inline-block w-6">
-									8.
-								</span>
-								<T tkey="home.guide.admin.steps.s8" />
-							</li>
-						</ol>
+						<table className="border-collapse w-full my-1">
+							<tbody>
+								{Array.from({ length: 8 }, (_, i) => (
+									<tr key={i}>
+										<td className="text-accent_color pr-2 py-1 font-semibold align-top">
+											{i + 1}.
+										</td>
+										<td className="py-1">
+											<T
+												tkey={`home.guide.admin.steps.s${
+													i + 1
+												}`}
+											/>.
+										</td>
+									</tr>
+								))}
+							</tbody>
+						</table>
 					</div>
 				</div>
 				<div className="h-auto w-full flex flex-col shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
@@ -82,32 +50,24 @@ export default function Home() {
 						<p className="text-gray-600 dark:text-gray-400 text-lg md:text-base">
 							<T tkey="home.guide.user.subtitle" />
 						</p>
-						<ol className="text-gray-600 dark:text-gray-400 list-inside py-4">
-							<li className="font-semibold">
-								<span className="text-xl font-bold text-accent_color inline-block w-6">
-									1.
-								</span>
-								<T tkey="home.guide.user.steps.s1" />
-							</li>
-							<li className="font-semibold">
-								<span className="text-xl font-bold text-accent_color inline-block w-6">
-									2.
-								</span>
-								<T tkey="home.guide.user.steps.s2" />
-							</li>
-							<li className="font-semibold">
-								<span className="text-xl font-bold text-accent_color inline-block w-6">
-									3.
-								</span>
-								<T tkey="home.guide.user.steps.s3" />
-							</li>
-							<li className="font-semibold">
-								<span className="text-xl font-bold text-accent_color inline-block w-6">
-									4.
-								</span>
-								<T tkey="home.guide.user.steps.s4" />
-							</li>
-						</ol>
+						<table className="border-collapse w-full my-1">
+							<tbody>
+								{Array.from({ length: 3 }, (_, i) => (
+									<tr key={i}>
+										<td className="text-accent_color pr-2 py-1 font-semibold align-top">
+											{i + 1}.
+										</td>
+										<td className="py-1">
+											<T
+												tkey={`home.guide.user.steps.s${
+													i + 1
+												}`}
+											/>.
+										</td>
+									</tr>
+								))}
+							</tbody>
+						</table>
 					</div>
 				</div>
 			</div>

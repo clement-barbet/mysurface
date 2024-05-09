@@ -9,25 +9,24 @@
 				"title": "Průvodce administrátora",
 				"subtitle": "Kroky k následování pro administrátory.",
 				"steps": {
-					"s1": "Přihlásit se pomocí administrátorského účtu",
+					"s1": "Přihlaste se pomocí účtu správce",
 					"s2": "Přejděte na sekci 'Účastníci'",
-					"s3": "V sekci 'Účastníci' vytvořte nové účastníky",
-					"s4": "Klikněte na tlačítko 'Vytvořit dotazník' pro vytvoření dotazníků pro účastníky",
-					"s5": "Zkopírujte každý odkaz účastníka a sdílejte s nimi",
-					"s6": "Udělejte účastníky, aby dokončili dotazník",
-					"s7": "Přejděte na stránku 'Výsledky'",
-					"s8": "Klikněte na tlačítko 'Vygenerovat zprávu' a animace s analýzami se objeví"
-				}
+					"s3": "V sekci 'Účastníci' vytvořte nové účastníky, buď pomocí formuláře, nebo nahráním souboru CSV",
+					"s4": "Klikněte na tlačítko 'Vytvořit dotazníky', abyste vytvořili dotazníky pro účastníky",
+					"s5": "Zkopírujte odkaz na dotazník každého účastníka a sdílejte jej s nimi",
+					"s6": "Po dokončení dotazníku každým účastníkem přejděte do sekce 'Účastníci' a klikněte na tlačítko 'Generovat výsledek'",
+					"s7": "Jakmile je zpráva vygenerována, budete přesměrováni na stránku s výsledkem s grafy 2D a 3D",
+					"s8": "V sekci 'Výsledky' můžete kdykoli zkontrolovat výsledky"
+				}				
 			},
 			"user": {
 				"title": "Uživatelský průvodce",
 				"subtitle": "Kroky k následování pro uživatele.",
 				"steps": {
-					"s1": "Přistupte k odkazu poskytnutému vaším administrátorem",
-					"s2": "Přístup k dotazníku sdílenému vaším administrátorem",
-					"s3": "Dokončete otázky dotazníku o svých spolupracovnících / spolužácích",
-					"s4": "Pošlete výsledky svému administrátorovi"
-				}
+					"s1": "Přístup k odkazu poskytnutému vaším administrátorem, který obsahuje dotazník",
+					"s2": "Vyplňte otázky dotazníku",
+					"s3": "Odeslat formulář"
+				}				
 			}
 		},
 		"updates": {
