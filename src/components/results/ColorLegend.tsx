@@ -6,22 +6,26 @@ const ColorLegend = ({ minVal, maxVal }) => {
 
 	const getLightness = (val) => {
 		const normalizedVal = (val - minVal) / (maxVal - minVal);
-		return 0.5 + normalizedVal * 0.4;
+		return 0.4 + (normalizedVal * 0.5);
 	};
 
+	const hue = 25 / 360;
+	const saturation = 1;
+
 	const minColor = new THREE.Color()
-		.setHSL(0, 0.8, getLightness(minVal))
+		.setHSL(hue, saturation, getLightness(minVal))
 		.getStyle();
 	const midColor = new THREE.Color()
-		.setHSL(0, 0.8, getLightness(midVal))
+		.setHSL(hue, saturation, getLightness(midVal))
 		.getStyle();
 	const maxColor = new THREE.Color()
-		.setHSL(0, 0.8, getLightness(maxVal))
+		.setHSL(hue, saturation, getLightness(maxVal))
 		.getStyle();
 
 	return (
 		<div className="color-legend pb-1 w-full flex justify-end pe-1 bg-black text-dark_gray text-opacity-90">
 			<div className="w-1/3">
+				<p className="text-xs pb-0.5">Influence level:</p>
 				<div className="relative w-full h-3">
 					<div
 						style={{
@@ -29,7 +33,7 @@ const ColorLegend = ({ minVal, maxVal }) => {
 						}}
 						className="w-full h-3"
 					/>
-					<div className="absolute top-0 left-0 w-full h-3 bg-black opacity-20" />
+					<div className="absolute top-0 left-0 w-full h-3 bg-black opacity-10" />
 				</div>
 				<div className="flex flex-row justify-between px-2">
 					<div
