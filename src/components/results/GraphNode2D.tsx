@@ -75,7 +75,7 @@ export default function GraphNode2D({ graphData }: GraphNode2DProps) {
 				height={dimensions.height}
 				nodeVal={(node) => node.val}
 				nodeLabel="name"
-				linkWidth={0.5}
+				linkWidth={0.3}
 				nodeColor={getNodeColor}
 				backgroundColor="#000000"
 				linkAutoColorBy="#ffffff"
