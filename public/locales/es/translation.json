@@ -1,5 +1,9 @@
 {
 	"home": {
+		"welcome": {
+			"title": "Bienvenido",
+			"subtitle": "Write something here."
+		},
 		"guide": {
 			"admin": {
 				"title": "Guía del Administrador",
@@ -77,22 +81,25 @@
 			"title": "Agregar un nuevo participante",
 			"labels": {
 				"name": "Nombre",
-				"email": "Correo electrónico"
+				"email": "Correo electrónico",
+				"select": "Seleccionar Archivo"
 			},
 			"buttons": {
 				"add": "Agregar Participante",
+				"csv": "Subir CSV"
+			}
+		},
+		"buttons-section": {
+			"title": "Gestionar cuestionarios",
+			"buttons": {
 				"questionnaire": {
 					"text": "Crear Cuestionarios",
 					"tooltip": "Necesitas agregar al menos 2 participantes antes de generar los cuestionarios."
 				},
 				"reset": "Reiniciar Fase",
 				"result": "Generar Resultado",
-				"deleteAll": "Eliminar todos los participantes"
+				"deleteAll": "Eliminar Todos los Participantes"
 			}
-		},
-		"csv": {
-			"label": "Selecciona un archivo",
-			"button": "Subir CSV"
 		}
 	},
 	"faq": {
@@ -126,7 +133,7 @@
 			"button": "RESTABLECER"
 		},
 		"organization": {
-			"title": "Cambiar Organización",
+			"title": "Organización",
 			"label": "Selecciona Tu Organización",
 			"options": {
 				"company": "Empresa",
@@ -136,12 +143,12 @@
 			"button": "ACTUALIZAR"
 		},
 		"language": {
-			"title": "Cambiar Idioma",
+			"title": "Idioma",
 			"label": "Selecciona Tu Idioma",
 			"button": "ACTUALIZAR"
 		},
 		"name": {
-			"title": "Cambiar Nombre y Nombre de la Organización",
+			"title": "Nombre y Nombre de la Organización",
 			"labels": {
 				"name": "Nombre",
 				"organization": "Nombre de la Organización"
@@ -222,9 +229,6 @@
 			"button": "ENVIAR CORREO DE RESTABLECIMIENTO"
 		}
 	},
-	"homeresults": {
-		"title": "Todos los Informes Ejecutados"
-	},
 	"navbar": {
 		"dashboard": "Panel",
 		"participants": "Participantes",
@@ -236,7 +240,10 @@
 		"faq": "FAQ",
 		"language": "Idioma",
 		"customers": "Clientes",
-		"backup": "Copia"
+		"backup": "Respaldo de Resultados"
+	},
+	"backup-results": {
+		"title": "Respaldo de Resultados"
 	},
 	"topbar": {
 		"search": "Buscar",

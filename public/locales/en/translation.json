@@ -1,5 +1,9 @@
 {
 	"home": {
+		"welcome": {
+			"title": "Welcome",
+			"subtitle": "Write something here."
+		},
 		"guide": {
 			"admin": {
 				"title": "Admin's Guide",
@@ -77,10 +81,17 @@
 			"title": "Add a new participant",
 			"labels": {
 				"name": "Name",
-				"email": "Email"
+				"email": "Email",
+				"select": "Select File"
 			},
 			"buttons": {
 				"add": "Add Participant",
+				"csv": "Upload CSV"
+			}
+		},
+		"buttons-section": {
+			"title": "Manage questionnaires",
+			"buttons": {
 				"questionnaire": {
 					"text": "Create Questionnaires",
 					"tooltip": "You need to add at least 2 participants before generating the questionnaires."
@@ -89,10 +100,6 @@
 				"result": "Generate Result",
 				"deleteAll": "Delete All Participants"
 			}
-		},
-		"csv": {
-			"label": "Select file",
-			"button": "Upload CSV"
 		}
 	},
 	"faq": {
@@ -126,7 +133,7 @@
 			"button": "RESET"
 		},
 		"organization": {
-			"title": "Change Organization",
+			"title": "Organization",
 			"label": "Select Your Organization",
 			"options": {
 				"company": "Company",
@@ -136,12 +143,12 @@
 			"button": "UPDATE"
 		},
 		"language": {
-			"title": "Change Language",
+			"title": "Language",
 			"label": "Select Your Language",
 			"button": "UPDATE"
 		},
 		"name": {
-			"title": "Change Name and Organization's Name",
+			"title": "Name and Organization's Name",
 			"labels": {
 				"name": "Name",
 				"organization": "Organization's Name"
@@ -222,9 +229,6 @@
 			"button": "SEND RESET EMAIL"
 		}
 	},
-	"homeresults": {
-		"title": "All Executed Reports"
-	},
 	"navbar": {
 		"dashboard": "Dashboard",
 		"participants": "Participants",
@@ -236,7 +240,10 @@
 		"faq": "FAQ",
 		"language": "Language",
 		"customers": "Customers",
-		"backup": "Backup"
+		"backup": "Results Backup"
+	},
+	"backup-results": {
+		"title": "Results Backup"
 	},
 	"topbar": {
 		"search": "Search",

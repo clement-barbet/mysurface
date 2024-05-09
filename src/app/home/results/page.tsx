@@ -80,9 +80,6 @@ export default function Results() {
 		!loading && (
 			<>
 				<div className="w-full m-auto">
-					<h2 className="text-3xl pb-2">
-						<T tkey="homeresults.title" />
-					</h2>
 					{results.length > 0 ? (
 						<>
 							<Table className="w-full">

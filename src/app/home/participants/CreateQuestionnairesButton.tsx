@@ -60,14 +60,14 @@ export default function CreateQuestionnairesButton({
 								onClick={createQuestionnaires}
 								disabled={!canCreateQuestionnaires}
 							>
-								<T tkey="participants.form.buttons.questionnaire.text" />
+								<T tkey="participants.buttons-section.buttons.questionnaire.text" />
 							</Button>
 						</div>
 					</TooltipTrigger>
 					{!canCreateQuestionnaires && (
 						<TooltipContent>
 							<p>
-								<T tkey="participants.form.buttons.questionnaire.tooltip" />
+								<T tkey="participants.buttons-section.buttons.questionnaire.tooltip" />
 							</p>
 						</TooltipContent>
 					)}

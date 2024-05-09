@@ -131,9 +131,9 @@ export default function Page() {
 	const participantCount = participants ? participants.length : 0;
 
 	return (
-		<div>
+		<>
 			<div className="mb-2 p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
-				<h2 className="mb-2">
+				<h2 className="mb-2 font-bold">
 					<T tkey="participants.form.title" />
 				</h2>
 				<div className="w-full my-4">
@@ -142,6 +142,18 @@ export default function Page() {
 						isEnrollmentPhase={isEnrollmentPhase}
 					/>
 				</div>
+			</div>
+			<TableParticipants
+				participants={participants}
+				questionnaires={questionnaires}
+				isEnrollmentPhase={isEnrollmentPhase}
+				lang={lang}
+				org={org}
+			/>
+			<div className="mt-2 p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
+				<h2 className="mb-2 font-bold">
+					<T tkey="participants.buttons-section.title" />
+				</h2>
 				<div className="flex flex-col gap-y-2 md:space-x-4 md:flex-row md:justify-between">
 					<CreateQuestionnairesButton
 						isEnrollmentPhase={isEnrollmentPhase}
@@ -157,13 +169,6 @@ export default function Page() {
 					/>
 				</div>
 			</div>
-			<TableParticipants
-				participants={participants}
-				questionnaires={questionnaires}
-				isEnrollmentPhase={isEnrollmentPhase}
-				lang={lang}
-				org={org}
-			/>
-		</div>
+		</>
 	);
 }

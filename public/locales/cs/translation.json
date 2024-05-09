@@ -1,5 +1,9 @@
 {
 	"home": {
+		"welcome": {
+			"title": "Vítejte",
+			"subtitle": "Write something here."
+		},
 		"guide": {
 			"admin": {
 				"title": "Průvodce administrátora",
@@ -77,22 +81,25 @@
 			"title": "Přidat nového účastníka",
 			"labels": {
 				"name": "Jméno",
-				"email": "E-mail"
+				"email": "E-mail",
+				"select": "Vybrat soubor"
 			},
 			"buttons": {
-				"add": "Přidat Účastníka",
+				"add": "Přidat účastníka",
+				"csv": "Nahrát CSV"
+			}
+		},
+		"buttons-section": {
+			"title": "Spravovat dotazníky",
+			"buttons": {
 				"questionnaire": {
 					"text": "Vytvořit Dotazníky",
-					"tooltip": "Před generováním dotazníků musíte přidat alespoň 2 účastníky."
+					"tooltip": "Před vytvořením dotazníků musíte přidat alespoň 2 účastníky."
 				},
 				"reset": "Resetovat Fázi",
 				"result": "Generovat Výsledek",
-				"deleteAll": "Smazat všechny účastníky"
+				"deleteAll": "Smazat Všechny Účastníky"
 			}
-		},
-		"csv": {
-			"label": "Vybrat soubor",
-			"button": "UNahrát CSV"
 		}
 	},
 	"faq": {
@@ -126,29 +133,29 @@
 			"button": "OBNOVIT"
 		},
 		"organization": {
-			"title": "Změnit Organizaci",
-			"label": "Vyberte Svou Organizaci",
+			"title": "Organizace",
+			"label": "Vyberte vaši organizaci",
 			"options": {
-				"company": "Společnost",
+				"company": "Firma",
 				"school": "Škola",
 				"city": "Město"
 			},
 			"button": "AKTUALIZOVAT"
 		},
 		"language": {
-			"title": "Změnit Jazyk",
-			"label": "Vyberte Váš Jazyk",
+			"title": "Jazyk",
+			"label": "Vyberte váš jazyk",
 			"button": "AKTUALIZOVAT"
 		},
 		"name": {
-			"title": "Změnit Jméno a Název Organizace",
+			"title": "Jméno a název organizace",
 			"labels": {
 				"name": "Jméno",
-				"organization": "Název Organizace"
+				"organization": "Název organizace"
 			},
 			"placeholders": {
-				"name": "Vaše Jméno",
-				"organization": "Název Vaší Organizace"
+				"name": "Vaše jméno",
+				"organization": "Název vaší organizace"
 			},
 			"button": "AKTUALIZOVAT"
 		},
@@ -171,7 +178,7 @@
 		"nodata": "Zatím žádné výsledky."
 	},
 	"login": {
-		"slogan": "Připojte se, Spolupracujte, Vizuálně zobrazujte: Váš Tým, Vaše Povrch.",
+		"slogan": "Propojte se, Spolupracujte, Vizualizujte: Váš Tým, Váš Prostor.",
 		"title": "Vítejte zpět!",
 		"form": {
 			"labels": {
@@ -222,9 +229,6 @@
 			"button": "ODESLAT E-MAIL K RESETU HESLA"
 		}
 	},
-	"homeresults": {
-		"title": "Všechny Provedené Zprávy"
-	},
 	"navbar": {
 		"dashboard": "Nástěnka",
 		"participants": "Účastníci",
@@ -236,7 +240,10 @@
 		"faq": "FAQ",
 		"language": "Jazyk",
 		"customers": "Zákazníci",
-		"backup": "Záloha"
+		"backup": "Záloha Výsledků"
+	},
+	"backup-results": {
+		"title": "Záloha Výsledků"
 	},
 	"topbar": {
 		"search": "Hledat",

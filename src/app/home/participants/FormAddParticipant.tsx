@@ -188,7 +188,7 @@ function FormAddParticipant({ onParticipantAdded, isEnrollmentPhase }) {
 						htmlFor="fileUpload"
 						className="cursor-pointer text-sm border border-accent_color hover:bg-accent_light py-2 px-4 rounded inline-block transition-all duration-300 ease-in-out font-medium"
 					>
-						<T tkey="participants.csv.label" />
+						<T tkey="participants.form.labels.select" />
 					</label>
 					{fileName && (
 						<span className="ms-2 text-sm text-gray-500">{fileName}</span>
@@ -201,7 +201,7 @@ function FormAddParticipant({ onParticipantAdded, isEnrollmentPhase }) {
 					disabled={!isEnrollmentPhase}
 					onClick={handleFileUpload}
 				>
-					<T tkey="participants.csv.button" />
+					<T tkey="participants.form.buttons.csv" />
 				</Button>
 			</div>
 		</>
