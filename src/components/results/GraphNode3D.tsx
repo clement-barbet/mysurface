@@ -6,17 +6,31 @@ import * as THREE from "three";
 import React, { useRef, useEffect, useState } from "react";
 import ColorLegend from "./ColorLegend";
 
+/*
 const ForceGraph3D = dynamic(
 	() => import("react-force-graph").then((mod) => mod.ForceGraph3D),
 	{ ssr: false }
 );
+*/
 
 interface GraphNode3DProps {
 	graphData: any;
 }
 
 const GraphNode3D: React.FC<GraphNode3DProps> = ({ graphData }) => {
-	const fgRef = useRef(null);
+	const fgRef = useRef();
+	const [ForceGraph3D, setForceGraph3D] = useState(null);
+	const [bloomApplied, setBloomApplied] = useState(false);
+
+	useEffect(() => {
+		import("react-force-graph")
+			.then((mod) => {
+				setForceGraph3D(mod.ForceGraph3D);
+			})
+			.catch((error) => {
+				console.error("Error loading ForceGraph3D:", error);
+			});
+	}, []);
 
 	const [dimensions, setDimensions] = useState({
 		width: typeof window !== "undefined" ? window.innerWidth : 0,
@@ -42,18 +56,6 @@ const GraphNode3D: React.FC<GraphNode3DProps> = ({ graphData }) => {
 		};
 	}, []);
 
-	/*
-	useEffect(() => {
-		const bloomPass = new UnrealBloomPass(
-			new THREE.Vector2(dimensions.width, dimensions.height),
-			0.5,
-			0.3,
-			0.2
-		);
-		fgRef.current.postProcessingComposer().addPass(bloomPass);
-	}, []);
-*/
-
 	const maxSize = Math.max(...graphData.nodes.map((node) => node.val));
 	const minSize = Math.min(...graphData.nodes.map((node) => node.val));
 	const hue = 25 / 360;
@@ -69,6 +71,23 @@ const GraphNode3D: React.FC<GraphNode3DProps> = ({ graphData }) => {
 		return color.getStyle();
 	};
 
+	useEffect(() => {
+		if (fgRef.current && !bloomApplied) {
+			const bloomPass = new UnrealBloomPass(
+				new THREE.Vector2(dimensions.width, dimensions.height),
+				2,
+				1,
+				0
+			);
+			fgRef.current.postProcessingComposer().addPass(bloomPass);
+			setBloomApplied(true);
+		}
+	}, [fgRef.current, dimensions, ForceGraph3D]);
+
+	if (!ForceGraph3D) {
+		return null;
+	}
+
 	return (
 		<div className="bg-black w-full">
 			<ForceGraph3D
@@ -76,14 +95,13 @@ const GraphNode3D: React.FC<GraphNode3DProps> = ({ graphData }) => {
 				backgroundColor="#000000"
 				graphData={graphData}
 				nodeLabel="id"
-				// nodeAutoColorBy={getNodeColor}
 				nodeColor={getNodeColor}
 				width={dimensions.width}
 				height={dimensions.height}
-				nodeOpacity={0.9}
+				nodeOpacity={0.8}
 				nodeResolution={50}
-				linkOpacity={0.05}
-				linkWidth={0.5}
+				linkOpacity={0.02}
+				linkWidth={0.2}
 				linkColor={() => "#ffffff"}
 			/>
 			<ColorLegend
