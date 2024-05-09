@@ -40,7 +40,9 @@ const ColorLegend = ({
 						}}
 						className="w-full h-3"
 					/>
-					<div className="absolute top-0 left-0 w-full h-3 bg-black opacity-10" />
+					{bgColorClass === "black" && (
+						<div className="absolute top-0 left-0 w-full h-3 bg-black opacity-10" />
+					)}
 				</div>
 				<div className="flex flex-row justify-between px-2">
 					{[...Array(3)].map((_, i) => (
