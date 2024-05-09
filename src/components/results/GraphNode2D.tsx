@@ -4,6 +4,7 @@ import * as THREE from "three";
 //import { ForceGraph2D } from "react-force-graph"
 import React, { useEffect, useRef, useState } from "react";
 import ColorLegend from "./ColorLegend";
+import { get } from "http";
 
 interface GraphNode2DProps {
 	graphData: any;
@@ -66,7 +67,7 @@ export default function GraphNode2D({ graphData }: GraphNode2DProps) {
 	};
 
 	return (
-		<>
+		<div className="bg-black w-full">
 			<ForceGraph2D
 				ref={forceGraphRef}
 				graphData={graphData}
@@ -74,8 +75,10 @@ export default function GraphNode2D({ graphData }: GraphNode2DProps) {
 				height={dimensions.height}
 				nodeVal={(node) => node.val}
 				nodeLabel="name"
-				linkWidth={0.7}
+				linkWidth={0.5}
 				nodeColor={getNodeColor}
+				backgroundColor="#000000"
+				linkAutoColorBy="#ffffff"
 			/>
 			<ColorLegend
 				minVal={minSize}
@@ -83,9 +86,7 @@ export default function GraphNode2D({ graphData }: GraphNode2DProps) {
 				hue={hue}
 				saturation={saturation}
 				baseLightness={baseLightness}
-				bgColorClass=""
-				textColorClass="black"
 			/>
-		</>
+		</div>
 	);
 }

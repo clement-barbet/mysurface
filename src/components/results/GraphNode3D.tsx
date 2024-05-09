@@ -92,8 +92,6 @@ const GraphNode3D: React.FC<GraphNode3DProps> = ({ graphData }) => {
 				hue={hue}
 				saturation={saturation}
 				baseLightness={baseLightness}
-				bgColorClass="black"
-				textColorClass="white"
 			/>
 		</div>
 	);
