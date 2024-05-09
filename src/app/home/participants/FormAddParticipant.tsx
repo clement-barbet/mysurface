@@ -17,11 +17,15 @@ import T from "@/components/translations/translation";
 import Papa from "papaparse";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import Link from "next/link";
+import { ErrorMessage } from "@/components/ui/msg/error_msg";
 
 function FormAddParticipant({ onParticipantAdded, isEnrollmentPhase }) {
 	const [file, setFile] = useState(null);
 	const supabase = createClientComponentClient();
 	const [fileName, setFileName] = useState("");
+	const [errorMessage, setErrorMessage] = useState<string | undefined>(
+		undefined
+	);
 
 	const handleFileChange = (event) => {
 		setFile(event.target.files[0]);
@@ -51,9 +55,15 @@ function FormAddParticipant({ onParticipantAdded, isEnrollmentPhase }) {
 		Papa.parse(file, {
 			header: true,
 			complete: async (results) => {
+				const fileExtension = file.name.split('.').pop();
+				if (fileExtension !== 'csv') {
+				  setErrorMessage('Invalid file type. Please upload a CSV file.');
+				  return;
+				}
+
 				const maxRows = 200;
 				if (results.data.length > maxRows) {
-					console.error(
+					setErrorMessage(
 						`Too many rows: ${results.data.length}. The limit is ${maxRows}.`
 					);
 					return;
@@ -62,16 +72,17 @@ function FormAddParticipant({ onParticipantAdded, isEnrollmentPhase }) {
 					const newParticipant = { name: row.name, email: row.email };
 
 					if (!newParticipant.name || !newParticipant.email) {
-						console.error(
-							"Invalid participant data:",
-							newParticipant
+						setErrorMessage(
+							"Invalid participant data. Name and email are required."
 						);
 						continue;
 					}
 
 					const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 					if (!emailRegex.test(newParticipant.email)) {
-						console.error("Invalid email:", newParticipant.email);
+						setErrorMessage(
+							"Invalid participant data. Email is not valid."
+						);
 						continue;
 					}
 
@@ -124,10 +135,16 @@ function FormAddParticipant({ onParticipantAdded, isEnrollmentPhase }) {
 
 	return (
 		<>
+			{errorMessage && (
+				<ErrorMessage
+					errorMessage={errorMessage}
+					setErrorMessage={setErrorMessage}
+				/>
+			)}
 			<Form {...form}>
 				<form
 					onSubmit={form.handleSubmit(onSubmit)}
-					className="flex md:space-x-4 space-y-4 md:items-end md:flex-row flex-col items-start w-full md:w-auto"
+					className="flex md:space-x-4 gap-y-2 md:items-end md:flex-row flex-col items-start w-full md:w-auto"
 				>
 					<FormField
 						control={form.control}
@@ -181,6 +198,7 @@ function FormAddParticipant({ onParticipantAdded, isEnrollmentPhase }) {
 				<div className="md:w-4/5">
 					<input
 						type="file"
+						accept=".csv"
 						id="fileUpload"
 						onChange={handleFileChange}
 						className="hidden"
@@ -192,7 +210,9 @@ function FormAddParticipant({ onParticipantAdded, isEnrollmentPhase }) {
 						<T tkey="participants.form.labels.select" />
 					</label>
 					{fileName && (
-						<span className="ms-2 text-sm text-gray-500">{fileName}</span>
+						<span className="ms-2 text-sm text-darkest_gray">
+							{fileName}
+						</span>
 					)}
 				</div>
 				<Button
@@ -205,7 +225,15 @@ function FormAddParticipant({ onParticipantAdded, isEnrollmentPhase }) {
 					<T tkey="participants.form.buttons.csv" />
 				</Button>
 			</div>
-			<p className="italic text-sm py-1 text-darkest_gray"><T tkey="participants.form.link.text" /> <Link href="/home/faq" className="font-semibold text-accent_color hover:text-accent_hover underline hover:underline-offset-4 underline-offset-2 transition-all duration-200 ease-linear"><T tkey="participants.form.link.here" />.</Link></p>
+			<p className="italic text-sm py-1 text-darkest_gray">
+				<T tkey="participants.form.link.text" />{" "}
+				<Link
+					href="/home/faq"
+					className="font-semibold text-accent_color hover:text-accent_hover underline hover:underline-offset-4 underline-offset-2 transition-all duration-200 ease-linear"
+				>
+					<T tkey="participants.form.link.here" />.
+				</Link>
+			</p>
 		</>
 	);
 }

@@ -133,10 +133,10 @@ export default function Page() {
 	return (
 		<>
 			<div className="mb-2 p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
-				<h2 className="mb-2 font-bold">
+				<h2 className="font-bold">
 					<T tkey="participants.form.title" />
 				</h2>
-				<div className="w-full my-4">
+				<div className="w-full my-2">
 					<FormAddParticipant
 						onParticipantAdded={onParticipantAdded}
 						isEnrollmentPhase={isEnrollmentPhase}
