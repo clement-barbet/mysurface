@@ -150,11 +150,11 @@ export default function Page() {
 				lang={lang}
 				org={org}
 			/>
-			<div className="mt-2 p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
+			<div className="my-2 p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
 				<h2 className="mb-2 font-bold">
 					<T tkey="participants.buttons-section.title" />
 				</h2>
-				<div className="flex flex-col gap-y-2 md:space-x-4 md:flex-row md:justify-between">
+				<div className="flex flex-col gap-y-2 md:space-x-4 md:flex-row md:justify-start md:flex-wrap">
 					<CreateQuestionnairesButton
 						isEnrollmentPhase={isEnrollmentPhase}
 						participantCount={participantCount}

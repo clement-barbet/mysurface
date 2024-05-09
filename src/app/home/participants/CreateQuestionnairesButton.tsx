@@ -53,7 +53,7 @@ export default function CreateQuestionnairesButton({
 			<TooltipProvider>
 				<Tooltip>
 					<TooltipTrigger asChild>
-						<div className="w-full">
+						<div className="md:w-1/5 w-full">
 							<Button
 								className="w-full"
 								id="createQuestionnairesBtn"

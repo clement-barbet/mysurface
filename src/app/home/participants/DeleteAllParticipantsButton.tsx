@@ -48,7 +48,7 @@ const DeleteAllParticipantsButton = ({
 	};
 
 	return (
-		<Button id="resetPhaseBtn" onClick={handleClick} variant="delete" className="w-full">
+		<Button id="resetPhaseBtn" onClick={handleClick} variant="delete" className="md:w-1/5 w-full">
 			<T tkey="participants.buttons-section.buttons.deleteAll" />
 		</Button>
 	);

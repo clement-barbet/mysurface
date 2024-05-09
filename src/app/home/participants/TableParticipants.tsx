@@ -35,15 +35,6 @@ function TableParticipants({
 	
 	const [participants, setParticipants] = useState([]);
 
-	const {
-		currentPage,
-		setCurrentPage,
-		itemsPerPage,
-		handleItemsPerPageChange,
-		currentItems,
-		itemsPerPageOptions,
-	  } = usePagination(participants, 10);
-
 	useEffect(() => {
 		setParticipants(initialParticipants);
 	}, [initialParticipants]);
@@ -108,7 +99,7 @@ function TableParticipants({
 					</TableHeader>
 					<TableBody className="bg-white dark:bg-black divide-y divide-gray-200 dark:divide-gray-500">
 						{participants.length ? (
-							currentItems.map((participant) => {
+							participants.map((participant) => {
 								if (participant) {
 									return (
 										<TBodyRow key={participant.id}>
@@ -200,14 +191,6 @@ function TableParticipants({
 						)}
 					</TableBody>
 				</Table>
-				<Pagination
-					currentPage={currentPage}
-					setCurrentPage={setCurrentPage}
-					items={participants}
-					itemsPerPage={itemsPerPage}
-					handleItemsPerPageChange={handleItemsPerPageChange}
-					itemsPerPageOptions={itemsPerPageOptions}
-				/>
 			</div>
 			<div className="block md:hidden">
 				{participants.length
