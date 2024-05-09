@@ -79,10 +79,13 @@ export default async function ResultPage({
   const nodeValuesArray = nodes.map((node) => node.val);
   const minNodeValue = Math.min(...nodeValuesArray);
   const maxNodeValue = Math.max(...nodeValuesArray);
-  nodes.forEach((node) => {
-    node.val =
-      (node.val - (minNodeValue - 0.1)) / (maxNodeValue - minNodeValue);
-  });
+	nodes.forEach((node) => {
+		let normalizedValue = (node.val =
+			(node.val - (minNodeValue - 0.1)) / (maxNodeValue - minNodeValue));
+
+		// Apply exponential transformation to increase difference
+		node.val = Math.pow(normalizedValue, 1.5);
+	});
 
   const graphData = {
     nodes,
