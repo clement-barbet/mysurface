@@ -228,7 +228,7 @@ function FormAddParticipant({ onParticipantAdded, isEnrollmentPhase }) {
 			<p className="italic text-sm py-1 text-darkest_gray">
 				<T tkey="participants.form.link.text" />{" "}
 				<Link
-					href="/home/faq"
+					href={{ pathname: "/home/faq", query: { defaultItem: 'csv_item' } }}
 					className="font-semibold text-accent_color hover:text-accent_hover underline hover:underline-offset-4 underline-offset-2 transition-all duration-200 ease-linear"
 				>
 					<T tkey="participants.form.link.here" />.
