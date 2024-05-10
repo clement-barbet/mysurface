@@ -154,40 +154,36 @@ export default function DashboardNavbar() {
 						<T tkey="navbar.results" />
 					</Link>
 				</li>
-				{userRole === "superadmin" ? (
-					<>
-						<li
-							className={clsx("py-2 px-4 tracking-wider", {
-								"border-l-4 border-light_gray":
-									pathname === "/home/models",
-							})}
-						>
-							<Link
-								onClick={handleLinkClick}
-								href="/home/models"
-								className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase"
-							>
-								<TbVectorTriangle className="h-6 w-6" />
-								<T tkey="navbar.models" />
-							</Link>
-						</li>
-						<li
-							className={clsx("py-2 px-4 tracking-wider", {
-								"border-l-4 border-light_gray":
-									pathname === "/home/patterns",
-							})}
-						>
-							<Link
-								onClick={handleLinkClick}
-								href="/home/patterns"
-								className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase"
-							>
-								<BiTrendingUp className="h-6 w-6" />
-								<T tkey="navbar.patterns" />
-							</Link>
-						</li>
-					</>
-				) : null}
+				<li
+					className={clsx("py-2 px-4 tracking-wider", {
+						"border-l-4 border-light_gray":
+							pathname === "/home/models",
+					})}
+				>
+					<Link
+						onClick={handleLinkClick}
+						href="/home/models"
+						className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase"
+					>
+						<TbVectorTriangle className="h-6 w-6" />
+						<T tkey="navbar.models" />
+					</Link>
+				</li>
+				<li
+					className={clsx("py-2 px-4 tracking-wider", {
+						"border-l-4 border-light_gray":
+							pathname === "/home/patterns",
+					})}
+				>
+					<Link
+						onClick={handleLinkClick}
+						href="/home/patterns"
+						className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase"
+					>
+						<BiTrendingUp className="h-6 w-6" />
+						<T tkey="navbar.patterns" />
+					</Link>
+				</li>
 				<li
 					className={clsx("py-2 px-4 tracking-wider", {
 						"border-l-4 border-light_gray":
@@ -224,7 +220,7 @@ export default function DashboardNavbar() {
 						<li
 							className={clsx("py-2 ps-4 tracking-wider", {
 								"border-l-4 border-light_gray":
-									pathname === "/home/participants-admin"
+									pathname === "/home/participants-admin",
 							})}
 						>
 							<Link
@@ -258,9 +254,7 @@ export default function DashboardNavbar() {
 							className={clsx("py-2 px-4 tracking-wider", {
 								"border-l-4 border-light_gray":
 									pathname === "/home/backup" ||
-									/^\/home\/backup(\/\d+)?$/.test(
-										pathname
-									),
+									/^\/home\/backup(\/\d+)?$/.test(pathname),
 							})}
 						>
 							<Link
