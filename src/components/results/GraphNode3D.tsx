@@ -126,6 +126,7 @@ const GraphNode3D: React.FC<GraphNode3DProps> = ({ graphData }) => {
 				linkOpacity={0.02}
 				linkWidth={0.2}
 				linkColor={() => "#ffffff"}
+				showNavInfo={false}
 			/>
 			<ColorLegend minSize={minSize} maxSize={maxSize} ranges={ranges} />
 		</div>
