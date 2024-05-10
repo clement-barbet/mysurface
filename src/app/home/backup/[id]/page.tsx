@@ -96,8 +96,6 @@ export default async function ResultPage({
     <div className="w-full">
       <h2 className="mb-2 hidden">Result: {params.id}</h2>
       <GraphTabs graphData={graphData}  reportId={params.id} reportName={reportName} />
-      <GraphData graphData={graphData} />
-      <pre className="hidden">{JSON.stringify(graphData, null, 2)}</pre>
     </div>
   );
 }

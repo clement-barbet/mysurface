@@ -100,8 +100,6 @@ export default async function ResultPage({
 				reportId={params.id}
 				reportName={reportName}
 			/>
-			<GraphData graphData={graphData} />
-			<pre className="hidden">{JSON.stringify(graphData, null, 2)}</pre>
 		</div>
 	);
 }

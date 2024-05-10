@@ -31,7 +31,7 @@ export default function GraphNode2D({ graphData }: GraphNode2DProps) {
 					: window.innerWidth - 230;
 			setDimensions({
 				width,
-				height: window.innerHeight - 135,
+				height: window.innerHeight - 145,
 			});
 		};
 		resizeGraph();
@@ -90,7 +90,7 @@ export default function GraphNode2D({ graphData }: GraphNode2DProps) {
 				width={dimensions.width}
 				height={dimensions.height}
 				nodeVal={(node) => node.val}
-				nodeLabel="name"
+				nodeLabel={(node) => `${node.name} (${node.val.toFixed(2)})`}
 				linkWidth={0.3}
 				nodeColor={getNodeColor}
 				backgroundColor="#000000"
