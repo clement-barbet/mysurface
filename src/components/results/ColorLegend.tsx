@@ -1,23 +1,16 @@
-import * as THREE from "three";
 import React from "react";
+import { scalePow } from "d3";
 
-const ColorLegend = ({ minVal, maxVal, hue, saturation, baseLightness }) => {
-	const midVal = (minVal + maxVal) / 2;
+const ColorLegend = ({ minSize, maxSize, ranges }) => {
+	const midSize = (minSize + maxSize) / 2;
+	const colorScale = scalePow<string>()
+		.exponent(3)
+		.domain([minSize, midSize, maxSize])
+		.range(ranges);
 
-	const getLightness = (val) => {
-		const normalizedVal = (val - minVal) / (maxVal - minVal);
-		return baseLightness + (normalizedVal * 0.5);
-	};
-
-	const minColor = new THREE.Color()
-		.setHSL(hue, saturation, getLightness(minVal))
-		.getStyle();
-	const midColor = new THREE.Color()
-		.setHSL(hue, saturation, getLightness(midVal))
-		.getStyle();
-	const maxColor = new THREE.Color()
-		.setHSL(hue, saturation, getLightness(maxVal))
-		.getStyle();
+	const minColor = colorScale(minSize);
+	const midColor = colorScale(midSize);
+	const maxColor = colorScale(maxSize);
 
 	return (
 		<div className="color-legend pb-1 w-full flex justify-end pe-1 bg-black text-dark_gray text-opacity-90">
@@ -46,9 +39,9 @@ const ColorLegend = ({ minVal, maxVal, hue, saturation, baseLightness }) => {
 					/>
 				</div>
 				<div className="flex flex-row justify-between text-xs">
-					<span>{minVal.toFixed(2)}</span>
-					<span>{midVal.toFixed(2)}</span>
-					<span>{maxVal.toFixed(2)}</span>
+					<span>{minSize.toFixed(2)}</span>
+					<span>{midSize.toFixed(2)}</span>
+					<span>{maxSize.toFixed(2)}</span>
 				</div>
 			</div>
 		</div>

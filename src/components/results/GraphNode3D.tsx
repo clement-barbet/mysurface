@@ -5,6 +5,7 @@ import { UnrealBloomPass } from "./utils/UnrealBloomPass";
 import * as THREE from "three";
 import React, { useRef, useEffect, useState } from "react";
 import ColorLegend from "./ColorLegend";
+import { scalePow } from "d3";
 
 /*
 const ForceGraph3D = dynamic(
@@ -58,17 +59,39 @@ const GraphNode3D: React.FC<GraphNode3DProps> = ({ graphData }) => {
 
 	const maxSize = Math.max(...graphData.nodes.map((node) => node.val));
 	const minSize = Math.min(...graphData.nodes.map((node) => node.val));
+
+	// hsl(29, 100%, 47%) accent color orange
+	// hsl(189, 59%, 48%) accent color blue
+	// hsl(272, 45%, 15%) dark purple
+
+	/*
 	const hue = 25 / 360;
 	const saturation = 1;
 	const baseLightness = 0.4;
 
-	// 	hsl(29, 100%, 47%) accent color orange
-	// hsl(189, 59%, 48%) accent color blue
 	const getNodeColor = (node) => {
 		const normalizedSize = (node.val - minSize) / (maxSize - minSize);
 		const lightness = baseLightness + normalizedSize * 0.5; // Bigger = light
 		const color = new THREE.Color().setHSL(hue, saturation, lightness);
 		return color.getStyle();
+					"hsl(20, 100%, 40%)",
+			"hsl(40, 100%, 70%)",
+			"hsl(60, 100%, 100%)",
+	};
+	*/
+
+	const ranges = [
+		"hsl(20, 100%, 40%)",
+		"hsl(40, 100%, 70%)",
+		"hsl(60, 100%, 100%)",
+	];
+	const colorScale = scalePow()
+		.exponent(3)
+		.domain([minSize, (minSize + maxSize) / 2, maxSize])
+		.range(ranges);
+
+	const getNodeColor = (node) => {
+		return colorScale(node.val);
 	};
 
 	useEffect(() => {
@@ -76,7 +99,7 @@ const GraphNode3D: React.FC<GraphNode3DProps> = ({ graphData }) => {
 			const bloomPass = new UnrealBloomPass(
 				new THREE.Vector2(dimensions.width, dimensions.height),
 				2,
-				1,
+				0.5,
 				0
 			);
 			fgRef.current.postProcessingComposer().addPass(bloomPass);
@@ -104,13 +127,7 @@ const GraphNode3D: React.FC<GraphNode3DProps> = ({ graphData }) => {
 				linkWidth={0.2}
 				linkColor={() => "#ffffff"}
 			/>
-			<ColorLegend
-				minVal={minSize}
-				maxVal={maxSize}
-				hue={hue}
-				saturation={saturation}
-				baseLightness={baseLightness}
-			/>
+			<ColorLegend minSize={minSize} maxSize={maxSize} ranges={ranges} />
 		</div>
 	);
 };

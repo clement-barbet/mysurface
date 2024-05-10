@@ -4,7 +4,7 @@ import * as THREE from "three";
 //import { ForceGraph2D } from "react-force-graph"
 import React, { useEffect, useRef, useState } from "react";
 import ColorLegend from "./ColorLegend";
-import { get } from "http";
+import { scalePow } from "d3";
 
 interface GraphNode2DProps {
 	graphData: any;
@@ -16,7 +16,7 @@ const ForceGraph2D = dynamic(
 );
 
 export default function GraphNode2D({ graphData }: GraphNode2DProps) {
-	const forceGraphRef = useRef(null);
+	const forceGraphRef = useRef();
 
 	const [dimensions, setDimensions] = useState({
 		width: typeof window !== "undefined" ? window.innerWidth : 0,
@@ -54,6 +54,7 @@ export default function GraphNode2D({ graphData }: GraphNode2DProps) {
 
 	const maxSize = Math.max(...graphData.nodes.map((node) => node.val));
 	const minSize = Math.min(...graphData.nodes.map((node) => node.val));
+	/*
 	const hue = 272 / 360;
 	const saturation = 0.6;
 	const baseLightness = 0.2;
@@ -64,6 +65,21 @@ export default function GraphNode2D({ graphData }: GraphNode2DProps) {
 		const lightness = baseLightness + normalizedSize * 0.5; // Bigger = light
 		const color = new THREE.Color().setHSL(hue, saturation, lightness);
 		return color.getStyle();
+	};
+	*/
+
+	const ranges = [
+		"hsl(270, 45%, 30%)",
+		"hsl(300, 50%, 60%)",
+		"hsl(330, 55%, 90%)",
+	];
+	const colorScale = scalePow()
+		.exponent(3)
+		.domain([minSize, (minSize + maxSize) / 2, maxSize])
+		.range(ranges);
+
+	const getNodeColor = (node) => {
+		return colorScale(node.val);
 	};
 
 	return (
@@ -80,13 +96,7 @@ export default function GraphNode2D({ graphData }: GraphNode2DProps) {
 				backgroundColor="#000000"
 				linkAutoColorBy="#ffffff"
 			/>
-			<ColorLegend
-				minVal={minSize}
-				maxVal={maxSize}
-				hue={hue}
-				saturation={saturation}
-				baseLightness={baseLightness}
-			/>
+			<ColorLegend minSize={minSize} maxSize={maxSize} ranges={ranges} />
 		</div>
 	);
 }
