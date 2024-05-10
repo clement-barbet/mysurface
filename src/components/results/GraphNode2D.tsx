@@ -31,7 +31,7 @@ export default function GraphNode2D({ graphData }: GraphNode2DProps) {
 					: window.innerWidth - 230;
 			setDimensions({
 				width,
-				height: window.innerHeight - 145,
+				height: window.innerHeight - 140,
 			});
 		};
 		resizeGraph();
