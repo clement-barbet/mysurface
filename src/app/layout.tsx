@@ -16,7 +16,21 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className={`${glory.className} bg-dark_gray dark:bg-dark_blue dark:bg-opacity-80 transition-colors duration-1000 linear`}>
+			<head>
+				<link
+					rel="icon"
+					href="/favicon_white.ico"
+					media="(prefers-color-scheme: dark)"
+				/>
+				<link
+					rel="icon"
+					href="/favicon_black.ico"
+					media="(prefers-color-scheme: light)"
+				/>
+			</head>
+			<body
+				className={`${glory.className} bg-dark_gray dark:bg-dark_blue dark:bg-opacity-80 transition-colors duration-1000 linear`}
+			>
 				{children}
 			</body>
 		</html>
