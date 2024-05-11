@@ -20,8 +20,6 @@ export async function middleware(req: NextRequest) {
 	if (
 		req.nextUrl.pathname.startsWith("/home/results-admin") ||
 		req.nextUrl.pathname.startsWith("/home/customers-admin") ||
-		req.nextUrl.pathname.startsWith("/home/models") ||
-		req.nextUrl.pathname.startsWith("/home/pattern") ||
 		req.nextUrl.pathname.startsWith("/home/backup") ||
 		req.nextUrl.pathname.startsWith("/home/participants-admin")
 
