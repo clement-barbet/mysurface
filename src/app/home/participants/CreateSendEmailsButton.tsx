@@ -20,7 +20,6 @@ const EmailButton = ({ participants, lang, org, isEnrollmentPhase }) => {
 			});
 
 			if (!response.ok) {
-				setErrorMessage(`Error: ${response.status}`);
 				throw new Error(`Error: ${response.status}`);
 			} else {
 				const responseData = await response.json();
