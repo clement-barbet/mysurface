@@ -103,7 +103,8 @@
 				},
 				"reset": "Reset Phase",
 				"result": "Generate Result",
-				"deleteAll": "Delete All Participants"
+				"deleteAll": "Delete All Participants",
+				"sendAll": "Send All Emails"
 			}
 		}
 	},

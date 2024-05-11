@@ -3,6 +3,7 @@ import { ErrorMessage } from "@/components/ui/msg/error_msg";
 import { SuccessMessage } from "@/components/ui/msg/success_msg";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import T from "@/components/translations/translation";
 
 const EmailButton = ({ participants, lang, org, isEnrollmentPhase }) => {
 	const [successMessage, setSuccessMessage] = useState("");
@@ -79,7 +80,7 @@ const EmailButton = ({ participants, lang, org, isEnrollmentPhase }) => {
 				variant="outline_blue"
 				onClick={handleClick}
 			>
-				Send Emails to All Participants
+				<T tkey="participants.buttons-section.buttons.sendAll" />
 			</Button>
 		</>
 	);

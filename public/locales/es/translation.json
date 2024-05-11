@@ -103,7 +103,9 @@
 				},
 				"reset": "Reiniciar Fase",
 				"result": "Generar Resultado",
-				"deleteAll": "Eliminar Todos los Participantes"
+				"deleteAll": "Eliminar Todos los Participantes",
+				"sendAll": "Enviar Todos los Correos"
+
 			}
 		}
 	},

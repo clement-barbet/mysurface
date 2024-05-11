@@ -103,7 +103,8 @@
 				},
 				"reset": "Resetovat Fázi",
 				"result": "Generovat Výsledek",
-				"deleteAll": "Smazat Všechny Účastníky"
+				"deleteAll": "Smazat Všechny Účastníky",
+				"sendAll": "Odeslat Všechny E-maily"
 			}
 		}
 	},
