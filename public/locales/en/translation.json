@@ -62,7 +62,8 @@
 				"name": "Name",
 				"email": "Email",
 				"status": "Status",
-				"questionnaire": "Questionnaire",
+				"questionnaire": "Send Questionnaire",
+				"link": "Copy Questionnaire Link",
 				"delete": "Delete"
 			},
 			"nodata": "No participants added yet.",
@@ -73,6 +74,7 @@
 			},
 			"buttons": {
 				"copy": "Copy Link",
+				"send": "Send Email",
 				"delete": "Delete"
 			}
 		},

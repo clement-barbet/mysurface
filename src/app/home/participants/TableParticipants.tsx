@@ -14,8 +14,8 @@ import {
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import Pagination from "@/components/ui/pagination/pagination";
-import usePagination from "@/components/ui/pagination/usePagination";
+import { ErrorMessage } from "@/components/ui/msg/error_msg";
+import { SuccessMessage } from "@/components/ui/msg/success_msg";
 
 function TableParticipants({
 	participants: initialParticipants,
@@ -29,11 +29,12 @@ function TableParticipants({
 		"participants.table.headers.email",
 		"participants.table.headers.status",
 		"participants.table.headers.questionnaire",
+		"participants.table.headers.link",
 		"participants.table.headers.delete",
 	];
-
-	
 	const [participants, setParticipants] = useState([]);
+	const [successMessage, setSuccessMessage] = useState("");
+	const [errorMessage, setErrorMessage] = useState("");
 
 	useEffect(() => {
 		setParticipants(initialParticipants);
@@ -48,8 +49,10 @@ function TableParticipants({
 			body: JSON.stringify({ id: participantId }),
 		});
 
-		if (response.ok) {			
-			const updatedParticipants = participants.filter(participant => participant.id !== participantId);
+		if (response.ok) {
+			const updatedParticipants = participants.filter(
+				(participant) => participant.id !== participantId
+			);
 			setParticipants(updatedParticipants);
 		} else {
 			console.error("Error deleting participant:", response.statusText);
@@ -82,8 +85,41 @@ function TableParticipants({
 		);
 	};
 
+	async function sendEmail(name, email, url) {
+		try {
+			const response = await fetch("/api/send-email", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({ name, email, url }),
+			});
+
+			if (!response.ok) {
+				throw new Error(`Error: ${response.status}`);
+			}
+
+			const responseData = await response.json();
+			if (responseData.error) {
+				setErrorMessage(responseData.error);
+			} else {
+				setSuccessMessage(responseData.message);
+			}
+		} catch (error) {
+			console.error("Error:", error);
+		}
+	}
+
 	return (
 		<>
+			<ErrorMessage
+				errorMessage={errorMessage}
+				setErrorMessage={setErrorMessage}
+			/>
+			<SuccessMessage
+				successMessage={successMessage}
+				setSuccessMessage={setSuccessMessage}
+			/>
 			<div className="rounded-md overflow-auto w-full hidden md:block">
 				<Table className="w-full">
 					<TableHeader>
@@ -101,6 +137,11 @@ function TableParticipants({
 						{participants.length ? (
 							participants.map((participant) => {
 								if (participant) {
+									const questionnaireId =
+										participant.questionnaire;
+									const baseUrl =
+										process.env.NEXT_PUBLIC_BASE_URL;
+									const url = `${baseUrl}/questionnaire/${questionnaireId}/${lang}/${org}`;
 									return (
 										<TBodyRow key={participant.id}>
 											<TableCell className="px-6 py-4 whitespace-nowrap hidden">
@@ -135,29 +176,39 @@ function TableParticipants({
 											</TableCell>
 											<TableCell className="px-6 py-4 whitespace-nowrap">
 												{(() => {
-													const questionnaireId =
-														participant.questionnaire;
-													const baseUrl =
-														process.env
-															.NEXT_PUBLIC_BASE_URL;
-													const url = `${baseUrl}/questionnaire/${questionnaireId}/${lang}/${org}`;
 													return questionnaireId ? (
-														<Link href={url}>
-															<Button
-																/*
-															COMMENTED OUT BECAUSE IT DOESN'T WORK WELL IN CYPRESS FOR TESTING
-															onClick={() => {
-																navigator.clipboard.writeText(url);
+														<Button
+															onClick={(
+																event
+															) => {
+																event.preventDefault();
+																sendEmail(
+																	participant.name,
+																	participant.email,
+																	url
+																);
 															}}
-															*/
-																className="linkToQuestionnaire"
-																variant="blue"
-															>
-																<T tkey="participants.table.buttons.copy" />
-															</Button>
-														</Link>
+															className="linkToQuestionnaire"
+															variant="blue"
+														>
+															<T tkey="participants.table.buttons.send" />
+														</Button>
 													) : null;
 												})()}
+											</TableCell>
+											<TableCell className="px-6 py-4 whitespace-nowrap">
+												<Button
+													onClick={(event) => {
+														event.preventDefault();
+														navigator.clipboard.writeText(
+															url
+														);
+													}}
+													className="linkToQuestionnaire"
+													variant="outline_blue"
+												>
+													<T tkey="participants.table.buttons.copy" />
+												</Button>
 											</TableCell>
 											<TableCell className="px-6 py-4 text-sm text-left whitespace-nowrap">
 												<Button

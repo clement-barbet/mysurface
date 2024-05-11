@@ -17,7 +17,7 @@
 					"s6": "Po dokončení dotazníku každým účastníkem přejděte do sekce 'Účastníci' a klikněte na tlačítko 'Generovat výsledek'",
 					"s7": "Jakmile je zpráva vygenerována, budete přesměrováni na stránku s výsledkem s grafy 2D a 3D",
 					"s8": "V sekci 'Výsledky' můžete kdykoli zkontrolovat výsledky"
-				}				
+				}
 			},
 			"user": {
 				"title": "Uživatelský průvodce",
@@ -26,7 +26,7 @@
 					"s1": "Přístup k odkazu poskytnutému vaším administrátorem, který obsahuje dotazník",
 					"s2": "Vyplňte otázky dotazníku",
 					"s3": "Odeslat formulář"
-				}				
+				}
 			}
 		},
 		"updates": {
@@ -62,7 +62,8 @@
 				"name": "Jméno",
 				"email": "E-mail",
 				"status": "Stav",
-				"questionnaire": "Dotazník",
+				"questionnaire": "Odeslat Dotazník",
+				"link": "Kopírovat Odkaz na Dotazník",
 				"delete": "Smazat"
 			},
 			"nodata": "Zatím nebyli přidáni žádní účastníci.",
@@ -73,6 +74,7 @@
 			},
 			"buttons": {
 				"copy": "Kopírovat Odkaz",
+				"send": "Poslat E-mail",
 				"delete": "Smazat"
 			}
 		},
@@ -128,7 +130,7 @@
 					"a4": "Řádky pod záhlavími by měly obsahovat informace o účastnících.",
 					"a5": "Maximální počet účastníků, které můžete nahrát najednou, je 200."
 				}
-			}			
+			}
 		}
 	},
 	"account": {
@@ -194,7 +196,7 @@
 				"yes": "Ano",
 				"no": "Ne"
 			}
-		}		
+		}
 	},
 	"login": {
 		"slogan": "Propojte se, Spolupracujte, Vizualizujte: Váš Tým, Váš Prostor.",
