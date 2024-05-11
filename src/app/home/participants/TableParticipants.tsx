@@ -96,14 +96,14 @@ function TableParticipants({
 			});
 
 			if (!response.ok) {
-				throw new Error(`Error: ${response.status}`);
-			}
-
-			const responseData = await response.json();
-			if (responseData.error) {
-				setErrorMessage(responseData.error);
+				setErrorMessage(`Error: ${response.status}`);
 			} else {
-				setSuccessMessage(responseData.message);
+				const responseData = await response.json();
+				if (responseData.error) {
+					setErrorMessage(responseData.error);
+				} else {
+					setSuccessMessage(responseData.message);
+				}
 			}
 		} catch (error) {
 			console.error("Error:", error);

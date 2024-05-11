@@ -20,11 +20,12 @@ const EmailButton = ({ participants, lang, org, isEnrollmentPhase }) => {
 			});
 
 			if (!response.ok) {
+				setErrorMessage(`Error: ${response.status}`);
 				throw new Error(`Error: ${response.status}`);
+			} else {
+				const responseData = await response.json();
+				return responseData;
 			}
-
-			const responseData = await response.json();
-			return responseData;
 		} catch (error) {
 			console.error("Error:", error);
 		}
@@ -39,7 +40,7 @@ const EmailButton = ({ participants, lang, org, isEnrollmentPhase }) => {
 			try {
 				const response = await sendEmail(name, email, url);
 
-				if (response.error) {
+				if (response && response.error) {
 					console.error(
 						`Error sending email to ${email}:`,
 						response.error
