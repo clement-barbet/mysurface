@@ -15,7 +15,8 @@ import {
 import { Button } from "@/components/ui/button";
 import Pagination from "@/components/ui/pagination/pagination";
 import usePagination from "@/components/ui/pagination/usePagination";
-import ModalComponent from "@/components/results/ModalComponent";
+import ModalComponent from "@/components/results/ModalComponentEdit";
+import ModalComponentDelete from "@/components/results/ModalComponentDelete";
 
 export default function Results() {
 	const [loading, setLoading] = useState(true);
@@ -23,6 +24,7 @@ export default function Results() {
 	const supabase = createClientComponentClient();
 	const [selectedResult, setSelectedResult] = useState(null);
 	const [open, setOpen] = useState(false);
+	const [openDelete, setOpenDelete] = useState(false);
 	const [reportName, setReportName] = useState("");
 
 	const {
@@ -38,6 +40,11 @@ export default function Results() {
 		setSelectedResult(result);
 		setReportName(result.report_name);
 		setOpen(true);
+	};
+
+	const handleOpenDelete = (result) => {
+		setSelectedResult(result);
+		setOpenDelete(true);
 	};
 
 	useEffect(() => {
@@ -74,21 +81,6 @@ export default function Results() {
 
 		fetchData();
 	}, []);
-
-	const deleteReport = async (idResult: string) => {
-		const { error } = await supabase
-			.from("deleted_reports")
-			.delete()
-			.eq("id", idResult);
-
-		if (error) console.error("Error deleting report", error);
-		else {
-			const updatedResults = results.filter(
-				(result) => result.id !== idResult
-			);
-			setResults(updatedResults);
-		}
-	};
 
 	return (
 		!loading && (
@@ -161,8 +153,8 @@ export default function Results() {
 													<Button
 														variant="delete"
 														onClick={() =>
-															deleteReport(
-																result.id
+															handleOpenDelete(
+																result
 															)
 														}
 													>
@@ -197,6 +189,15 @@ export default function Results() {
 					results={results}
 					setResults={setResults}
 					selectedResult={selectedResult}
+					table="results"
+				/>
+				<ModalComponentDelete
+					open={openDelete}
+					setOpen={setOpenDelete}
+					results={results}
+					setResults={setResults}
+					selectedResult={selectedResult}
+					table="results"
 				/>
 			</>
 		)

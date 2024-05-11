@@ -187,7 +187,14 @@
 			"2d": "Graf 2D",
 			"3d": "Graf 3D"
 		},
-		"nodata": "Zatím žádné výsledky."
+		"nodata": "Zatím žádné výsledky.",
+		"modal": {
+			"question": "Jste si jisti, že chcete smazat vybraný report?",
+			"options": {
+				"yes": "Ano",
+				"no": "Ne"
+			}
+		}		
 	},
 	"login": {
 		"slogan": "Propojte se, Spolupracujte, Vizualizujte: Váš Tým, Váš Prostor.",

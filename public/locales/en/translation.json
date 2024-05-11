@@ -187,7 +187,14 @@
 			"2d": "2D Graph",
 			"3d": "3D Graph"
 		},
-		"nodata": "No results yet."
+		"nodata": "No results yet.",
+		"modal": {
+			"question": "Are you sure you want to delete the selected report?",
+			"options": {
+				"yes": "Yes",
+				"no": "No"
+			}
+		}
 	},
 	"login": {
 		"slogan": "Connect, Collaborate, Visualize:<br> Your Team, Your Surface.",

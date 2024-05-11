@@ -10,6 +10,7 @@ interface ModalComponentProps {
 	reportName: string;
 	setReportName: (value: string) => void;
     selectedResult: any;
+	table: string;
 }
 
 const ModalComponent: React.FC<ModalComponentProps> = ({
@@ -20,11 +21,12 @@ const ModalComponent: React.FC<ModalComponentProps> = ({
 	reportName,
 	setReportName,
     selectedResult,
+	table
 }) => {
     const supabase = createClientComponentClient();
 	const handleSave = async () => {
 		const { error } = await supabase
-			.from("deleted_reports")
+			.from(table)
 			.update({ report_name: reportName })
 			.eq("id", selectedResult.id);
 

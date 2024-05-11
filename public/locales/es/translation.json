@@ -187,7 +187,14 @@
 			"2d": "Gráfico 2D",
 			"3d": "Gráfico 3D"
 		},
-		"nodata": "Sin resultados aún."
+		"nodata": "Sin resultados aún.",
+		"modal": {
+			"question": "¿Estás seguro de que quieres eliminar el informe seleccionado?",
+			"options": {
+				"yes": "Sí",
+				"no": "No"
+			}
+		}		
 	},
 	"login": {
 		"slogan": "Conecta, Colabora, Visualiza: Tu Equipo, Tu Superficie.",
