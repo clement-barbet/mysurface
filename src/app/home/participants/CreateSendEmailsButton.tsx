@@ -19,43 +19,31 @@ const EmailButton = ({ participants, lang, org, isEnrollmentPhase }) => {
 				body: JSON.stringify({ name, email, url }),
 			});
 
-			if (!response.ok) {
-				throw new Error(`Error: ${response.status}`);
-			} else {
-				const responseData = await response.json();
-				return responseData;
-			}
+			return response;
 		} catch (error) {
 			console.error("Error:", error);
 		}
 	}
 	const handleClick = async () => {
-		let errorCount = 0;
-
+		let failedEmails = [];
 		for (let participant of participants) {
 			const { name, email } = participant;
 			const url = `${process.env.NEXT_PUBLIC_BASE_URL}/questionnaire/${participant.questionnaire}/${lang}/${org}`;
 
 			try {
 				const response = await sendEmail(name, email, url);
-
-				if (response && response.error) {
-					console.error(
-						`Error sending email to ${email}:`,
-						response.error
-					);
-					errorCount++;
+				if (!response.ok) {
+					failedEmails.push(email);
 				}
 			} catch (error) {
-				console.error(`Error sending email to ${email}:`, error);
-				errorCount++;
+				console.error(`Error:`, error);
 			}
 		}
 
-		if (errorCount > 0) {
-			setErrorMessage(`Failed to send ${errorCount} email(s).`);
-		} else {
+		if (failedEmails.length === 0){
 			setSuccessMessage("All emails sent successfully.");
+		} else {
+			setErrorMessage(`Error sending emails to the following addresses: ${failedEmails.join(", ")}`);
 		}
 	};
 

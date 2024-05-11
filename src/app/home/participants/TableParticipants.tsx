@@ -98,12 +98,7 @@ function TableParticipants({
 			if (!response.ok) {
 				setErrorMessage(`Error: ${response.status}`);
 			} else {
-				const responseData = await response.json();
-				if (responseData.error) {
-					setErrorMessage(responseData.error);
-				} else {
-					setSuccessMessage(responseData.message);
-				}
+				setSuccessMessage(`Email successfully sent to: ${email}`);
 			}
 		} catch (error) {
 			console.error("Error:", error);
