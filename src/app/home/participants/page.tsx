@@ -8,6 +8,7 @@ import ResetPhaseButton from "./ResetPhaseButton";
 import CreateResultButton from "./CreateResultButton";
 import T from "@/components/translations/translation";
 import DeleteAllParticipantsButton from "./DeleteAllParticipantsButton";
+import CreateSendEmailsButton from "./CreateSendEmailsButton";
 
 export default function Page() {
 	const supabase = createClientComponentClient();
@@ -162,6 +163,12 @@ export default function Page() {
 					<ResetPhaseButton isEnrollmentPhase={isEnrollmentPhase} />
 					<DeleteAllParticipantsButton
 						participantCount={participantCount}
+					/>
+					<CreateSendEmailsButton
+						isEnrollmentPhase={isEnrollmentPhase}
+						participants={participants}
+						lang={lang}
+						org={org}
 					/>
 					<CreateResultButton
 						isEnrollmentPhase={isEnrollmentPhase}
