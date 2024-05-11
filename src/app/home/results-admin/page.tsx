@@ -87,7 +87,7 @@ export default function Results() {
 			<>
 				<div className="w-full m-auto">
 					<h2 className="text-3xl pb-2">
-						<T tkey="homeresults.title" />
+						All Executed Reports
 					</h2>
 					{results.length > 0 ? (
 						<>
