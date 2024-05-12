@@ -13,6 +13,9 @@ import T from "@/components/translations/translation";
 export default function CreateQuestionnairesButton({
 	isEnrollmentPhase,
 	participantCount,
+	setIsEnrollmentPhase,
+	fetchQuestionnaires,
+	fetchParticipants
 }) {
 	const [isLoading, setIsLoading] = useState(false);
 	const createQuestionnaires = async () => {
@@ -32,13 +35,16 @@ export default function CreateQuestionnairesButton({
 					.from("app_settings")
 					.update({ isEnrollmentPhase: false })
 					.eq("user_id", user.data.user.id);
+
+				fetchParticipants();
+				fetchQuestionnaires();
 			} else {
 				console.error("Error creating questionnaires");
 			}
 		} catch (error) {
 			console.error("Error creating questionnaires:", error);
 		} finally {
-			location.reload();
+			setIsEnrollmentPhase(false);
 		}
 	};
 
