@@ -9,7 +9,7 @@ interface ModalComponentProps {
 	setResults: (value: any) => void;
 	results: any;
 	selectedResult: any;
-    table: string;
+	table: string;
 }
 
 const ModalComponent: React.FC<ModalComponentProps> = ({
@@ -18,7 +18,7 @@ const ModalComponent: React.FC<ModalComponentProps> = ({
 	setResults,
 	results,
 	selectedResult,
-    table
+	table,
 }) => {
 	const supabase = createClientComponentClient();
 	const deleteReport = async () => {
@@ -35,7 +35,7 @@ const ModalComponent: React.FC<ModalComponentProps> = ({
 			setResults(updatedResults);
 		}
 
-        handleClose();
+		handleClose();
 	};
 
 	const handleClose = () => {
@@ -70,16 +70,18 @@ const ModalComponent: React.FC<ModalComponentProps> = ({
 				>
 					<T tkey="results.modal.question" />
 				</Typography>
-				<Button
-					onClick={deleteReport}
-					variant="delete"
-					className="mt-2 w-full"
-				>
-					<T tkey="results.modal.options.yes" />
-				</Button>
-				<Button onClick={handleClose} className="mt-2 w-full">
-					<T tkey="results.modal.options.no" />
-				</Button>
+				<div className="flex gap-x-2 mt-2">
+					<Button
+						onClick={deleteReport}
+						variant="delete"
+						className="w-1/2"
+					>
+						<T tkey="results.modal.options.yes" />
+					</Button>
+					<Button onClick={handleClose} className="w-1/2">
+						<T tkey="results.modal.options.no" />
+					</Button>
+				</div>
 			</Box>
 		</Modal>
 	);
