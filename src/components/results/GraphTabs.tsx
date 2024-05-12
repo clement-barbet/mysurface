@@ -5,6 +5,7 @@ import { useState } from "react";
 import GraphNode2D from "./GraphNode2D";
 import GraphNode3D from "./GraphNode3D";
 import T from "@/components/translations/translation";
+import GraphNode3DBlooming from "./GraphNode3DBlooming";
 
 interface GraphTabsProps {
 	graphData: any;
@@ -28,11 +29,18 @@ export default function GraphTabs({
 							tabIndex === 0 ? "font-semibold border-none underline underline-offset-4 text-accent_color" : "text-light_gray"
 						}`}
 					>
+						<T tkey="results.tabs.3dplus" />
+					</Tab>
+					<Tab
+						className={`box-border border-none outline-none hover:cursor-pointer mr-1 px-4  ${
+							tabIndex === 1 ? "font-semibold border-none underline underline-offset-4 text-accent_color" : "text-light_gray"
+						}`}
+					>
 						<T tkey="results.tabs.3d" />
 					</Tab>
 					<Tab
 						className={`box-border border-none outline-none hover:cursor-pointer mr-1 px-4 ${
-							tabIndex === 1 ? "font-semibold border-none underline underline-offset-4 text-accent_color" : "text-light_gray"
+							tabIndex === 2 ? "font-semibold border-none underline underline-offset-4 text-accent_color" : "text-light_gray"
 						}`}
 					>
 						<T tkey="results.tabs.2d" />
@@ -48,6 +56,9 @@ export default function GraphTabs({
 				</div>
 			</TabList>
 
+			<TabPanel>
+				<GraphNode3DBlooming graphData={graphData} />
+			</TabPanel>
 			<TabPanel>
 				<GraphNode3D graphData={graphData} />
 			</TabPanel>

@@ -188,7 +188,8 @@
 	"results": {
 		"tabs": {
 			"2d": "Graf 2D",
-			"3d": "Graf 3D"
+			"3d": "Graf 3D",
+			"3dplus": "Graf 3D+"
 		},
 		"nodata": "Zatím žádné výsledky.",
 		"modal": {

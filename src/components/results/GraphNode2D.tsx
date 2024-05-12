@@ -28,7 +28,7 @@ export default function GraphNode2D({ graphData }: GraphNode2DProps) {
 			const width =
 				window.innerWidth < 768
 					? window.innerWidth - 20
-					: window.innerWidth - 230;
+					: window.innerWidth - 210;
 			const height =
 				window.innerWidth < 768
 					? window.innerHeight - 100
@@ -72,10 +72,11 @@ export default function GraphNode2D({ graphData }: GraphNode2DProps) {
 	};
 	*/
 
+	// 	hsl(190, 78%, 35%)
 	const ranges = [
-		"hsl(270, 45%, 30%)",
-		"hsl(300, 50%, 60%)",
-		"hsl(330, 55%, 90%)",
+		"hsl(180, 45%, 30%)",
+		"hsl(200, 50%, 60%)",
+		"hsl(220, 55%, 90%)",
 	];
 	const colorScale = scalePow()
 		.exponent(3)
@@ -87,7 +88,7 @@ export default function GraphNode2D({ graphData }: GraphNode2DProps) {
 	};
 
 	return (
-		<div className="bg-black w-full">
+		<div className="bg-graph_bg w-full">
 			<ForceGraph2D
 				ref={forceGraphRef}
 				graphData={graphData}

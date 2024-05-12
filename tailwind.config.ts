@@ -63,6 +63,7 @@ const config = {
 				accent_light: "#E8F4F6",
 				accent_delete: "#F17400",
 				accent_delete_hover: "#CD4315",
+				graph_bg: "#000000",
 			},
 			borderRadius: {
 				lg: "var(--radius)",

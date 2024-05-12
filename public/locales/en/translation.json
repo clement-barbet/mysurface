@@ -188,7 +188,8 @@
 	"results": {
 		"tabs": {
 			"2d": "2D Graph",
-			"3d": "3D Graph"
+			"3d": "3D Graph",
+			"3dplus": "3D+ Graph"
 		},
 		"nodata": "No results yet.",
 		"modal": {

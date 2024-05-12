@@ -93,7 +93,7 @@ export default async function ResultPage({
 	};
 
 	return (
-		<div className="w-full bg-black rounded-sm overflow-hidden">
+		<div className="w-full bg-graph_bg rounded-sm overflow-hidden">
 			<h2 className="mb-2 hidden">Result: {params.id}</h2>
 			<GraphTabs
 				graphData={graphData}

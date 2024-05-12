@@ -13,7 +13,7 @@ const ColorLegend = ({ minSize, maxSize, ranges }) => {
 	const maxColor = colorScale(maxSize);
 
 	return (
-		<div className="color-legend pb-1 w-full flex justify-end pe-1 bg-black text-dark_gray text-opacity-90">
+		<div className="color-legend pb-1 w-full flex justify-end pe-1 bg-graph_bg text-dark_gray text-opacity-90">
 			<div className="w-1/3">
 				<p className="text-xs pb-0.5">Influence level:</p>
 				<div className="relative w-full h-3">

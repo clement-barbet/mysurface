@@ -96,7 +96,6 @@ const GraphNode3D: React.FC<GraphNode3DProps> = ({ graphData }) => {
 		return colorScale(node.val);
 	};
 
-	/*
 	useEffect(() => {
 		if (fgRef.current && !bloomApplied) {
 			const bloomPass = new UnrealBloomPass(
@@ -109,7 +108,6 @@ const GraphNode3D: React.FC<GraphNode3DProps> = ({ graphData }) => {
 			setBloomApplied(true);
 		}
 	}, [fgRef.current, dimensions, ForceGraph3D]);
-	*/
 
 	if (!ForceGraph3D) {
 		return null;
@@ -125,9 +123,9 @@ const GraphNode3D: React.FC<GraphNode3DProps> = ({ graphData }) => {
 				nodeColor={getNodeColor}
 				width={dimensions.width}
 				height={dimensions.height}
-				//nodeOpacity={0.8}
+				nodeOpacity={0.8}
 				nodeResolution={50}
-				//linkOpacity={0.02}
+				linkOpacity={0.02}
 				linkWidth={0.2}
 				linkColor={() => "#ffffff"}
 				showNavInfo={false}
