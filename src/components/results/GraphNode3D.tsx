@@ -65,8 +65,6 @@ const GraphNode3D: React.FC<GraphNode3DProps> = ({ graphData }) => {
 	const minSize = Math.min(...graphData.nodes.map((node) => node.val));
 
 	// hsl(29, 100%, 47%) accent color orange
-	// hsl(189, 59%, 48%) accent color blue
-	// hsl(272, 45%, 15%) dark purple
 
 	/*
 	const hue = 25 / 360;
