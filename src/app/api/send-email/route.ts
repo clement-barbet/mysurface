@@ -34,7 +34,7 @@ export async function POST(request: Request) {
 			from: "My Surface® <info@myaudit.org>",
 			to: email,
 			subject: "My Surface questionnaire",
-			html: `<h2>Hello, ${name}!</h2><p>Here is the link to your My Surface questionnaire: <a href="${url}">Click here</a></p>`,
+			text: `Hello, ${name}, here is the link to your My Surface questionnaire: ${url}`,
 		};
 
 		const response = await sendMessage(mailOptions);
