@@ -24,21 +24,21 @@ export default function GraphTabs({
 			<TabList className="flex justify-between align-bottom text-sm">
 				<div className="flex">
 					<Tab
-						className={`box-border border-none outline-none hover:cursor-pointer mr-1 px-4 text-light_gray ${
-							tabIndex === 0 ? "font-semibold border-none underline underline-offset-4" : ""
+						className={`box-border border-none outline-none hover:cursor-pointer mr-1 px-4  ${
+							tabIndex === 0 ? "font-semibold border-none underline underline-offset-4 text-accent_color" : "text-light_gray"
 						}`}
 					>
 						<T tkey="results.tabs.3d" />
 					</Tab>
 					<Tab
-						className={`box-border border-none outline-none hover:cursor-pointer mr-1 px-4  text-light_gray ${
-							tabIndex === 1 ? "font-semibold border-none underline underline-offset-4" : ""
+						className={`box-border border-none outline-none hover:cursor-pointer mr-1 px-4 ${
+							tabIndex === 1 ? "font-semibold border-none underline underline-offset-4 text-accent_color" : "text-light_gray"
 						}`}
 					>
 						<T tkey="results.tabs.2d" />
 					</Tab>
 				</div>
-				<div className="flex gap-x-4 pe-8 md:pe-2 items-end text-light_gray text-sm">
+				<div className="flex gap-x-4 pe-10 md:pe-2 items-end text-light_gray text-sm">
 					<p>
 						<b>ID</b>: {reportId}
 					</p>

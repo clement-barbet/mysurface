@@ -30,9 +30,9 @@ export default function HomeLayout({
 	return (
 		<div className="flex relative">
 			{isSmallScreen && isResultsIdPage && (
-				<div className="absolute top-0 right-0 p-2 z-10">
+				<div className="absolute top-0 right-0 p-4 z-10">
 					<Link href="/home/results">
-						<FaTimes className="h-6 w-6 cursor-pointer hover:text-red-500 transition-all duration-200 ease-linear" />
+						<FaTimes className="h-5 w-5 text-accent_delete cursor-pointer hover:text-accent_delete_hover transition-all duration-200 ease-linear" />
 					</Link>
 				</div>
 			)}
