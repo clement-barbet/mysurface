@@ -193,18 +193,24 @@ function TableParticipants({
 												})()}
 											</TableCell>
 											<TableCell className="px-6 py-4 whitespace-nowrap">
-												<Button
-													onClick={(event) => {
-														event.preventDefault();
-														navigator.clipboard.writeText(
-															url
-														);
-													}}
-													className="linkToQuestionnaire"
-													variant="outline_blue"
-												>
-													<T tkey="participants.table.buttons.copy" />
-												</Button>
+												{(() => {
+													return questionnaireId ? (
+														<Button
+															onClick={(
+																event
+															) => {
+																event.preventDefault();
+																navigator.clipboard.writeText(
+																	url
+																);
+															}}
+															className="linkToQuestionnaire"
+															variant="outline_blue"
+														>
+															<T tkey="participants.table.buttons.copy" />
+														</Button>
+													) : null;
+												})()}
 											</TableCell>
 											<TableCell className="px-6 py-4 text-sm text-left whitespace-nowrap">
 												<Button
