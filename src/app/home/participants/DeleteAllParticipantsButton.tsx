@@ -6,8 +6,12 @@ import { resetPhase } from "./resetPhase";
 
 const DeleteAllParticipantsButton = ({
 	participantCount,
+	setParticipants,
+	setIsEnrollmentPhase,
 }: {
 	participantCount: number;
+	setParticipants: any;
+	setIsEnrollmentPhase: any;
 }) => {
 	// Return null if there are no participants
 	if (participantCount === 0) {
@@ -35,7 +39,8 @@ const DeleteAllParticipantsButton = ({
 				);
 			} else {
 				console.log("Participants deleted successfully");
-				location.reload();
+				setParticipants([]);
+				setIsEnrollmentPhase(true);
 			}
 		} else {
 			console.error(

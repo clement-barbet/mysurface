@@ -169,6 +169,8 @@ export default function Page() {
 					<ResetPhaseButton isEnrollmentPhase={isEnrollmentPhase} />
 					<DeleteAllParticipantsButton
 						participantCount={participantCount}
+						setParticipants={setParticipants}
+						setIsEnrollmentPhase={setIsEnrollmentPhase}
 					/>
 					<CreateSendEmailsButton
 						isEnrollmentPhase={isEnrollmentPhase}
