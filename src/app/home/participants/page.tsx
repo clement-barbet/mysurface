@@ -169,7 +169,12 @@ export default function Page() {
 						fetchQuestionnaires={fetchQuestionnaires}
 						fetchParticipants={fetchParticipants}
 					/>
-					<ResetPhaseButton isEnrollmentPhase={isEnrollmentPhase} />
+					<ResetPhaseButton
+						isEnrollmentPhase={isEnrollmentPhase}
+						setIsEnrollmentPhase={setIsEnrollmentPhase}
+						fetchQuestionnaires={fetchQuestionnaires}
+						fetchParticipants={fetchParticipants}
+					/>
 					<DeleteAllParticipantsButton
 						participantCount={participantCount}
 						setParticipants={setParticipants}
