@@ -118,8 +118,8 @@ export default function Page() {
 		} else {
 			console.error("newParticipant.questionnaire is undefined");
 		}
-		setParticipants((prevParticipants) => [
-			...prevParticipants,
+		setParticipants((currentParticipants) => [
+			...currentParticipants,
 			newParticipant,
 		]);
 	};
@@ -131,6 +131,10 @@ export default function Page() {
 
 	const participantCount = participants ? participants.length : 0;
 
+	useEffect(() => {
+		console.log("participants updated page.tsx", participants);
+	}, [participants]);
+
 	return (
 		<>
 			<div className="mb-2 p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
@@ -141,11 +145,13 @@ export default function Page() {
 					<FormAddParticipant
 						onParticipantAdded={onParticipantAdded}
 						isEnrollmentPhase={isEnrollmentPhase}
+						setParticipants={setParticipants}
 					/>
 				</div>
 			</div>
 			<TableParticipants
 				participants={participants}
+				setParticipants={setParticipants}
 				questionnaires={questionnaires}
 				isEnrollmentPhase={isEnrollmentPhase}
 				lang={lang}

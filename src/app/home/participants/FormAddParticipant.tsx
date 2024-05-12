@@ -19,7 +19,7 @@ import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import Link from "next/link";
 import { ErrorMessage } from "@/components/ui/msg/error_msg";
 
-function FormAddParticipant({ onParticipantAdded, isEnrollmentPhase }) {
+function FormAddParticipant({ onParticipantAdded, isEnrollmentPhase, setParticipants }) {
 	const [file, setFile] = useState(null);
 	const supabase = createClientComponentClient();
 	const [fileName, setFileName] = useState("");
@@ -46,7 +46,7 @@ function FormAddParticipant({ onParticipantAdded, isEnrollmentPhase }) {
 			return;
 		}
 
-		return insertedParticipant;
+		return insertedParticipant[0];
 	};
 
 	const handleFileUpload = async () => {
@@ -86,10 +86,9 @@ function FormAddParticipant({ onParticipantAdded, isEnrollmentPhase }) {
 						continue;
 					}
 
-					const insertedParticipants = await addParticipantToDatabase(
+					const insertedParticipant = await addParticipantToDatabase(
 						newParticipant
 					);
-					const insertedParticipant = insertedParticipants[0];
 					newParticipant.id = insertedParticipant.participant_id;
 					onParticipantAdded(newParticipant);
 				}
@@ -116,19 +115,18 @@ function FormAddParticipant({ onParticipantAdded, isEnrollmentPhase }) {
 
 	const onSubmit = async (data: z.infer<typeof formSchema>) => {
 		let newParticipant = { name: data.name, email: data.email };
-		const insertedParticipants = await addParticipantToDatabase(
+		const insertedParticipant = await addParticipantToDatabase(
 			newParticipant
 		);
 
-		if (insertedParticipants && insertedParticipants.length > 0) {
-			const insertedParticipant = insertedParticipants[0];
+		if (insertedParticipant) {
 			newParticipant.id = insertedParticipant.participant_id;
 			onParticipantAdded(newParticipant);
 			form.reset();
 		} else {
 			console.error(
 				"Error adding participant onSubmit:",
-				insertedParticipants
+				insertedParticipant
 			);
 		}
 	};

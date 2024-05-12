@@ -18,7 +18,8 @@ import { ErrorMessage } from "@/components/ui/msg/error_msg";
 import { SuccessMessage } from "@/components/ui/msg/success_msg";
 
 function TableParticipants({
-	participants: initialParticipants,
+	participants,
+	setParticipants,
 	questionnaires,
 	isEnrollmentPhase,
 	lang,
@@ -32,15 +33,11 @@ function TableParticipants({
 		"participants.table.headers.link",
 		"participants.table.headers.delete",
 	];
-	const [participants, setParticipants] = useState([]);
 	const [successMessage, setSuccessMessage] = useState("");
 	const [errorMessage, setErrorMessage] = useState("");
 
-	useEffect(() => {
-		setParticipants(initialParticipants);
-	}, [initialParticipants]);
-
 	const deleteParticipant = async (participantId) => {
+		console.log("participantId", participantId);
 		const response = await fetch("/api/participants", {
 			method: "DELETE",
 			headers: {
@@ -51,13 +48,17 @@ function TableParticipants({
 
 		if (response.ok) {
 			const updatedParticipants = participants.filter(
-				(participant) => participant.id !== participantId
+				(participant) => participant.id != participantId
 			);
 			setParticipants(updatedParticipants);
 		} else {
 			console.error("Error deleting participant:", response.statusText);
 		}
 	};
+
+	useEffect(() => {
+		console.log("participants updated table_participants", participants);
+	}, [participants]);
 
 	const renderQuestionnaireStatus = (status) => {
 		let color;
