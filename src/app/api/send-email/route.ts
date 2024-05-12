@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
-let transporter = nodemailer.createTransport({
+const transporter = nodemailer.createTransport({
 	host: process.env.SMTP_HOST,
 	port: Number(process.env.SMTP_PORT),
 	secure: false,
@@ -14,39 +14,33 @@ let transporter = nodemailer.createTransport({
 	},
 });
 
+const sendMessage = async (mailOptions) => {
+	try {
+		await transporter.sendMail(mailOptions);
+		console.log("Email sent");
+		return new Response("Email sent", { status: 200 });
+	} catch (error) {
+		console.log("error is " + error);
+		return new Response("Error sending email", { status: 500 });
+	}
+};
+
 export async function POST(request: Request) {
-	return new Promise(async (resolve, reject) => {
-		try {
-			const body = await request.json();
-			const { name, email, url } = body;
+	try {
+		const body = await request.json();
+		const { name, email, url } = body;
 
-			let mailOptions = {
-				from: "My Surface® <info@myaudit.org>",
-				to: email,
-				subject: "My Surface questionnaire",
-				html: `<h2>Hello, ${name}!</h2><p>Here is the link to your My Surface questionnaire: <a href="${url}">Click here</a></p>`,
-			};
+		let mailOptions = {
+			from: "My Surface® <info@myaudit.org>",
+			to: email,
+			subject: "My Surface questionnaire",
+			html: `<h2>Hello, ${name}!</h2><p>Here is the link to your My Surface questionnaire: <a href="${url}">Click here</a></p>`,
+		};
 
-			transporter.sendMail(mailOptions, function (error, info) {
-				if (error) {
-					console.log("error is " + error);
-					reject(
-						new Response("Error sending email", { status: 500 })
-					);
-				} else {
-					console.log("Email sent: " + info.response);
-					resolve(new Response("Email sent", { status: 200 }));
-					
-					return NextResponse.json({
-						message: "Email sent successfully!",
-					});
-				}
-			});
-		} catch (error) {
-			console.log("Error: ", error);
-			return NextResponse.json({
-				error: "An error occurred while sending the email. Please try again later.",
-			});
-		}
-	});
+		const response = await sendMessage(mailOptions);
+		return response;
+	} catch (error) {
+		console.log("error is " + error);
+		return new Response("Error processing request", { status: 500 });
+	}
 }
