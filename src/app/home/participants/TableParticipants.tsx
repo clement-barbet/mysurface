@@ -249,6 +249,12 @@ function TableParticipants({
 				{participants.length
 					? participants.map((participant) => {
 							if (participant) {
+								const questionnaireId =
+									participant.questionnaire;
+								const baseUrl =
+									process.env.NEXT_PUBLIC_BASE_URL;
+								const url = `${baseUrl}/questionnaire/${questionnaireId}/${lang}/${org}`;
+
 								return (
 									<div
 										key={participant.id}
@@ -282,26 +288,42 @@ function TableParticipants({
 												<T tkey={headers_T[3]} />:{" "}
 											</strong>
 											{(() => {
-												const questionnaireId =
-													participant.questionnaire;
-												const baseUrl =
-													process.env
-														.NEXT_PUBLIC_BASE_URL;
-												const url = `${baseUrl}/questionnaire/${questionnaireId}`;
 												return questionnaireId ? (
-													<Link href={url}>
-														<Button
-															/*
-															COMMENTED OUT BECAUSE IT DOESN'T WORK WELL IN CYPRESS FOR TESTING
-															onClick={() => {
-																navigator.clipboard.writeText(url);
-															}}
-															*/
-															className="linkToQuestionnaire bg-blue-500 px-2 py-1 rounded text-white"
-														>
-															<T tkey="participants.table.buttons.copy" />
-														</Button>
-													</Link>
+													<Button
+														onClick={(event) => {
+															event.preventDefault();
+															sendEmail(
+																participant.name,
+																participant.email,
+																url
+															);
+														}}
+														className="linkToQuestionnaire"
+														variant="blue"
+													>
+														<T tkey="participants.table.buttons.send" />
+													</Button>
+												) : null;
+											})()}
+										</p>
+										<p>
+											<strong>
+												<T tkey={headers_T[4]} />:{" "}
+											</strong>
+											{(() => {
+												return questionnaireId ? (
+													<Button
+														onClick={(event) => {
+															event.preventDefault();
+															navigator.clipboard.writeText(
+																url
+															);
+														}}
+														className="linkToQuestionnaire"
+														variant="outline_blue"
+													>
+														<T tkey="participants.table.buttons.copy" />
+													</Button>
 												) : null;
 											})()}
 										</p>
@@ -316,7 +338,7 @@ function TableParticipants({
 													)
 												}
 											>
-												<T tkey={headers_T[4]} />
+												<T tkey={headers_T[5]} />
 											</Button>
 										</p>
 									</div>
