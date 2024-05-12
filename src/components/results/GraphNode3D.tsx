@@ -44,9 +44,13 @@ const GraphNode3D: React.FC<GraphNode3DProps> = ({ graphData }) => {
 				window.innerWidth < 768
 					? window.innerWidth - 20
 					: window.innerWidth - 230;
+			const height =
+				window.innerWidth < 768
+					? window.innerHeight - 100
+					: window.innerHeight - 140;
 			setDimensions({
 				width,
-				height: window.innerHeight - 140,
+				height,
 			});
 		};
 
@@ -117,7 +121,7 @@ const GraphNode3D: React.FC<GraphNode3DProps> = ({ graphData }) => {
 				ref={fgRef}
 				backgroundColor="#000000"
 				graphData={graphData}
-				nodeLabel={node => `${node.name} (${node.val.toFixed(2)})`}
+				nodeLabel={(node) => `${node.name} (${node.val.toFixed(2)})`}
 				nodeColor={getNodeColor}
 				width={dimensions.width}
 				height={dimensions.height}
