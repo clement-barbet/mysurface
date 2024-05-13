@@ -91,8 +91,8 @@ const GraphNode3D: React.FC<GraphNode3DProps> = ({ graphData }) => {
 		if (fgRef.current) {
 			fgRef.current
 				.d3Force("link")
-				.distance((link) => link.value)
-				.strength((link) => link.value * 0.1);
+				.distance((link) => link.value * 20)
+				.strength((link) => link.value * 0.04);
 		}
 	}, [fgRef.current, dimensions, ForceGraph3D]);
 

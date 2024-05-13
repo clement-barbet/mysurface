@@ -62,8 +62,8 @@ export default function GraphNode2D({ graphData }: GraphNode2DProps) {
 		if (forceGraphRef.current) {
 			forceGraphRef.current
 				.d3Force("link")
-				.distance((link) => link.value)
-				.strength((link) => link.value * 0.1);
+				.distance((link) => link.value * 20)
+				.strength((link) => link.value * 0.04);
 		}
 	}, [forceGraphRef.current, dimensions, ForceGraph2D]);
 
