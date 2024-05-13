@@ -17,10 +17,8 @@ export default function CreateQuestionnairesButton({
 	fetchQuestionnaires,
 	fetchParticipants
 }) {
-	const [isLoading, setIsLoading] = useState(false);
 	const createQuestionnaires = async () => {
 		try {
-			setIsLoading(true);
 			const response = await fetch("/api/create-questionnaires", {
 				method: "POST",
 			});

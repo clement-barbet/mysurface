@@ -172,7 +172,7 @@ export default function Page() {
 				<h2 className="mb-2 font-bold">
 					<T tkey="participants.buttons-section.title" />
 				</h2>
-				<div className="flex flex-col gap-y-2 md:space-x-4 md:flex-row md:justify-start md:flex-wrap">
+				<div className="flex flex-col gap-y-2 md:gap-x-4 md:flex-row md:justify-start md:flex-wrap">
 					<CreateQuestionnairesButton
 						isEnrollmentPhase={isEnrollmentPhase}
 						participantCount={participantCount}

@@ -40,10 +40,14 @@ const EmailButton = ({ participants, lang, org, isEnrollmentPhase }) => {
 			}
 		}
 
-		if (failedEmails.length === 0){
+		if (failedEmails.length === 0) {
 			setSuccessMessage("All emails sent successfully.");
 		} else {
-			setErrorMessage(`Error sending emails to the following addresses: ${failedEmails.join(", ")}`);
+			setErrorMessage(
+				`Error sending emails to the following addresses: ${failedEmails.join(
+					", "
+				)}`
+			);
 		}
 	};
 
@@ -53,16 +57,14 @@ const EmailButton = ({ participants, lang, org, isEnrollmentPhase }) => {
 
 	return (
 		<>
-			<div className="relative">
-				<ErrorMessage
-					errorMessage={errorMessage}
-					setErrorMessage={setErrorMessage}
-				/>
-				<SuccessMessage
-					successMessage={successMessage}
-					setSuccessMessage={setSuccessMessage}
-				/>
-			</div>
+			<ErrorMessage
+				errorMessage={errorMessage}
+				setErrorMessage={setErrorMessage}
+			/>
+			<SuccessMessage
+				successMessage={successMessage}
+				setSuccessMessage={setSuccessMessage}
+			/>
 			<Button
 				className="md:w-1/5 w-full"
 				variant="outline_blue"
