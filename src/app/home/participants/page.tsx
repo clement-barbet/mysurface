@@ -144,19 +144,16 @@ export default function Page() {
 
 	return (
 		<>
-			<SelectProcess userId={userId} process={process} setProcess={setProcess} isEnrollmentPhase={isEnrollmentPhase}/>
-			<div className="mb-2 p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
-				<h2 className="font-bold">
-					<T tkey="participants.form.title" />
-				</h2>
-				<div className="w-full my-2">
-					<FormAddParticipant
-						onParticipantAdded={onParticipantAdded}
-						isEnrollmentPhase={isEnrollmentPhase}
-						setParticipants={setParticipants}
-					/>
-				</div>
-			</div>
+			<SelectProcess
+				userId={userId}
+				process={process}
+				setProcess={setProcess}
+				isEnrollmentPhase={isEnrollmentPhase}
+			/>
+			<FormAddParticipant
+				onParticipantAdded={onParticipantAdded}
+				isEnrollmentPhase={isEnrollmentPhase}
+			/>
 			<TableParticipants
 				participants={participants}
 				setParticipants={setParticipants}

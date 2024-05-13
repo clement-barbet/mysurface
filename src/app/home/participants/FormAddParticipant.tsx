@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
 	Form,
 	FormControl,
@@ -19,13 +19,19 @@ import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import Link from "next/link";
 import { ErrorMessage } from "@/components/ui/msg/error_msg";
 
-function FormAddParticipant({ onParticipantAdded, isEnrollmentPhase, setParticipants }) {
+function FormAddParticipant({ onParticipantAdded, isEnrollmentPhase }) {
 	const [file, setFile] = useState(null);
 	const supabase = createClientComponentClient();
 	const [fileName, setFileName] = useState("");
 	const [errorMessage, setErrorMessage] = useState<string | undefined>(
 		undefined
 	);
+
+	const [isEnrollment, setIsEnrollment] = useState(false);
+	
+	useEffect(() => {
+		setIsEnrollment(isEnrollmentPhase);
+	}, [isEnrollmentPhase]);
 
 	const handleFileChange = (event) => {
 		setFile(event.target.files[0]);
@@ -55,10 +61,12 @@ function FormAddParticipant({ onParticipantAdded, isEnrollmentPhase, setParticip
 		Papa.parse(file, {
 			header: true,
 			complete: async (results) => {
-				const fileExtension = file.name.split('.').pop();
-				if (fileExtension !== 'csv') {
-				  setErrorMessage('Invalid file type. Please upload a CSV file.');
-				  return;
+				const fileExtension = file.name.split(".").pop();
+				if (fileExtension !== "csv") {
+					setErrorMessage(
+						"Invalid file type. Please upload a CSV file."
+					);
+					return;
 				}
 
 				const maxRows = 200;
@@ -131,6 +139,10 @@ function FormAddParticipant({ onParticipantAdded, isEnrollmentPhase, setParticip
 		}
 	};
 
+	if (!isEnrollment) {
+		return null;
+	}
+
 	return (
 		<>
 			{errorMessage && (
@@ -139,99 +151,109 @@ function FormAddParticipant({ onParticipantAdded, isEnrollmentPhase, setParticip
 					setErrorMessage={setErrorMessage}
 				/>
 			)}
-			<Form {...form}>
-				<form
-					onSubmit={form.handleSubmit(onSubmit)}
-					className="flex md:space-x-4 gap-y-2 md:items-end md:flex-row flex-col items-start w-full md:w-auto"
-				>
-					<FormField
-						control={form.control}
-						name="name"
-						render={({ field }) => (
-							<FormItem className="md:w-2/5 w-full">
-								<FormLabel>
-									<T tkey="participants.form.labels.name" />
-								</FormLabel>
-								<FormControl>
-									<Input
-										placeholder="John Doe"
-										className=" dark:bg-mid_blue w-full"
-										{...field}
-									/>
-								</FormControl>
-								<FormMessage />
-							</FormItem>
-						)}
-					/>
-					<FormField
-						control={form.control}
-						name="email"
-						render={({ field }) => (
-							<FormItem className="md:w-2/5 w-full">
-								<FormLabel>
-									<T tkey="participants.form.labels.email" />
-								</FormLabel>
-								<FormControl>
-									<Input
-										placeholder="john@example.com"
-										className=" dark:bg-mid_blue"
-										{...field}
-									/>
-								</FormControl>
-								<FormMessage />
-							</FormItem>
-						)}
-					/>
-					<Button
-						type="submit"
-						id="addParticipantBtn"
-						className="md:w-1/5 w-full"
-						disabled={!isEnrollmentPhase}
-					>
-						<T tkey="participants.form.buttons.add" />
-					</Button>
-				</form>
-			</Form>
-			<div className="mt-4 w-full flex flex-col md:flex-row md:space-x-8 justify-between gap-y-2 md:gap-y-0">
-				<div className="md:w-4/5">
-					<input
-						type="file"
-						accept=".csv"
-						id="fileUpload"
-						onChange={handleFileChange}
-						className="hidden"
-					/>
-					<label
-						htmlFor="fileUpload"
-						className="cursor-pointer text-sm border border-accent_color hover:bg-accent_light py-2 px-4 rounded inline-block transition-all duration-300 ease-in-out font-medium"
-					>
-						<T tkey="participants.form.labels.select" />
-					</label>
-					{fileName && (
-						<span className="ms-2 text-sm text-darkest_gray">
-							{fileName}
-						</span>
-					)}
+			<div className="mb-2 p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
+				<h2 className="font-bold">
+					<T tkey="participants.form.title" />
+				</h2>
+				<div className="w-full my-2">
+					<Form {...form}>
+						<form
+							onSubmit={form.handleSubmit(onSubmit)}
+							className="flex md:space-x-4 gap-y-2 md:items-end md:flex-row flex-col items-start w-full md:w-auto"
+						>
+							<FormField
+								control={form.control}
+								name="name"
+								render={({ field }) => (
+									<FormItem className="md:w-2/5 w-full">
+										<FormLabel>
+											<T tkey="participants.form.labels.name" />
+										</FormLabel>
+										<FormControl>
+											<Input
+												placeholder="John Doe"
+												className=" dark:bg-mid_blue w-full"
+												{...field}
+											/>
+										</FormControl>
+										<FormMessage />
+									</FormItem>
+								)}
+							/>
+							<FormField
+								control={form.control}
+								name="email"
+								render={({ field }) => (
+									<FormItem className="md:w-2/5 w-full">
+										<FormLabel>
+											<T tkey="participants.form.labels.email" />
+										</FormLabel>
+										<FormControl>
+											<Input
+												placeholder="john@example.com"
+												className=" dark:bg-mid_blue"
+												{...field}
+											/>
+										</FormControl>
+										<FormMessage />
+									</FormItem>
+								)}
+							/>
+							<Button
+								type="submit"
+								id="addParticipantBtn"
+								className="md:w-1/5 w-full"
+								disabled={!isEnrollmentPhase}
+							>
+								<T tkey="participants.form.buttons.add" />
+							</Button>
+						</form>
+					</Form>
+					<div className="mt-4 w-full flex flex-col md:flex-row md:space-x-8 justify-between gap-y-2 md:gap-y-0">
+						<div className="md:w-4/5">
+							<input
+								type="file"
+								accept=".csv"
+								id="fileUpload"
+								onChange={handleFileChange}
+								className="hidden"
+							/>
+							<label
+								htmlFor="fileUpload"
+								className="cursor-pointer text-sm border border-accent_color hover:bg-accent_light py-2 px-4 rounded inline-block transition-all duration-300 ease-in-out font-medium"
+							>
+								<T tkey="participants.form.labels.select" />
+							</label>
+							{fileName && (
+								<span className="ms-2 text-sm text-darkest_gray">
+									{fileName}
+								</span>
+							)}
+						</div>
+						<Button
+							type="submit"
+							id="uploadCsvBtn"
+							className="w-full md:w-1/5"
+							disabled={!isEnrollmentPhase}
+							onClick={handleFileUpload}
+						>
+							<T tkey="participants.form.buttons.csv" />
+						</Button>
+					</div>
+					<p className="italic text-sm py-1 text-darkest_gray">
+						<T tkey="participants.form.link.text" />{" "}
+						<Link
+							href={{
+								pathname: "/home/faq",
+								query: { defaultItem: "csv_item" },
+							}}
+							className="font-semibold text-accent_color hover:text-accent_hover underline hover:underline-offset-4 underline-offset-2 transition-all duration-200 ease-linear"
+						>
+							<T tkey="participants.form.link.here" />.
+						</Link>
+					</p>
 				</div>
-				<Button
-					type="submit"
-					id="uploadCsvBtn"
-					className="w-full md:w-1/5"
-					disabled={!isEnrollmentPhase}
-					onClick={handleFileUpload}
-				>
-					<T tkey="participants.form.buttons.csv" />
-				</Button>
 			</div>
-			<p className="italic text-sm py-1 text-darkest_gray">
-				<T tkey="participants.form.link.text" />{" "}
-				<Link
-					href={{ pathname: "/home/faq", query: { defaultItem: 'csv_item' } }}
-					className="font-semibold text-accent_color hover:text-accent_hover underline hover:underline-offset-4 underline-offset-2 transition-all duration-200 ease-linear"
-				>
-					<T tkey="participants.form.link.here" />.
-				</Link>
-			</p>
 		</>
 	);
 }
