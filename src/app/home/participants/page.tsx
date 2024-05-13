@@ -124,9 +124,9 @@ export default function Page() {
 		]);
 	};
 
-	const allQuestionnairesCompleted =
+	const atLeastOneQuestionnaireCompleted =
 		questionnaires && questionnaires.length > 0
-			? questionnaires.every((questionnaire) => questionnaire.completed)
+			? questionnaires.some((questionnaire) => questionnaire.completed)
 			: false;
 
 	const participantCount = participants ? participants.length : 0;
@@ -189,6 +189,7 @@ export default function Page() {
 					<CreateResultButton
 						isEnrollmentPhase={isEnrollmentPhase}
 						participantCount={participantCount}
+						atLeastOneQuestionnaireCompleted={atLeastOneQuestionnaireCompleted}
 					/>
 				</div>
 			</div>

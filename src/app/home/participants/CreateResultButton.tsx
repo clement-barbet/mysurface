@@ -7,9 +7,11 @@ import T from "@/components/translations/translation";
 export default function CreateResultButton({
 	isEnrollmentPhase,
 	participantCount,
+  atLeastOneQuestionnaireCompleted
 }: {
 	isEnrollmentPhase: boolean;
 	participantCount: number;
+  atLeastOneQuestionnaireCompleted: boolean;
 }) {
 	const router = useRouter();
 
@@ -42,7 +44,7 @@ export default function CreateResultButton({
 		}
 	};
 
-	const canGenerateResult = !isEnrollmentPhase && participantCount >= 2;
+	const canGenerateResult = !isEnrollmentPhase && atLeastOneQuestionnaireCompleted && participantCount >= 2;
 	if (!canGenerateResult) {
 		return null;
 	}
