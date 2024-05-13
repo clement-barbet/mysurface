@@ -15,6 +15,7 @@ const GraphNode3D: React.FC<GraphNode3DProps> = ({ graphData }) => {
 	const [ForceGraph3D, setForceGraph3D] = useState(null);
 	const [bloomApplied, setBloomApplied] = useState(false);
 	const groups = createGroups(graphData.nodes);
+	const [currentNode, setCurrentNode] = useState(null);
 
 	useEffect(() => {
 		import("react-force-graph")
@@ -90,16 +91,36 @@ const GraphNode3D: React.FC<GraphNode3DProps> = ({ graphData }) => {
 	}
 
 	return (
-		<div className="bg-graph_bg w-full">
+		<div className="bg-graph_bg w-full relative">
+			{currentNode && (
+				<div className="absolute bottom-0 left-0 text-light_gray p-2">
+					<p>
+						<b>Group</b>: {currentNode.group}
+					</p>
+					<p>
+						<b>Action</b>: {currentNode.action}
+					</p>
+				</div>
+			)}
 			<ForceGraph3D
 				ref={fgRef}
 				backgroundColor="#000000"
 				graphData={graphData}
 				nodeLabel={(node) => {
-					const group = getNodeGroup(node.val, groups);
-					return `${node.name} > value: ${node.val.toFixed(2)} - ${
-						group.group
-					}, ${group.action}`;
+					return `${node.name} (${node.val.toFixed(2)})`;
+				}}
+				onNodeHover={(node) => {
+					if (node) {
+						document.body.style.cursor = 'grab';
+						const group = getNodeGroup(node.val, groups);
+						setCurrentNode({
+							group: group.group,
+							action: group.action,
+						});
+					} else {
+						document.body.style.cursor = 'default';
+						setCurrentNode(null);
+					}
 				}}
 				nodeColor={getNodeColor}
 				width={dimensions.width}
