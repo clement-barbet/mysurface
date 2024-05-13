@@ -103,7 +103,8 @@ export default function DashboardNavbar() {
 				</div>
 			</Link>
 			<ul
-				className={clsx("flex flex-col h-full w-full text-sm mt-4", {
+				id="sidebar-menu"
+				className={clsx("flex flex-col h-full w-full text-sm mt-4 overflow-auto", {
 					hidden: !isMenuOpen,
 					"md:flex": true,
 				})}
