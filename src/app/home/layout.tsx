@@ -13,7 +13,7 @@ export default function HomeLayout({
 }>) {
 	const pathname = usePathname();
 	const isResultsIdPage =
-		/^\/home\/(results|results-admin|backup)\/[^\/]+$/.test(pathname);
+		/^\/home\/(results|results-admin|backup|results-examples)\/[^\/]+$/.test(pathname);
 
 	const [isSmallScreen, setIsSmallScreen] = useState(false);
 

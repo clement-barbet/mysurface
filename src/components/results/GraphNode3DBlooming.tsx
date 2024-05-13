@@ -40,7 +40,7 @@ const GraphNode3D: React.FC<GraphNode3DProps> = ({ graphData }) => {
 					: window.innerWidth - 210;
 			const height =
 				window.innerWidth < 768
-					? window.innerHeight - 100
+					? window.innerHeight - 115
 					: window.innerHeight - 140;
 			setDimensions({
 				width,
