@@ -1,18 +1,10 @@
 "use client";
-import dynamic from "next/dynamic";
-//import { ForceGraph3D } from "react-force-graph";
 import { UnrealBloomPass } from "./utils/UnrealBloomPass";
 import * as THREE from "three";
 import React, { useRef, useEffect, useState } from "react";
 import ColorLegend from "./ColorLegend";
 import { scalePow } from "d3";
-
-/*
-const ForceGraph3D = dynamic(
-	() => import("react-force-graph").then((mod) => mod.ForceGraph3D),
-	{ ssr: false }
-);
-*/
+import { createGroups, getNodeGroup } from "./grouping";
 
 interface GraphNode3DProps {
 	graphData: any;
@@ -22,6 +14,7 @@ const GraphNode3D: React.FC<GraphNode3DProps> = ({ graphData }) => {
 	const fgRef = useRef();
 	const [ForceGraph3D, setForceGraph3D] = useState(null);
 	const [bloomApplied, setBloomApplied] = useState(false);
+	const groups = createGroups(graphData.nodes);
 
 	useEffect(() => {
 		import("react-force-graph")
@@ -65,23 +58,6 @@ const GraphNode3D: React.FC<GraphNode3DProps> = ({ graphData }) => {
 	const minSize = Math.min(...graphData.nodes.map((node) => node.val));
 
 	// hsl(29, 100%, 47%) accent color orange
-
-	/*
-	const hue = 25 / 360;
-	const saturation = 1;
-	const baseLightness = 0.4;
-
-	const getNodeColor = (node) => {
-		const normalizedSize = (node.val - minSize) / (maxSize - minSize);
-		const lightness = baseLightness + normalizedSize * 0.5; // Bigger = light
-		const color = new THREE.Color().setHSL(hue, saturation, lightness);
-		return color.getStyle();
-					"hsl(20, 100%, 40%)",
-			"hsl(40, 100%, 70%)",
-			"hsl(60, 100%, 100%)",
-	};
-	*/
-
 	const ranges = [
 		"hsl(20, 100%, 40%)",
 		"hsl(40, 100%, 70%)",
@@ -119,7 +95,12 @@ const GraphNode3D: React.FC<GraphNode3DProps> = ({ graphData }) => {
 				ref={fgRef}
 				backgroundColor="#000000"
 				graphData={graphData}
-				nodeLabel={(node) => `${node.name} (${node.val.toFixed(2)})`}
+				nodeLabel={(node) => {
+					const group = getNodeGroup(node.val, groups);
+					return `${node.name} > value: ${node.val.toFixed(2)} - ${
+						group.group
+					}, ${group.action}`;
+				}}
 				nodeColor={getNodeColor}
 				width={dimensions.width}
 				height={dimensions.height}

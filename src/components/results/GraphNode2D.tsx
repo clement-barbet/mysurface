@@ -1,10 +1,9 @@
 "use client";
 import dynamic from "next/dynamic";
-import * as THREE from "three";
-//import { ForceGraph2D } from "react-force-graph"
 import React, { useEffect, useRef, useState } from "react";
 import ColorLegend from "./ColorLegend";
 import { scalePow } from "d3";
+import { createGroups, getNodeGroup } from "./grouping";
 
 interface GraphNode2DProps {
 	graphData: any;
@@ -17,6 +16,7 @@ const ForceGraph2D = dynamic(
 
 export default function GraphNode2D({ graphData }: GraphNode2DProps) {
 	const forceGraphRef = useRef();
+	const groups = createGroups(graphData.nodes);
 
 	const [dimensions, setDimensions] = useState({
 		width: typeof window !== "undefined" ? window.innerWidth : 0,
@@ -58,19 +58,6 @@ export default function GraphNode2D({ graphData }: GraphNode2DProps) {
 
 	const maxSize = Math.max(...graphData.nodes.map((node) => node.val));
 	const minSize = Math.min(...graphData.nodes.map((node) => node.val));
-	/*
-	const hue = 272 / 360;
-	const saturation = 0.6;
-	const baseLightness = 0.2;
-
-	// 	hsl(272, 45%, 15%) dark purple
-	const getNodeColor = (node) => {
-		const normalizedSize = (node.val - minSize) / (maxSize - minSize);
-		const lightness = baseLightness + normalizedSize * 0.5; // Bigger = light
-		const color = new THREE.Color().setHSL(hue, saturation, lightness);
-		return color.getStyle();
-	};
-	*/
 
 	// 	hsl(190, 78%, 35%)
 	const ranges = [
@@ -95,7 +82,12 @@ export default function GraphNode2D({ graphData }: GraphNode2DProps) {
 				width={dimensions.width}
 				height={dimensions.height}
 				nodeVal={(node) => node.val}
-				nodeLabel={(node) => `${node.name} (${node.val.toFixed(2)})`}
+				nodeLabel={(node) => {
+					const group = getNodeGroup(node.val, groups);
+					return `${node.name} > value: ${node.val.toFixed(2)} - ${
+						group.group
+					}, ${group.action}`;
+				}}
 				linkWidth={0.3}
 				nodeColor={getNodeColor}
 				backgroundColor="#000000"
