@@ -9,6 +9,9 @@ import CreateResultButton from "./CreateResultButton";
 import T from "@/components/translations/translation";
 import DeleteAllParticipantsButton from "./DeleteAllParticipantsButton";
 import CreateSendEmailsButton from "./CreateSendEmailsButton";
+import FormAddManager from "./FormAddManager";
+import FormAddProduct from "./FormAddProduct";
+import SelectProcess from "./SelectProcess";
 
 export default function Page() {
 	const supabase = createClientComponentClient();
@@ -17,10 +20,13 @@ export default function Page() {
 	const [isEnrollmentPhase, setIsEnrollmentPhase] = useState(true);
 	const [lang, setLang] = useState(null);
 	const [org, setOrg] = useState(null);
+	const [process, setProcess] = useState(null);
+	const [userId, setUserId] = useState(null);
 
 	const fetchParticipants = async () => {
 		try {
 			const user = await supabase.auth.getUser();
+			setUserId(user.data.user.id);
 			const { data, error } = await supabase
 				.from("participants")
 				.select(
@@ -85,6 +91,7 @@ export default function Page() {
 			setIsEnrollmentPhase(appSettings.isEnrollmentPhase);
 			setLang(appSettings.language_id);
 			setOrg(appSettings.organization_id);
+			setProcess(appSettings.process_id);
 		} catch (error) {
 			console.error("Error fetching phase:", error.message);
 		}
@@ -102,7 +109,7 @@ export default function Page() {
 
 	useEffect(() => {
 		fetchPhase();
-	}, []);
+	}, [process]);
 
 	const onParticipantAdded = (newParticipant) => {
 		if (newParticipant.questionnaire) {
@@ -137,6 +144,7 @@ export default function Page() {
 
 	return (
 		<>
+			<SelectProcess userId={userId} process={process} setProcess={setProcess} isEnrollmentPhase={isEnrollmentPhase}/>
 			<div className="mb-2 p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
 				<h2 className="font-bold">
 					<T tkey="participants.form.title" />
@@ -157,6 +165,12 @@ export default function Page() {
 				lang={lang}
 				org={org}
 			/>
+			<div>
+				<FormAddManager process={process} />
+			</div>
+			<div>
+				<FormAddProduct process={process} />
+			</div>
 			<div className="my-2 p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
 				<h2 className="mb-2 font-bold">
 					<T tkey="participants.buttons-section.title" />
@@ -189,7 +203,9 @@ export default function Page() {
 					<CreateResultButton
 						isEnrollmentPhase={isEnrollmentPhase}
 						participantCount={participantCount}
-						atLeastOneQuestionnaireCompleted={atLeastOneQuestionnaireCompleted}
+						atLeastOneQuestionnaireCompleted={
+							atLeastOneQuestionnaireCompleted
+						}
 					/>
 				</div>
 			</div>
