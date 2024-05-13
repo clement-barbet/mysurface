@@ -18,6 +18,11 @@ export default function ResultsExamples() {
 	const [results, setResults] = useState([]);
 	const supabase = createClientComponentClient();
 
+	const headers_T = [
+		"results.table.headers.id",
+		"results.table.headers.name",
+	];
+
 	useEffect(() => {
 		const fetchData = async () => {
 			const user = await supabase.auth.getUser();
@@ -46,14 +51,13 @@ export default function ResultsExamples() {
 							<Table className="w-full">
 								<TableHeader>
 									<THeadRow>
-										{[
-											"ID",
-											"Name",
-										].map((header, index) => (
-											<TableHead key={index}>
-												{header}
-											</TableHead>
-										))}
+										{headers_T.map((header, index) => {
+											return (
+												<TableHead key={index}>
+													<T tkey={header} />
+												</TableHead>
+											);
+										})}
 									</THeadRow>
 								</TableHeader>
 								<TableBody className="bg-white dark:bg-black divide-y divide-gray-200 dark:divide-gray-500">
@@ -78,7 +82,7 @@ export default function ResultsExamples() {
 							</Table>
 						</>
 					) : (
-						<p>No data</p>
+						<p><T tkey="results.nodata"/></p>
 					)}
 				</div>
 			</>

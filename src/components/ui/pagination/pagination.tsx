@@ -1,6 +1,7 @@
 import React from 'react';
 import { Select, MenuItem } from "@mui/material";
 import { Button } from "@/components/ui/button";
+import T from "@/components/translations/translation";
 
 interface PaginationProps {
   currentPage: number;
@@ -29,21 +30,21 @@ const Pagination: React.FC<PaginationProps> = ({
             variant="delete"
             className="w-full inline-block"
           >
-            First
+            <T tkey="pagination.first" />
           </Button>
           <Button
             onClick={() => setCurrentPage(currentPage - 1)}
             disabled={currentPage === 1}
             className="w-full inline-block"
           >
-            Previous
+            <T tkey="pagination.prev" />
           </Button>
           <Button
             onClick={() => setCurrentPage(currentPage + 1)}
             disabled={currentPage === Math.ceil(items.length / itemsPerPage)}
             className="w-full inline-block"
           >
-            Next
+            <T tkey="pagination.next" />
           </Button>
           <Button
             onClick={() => setCurrentPage(Math.ceil(items.length / itemsPerPage))}
@@ -51,13 +52,13 @@ const Pagination: React.FC<PaginationProps> = ({
             variant="delete"
             className="w-full inline-block"
           >
-            Last
+            <T tkey="pagination.last" />
           </Button>
         </div>
       </div>
       {items.length > 5 && (
         <div className="flex flex-row justify-center items-baseline gap-x-2 mt-4">
-          <p>Results per page: </p>
+          <p><T tkey="pagination.per-page" /> </p>
           <div>
             <Select
               value={itemsPerPage}

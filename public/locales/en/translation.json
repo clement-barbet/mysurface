@@ -201,6 +201,28 @@
 				"yes": "Yes",
 				"no": "No"
 			}
+		},
+		"table": {
+			"headers": {
+				"id": "ID",
+				"name": "Name",
+				"date": "Date",
+				"edit": "Edit Name",
+				"delete": "Delete Report",
+				"email": "Owner's email",
+				"deletion-date": "Deletion Date",
+				"creation-date": "Creation Date",
+				"organization": "Organization",
+				"owner-name": "Owner's Name"
+			},
+			"buttons": {
+				"delete": "Delete",
+				"edit": "Edit"
+			}
+		},
+		"titles": {
+			"admin": "All Executed Reports",
+			"backup": "Results Backup"
 		}
 	},
 	"login": {
@@ -268,9 +290,6 @@
 		"language": "Language",
 		"customers": "Customers",
 		"backup": "Results Backup"
-	},
-	"backup-results": {
-		"title": "Results Backup"
 	},
 	"topbar": {
 		"search": "Search",
@@ -387,5 +406,12 @@
 			"title": "Model 12",
 			"subtitle": "Description of the model 12."
 		}
+	},
+	"pagination": {
+		"first": "First",
+		"last": "Last",
+		"next": "Next",
+		"prev": "Previous",
+		"per-page": "Results per page:"
 	}
 }

@@ -201,6 +201,28 @@
 				"yes": "Ano",
 				"no": "Ne"
 			}
+		},
+		"table": {
+			"headers": {
+				"id": "ID",
+				"name": "Název",
+				"date": "Datum",
+				"edit": "Upravit Název",
+				"delete": "Smazat Zprávu",
+				"email": "E-mail Vlastníka",
+				"deletion-date": "Datum Smazání",
+				"creation-date": "Datum Vytvoření",
+				"organization": "Organizace",
+				"owner-name": "Jméno Vlastníka"
+			},
+			"buttons": {
+				"delete": "Smazat",
+				"edit": "Upravit"
+			}
+		},
+		"titles": {
+			"admin": "Všechny provedené zprávy",
+			"backup": "Záloha výsledků"
 		}
 	},
 	"login": {
@@ -387,5 +409,12 @@
 			"title": "Model 12",
 			"subtitle": "Description of the model 12."
 		}
+	},
+	"pagination": {
+		"first": "První",
+		"last": "Poslední",
+		"next": "Další",
+		"prev": "Předchozí",
+		"per-page": "Výsledky na stránku:"
 	}
 }

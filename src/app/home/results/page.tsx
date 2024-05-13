@@ -27,6 +27,14 @@ export default function Results() {
 	const [openDelete, setOpenDelete] = useState(false);
 	const [reportName, setReportName] = useState("");
 
+	const headers_T = [
+		"results.table.headers.id",
+		"results.table.headers.name",
+		"results.table.headers.date",
+		"results.table.headers.edit",
+		"results.table.headers.delete",
+	];
+
 	const {
 		currentPage,
 		setCurrentPage,
@@ -77,17 +85,13 @@ export default function Results() {
 							<Table className="w-full">
 								<TableHeader>
 									<THeadRow>
-										{[
-											"ID",
-											"Name",
-											"Date",
-											"Edit report's name",
-											"Delete report",
-										].map((header, index) => (
-											<TableHead key={index}>
-												{header}
-											</TableHead>
-										))}
+										{headers_T.map((header, index) => {
+											return (
+												<TableHead key={index}>
+													<T tkey={header} />
+												</TableHead>
+											);
+										})}
 									</THeadRow>
 								</TableHeader>
 								<TableBody className="bg-white dark:bg-black divide-y divide-gray-200 dark:divide-gray-500">
@@ -125,7 +129,7 @@ export default function Results() {
 														}
 														variant="blue"
 													>
-														Edit
+														<T tkey="results.table.buttons.edit" />
 													</Button>
 												</TableCell>
 												<TableCell className="px-6 py-2 whitespace-nowrap">
@@ -137,7 +141,7 @@ export default function Results() {
 															)
 														}
 													>
-														Delete
+														<T tkey="results.table.buttons.delete" />
 													</Button>
 												</TableCell>
 											</TBodyRow>
@@ -157,7 +161,7 @@ export default function Results() {
 							/>
 						</>
 					) : (
-						<p>No data</p>
+						<p><T tkey="results.nodata"/></p>
 					)}
 				</div>
 				<ModalComponent

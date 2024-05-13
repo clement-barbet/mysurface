@@ -105,7 +105,6 @@
 				"result": "Generar Resultado",
 				"deleteAll": "Eliminar Todos los Participantes",
 				"sendAll": "Enviar Todos los Correos"
-
 			}
 		}
 	},
@@ -202,6 +201,28 @@
 				"yes": "Sí",
 				"no": "No"
 			}
+		},
+		"table": {
+			"headers": {
+				"id": "ID",
+				"name": "Nombre",
+				"date": "Fecha",
+				"edit": "Editar Nombre",
+				"delete": "Eliminar Informe",
+				"email": "Correo del Propietario",
+				"deletion-date": "Fecha de Eliminación",
+				"creation-date": "Fecha de Creación",
+				"organization": "Organización",
+				"owner-name": "Nombre del Propietario"
+			},			
+			"buttons": {
+				"delete": "Eliminar",
+				"edit": "Editar"
+			}
+		},
+		"titles": {
+			"admin": "Todos los Informes Ejecutados",
+			"backup": "Copia de Seguridad de Resultados"
 		}
 	},
 	"login": {
@@ -388,5 +409,12 @@
 			"title": "Model 12",
 			"subtitle": "Description of the model 12."
 		}
+	},
+	"pagination": {
+		"first": "Primero",
+		"last": "Último",
+		"next": "Siguiente",
+		"prev": "Anterior",
+		"per-page": "Resultados por página:"
 	}
 }

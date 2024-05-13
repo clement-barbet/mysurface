@@ -27,6 +27,17 @@ export default function Results() {
 	const [openDelete, setOpenDelete] = useState(false);
 	const [reportName, setReportName] = useState("");
 
+	const headers_T = [
+		"results.table.headers.id",
+		"results.table.headers.name",
+		"results.table.headers.deletion-date",
+		"results.table.headers.creation-date",
+		"results.table.headers.owner-name",
+		"results.table.headers.organization",
+		"results.table.headers.edit",
+		"results.table.headers.delete",
+	];
+
 	const {
 		currentPage,
 		setCurrentPage,
@@ -71,27 +82,20 @@ export default function Results() {
 			<>
 				<div className="w-full m-auto">
 					<h2 className="text-3xl pb-2">
-						<T tkey="backup-results.title" />
+						<T tkey="results.titles.backup" />
 					</h2>
 					{results.length > 0 ? (
 						<>
 							<Table className="w-full">
 								<TableHeader>
 									<THeadRow>
-										{[
-											"ID",
-											"Report name",
-											"Deletion date",
-											"Creation date",
-											"User name",
-											"Organization",
-											"Edit report's name",
-											"Delete report",
-										].map((header, index) => (
-											<TableHead key={index}>
-												{header}
-											</TableHead>
-										))}
+										{headers_T.map((header, index) => {
+											return (
+												<TableHead key={index}>
+													<T tkey={header} />
+												</TableHead>
+											);
+										})}
 									</THeadRow>
 								</TableHeader>
 								<TableBody className="bg-white dark:bg-black divide-y divide-gray-200 dark:divide-gray-500">
@@ -147,17 +151,19 @@ export default function Results() {
 														}
 														variant="blue"
 													>
-														Edit
+														<T tkey="results.table.buttons.edit" />
 													</Button>
 												</TableCell>
 												<TableCell className="px-6 py-2 whitespace-nowrap">
 													<Button
 														variant="delete"
 														onClick={() =>
-															handleOpenDelete(result)
+															handleOpenDelete(
+																result
+															)
 														}
 													>
-														Delete
+														<T tkey="results.table.buttons.delete" />
 													</Button>
 												</TableCell>
 											</TBodyRow>
@@ -177,7 +183,9 @@ export default function Results() {
 							/>
 						</>
 					) : (
-						<p>No data</p>
+						<p>
+							<T tkey="results.nodata" />
+						</p>
 					)}
 				</div>
 				<ModalComponent
