@@ -157,22 +157,6 @@ export default function DashboardNavbar() {
 				<li
 					className={clsx("py-2 px-4 tracking-wider", {
 						"border-l-4 border-light_gray":
-							pathname === "/home/results-examples" ||
-							/^\/home\/results-examples(\/\d+)?$/.test(pathname),
-					})}
-				>
-					<Link
-						onClick={handleLinkClick}
-						href="/home/results-examples"
-						className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase"
-					>
-						<PiGraph className="h-6 w-6" />
-						<T tkey="navbar.results-examples" />
-					</Link>
-				</li>
-				<li
-					className={clsx("py-2 px-4 tracking-wider", {
-						"border-l-4 border-light_gray":
 							pathname === "/home/models",
 					})}
 				>
@@ -198,6 +182,22 @@ export default function DashboardNavbar() {
 					>
 						<BiTrendingUp className="h-6 w-6" />
 						<T tkey="navbar.patterns" />
+					</Link>
+				</li>
+				<li
+					className={clsx("py-2 px-4 tracking-wider", {
+						"border-l-4 border-light_gray":
+							pathname === "/home/results-examples" ||
+							/^\/home\/results-examples(\/\d+)?$/.test(pathname),
+					})}
+				>
+					<Link
+						onClick={handleLinkClick}
+						href="/home/results-examples"
+						className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase"
+					>
+						<PiGraph className="h-6 w-6" />
+						<T tkey="navbar.results-examples" />
 					</Link>
 				</li>
 				<li
