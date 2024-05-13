@@ -27,12 +27,6 @@ function FormAddParticipant({ onParticipantAdded, isEnrollmentPhase }) {
 		undefined
 	);
 
-	const [isEnrollment, setIsEnrollment] = useState(false);
-	
-	useEffect(() => {
-		setIsEnrollment(isEnrollmentPhase);
-	}, [isEnrollmentPhase]);
-
 	const handleFileChange = (event) => {
 		setFile(event.target.files[0]);
 		setFileName(event.target.files[0].name);
@@ -139,7 +133,7 @@ function FormAddParticipant({ onParticipantAdded, isEnrollmentPhase }) {
 		}
 	};
 
-	if (!isEnrollment) {
+	if (!isEnrollmentPhase) {
 		return null;
 	}
 
