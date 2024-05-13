@@ -1,5 +1,6 @@
 import React from "react";
 import { scalePow } from "d3";
+import T from "@/components/translations/translation";
 
 const ColorLegend = ({ minSize, maxSize, ranges }) => {
 	const midSize = (minSize + maxSize) / 2;
@@ -15,7 +16,7 @@ const ColorLegend = ({ minSize, maxSize, ranges }) => {
 	return (
 		<div className="color-legend pb-1 w-full flex justify-end pe-1 bg-graph_bg text-dark_gray text-opacity-90">
 			<div className="w-1/3">
-				<p className="text-xs pb-0.5">Influence level:</p>
+				<p className="text-xs pb-0.5"><T tkey="results.graph.labels.influence" />:</p>
 				<div className="relative w-full h-3">
 					<div
 						style={{

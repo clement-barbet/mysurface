@@ -214,7 +214,7 @@
 				"creation-date": "Fecha de Creación",
 				"organization": "Organización",
 				"owner-name": "Nombre del Propietario"
-			},			
+			},
 			"buttons": {
 				"delete": "Eliminar",
 				"edit": "Editar"
@@ -223,6 +223,26 @@
 		"titles": {
 			"admin": "Todos los Informes Ejecutados",
 			"backup": "Copia de Seguridad de Resultados"
+		},
+		"graph": {
+			"labels": {
+				"id": "ID",
+				"name": "Nombre",
+				"value": "Valor",
+				"group": "Grupo",
+				"action": "Acción",
+				"influence": "Nivel de influencia"
+			},
+			"groups": {
+				"below": "Por Debajo del Promedio",
+				"average": "Promedio",
+				"above": "Por Encima del Promedio"
+			},
+			"actions": {
+				"improve": "Se Requiere Acción de Mejora",
+				"no-action": "No se Requiere Acción",
+				"strategic": "Se Requiere Acción Estratégica"
+			}
 		}
 	},
 	"login": {

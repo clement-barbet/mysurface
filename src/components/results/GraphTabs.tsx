@@ -72,10 +72,10 @@ export default function GraphTabs({
 				</div>
 				<div className="flex gap-x-4 pe-10 md:pe-2 items-end text-light_gray text-sm">
 					<p>
-						<b>ID</b>: {reportId}
+						<b><T tkey="results.graph.labels.id" /></b>: {reportId}
 					</p>
 					<p className="md:block hidden">
-						<b>Name</b>: {reportName}
+						<b><T tkey="results.graph.labels.name" /></b>: {reportName}
 					</p>
 				</div>
 			</TabList>

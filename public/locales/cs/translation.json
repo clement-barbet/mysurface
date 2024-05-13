@@ -223,6 +223,26 @@
 		"titles": {
 			"admin": "Všechny provedené zprávy",
 			"backup": "Záloha výsledků"
+		},
+		"graph": {
+			"labels": {
+				"id": "ID",
+				"name": "Název",
+				"value": "Hodnota",
+				"group": "Skupina",
+				"action": "Akce",
+				"influence": "Úroveň vlivu"
+			},
+			"groups": {
+				"below": "Pod Průměrem",
+				"average": "Průměr",
+				"above": "Nad Průměrem"
+			},
+			"actions": {
+				"improve": "Vyžaduje se Akce na Zlepšení",
+				"no-action": "Nejsou Vyžadovány Žádné Akce",
+				"strategic": "Vyžaduje se Strategická Akce"
+			}
 		}
 	},
 	"login": {

@@ -14,15 +14,15 @@ export const createGroups = (nodes) => {
 		{
 			min: minSize,
 			max: x,
-			group: "below average",
-			action: "improvement action required",
+			group: "results.graph.groups.below",
+			action: "results.graph.actions.improve",
 		},
-		{ min: x, max: y, group: "average", action: "no action required" },
+		{ min: x, max: y, group: "results.graph.groups.average", action: "results.graph.actions.no-action" },
 		{
 			min: y,
 			max: maxSize,
-			group: "over the average",
-			action: "strategic action required",
+			group: "results.graph.groups.above",
+			action: "results.graph.actions.strategic",
 		},
 	];
 

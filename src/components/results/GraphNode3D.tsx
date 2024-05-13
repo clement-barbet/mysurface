@@ -3,6 +3,7 @@ import React, { useRef, useEffect, useState } from "react";
 import ColorLegend from "./ColorLegend";
 import { scalePow } from "d3";
 import { createGroups, getNodeGroup } from "./grouping";
+import NodeInfo from "./NodeInfo";
 
 interface GraphNode3DProps {
 	graphData: any;
@@ -77,24 +78,7 @@ const GraphNode3D: React.FC<GraphNode3DProps> = ({ graphData }) => {
 	return (
 		<div className="bg-graph_bg w-full relative">
 			{currentNode && (
-				<div className="absolute bottom-0 left-0 text-light_gray p-2 flex gap-x-4 text-sm">
-					<div className="hidden md:block">
-						<p>
-							<b>Name</b>: {currentNode.name}
-						</p>
-						<p>
-							<b>Value</b>: {currentNode.value}
-						</p>
-					</div>
-					<div>
-						<p>
-							<b>Group</b>: {currentNode.group}
-						</p>
-						<p>
-							<b>Action</b>: {currentNode.action}
-						</p>
-					</div>
-				</div>
+				<NodeInfo currentNode={currentNode} />
 			)}
 			<ForceGraph3D
 				ref={fgRef}

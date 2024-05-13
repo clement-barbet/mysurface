@@ -223,6 +223,26 @@
 		"titles": {
 			"admin": "All Executed Reports",
 			"backup": "Results Backup"
+		},
+		"graph": {
+			"labels": {
+				"id": "ID",
+				"name": "Name",
+				"value": "Value",
+				"group": "Group",
+				"action": "Action",
+				"influence": "Influence level"
+			},
+			"groups": {
+				"below": "Below Average",
+				"average": "Average",
+				"above": "Above Average"
+			},
+			"actions": {
+				"improve": "Improvement action required",
+				"no-action": "No action required",
+				"strategic": "Strategic action required"
+			}
 		}
 	},
 	"login": {
