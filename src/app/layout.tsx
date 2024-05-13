@@ -19,13 +19,7 @@ export default function RootLayout({
 			<head>
 				<link
 					rel="icon"
-					href="/favicon_white.ico"
-					media="(prefers-color-scheme: dark)"
-				/>
-				<link
-					rel="icon"
-					href="/favicon_black.ico"
-					media="(prefers-color-scheme: light)"
+					href="/logo_mysurface.svg"
 				/>
 			</head>
 			<body
