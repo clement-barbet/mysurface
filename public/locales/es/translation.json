@@ -239,9 +239,9 @@
 				"above": "Por Encima del Promedio"
 			},
 			"actions": {
-				"improve": "Se Requiere Acción de Mejora",
-				"no-action": "No se Requiere Acción",
-				"strategic": "Se Requiere Acción Estratégica"
+				"improve": "Se requiere acción de mejora",
+				"no-action": "No se requiere acción",
+				"strategic": "Se requiere acción estratégica"
 			}
 		}
 	},

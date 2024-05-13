@@ -239,9 +239,9 @@
 				"above": "Nad Průměrem"
 			},
 			"actions": {
-				"improve": "Vyžaduje se Akce na Zlepšení",
-				"no-action": "Nejsou Vyžadovány Žádné Akce",
-				"strategic": "Vyžaduje se Strategická Akce"
+				"improve": "Vyžaduje se akce na zlepšení",
+				"no-action": "Nejsou vyžadovány žádné akce",
+				"strategic": "Vyžaduje se strategická akce"
 			}
 		}
 	},
