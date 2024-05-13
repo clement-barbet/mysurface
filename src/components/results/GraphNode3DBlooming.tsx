@@ -93,13 +93,23 @@ const GraphNode3D: React.FC<GraphNode3DProps> = ({ graphData }) => {
 	return (
 		<div className="bg-graph_bg w-full relative">
 			{currentNode && (
-				<div className="absolute bottom-0 left-0 text-light_gray p-2">
-					<p>
-						<b>Group</b>: {currentNode.group}
-					</p>
-					<p>
-						<b>Action</b>: {currentNode.action}
-					</p>
+				<div className="absolute bottom-0 left-0 text-light_gray p-2 flex gap-x-4 text-sm">
+					<div className="hidden md:block">
+						<p>
+							<b>Name</b>: {currentNode.name}
+						</p>
+						<p>
+							<b>Value</b>: {currentNode.value}
+						</p>
+					</div>
+					<div>
+						<p>
+							<b>Group</b>: {currentNode.group}
+						</p>
+						<p>
+							<b>Action</b>: {currentNode.action}
+						</p>
+					</div>
 				</div>
 			)}
 			<ForceGraph3D
@@ -111,14 +121,16 @@ const GraphNode3D: React.FC<GraphNode3DProps> = ({ graphData }) => {
 				}}
 				onNodeHover={(node) => {
 					if (node) {
-						document.body.style.cursor = 'grab';
+						document.body.style.cursor = "grab";
 						const group = getNodeGroup(node.val, groups);
 						setCurrentNode({
+							name: node.name,
+							value: node.val.toFixed(2),
 							group: group.group,
 							action: group.action,
 						});
 					} else {
-						document.body.style.cursor = 'default';
+						document.body.style.cursor = "default";
 						setCurrentNode(null);
 					}
 				}}

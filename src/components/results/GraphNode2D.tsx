@@ -78,13 +78,23 @@ export default function GraphNode2D({ graphData }: GraphNode2DProps) {
 	return (
 		<div className="bg-graph_bg w-full relative">
 			{currentNode && (
-				<div className="absolute bottom-0 left-0 text-light_gray p-2">
-					<p>
-						<b>Group</b>: {currentNode.group}
-					</p>
-					<p>
-						<b>Action</b>: {currentNode.action}
-					</p>
+				<div className="absolute bottom-0 left-0 text-light_gray p-2 flex gap-x-4 text-sm">
+					<div className="hidden md:block">
+						<p>
+							<b>Name</b>: {currentNode.name}
+						</p>
+						<p>
+							<b>Value</b>: {currentNode.value}
+						</p>
+					</div>
+					<div>
+						<p>
+							<b>Group</b>: {currentNode.group}
+						</p>
+						<p>
+							<b>Action</b>: {currentNode.action}
+						</p>
+					</div>
 				</div>
 			)}
 			<ForceGraph2D
@@ -101,6 +111,8 @@ export default function GraphNode2D({ graphData }: GraphNode2DProps) {
 						document.body.style.cursor = "grab";
 						const group = getNodeGroup(node.val, groups);
 						setCurrentNode({
+							name: node.name,
+							value: node.val.toFixed(2),
 							group: group.group,
 							action: group.action,
 						});
