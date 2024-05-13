@@ -190,7 +190,10 @@
 		"tabs": {
 			"2d": "Gráfico 2D",
 			"3d": "Gráfico 3D",
-			"3dplus": "Gráfico 3D+"
+			"3dplus": "Gráfico 3D+",
+			"2d-short": "2D",
+			"3d-short": "3D",
+			"3dplus-short": "3D+"
 		},
 		"nodata": "Sin resultados aún.",
 		"modal": {

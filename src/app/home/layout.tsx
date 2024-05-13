@@ -12,6 +12,9 @@ export default function HomeLayout({
 	children: React.ReactNode;
 }>) {
 	const pathname = usePathname();
+	const pathArray = pathname.split("/");
+	pathArray.pop();
+	const return_path = pathArray.join("/");
 	const isResultsIdPage =
 		/^\/home\/(results|results-admin|backup|results-examples)\/[^\/]+$/.test(pathname);
 
@@ -32,7 +35,7 @@ export default function HomeLayout({
 		<div className="flex relative">
 			{isSmallScreen && isResultsIdPage && (
 				<div className="absolute top-0 right-0 p-4 z-10">
-					<Link href="/home/results">
+					<Link href={return_path}>
 						<FaTimes className="h-5 w-5 text-accent_delete cursor-pointer hover:text-accent_delete_hover transition-all duration-200 ease-linear" />
 					</Link>
 				</div>

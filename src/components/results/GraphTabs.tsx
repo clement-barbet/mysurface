@@ -6,6 +6,7 @@ import GraphNode2D from "./GraphNode2D";
 import GraphNode3D from "./GraphNode3D";
 import T from "@/components/translations/translation";
 import GraphNode3DBlooming from "./GraphNode3DBlooming";
+import { useMediaQuery } from "react-responsive";
 
 interface GraphTabsProps {
 	graphData: any;
@@ -19,31 +20,54 @@ export default function GraphTabs({
 	reportName,
 }: GraphTabsProps) {
 	const [tabIndex, setTabIndex] = useState(0);
+	const isMediumScreen = useMediaQuery({ minWidth: 768 });
 
 	return (
-		<Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)} className="pt-2">
+		<Tabs
+			selectedIndex={tabIndex}
+			onSelect={(index) => setTabIndex(index)}
+			className="pt-2"
+		>
 			<TabList className="flex justify-between align-bottom text-sm">
 				<div className="flex">
 					<Tab
-						className={`box-border border-none outline-none hover:cursor-pointer mr-1 px-4  ${
-							tabIndex === 0 ? "font-semibold border-none underline underline-offset-4 text-accent_color" : "text-light_gray"
+						className={`box-border border-none outline-none hover:cursor-pointer mr-1 md:px-4 px-2  ${
+							tabIndex === 0
+								? "font-semibold border-none underline underline-offset-4 text-accent_color"
+								: "text-light_gray"
 						}`}
 					>
-						<T tkey="results.tabs.3dplus" />
+						{isMediumScreen ? (
+							<T tkey="results.tabs.3dplus" />
+						) : (
+							<T tkey="results.tabs.3dplus-short" />
+						)}
 					</Tab>
 					<Tab
-						className={`box-border border-none outline-none hover:cursor-pointer mr-1 px-4  ${
-							tabIndex === 1 ? "font-semibold border-none underline underline-offset-4 text-accent_color" : "text-light_gray"
+						className={`box-border border-none outline-none hover:cursor-pointer mr-1 md:px-4 px-2  ${
+							tabIndex === 1
+								? "font-semibold border-none underline underline-offset-4 text-accent_color"
+								: "text-light_gray"
 						}`}
 					>
-						<T tkey="results.tabs.3d" />
+						{isMediumScreen ? (
+							<T tkey="results.tabs.3d" />
+						) : (
+							<T tkey="results.tabs.3d-short" />
+						)}
 					</Tab>
 					<Tab
-						className={`box-border border-none outline-none hover:cursor-pointer mr-1 px-4 ${
-							tabIndex === 2 ? "font-semibold border-none underline underline-offset-4 text-accent_color" : "text-light_gray"
+						className={`box-border border-none outline-none hover:cursor-pointer mr-1 md:px-4 px-2 ${
+							tabIndex === 2
+								? "font-semibold border-none underline underline-offset-4 text-accent_color"
+								: "text-light_gray"
 						}`}
 					>
-						<T tkey="results.tabs.2d" />
+						{isMediumScreen ? (
+							<T tkey="results.tabs.2d" />
+						) : (
+							<T tkey="results.tabs.2d-short" />
+						)}
 					</Tab>
 				</div>
 				<div className="flex gap-x-4 pe-10 md:pe-2 items-end text-light_gray text-sm">

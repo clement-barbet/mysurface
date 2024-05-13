@@ -32,7 +32,7 @@ export default function GraphNode2D({ graphData }: GraphNode2DProps) {
 					: window.innerWidth - 210;
 			const height =
 				window.innerWidth < 768
-					? window.innerHeight - 115
+					? window.innerHeight - 100
 					: window.innerHeight - 140;
 			setDimensions({
 				width,
