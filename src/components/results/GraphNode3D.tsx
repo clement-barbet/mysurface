@@ -53,6 +53,14 @@ const GraphNode3D: React.FC<GraphNode3DProps> = ({ graphData }) => {
 		};
 	}, []);
 
+	useEffect(() => {
+		if (fgRef.current) {
+			fgRef.current
+				.d3Force("link")
+				.distance((link) => link.value);
+		}
+	}, [fgRef.current, dimensions, ForceGraph3D]);
+
 	const maxSize = Math.max(...graphData.nodes.map((node) => node.val));
 	const minSize = Math.min(...graphData.nodes.map((node) => node.val));
 
@@ -77,9 +85,7 @@ const GraphNode3D: React.FC<GraphNode3DProps> = ({ graphData }) => {
 
 	return (
 		<div className="bg-graph_bg w-full relative">
-			{currentNode && (
-				<NodeInfo currentNode={currentNode} />
-			)}
+			{currentNode && <NodeInfo currentNode={currentNode} />}
 			<ForceGraph3D
 				ref={fgRef}
 				backgroundColor="#000000"

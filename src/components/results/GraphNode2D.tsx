@@ -19,6 +19,17 @@ export default function GraphNode2D({ graphData }: GraphNode2DProps) {
 	const forceGraphRef = useRef();
 	const groups = createGroups(graphData.nodes);
 	const [currentNode, setCurrentNode] = useState(null);
+	const [ForceGraph2D, setForceGraph2D] = useState(null);
+
+	useEffect(() => {
+		import("react-force-graph")
+			.then((mod) => {
+				setForceGraph2D(mod.ForceGraph2D);
+			})
+			.catch((error) => {
+				console.error("Error loading ForceGraph2D:", error);
+			});
+	}, []);
 
 	const [dimensions, setDimensions] = useState({
 		width: typeof window !== "undefined" ? window.innerWidth : 0,
@@ -48,15 +59,12 @@ export default function GraphNode2D({ graphData }: GraphNode2DProps) {
 	}, []);
 
 	useEffect(() => {
-		const forceGraphInstance = forceGraphRef.current;
-		if (forceGraphInstance) {
-			const linkForce = forceGraphInstance.d3Force("link");
-			if (linkForce) {
-				linkForce.distance((link) => link.length || 100);
-				forceGraphInstance.d3ReheatSimulation();
-			}
+		if (forceGraphRef.current) {
+			forceGraphRef.current
+				.d3Force("link")
+				.distance((link) => link.value);
 		}
-	}, []);
+	}, [forceGraphRef.current, dimensions, ForceGraph2D]);
 
 	const maxSize = Math.max(...graphData.nodes.map((node) => node.val));
 	const minSize = Math.min(...graphData.nodes.map((node) => node.val));
@@ -76,11 +84,13 @@ export default function GraphNode2D({ graphData }: GraphNode2DProps) {
 		return colorScale(node.val);
 	};
 
+	if (!ForceGraph2D) {
+		return null;
+	}
+
 	return (
 		<div className="bg-graph_bg w-full relative">
-			{currentNode && (
-				<NodeInfo currentNode={currentNode} />
-			)}
+			{currentNode && <NodeInfo currentNode={currentNode} />}
 			<ForceGraph2D
 				ref={forceGraphRef}
 				graphData={graphData}

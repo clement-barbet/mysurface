@@ -62,7 +62,7 @@ export default async function ResultPage({
 					participant.participantName === dataPoint.participantName
 			);
 			if (targetParticipant) {
-				const linkScore = dataPoint.interactionGrade;
+				const linkScore = dataPoint.interactionGrade * 2;
 				if (linkScore > 0) {
 					links.push({
 						source: sourceParticipant.participantName,
