@@ -7,6 +7,28 @@ export async function POST() {
 	const user = await supabase.auth.getUser();
 
 	try {
+		// Fetch app_settings
+		const { data: appSettings, error: appSettingsError } = await supabase
+			.from("app_settings")
+			.select("*")
+			.eq("user_id", user.data.user?.id)
+			.single();
+
+		if (appSettingsError) {
+			throw appSettingsError;
+		}
+
+		// Fetch questions
+		const { data: questions, error: questionsError } = await supabase
+			.from("questions")
+			.select("*")
+			.eq("language_id", appSettings.language_id)
+			.eq("organization_id", appSettings.organization_id);
+
+		if (questionsError) {
+			console.log("Error fetching questions");
+			throw questionsError;
+		}
 
 		// Fetch participants
 		const { data: participants, error: fetchParticipantError } =
@@ -21,7 +43,7 @@ export async function POST() {
 
 		// Fetch questionnaires
 		const { data: questionnaires, error: fetchQuestionnaireError } =
-			await supabase.from("questionnaires").select("id, data");
+			await supabase.from("questionnaires").select("*");
 
 		if (fetchQuestionnaireError) {
 			throw fetchQuestionnaireError;
@@ -32,6 +54,27 @@ export async function POST() {
 			const questionnaire = questionnaires.find(
 				(q) => q.id === participant.questionnaire
 			);
+
+			let data;
+			if (questionnaire && !questionnaire.completed) {
+				data = participants
+					.filter((p) => p.id !== participant.id)
+					.map((p) => ({
+						participantId: p.id,
+						participantName: p.name,
+						answers: questions.map((question) => ({
+							questionText: question.question.replace(
+								"%s",
+								p.name
+							),
+							rating: 0,
+							weight: question.weight,
+						})),
+						interactionGrade: 0,
+						influenceGrade: 0,
+					}));
+				questionnaire.data = data;
+			}
 
 			return {
 				participantName: participant.name,

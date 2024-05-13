@@ -4,12 +4,14 @@ import { cookies } from "next/headers";
 
 export async function POST() {
   const supabase = createServerComponentClient({ cookies });
+  const user = await supabase.auth.getUser();
 
   try {
     // Fetch all participants
     const { data: participants, error: fetchError } = await supabase
       .from("participants")
-      .select("id");
+      .select("id")
+      .eq("user_id", user.data.user?.id);
 
     if (fetchError) {
       throw fetchError;

@@ -188,7 +188,7 @@ export default function Page() {
 					/>
 					<CreateResultButton
 						isEnrollmentPhase={isEnrollmentPhase}
-						allQuestionnairesCompleted={allQuestionnairesCompleted}
+						participantCount={participantCount}
 					/>
 				</div>
 			</div>
