@@ -176,7 +176,6 @@ export default function Page() {
 				process={process}
 				setProcess={setProcess}
 				isEnrollmentPhase={isEnrollmentPhase}
-				lang={lang}
 			/>
 			<FormAddParticipant
 				onParticipantAdded={onParticipantAdded}
@@ -189,6 +188,8 @@ export default function Page() {
 				isEnrollmentPhase={isEnrollmentPhase}
 				lang={lang}
 				org={org}
+				selectedProcess={process}
+				userId={userId}
 			/>
 			<div>
 				<FormAddAssessed

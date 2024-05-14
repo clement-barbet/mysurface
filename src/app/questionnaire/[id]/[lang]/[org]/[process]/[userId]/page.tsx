@@ -3,6 +3,7 @@ import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
 import QuestionnaireForm from "./QuestionnaireForm";
+import QuestionnaireFormAssessed from "./QuestionnaireFormAssessed";
 
 /*
  * Anon users access this route with the questionnaire.
@@ -15,7 +16,7 @@ import QuestionnaireForm from "./QuestionnaireForm";
 export default async function QuestionnairePage({
 	params,
 }: {
-	params: { id: string; lang: string; org: string };
+	params: { id: string; lang: string; org: string; process: string, userId: string};
 }) {
 	const supabase = createServerComponentClient({ cookies });
 
@@ -34,15 +35,27 @@ export default async function QuestionnairePage({
 		console.error("Questionnaire already completed");
 		notFound();
 	}
-	// Get participants through participants view
+	// Get participants through participants view, exclude current participant
 	const { data: participants, error: participantsError } = await supabase
 		.from("participants_view")
 		.select("*")
 		.neq("questionnaire", params.id)
 		.order("name");
-
 	if (participantsError) {
 		console.error("Error fetching participants:", participantsError);
+		notFound();
+	}
+
+	// Get assessed
+	const { data: assesseds, error: assessedError } = await supabase
+		.from("assessed")
+		.select("*")
+		.eq("type", params.process == 2 ? "leader" : "product")
+		.eq("user_id", params.userId)
+		.order("name");
+
+	if (assessedError) {
+		console.error("Error fetching assessed:", assessedError);
 		notFound();
 	}
 
@@ -50,7 +63,8 @@ export default async function QuestionnairePage({
 		.from("questions")
 		.select("*")
 		.eq("language_id", params.lang)
-		.eq("organization_id", params.org);
+		.eq("organization_id", params.org)
+		.eq("process_id", params.process);
 
 	if (questionsError) {
 		console.error("Error fetching questions:", questionsError);
@@ -80,11 +94,19 @@ export default async function QuestionnairePage({
 					<b>Evaluator</b>:{" "}
 					<span className="evaluator">{owner.name}</span>
 				</h2>
-				<QuestionnaireForm
-					questionnaireId={params.id}
-					participants={participants}
-					questions={questions}
-				/>
+				{process == 1 ? (
+					<QuestionnaireForm
+						questionnaireId={params.id}
+						participants={participants}
+						questions={questions}
+					/>
+				) : (
+					<QuestionnaireFormAssessed
+						questionnaireId={params.id}
+						assesseds={assesseds}
+						questions={questions}
+					/>
+				)}
 			</div>
 		</div>
 	);

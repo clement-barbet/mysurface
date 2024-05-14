@@ -26,7 +26,6 @@ export default function SelectProcess({
 	process,
 	setProcess,
 	isEnrollmentPhase,
-	lang,
 }) {
 	const supabase = createClientComponentClient();
 	const [successMessage, setSuccessMessage] = useState("");

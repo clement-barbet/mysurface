@@ -24,6 +24,8 @@ function TableParticipants({
 	isEnrollmentPhase,
 	lang,
 	org,
+	selectedProcess,
+	userId,
 }) {
 	const headers_T = [
 		"participants.table.headers.name",
@@ -137,7 +139,7 @@ function TableParticipants({
 										participant.questionnaire;
 									const baseUrl =
 										process.env.NEXT_PUBLIC_BASE_URL;
-									const url = `${baseUrl}/questionnaire/${questionnaireId}/${lang}/${org}`;
+									const url = `${baseUrl}/questionnaire/${questionnaireId}/${lang}/${org}/${selectedProcess}/${userId}`;
 									return (
 										<TBodyRow key={participant.id}>
 											<TableCell className="px-6 py-4 whitespace-nowrap hidden">
@@ -253,7 +255,7 @@ function TableParticipants({
 									participant.questionnaire;
 								const baseUrl =
 									process.env.NEXT_PUBLIC_BASE_URL;
-								const url = `${baseUrl}/questionnaire/${questionnaireId}/${lang}/${org}`;
+								const url = `${baseUrl}/questionnaire/${questionnaireId}/${lang}/${org}/${selectedProcess}/${userId}`;
 
 								return (
 									<div
