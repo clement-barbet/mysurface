@@ -57,6 +57,14 @@
 		}
 	},
 	"participants": {
+		"titles": {
+			"add-form": "Agregar un nuevo participante",
+			"add-csv": "Carga masiva de participantes",
+			"set-process": "Selecciona tu proceso",
+			"manage": "Gestionar cuestionarios",
+			"add-leader": "Agregar un nuevo líder",
+			"add-product": "Agregar un nuevo producto"
+		},
 		"table": {
 			"headers": {
 				"name": "Nombre",
@@ -64,9 +72,12 @@
 				"status": "Estado",
 				"questionnaire": "Enviar Cuestionario",
 				"link": "Copiar Enlace del Cuestionario",
-				"delete": "Eliminar"
+				"delete": "Eliminar",
+				"description": "Descripción"
 			},
 			"nodata": "Aún no se han añadido participantes.",
+			"nodata-leaders": "Todavía no se han agregado líderes.",
+			"nodata-products": "Todavía no se han agregado productos.",
 			"status": {
 				"undefined": "Indefinido",
 				"completed": "Completado",
@@ -79,15 +90,17 @@
 			}
 		},
 		"form": {
-			"title": "Agregar un nuevo participante",
 			"labels": {
 				"name": "Nombre",
 				"email": "Correo electrónico",
-				"select": "Seleccionar Archivo"
+				"select": "Seleccionar Archivo",
+				"description": "Descripción"
 			},
 			"buttons": {
 				"add": "Agregar Participante",
-				"csv": "Subir CSV"
+				"csv": "Subir CSV",
+				"add-leader": "Agregar Líder",
+				"add-product": "Agregar Producto"
 			},
 			"link": {
 				"text": "Consulta cómo cargar un archivo CSV",
@@ -95,7 +108,6 @@
 			}
 		},
 		"buttons-section": {
-			"title": "Gestionar cuestionarios",
 			"buttons": {
 				"questionnaire": {
 					"text": "Crear Cuestionarios",
@@ -106,6 +118,20 @@
 				"deleteAll": "Eliminar Todos los Participantes",
 				"sendAll": "Enviar Todos los Correos"
 			}
+		},
+		"select-process": {
+			"options": {
+				"influence": "Influencia",
+				"leaders": "Líderes",
+				"products": "Productos"
+			},
+			"explanations": {
+				"influence": "Todos evalúan a todos",
+				"leaders": "Los usuarios evalúan a usuarios específicos",
+				"products": "Los usuarios evalúan productos"
+			},
+			"button": "Seleccionar",
+			"selected": "Proceso seleccionado:"
 		}
 	},
 	"faq": {

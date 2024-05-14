@@ -9,9 +9,10 @@ import CreateResultButton from "./CreateResultButton";
 import T from "@/components/translations/translation";
 import DeleteAllParticipantsButton from "./DeleteAllParticipantsButton";
 import CreateSendEmailsButton from "./CreateSendEmailsButton";
-import FormAddManager from "./FormAddManager";
-import FormAddProduct from "./FormAddProduct";
 import SelectProcess from "./SelectProcess";
+import FormAddAssessed from "./FormAddAssessed";
+import { Table } from "@mui/material";
+import TableAssessed from "./TableAssessed";
 
 export default function Page() {
 	const supabase = createClientComponentClient();
@@ -22,6 +23,24 @@ export default function Page() {
 	const [org, setOrg] = useState(null);
 	const [process, setProcess] = useState(null);
 	const [userId, setUserId] = useState(null);
+	const [assesseds, setAssesseds] = useState([]);
+
+	const fetchAssesseds = async () => {
+		try {
+			const user = await supabase.auth.getUser();
+			const { data, error } = await supabase
+				.from("assessed")
+				.select("*")
+				.eq("user_id", user.data.user.id)
+				.eq("type", process == 2 ? "leader" : "product")
+				.order("name");
+			if (error) throw error;
+			setAssesseds(data);
+			console.log("Assesseds fetched successfully");
+		} catch (error) {
+			console.error("Error fetching assesseds:", error.message);
+		}
+	};
 
 	const fetchParticipants = async () => {
 		try {
@@ -111,6 +130,10 @@ export default function Page() {
 		fetchPhase();
 	}, [process]);
 
+	useEffect(() => {
+		fetchAssesseds();
+	}, [process]);
+
 	const onParticipantAdded = (newParticipant) => {
 		if (newParticipant.questionnaire) {
 			const linkedQuestionnaire = questionnaires.find(
@@ -131,6 +154,10 @@ export default function Page() {
 		]);
 	};
 
+	const onAssessedAdded = (newAssessed) => {
+		setAssesseds((currentAssesseds) => [...currentAssesseds, newAssessed]);
+	};
+
 	const atLeastOneQuestionnaireCompleted =
 		questionnaires && questionnaires.length > 0
 			? questionnaires.some((questionnaire) => questionnaire.completed)
@@ -149,6 +176,7 @@ export default function Page() {
 				process={process}
 				setProcess={setProcess}
 				isEnrollmentPhase={isEnrollmentPhase}
+				lang={lang}
 			/>
 			<FormAddParticipant
 				onParticipantAdded={onParticipantAdded}
@@ -163,14 +191,21 @@ export default function Page() {
 				org={org}
 			/>
 			<div>
-				<FormAddManager process={process} />
+				<FormAddAssessed
+					process={process}
+					onAssessedAdded={onAssessedAdded}
+					isEnrollmentPhase={isEnrollmentPhase}
+				/>
 			</div>
-			<div>
-				<FormAddProduct process={process} />
-			</div>
+			<TableAssessed
+				assesseds={assesseds}
+				setAssesseds={setAssesseds}
+				isEnrollmentPhase={isEnrollmentPhase}
+				process={process}
+			/>
 			<div className="my-2 p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
-				<h2 className="mb-2 font-bold">
-					<T tkey="participants.buttons-section.title" />
+				<h2 className="mb-2 font-semibold text-xl">
+					<T tkey="participants.titles.manage" />
 				</h2>
 				<div className="flex flex-col gap-y-2 md:gap-x-4 md:flex-row md:justify-start md:flex-wrap">
 					<CreateQuestionnairesButton

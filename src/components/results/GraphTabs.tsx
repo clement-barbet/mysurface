@@ -74,7 +74,7 @@ export default function GraphTabs({
 					<p>
 						<b><T tkey="results.graph.labels.id" /></b>: {reportId}
 					</p>
-					<p className="md:block hidden">
+					<p className="lg:block hidden">
 						<b><T tkey="results.graph.labels.name" /></b>: {reportName}
 					</p>
 				</div>

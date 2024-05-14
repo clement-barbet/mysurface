@@ -57,6 +57,14 @@
 		}
 	},
 	"participants": {
+		"titles": {
+			"add-form": "Přidat nového účastníka",
+			"add-csv": "Hromadné nahrání účastníků",
+			"set-process": "Vyberte svůj proces",
+			"manage": "Správa dotazníků",
+			"add-leader": "Přidat nového vůdce",
+			"add-product": "Přidat nový produkt"
+		},
 		"table": {
 			"headers": {
 				"name": "Jméno",
@@ -64,9 +72,12 @@
 				"status": "Stav",
 				"questionnaire": "Odeslat Dotazník",
 				"link": "Kopírovat Odkaz na Dotazník",
-				"delete": "Smazat"
+				"delete": "Smazat",
+				"description": "Popis"
 			},
 			"nodata": "Zatím nebyli přidáni žádní účastníci.",
+			"nodata-leaders": "Zatím nebyli přidáni žádní vedoucí.",
+			"nodata-products": "Zatím nebyly přidány žádné produkty.",
 			"status": {
 				"undefined": "Nedefinováno",
 				"completed": "Dokončeno",
@@ -79,15 +90,17 @@
 			}
 		},
 		"form": {
-			"title": "Přidat nového účastníka",
 			"labels": {
 				"name": "Jméno",
 				"email": "E-mail",
-				"select": "Vybrat soubor"
+				"select": "Vybrat soubor",
+				"description": "Popis"
 			},
 			"buttons": {
 				"add": "Přidat účastníka",
-				"csv": "Nahrát CSV"
+				"csv": "Nahrát CSV",
+				"add-leader": "Přidat Vůdce",
+				"add-product": "Přidat Produkt"
 			},
 			"link": {
 				"text": "Zkontrolujte, jak nahrát soubor CSV",
@@ -95,7 +108,6 @@
 			}
 		},
 		"buttons-section": {
-			"title": "Spravovat dotazníky",
 			"buttons": {
 				"questionnaire": {
 					"text": "Vytvořit Dotazníky",
@@ -106,6 +118,20 @@
 				"deleteAll": "Smazat Všechny Účastníky",
 				"sendAll": "Odeslat Všechny E-maily"
 			}
+		},
+		"select-process": {
+			"options": {
+				"influence": "Vliv",
+				"leaders": "Vůdci",
+				"products": "Produkty"
+			},
+			"explanations": {
+				"influence": "Každý hodnotí každého",
+				"leaders": "Uživatelé hodnotí konkrétní uživatele",
+				"products": "Uživatelé hodnotí produkty"
+			},
+			"button": "Vybrat",
+			"selected": "Vybraný proces:"
 		}
 	},
 	"faq": {

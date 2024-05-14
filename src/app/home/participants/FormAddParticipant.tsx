@@ -146,8 +146,8 @@ function FormAddParticipant({ onParticipantAdded, isEnrollmentPhase }) {
 				/>
 			)}
 			<div className="mb-2 p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
-				<h2 className="font-bold">
-					<T tkey="participants.form.title" />
+				<h2 className="font-semibold text-xl">
+					<T tkey="participants.titles.add-form" />
 				</h2>
 				<div className="w-full my-2">
 					<Form {...form}>
@@ -203,50 +203,55 @@ function FormAddParticipant({ onParticipantAdded, isEnrollmentPhase }) {
 							</Button>
 						</form>
 					</Form>
-					<div className="mt-4 w-full flex flex-col md:flex-row md:space-x-8 justify-between gap-y-2 md:gap-y-0">
-						<div className="md:w-4/5">
-							<input
-								type="file"
-								accept=".csv"
-								id="fileUpload"
-								onChange={handleFileChange}
-								className="hidden"
-							/>
-							<label
-								htmlFor="fileUpload"
-								className="cursor-pointer text-sm border border-accent_color hover:bg-accent_light py-2 px-4 rounded inline-block transition-all duration-300 ease-in-out font-medium"
-							>
-								<T tkey="participants.form.labels.select" />
-							</label>
-							{fileName && (
-								<span className="ms-2 text-sm text-darkest_gray">
-									{fileName}
-								</span>
-							)}
-						</div>
-						<Button
-							type="submit"
-							id="uploadCsvBtn"
-							className="w-full md:w-1/5"
-							disabled={!isEnrollmentPhase}
-							onClick={handleFileUpload}
-						>
-							<T tkey="participants.form.buttons.csv" />
-						</Button>
-					</div>
-					<p className="italic text-sm py-1 text-darkest_gray">
-						<T tkey="participants.form.link.text" />{" "}
-						<Link
-							href={{
-								pathname: "/home/faq",
-								query: { defaultItem: "csv_item" },
-							}}
-							className="font-semibold text-accent_color hover:text-accent_hover underline hover:underline-offset-4 underline-offset-2 transition-all duration-200 ease-linear"
-						>
-							<T tkey="participants.form.link.here" />.
-						</Link>
-					</p>
 				</div>
+			</div>
+			<div className="mb-2 p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
+				<h2 className="font-semibold text-xl">
+					<T tkey="participants.titles.add-csv" />
+				</h2>
+				<div className="mt-4 w-full flex flex-col md:flex-row md:space-x-8 justify-between gap-y-2 md:gap-y-0">
+					<div className="md:w-4/5">
+						<input
+							type="file"
+							accept=".csv"
+							id="fileUpload"
+							onChange={handleFileChange}
+							className="hidden"
+						/>
+						<label
+							htmlFor="fileUpload"
+							className="cursor-pointer text-sm border border-accent_color hover:bg-accent_light py-2 px-4 rounded inline-block transition-all duration-300 ease-in-out font-medium"
+						>
+							<T tkey="participants.form.labels.select" />
+						</label>
+						{fileName && (
+							<span className="ms-2 text-sm text-darkest_gray">
+								{fileName}
+							</span>
+						)}
+					</div>
+					<Button
+						type="submit"
+						id="uploadCsvBtn"
+						className="w-full md:w-1/5"
+						disabled={!isEnrollmentPhase}
+						onClick={handleFileUpload}
+					>
+						<T tkey="participants.form.buttons.csv" />
+					</Button>
+				</div>
+				<p className="italic text-sm py-1 text-darkest_gray">
+					<T tkey="participants.form.link.text" />{" "}
+					<Link
+						href={{
+							pathname: "/home/faq",
+							query: { defaultItem: "csv_item" },
+						}}
+						className="font-semibold text-accent_color hover:text-accent_hover underline hover:underline-offset-4 underline-offset-2 transition-all duration-200 ease-linear"
+					>
+						<T tkey="participants.form.link.here" />.
+					</Link>
+				</p>
 			</div>
 		</>
 	);

@@ -57,6 +57,14 @@
 		}
 	},
 	"participants": {
+		"titles": {
+			"add-form": "Add a new participant",
+			"add-csv": "Bulk participant upload",
+			"set-process": "Select your process",
+			"manage": "Manage questionnaires",
+			"add-leader": "Add a new leader",
+			"add-product": "Add a new product"
+		},
 		"table": {
 			"headers": {
 				"name": "Name",
@@ -64,9 +72,12 @@
 				"status": "Status",
 				"questionnaire": "Send Questionnaire",
 				"link": "Copy Questionnaire Link",
-				"delete": "Delete"
+				"delete": "Delete",
+				"description": "Description"
 			},
 			"nodata": "No participants added yet.",
+			"nodata-leaders": "No leaders added yet.",
+			"nodata-products": "No products added yet.",
 			"status": {
 				"undefined": "Undefined",
 				"completed": "Completed",
@@ -79,15 +90,17 @@
 			}
 		},
 		"form": {
-			"title": "Add a new participant",
 			"labels": {
 				"name": "Name",
 				"email": "Email",
-				"select": "Select File"
+				"select": "Select File",
+				"description": "Description"
 			},
 			"buttons": {
 				"add": "Add Participant",
-				"csv": "Upload CSV"
+				"csv": "Upload CSV",
+				"add-leader": "Add Leader",
+				"add-product": "Add Product"
 			},
 			"link": {
 				"text": "Check how to upload CSV file",
@@ -95,7 +108,6 @@
 			}
 		},
 		"buttons-section": {
-			"title": "Manage questionnaires",
 			"buttons": {
 				"questionnaire": {
 					"text": "Create Questionnaires",
@@ -106,6 +118,20 @@
 				"deleteAll": "Delete All Participants",
 				"sendAll": "Send All Emails"
 			}
+		},
+		"select-process": {
+			"options": {
+				"influence": "Influence",
+				"leaders": "Leaders",
+				"products": "Products"
+			},
+			"explanations": {
+				"influence": "Everyone assess everyone",
+				"leaders": "Users assess specific users",
+				"products": "Users assess products"
+			},
+			"button": "Select",
+			"selected": "Selected process:"
 		}
 	},
 	"faq": {
