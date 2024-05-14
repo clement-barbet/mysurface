@@ -63,7 +63,10 @@
 			"set-process": "Seleccionar tipo de evaluación",
 			"manage": "Ejecutar evaluación",
 			"add-leader": "Agregar un nuevo líder",
-			"add-product": "Agregar un nuevo producto"
+			"add-product": "Agregar un nuevo producto",
+			"participants": "Participantes activos",
+			"leaders": "Líderes activos",
+			"products": "Productos activos"
 		},
 		"table": {
 			"headers": {

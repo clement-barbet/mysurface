@@ -63,7 +63,10 @@
 			"set-process": "Select assessment type",
 			"manage": "Run assessment",
 			"add-leader": "Add a new leader",
-			"add-product": "Add a new product"
+			"add-product": "Add a new product",
+			"participants": "Active participants",
+			"leaders": "Active leaders",
+			"products": "Active products"
 		},
 		"table": {
 			"headers": {

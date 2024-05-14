@@ -121,6 +121,14 @@ function TableParticipants({
 			<div className="rounded-md overflow-auto w-full hidden md:block">
 				<Table className="w-full">
 					<TableHeader>
+						<THeadRow className="bg-mid_blue">
+							<TableHead
+								colSpan={headers_T.length}
+								className="text-base uppercase text-center tracking-widest"
+							>
+								<T tkey="participants.titles.participants" />
+							</TableHead>
+						</THeadRow>
 						<THeadRow>
 							{headers_T.map((header, index) => {
 								return (

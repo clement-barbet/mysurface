@@ -23,7 +23,6 @@ function TableAssessed({
 	isEnrollmentPhase,
 	process,
 }) {
-
 	const supabase = createClientComponentClient();
 	const headers_T = [
 		"participants.table.headers.name",
@@ -71,6 +70,18 @@ function TableAssessed({
 			<div className="rounded-md overflow-auto w-full hidden md:block">
 				<Table className="w-full">
 					<TableHeader>
+						<THeadRow className="bg-mid_blue">
+							<TableHead
+								colSpan={headers_T.length}
+								className="text-base uppercase text-center tracking-widest"
+							>
+								{process == 2 ? (
+									<T tkey="participants.titles.leaders" />
+								) : (
+									<T tkey="participants.titles.products" />
+								)}
+							</TableHead>
+						</THeadRow>
 						<THeadRow>
 							{headers_T.map((header, index) => {
 								return (

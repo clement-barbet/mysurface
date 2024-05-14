@@ -63,7 +63,10 @@
 			"set-process": "Vyberte typ hodnocení",
 			"manage": "Spustit hodnocení",
 			"add-leader": "Přidat nového vůdce",
-			"add-product": "Přidat nový produkt"
+			"add-product": "Přidat nový produkt",
+			"participants": "Aktivní účastníci",
+			"leaders": "Aktivní vedoucí",
+			"products": "Aktivní produkty"
 		},
 		"table": {
 			"headers": {
