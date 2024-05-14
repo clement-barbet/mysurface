@@ -100,7 +100,7 @@ export default function DashboardNavbar() {
 				>
 					<img
 						id="logo"
-						src="/logo/surf-logo.svg"
+						src="/logo/surf-logo-white.svg"
 						alt="mysurface_logo"
 						className="w-7 h-7"
 					/>
