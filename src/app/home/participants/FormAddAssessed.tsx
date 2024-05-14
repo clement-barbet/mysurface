@@ -17,9 +17,6 @@ import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 
 function FormAddAssessed({ process, onAssessedAdded, isEnrollmentPhase }) {
 	const supabase = createClientComponentClient();
-	if (process == 1 || !process || !isEnrollmentPhase) {
-		return null;
-	}
 
 	let typeAssessed = process == 2 ? "leader" : "product";
 
@@ -71,6 +68,10 @@ function FormAddAssessed({ process, onAssessedAdded, isEnrollmentPhase }) {
 			console.error("Error adding assessed onSubmit:", insertedAssessed);
 		}
 	};
+
+	if (process == 1 || !process || !isEnrollmentPhase) {
+		return null;
+	}
 
 	return (
 		<div className="my-2 p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">

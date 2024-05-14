@@ -23,9 +23,6 @@ function TableAssessed({
 	isEnrollmentPhase,
 	process,
 }) {
-	if (process == 1 || !process) {
-		return null;
-	}
 
 	const supabase = createClientComponentClient();
 	const headers_T = [
@@ -56,6 +53,10 @@ function TableAssessed({
 			setErrorMessage("Error deleting assessed");
 		}
 	};
+
+	if (process == 1 || !process) {
+		return null;
+	}
 
 	return (
 		<>
