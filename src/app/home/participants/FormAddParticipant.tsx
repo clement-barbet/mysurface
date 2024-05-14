@@ -145,8 +145,8 @@ function FormAddParticipant({ onParticipantAdded, isEnrollmentPhase }) {
 					setErrorMessage={setErrorMessage}
 				/>
 			)}
-			<div className="mb-2 p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
-				<h2 className="font-semibold text-xl">
+			<div className="p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
+				<h2 className="font-semibold text-xl text-accent_delete">
 					<T tkey="participants.titles.add-form" />
 				</h2>
 				<div className="w-full my-2">
@@ -205,8 +205,8 @@ function FormAddParticipant({ onParticipantAdded, isEnrollmentPhase }) {
 					</Form>
 				</div>
 			</div>
-			<div className="mb-2 p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
-				<h2 className="font-semibold text-xl">
+			<div className="p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
+				<h2 className="font-semibold text-xl text-accent_delete">
 					<T tkey="participants.titles.add-csv" />
 				</h2>
 				<div className="mt-4 w-full flex flex-col md:flex-row md:space-x-8 justify-between gap-y-2 md:gap-y-0">

@@ -60,8 +60,8 @@
 		"titles": {
 			"add-form": "Agregar un nuevo participante",
 			"add-csv": "Carga masiva de participantes",
-			"set-process": "Selecciona tu proceso",
-			"manage": "Gestionar cuestionarios",
+			"set-process": "Seleccionar tipo de evaluación",
+			"manage": "Ejecutar evaluación",
 			"add-leader": "Agregar un nuevo líder",
 			"add-product": "Agregar un nuevo producto"
 		},

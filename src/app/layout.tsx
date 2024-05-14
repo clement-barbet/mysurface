@@ -19,7 +19,7 @@ export default function RootLayout({
 			<head>
 				<link
 					rel="icon"
-					href="/logo_mysurface.svg"
+					href="/logo/surf-app-favicon-orange-dark.svg"
 				/>
 			</head>
 			<body

@@ -92,8 +92,8 @@ export default function SelectProcess({
 				setSuccessMessage={setSuccessMessage}
 			/>
 			{isEnrollmentPhase ? (
-				<div className="mb-2 p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
-					<h2 className="font-semibold text-xl mb-2">
+				<div className="p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
+					<h2 className="font-semibold text-xl mb-2 text-accent_delete">
 						<T tkey="participants.titles.set-process" />
 					</h2>
 					<div>
@@ -121,7 +121,8 @@ export default function SelectProcess({
 									<T tkey="participants.select-process.options.products" />
 									:{" "}
 								</span>
-								<T tkey="participants.select-process.explanations.products" />.
+								<T tkey="participants.select-process.explanations.products" />
+								.
 							</p>
 						)}
 					</div>
@@ -170,9 +171,11 @@ export default function SelectProcess({
 					</Form>
 				</div>
 			) : (
-				<div className="mb-2 p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
-					<h2 className="font-bold">
-						<T tkey="participants.select-process.selected" />{" "}
+				<div className="p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
+					<h2 className="font-bold text-xl">
+						<span className="text-accent_delete">
+							<T tkey="participants.select-process.selected" />
+						</span>{" "}
 						<i className="font-normal uppercase">
 							<T tkey={processName} />
 						</i>

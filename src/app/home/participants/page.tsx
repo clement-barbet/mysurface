@@ -170,12 +170,23 @@ export default function Page() {
 	}, [participants]);
 
 	return (
-		<>
+		<div className="flex flex-col gap-y-4 m-2">
 			<SelectProcess
 				userId={userId}
 				process={process}
 				setProcess={setProcess}
 				isEnrollmentPhase={isEnrollmentPhase}
+			/>
+			<FormAddAssessed
+				process={process}
+				onAssessedAdded={onAssessedAdded}
+				isEnrollmentPhase={isEnrollmentPhase}
+			/>
+			<TableAssessed
+				assesseds={assesseds}
+				setAssesseds={setAssesseds}
+				isEnrollmentPhase={isEnrollmentPhase}
+				process={process}
 			/>
 			<FormAddParticipant
 				onParticipantAdded={onParticipantAdded}
@@ -191,21 +202,8 @@ export default function Page() {
 				selectedProcess={process}
 				userId={userId}
 			/>
-			<div>
-				<FormAddAssessed
-					process={process}
-					onAssessedAdded={onAssessedAdded}
-					isEnrollmentPhase={isEnrollmentPhase}
-				/>
-			</div>
-			<TableAssessed
-				assesseds={assesseds}
-				setAssesseds={setAssesseds}
-				isEnrollmentPhase={isEnrollmentPhase}
-				process={process}
-			/>
-			<div className="my-2 p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
-				<h2 className="mb-2 font-semibold text-xl">
+			<div className="p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
+				<h2 className="mb-2 font-semibold text-xl text-accent_delete">
 					<T tkey="participants.titles.manage" />
 				</h2>
 				<div className="flex flex-col gap-y-2 md:gap-x-4 md:flex-row md:justify-start md:flex-wrap">
@@ -242,6 +240,6 @@ export default function Page() {
 					/>
 				</div>
 			</div>
-		</>
+		</div>
 	);
 }

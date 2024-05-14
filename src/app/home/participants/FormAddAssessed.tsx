@@ -74,8 +74,8 @@ function FormAddAssessed({ process, onAssessedAdded, isEnrollmentPhase }) {
 	}
 
 	return (
-		<div className="my-2 p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
-			<h2 className="mb-2 text-xl font-semibold">
+		<div className="p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
+			<h2 className="mb-2 text-xl font-semibold text-accent_delete">
 				{process == 2 ? (
 					<T tkey="participants.titles.add-leader" />
 				) : (

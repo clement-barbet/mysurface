@@ -98,16 +98,24 @@ export default function DashboardNavbar() {
 						{ hidden: !isMenuOpen, "md:flex": true }
 					)}
 				>
-					<img src="/logo.svg" alt="mysurface_logo" className="w-7" />
-					<h1 className="text-xl font-fjalla">MySurface</h1>
+					<img
+						id="logo"
+						src="/logo/surf-logo.svg"
+						alt="mysurface_logo"
+						className="w-7 h-7"
+					/>
+					<h1 className="text-xl font-fjalla">My Surface</h1>
 				</div>
 			</Link>
 			<ul
 				id="sidebar-menu"
-				className={clsx("flex flex-col h-full w-full text-sm mt-4 overflow-auto", {
-					hidden: !isMenuOpen,
-					"md:flex": true,
-				})}
+				className={clsx(
+					"flex flex-col h-full w-full text-sm mt-4 overflow-auto",
+					{
+						hidden: !isMenuOpen,
+						"md:flex": true,
+					}
+				)}
 			>
 				<li
 					className={clsx("py-2 px-4 w-full tracking-wider", {

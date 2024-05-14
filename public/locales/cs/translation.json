@@ -60,8 +60,8 @@
 		"titles": {
 			"add-form": "Přidat nového účastníka",
 			"add-csv": "Hromadné nahrání účastníků",
-			"set-process": "Vyberte svůj proces",
-			"manage": "Správa dotazníků",
+			"set-process": "Vyberte typ hodnocení",
+			"manage": "Spustit hodnocení",
 			"add-leader": "Přidat nového vůdce",
 			"add-product": "Přidat nový produkt"
 		},

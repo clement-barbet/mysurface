@@ -3,6 +3,7 @@ import TS from "@/components/translations/inside_tags/translation_safe";
 import { useTranslation } from "react-i18next";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useState, useEffect } from "react";
+import { ReactComponent as Logo } from "logo.svg";
 
 const LeftSideLogin = () => {
 	const { i18n } = useTranslation();
@@ -43,13 +44,13 @@ const LeftSideLogin = () => {
 			</div>
 			<div className="rounded-lg w-4/5 md:order-1 md:mb-4 ">
 				<img
-					src="/logo.svg"
-					alt="mysurface_logo"
-					className="mx-auto mb-10"
 					id="logo"
+					src="/logo/surf-logo.svg"
+					alt="mysurface_logo"
+					className="mx-auto mb-6 w-60 h-60"
 				/>
 				<h1 className="text-6xl text-light_gray font-fjalla text-center mb-5">
-					MySurface
+					My Surface
 				</h1>
 				<hr className="w-1/2 mx-auto mb-5 border-2 border-light_gray" />
 				<p className="text-light_gray font-glory text-center font-light text-xl w-4/5 lg:w-3/5 mx-auto">
