@@ -44,7 +44,7 @@ export default function Dashboard() {
 	return (
 		<>
 			<div className="w-full m-auto mb-2 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90 px-4 md:px-10 py-5">
-				<h2 className="font-bold text-xl md:text-lg">
+				<h2 className="text-xl mb-2 font-semibold border-l-4 border-mid_blue pl-2">
 					<T tkey="dashboard.results.title" />
 				</h2>
 				<p className="text-gray-600 dark:text-gray-400 text-lg md:text-base mb-2">
@@ -101,7 +101,7 @@ export default function Dashboard() {
 				<div className="flex flex-col sm:flex-row xl:flex-col gap-y-2 sm:gap-x-2 xl:w-3/5">
 					<div className="h-auto w-full sm:w-1/2 xl:w-full flex flex-col shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
 						<div className="px-4 md:px-10 py-5">
-							<h2 className="font-bold text-xl md:text-lg">
+							<h2 className="text-xl mb-2 font-semibold border-l-4 border-mid_blue pl-2">
 								<T tkey="dashboard.piechart.title" />
 							</h2>
 							<p className="text-gray-600 dark:text-gray-400 text-lg md:text-base">
@@ -115,7 +115,7 @@ export default function Dashboard() {
 					<div className="h-auto w-full sm:w-1/2 xl:w-full flex flex-col shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
 						<div className="px-4 md:px-10 py-5">
 							<div className="mb-2">
-								<h2 className="font-bold text-xl md:text-lg">
+								<h2 className="text-xl mb-2 font-semibold border-l-4 border-mid_blue pl-2">
 									<T tkey="dashboard.notifications.title" />
 								</h2>
 								<p className="text-gray-600 dark:text-gray-400 text-lg md:text-base">
@@ -131,7 +131,7 @@ export default function Dashboard() {
 				<div className="h-auto w-full xl:w-2/5 flex flex-col justify-between shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
 					<div>
 						<div className="px-4 md:px-10 py-5">
-							<h2 className="font-bold text-xl md:text-lg">
+							<h2 className="text-xl mb-2 font-semibold border-l-4 border-mid_blue pl-2">
 								<T tkey="dashboard.team.title" />
 							</h2>
 

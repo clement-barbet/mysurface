@@ -6,7 +6,7 @@ export default function Patterns() {
 		<div className="flex flex-col gap-y-2">
 			<div className="flex flex-col gap-y-2 lg:flex-row lg:gap-x-2">
 				<div className="w-full p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
-					<h2 className="font-bold text-xl md:text-lg">
+					<h2 className="text-xl mb-2 font-semibold border-l-4 border-mid_blue pl-2">
 						<T tkey="patterns.p1.title" />
 					</h2>
 					<p className="text-gray-600 dark:text-gray-400 text-lg md:text-base mb-2">
@@ -19,7 +19,7 @@ export default function Patterns() {
 					/>
 				</div>
 				<div className="w-full p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
-					<h2 className="font-bold text-xl md:text-lg">
+					<h2 className="text-xl mb-2 font-semibold border-l-4 border-mid_blue pl-2">
 						<T tkey="patterns.p2.title" />
 					</h2>
 					<p className="text-gray-600 dark:text-gray-400 text-lg md:text-base mb-2">
@@ -34,7 +34,7 @@ export default function Patterns() {
 			</div>
 			<div className="flex flex-col gap-y-2 lg:flex-row lg:gap-x-2">
 				<div className="w-full p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
-					<h2 className="font-bold text-xl md:text-lg">
+					<h2 className="text-xl mb-2 font-semibold border-l-4 border-mid_blue pl-2">
 						<T tkey="patterns.p3.title" />
 					</h2>
 					<p className="text-gray-600 dark:text-gray-400 text-lg md:text-base mb-2">
@@ -47,7 +47,7 @@ export default function Patterns() {
 					/>
 				</div>
 				<div className="w-full p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
-					<h2 className="font-bold text-xl md:text-lg">
+					<h2 className="text-xl mb-2 font-semibold border-l-4 border-mid_blue pl-2">
 						<T tkey="patterns.p4.title" />
 					</h2>
 					<p className="text-gray-600 dark:text-gray-400 text-lg md:text-base mb-2">
@@ -62,7 +62,7 @@ export default function Patterns() {
 			</div>
 			<div className="flex flex-col gap-y-2 lg:flex-row lg:gap-x-2">
 				<div className="w-full p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
-					<h2 className="font-bold text-xl md:text-lg">
+					<h2 className="text-xl mb-2 font-semibold border-l-4 border-mid_blue pl-2">
 						<T tkey="patterns.p5.title" />
 					</h2>
 					<p className="text-gray-600 dark:text-gray-400 text-lg md:text-base mb-2">
@@ -75,7 +75,7 @@ export default function Patterns() {
 					/>
 				</div>
 				<div className="w-full p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
-					<h2 className="font-bold text-xl md:text-lg">
+					<h2 className="text-xl mb-2 font-semibold border-l-4 border-mid_blue pl-2">
 						<T tkey="patterns.p6.title" />
 					</h2>
 					<p className="text-gray-600 dark:text-gray-400 text-lg md:text-base mb-2">
@@ -90,7 +90,7 @@ export default function Patterns() {
 			</div>
 			<div className="flex flex-col gap-y-2 lg:flex-row lg:gap-x-2">
 				<div className="w-full p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
-					<h2 className="font-bold text-xl md:text-lg">
+					<h2 className="text-xl mb-2 font-semibold border-l-4 border-mid_blue pl-2">
 						<T tkey="patterns.p7.title" />
 					</h2>
 					<p className="text-gray-600 dark:text-gray-400 text-lg md:text-base mb-2">
@@ -103,7 +103,7 @@ export default function Patterns() {
 					/>
 				</div>
 				<div className="w-full p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
-					<h2 className="font-bold text-xl md:text-lg">
+					<h2 className="text-xl mb-2 font-semibold border-l-4 border-mid_blue pl-2">
 						<T tkey="patterns.p8.title" />
 					</h2>
 					<p className="text-gray-600 dark:text-gray-400 text-lg md:text-base mb-2">
@@ -118,7 +118,7 @@ export default function Patterns() {
 			</div>
 			<div className="flex flex-col gap-y-2 lg:flex-row lg:gap-x-2">
 				<div className="w-full p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
-					<h2 className="font-bold text-xl md:text-lg">
+					<h2 className="text-xl mb-2 font-semibold border-l-4 border-mid_blue pl-2">
 						<T tkey="patterns.p9.title" />
 					</h2>
 					<p className="text-gray-600 dark:text-gray-400 text-lg md:text-base mb-2">
@@ -131,7 +131,7 @@ export default function Patterns() {
 					/>
 				</div>
 				<div className="w-full p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
-					<h2 className="font-bold text-xl md:text-lg">
+					<h2 className="text-xl mb-2 font-semibold border-l-4 border-mid_blue pl-2">
 						<T tkey="patterns.p10.title" />
 					</h2>
 					<p className="text-gray-600 dark:text-gray-400 text-lg md:text-base mb-2">
@@ -146,7 +146,7 @@ export default function Patterns() {
 			</div>
 			<div className="flex flex-col gap-y-2 lg:flex-row lg:gap-x-2">
 				<div className="w-full p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
-					<h2 className="font-bold text-xl md:text-lg">
+					<h2 className="text-xl mb-2 font-semibold border-l-4 border-mid_blue pl-2">
 						<T tkey="patterns.p11.title" />
 					</h2>
 					<p className="text-gray-600 dark:text-gray-400 text-lg md:text-base mb-2">
@@ -159,7 +159,7 @@ export default function Patterns() {
 					/>
 				</div>
 				<div className="w-full p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
-					<h2 className="font-bold text-xl md:text-lg">
+					<h2 className="text-xl mb-2 font-semibold border-l-4 border-mid_blue pl-2">
 						<T tkey="patterns.p12.title" />
 					</h2>
 					<p className="text-gray-600 dark:text-gray-400 text-lg md:text-base mb-2">
