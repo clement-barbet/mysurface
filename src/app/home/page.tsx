@@ -5,7 +5,7 @@ import T from "@/components/translations/translation";
 export default function Home() {
 	return (
 		<div className="flex flex-col gap-y-2">
-			<div className="px-4 md:px-10 py-5 py-h-auto w-full flex flex-col shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
+			<div className="p-5 py-h-auto w-full flex flex-col shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
 				<h2 className="text-xl mb-2 font-semibold border-l-4 border-mid_blue pl-2">
 					<T tkey="home.welcome.title" />
 				</h2>
@@ -14,8 +14,8 @@ export default function Home() {
 				</p>
 			</div>
 			<div className="flex flex-col md:flex-row md:gap-x-2 gap-y-2">
-				<div className="h-auto w-full flex flex-col shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
-					<div className="px-4 md:px-10 py-5">
+				<div className="p-5 h-auto w-full flex flex-col shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
+					<div>
 						<h2 className="text-xl mb-2 font-semibold border-l-4 border-mid_blue pl-2">
 							<T tkey="home.guide.admin.title" />
 						</h2>
@@ -42,8 +42,8 @@ export default function Home() {
 						</table>
 					</div>
 				</div>
-				<div className="h-auto w-full flex flex-col shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
-					<div className="px-4 md:px-10 py-5">
+				<div className="p-5 h-auto w-full flex flex-col shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
+					<div>
 						<h2 className="text-xl mb-2 font-semibold border-l-4 border-mid_blue pl-2">
 							<T tkey="home.guide.user.title" />
 						</h2>
@@ -71,8 +71,8 @@ export default function Home() {
 					</div>
 				</div>
 			</div>
-			<div className="h-auto w-full flex flex-col shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
-				<div className="px-4 md:px-10 py-5">
+			<div className="p-5 h-auto w-full flex flex-col shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
+				<div>
 					<div className="mb-2">
 						<h2 className="text-xl mb-2 font-semibold border-l-4 border-mid_blue pl-2">
 							<T tkey="home.updates.title" />
