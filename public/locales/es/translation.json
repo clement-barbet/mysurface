@@ -275,7 +275,10 @@
 		}
 	},
 	"login": {
-		"slogan": "Conecta, Colabora, Visualiza: Tu Equipo, Tu Superficie.",
+		"slogan": {
+			"part1": "Conecta, Colabora, Visualiza:",
+			"part2": "Tu Equipo, Tu Superficie."
+		},
 		"title": "¡Bienvenido de nuevo!",
 		"form": {
 			"labels": {

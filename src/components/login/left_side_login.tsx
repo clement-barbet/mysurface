@@ -1,9 +1,8 @@
 import React from "react";
-import TS from "@/components/translations/inside_tags/translation_safe";
+import T from "@/components/translations/translation";
 import { useTranslation } from "react-i18next";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useState, useEffect } from "react";
-import { ReactComponent as Logo } from "/public/surf-logo.svg";
 
 const LeftSideLogin = () => {
 	const { i18n } = useTranslation();
@@ -52,9 +51,11 @@ const LeftSideLogin = () => {
 				<h1 className="text-6xl text-light_gray font-fjalla text-center mb-5">
 					My Surface
 				</h1>
-				<hr className="w-1/2 mx-auto mb-5 border-2 border-light_gray" />
+				<hr className="w-3/4 lg:w-2/3 mx-auto mb-5 border-2 border-light_gray" />
 				<p className="text-light_gray font-glory text-center font-light text-xl w-4/5 lg:w-3/5 mx-auto">
-					<TS tkey="login.slogan" />
+					<T tkey="login.slogan.part1" />
+					<br />
+					<T tkey="login.slogan.part2" />
 				</p>
 			</div>
 		</div>

@@ -275,7 +275,10 @@
 		}
 	},
 	"login": {
-		"slogan": "Propojte se, Spolupracujte, Vizualizujte: Váš Tým, Váš Prostor.",
+		"slogan": {
+			"part1": "Propojte se, Spolupracujte, Vizualizujte:",
+			"part2": "Váš Tým, Váš Prostor."
+		},
 		"title": "Vítejte zpět!",
 		"form": {
 			"labels": {

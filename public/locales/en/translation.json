@@ -275,7 +275,10 @@
 		}
 	},
 	"login": {
-		"slogan": "Connect, Collaborate, Visualize:<br> Your Team, Your Surface.",
+		"slogan": {
+			"part1": "Connect, Collaborate, Visualize:",
+			"part2": "Your Team, Your Surface."
+		},
 		"title": "Welcome back!",
 		"form": {
 			"labels": {
