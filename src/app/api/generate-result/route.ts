@@ -140,6 +140,21 @@ export async function POST() {
 					);
 				}
 			}
+
+			// Delete all records from assesseds
+			if (user.data.user) {
+				const { error: deleteAssessedsError } = await supabase
+					.from("assessed")
+					.delete()
+					.eq("user_id", user.data.user.id);
+
+				if (deleteAssessedsError) {
+					console.error(
+						"Error deleting assesseds:",
+						deleteAssessedsError
+					);
+				}
+			}
 		}
 
 		return NextResponse.json({
