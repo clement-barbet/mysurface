@@ -67,21 +67,16 @@ function TableAssessed({
 				successMessage={successMessage}
 				setSuccessMessage={setSuccessMessage}
 			/>
-			<div className="rounded-md overflow-auto w-full hidden md:block">
+			<div className="overflow-auto w-full hidden md:block p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
+				<h2 className="mb-4 font-semibold text-xl  text-black border-l-4 border-mid_blue pl-2">
+					{process == 2 ? (
+						<T tkey="participants.titles.leaders" />
+					) : (
+						<T tkey="participants.titles.products" />
+					)}
+				</h2>
 				<Table className="w-full">
 					<TableHeader>
-						<THeadRow className="bg-mid_blue">
-							<TableHead
-								colSpan={headers_T.length}
-								className="text-base uppercase text-center tracking-widest"
-							>
-								{process == 2 ? (
-									<T tkey="participants.titles.leaders" />
-								) : (
-									<T tkey="participants.titles.products" />
-								)}
-							</TableHead>
-						</THeadRow>
 						<THeadRow>
 							{headers_T.map((header, index) => {
 								return (
@@ -160,7 +155,14 @@ function TableAssessed({
 					</TableBody>
 				</Table>
 			</div>
-			<div className="block md:hidden">
+			<div className="overflow-auto w-full block md:hidden p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
+				<h2 className="mb-4 font-semibold text-xl  text-black border-l-4 border-mid_blue pl-2">
+					{process == 2 ? (
+						<T tkey="participants.titles.leaders" />
+					) : (
+						<T tkey="participants.titles.products" />
+					)}
+				</h2>
 				{assesseds.length
 					? assesseds.map((assessed) => {
 							if (assessed) {

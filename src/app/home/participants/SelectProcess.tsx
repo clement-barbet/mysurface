@@ -93,7 +93,7 @@ export default function SelectProcess({
 			/>
 			{isEnrollmentPhase ? (
 				<div className="p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
-					<h2 className="font-semibold text-xl mb-2 text-accent_delete">
+					<h2 className="font-semibold text-xl mb-2  border-l-4 border-mid_blue pl-2">
 						<T tkey="participants.titles.set-process" />
 					</h2>
 					<div>
@@ -172,10 +172,8 @@ export default function SelectProcess({
 				</div>
 			) : (
 				<div className="p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
-					<h2 className="font-bold text-xl">
-						<span className="text-accent_delete">
-							<T tkey="participants.select-process.selected" />
-						</span>{" "}
+					<h2 className="font-bold text-xl  border-l-4 border-mid_blue pl-2">
+						<T tkey="participants.select-process.selected" />{" "}
 						<i className="font-normal uppercase">
 							<T tkey={processName} />
 						</i>

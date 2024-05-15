@@ -38,7 +38,11 @@ function FormAddAssessed({ process, onAssessedAdded, isEnrollmentPhase }) {
 	const addAssessedToDatabase = async (assessed) => {
 		const { data: insertedAssessed, error } = await supabase.rpc(
 			"insert_assessed_and_return",
-			{ new_name: assessed.name, new_description: assessed.description, new_type_text: typeAssessed }
+			{
+				new_name: assessed.name,
+				new_description: assessed.description,
+				new_type_text: typeAssessed,
+			}
 		);
 
 		if (error) {
@@ -75,7 +79,7 @@ function FormAddAssessed({ process, onAssessedAdded, isEnrollmentPhase }) {
 
 	return (
 		<div className="p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
-			<h2 className="mb-2 text-xl font-semibold text-accent_delete">
+			<h2 className="mb-2 text-xl font-semibold  border-l-4 border-mid_blues pl-2">
 				{process == 2 ? (
 					<T tkey="participants.titles.add-leader" />
 				) : (
