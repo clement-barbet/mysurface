@@ -59,7 +59,7 @@
 	"participants": {
 		"titles": {
 			"add-form": "Přidat nového účastníka",
-			"add-csv": "Hromadné nahrání účastníků",
+			"add-csv": "Hromadné nahrávání účastníků",
 			"set-process": "Vyberte typ hodnocení",
 			"manage": "Spustit hodnocení",
 			"add-leader": "Přidat nového vůdce",
@@ -177,8 +177,8 @@
 			"button": "OBNOVIT"
 		},
 		"organization": {
-			"title": "Organizace",
-			"label": "Vyberte vaši organizaci",
+			"title": "Typ Organizace",
+			"label": "Vyberte Typ Vaší Organizace",
 			"options": {
 				"company": "Firma",
 				"school": "Škola",

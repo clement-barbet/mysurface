@@ -171,7 +171,7 @@ export default function Page() {
 	}, [participants]);
 
 	return (
-		<div className="flex flex-col gap-y-2 md:gap-y-4 md:m-2">
+		<div className="flex flex-col gap-y-2">
 			<SelectProcess
 				userId={userId}
 				process={process}

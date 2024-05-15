@@ -94,7 +94,7 @@ export default function ChangeOrganization({ userId }: { userId: string }) {
 				setSuccessMessage={setSuccessMessage}
 			/>
 			<div>
-				<h2 className="pb-5 text-xl font-semibold">
+				<h2 className="mb-2 text-xl font-semibold border-l-4 border-mid_blue pl-2">
 					<T tkey="account.organization.title" />
 				</h2>
 				<Form {...form}>

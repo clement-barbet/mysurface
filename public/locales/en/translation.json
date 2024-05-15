@@ -59,7 +59,7 @@
 	"participants": {
 		"titles": {
 			"add-form": "Add a new participant",
-			"add-csv": "Bulk participant upload",
+			"add-csv": "Bulk participants upload",
 			"set-process": "Select assessment type",
 			"manage": "Run assessment",
 			"add-leader": "Add a new leader",
@@ -177,8 +177,8 @@
 			"button": "RESET"
 		},
 		"organization": {
-			"title": "Organization",
-			"label": "Select Your Organization",
+			"title": "Organization Type",
+			"label": "Select Your Organization Type",
 			"options": {
 				"company": "Company",
 				"school": "School",

@@ -177,8 +177,8 @@
 			"button": "RESTABLECER"
 		},
 		"organization": {
-			"title": "Organización",
-			"label": "Selecciona Tu Organización",
+			"title": "Tipo de Organización",
+			"label": "Selecciona tu Tipo de Organización",
 			"options": {
 				"company": "Empresa",
 				"school": "Escuela",
