@@ -7,19 +7,29 @@ import T from "@/components/translations/translation";
 export default function CreateResultButton({
 	isEnrollmentPhase,
 	participantCount,
-  atLeastOneQuestionnaireCompleted
+	atLeastOneQuestionnaireCompleted,
+	process,
 }: {
 	isEnrollmentPhase: boolean;
 	participantCount: number;
-  atLeastOneQuestionnaireCompleted: boolean;
+	atLeastOneQuestionnaireCompleted: boolean;
+	process: any;
 }) {
 	const router = useRouter();
 
 	const generateResult = async () => {
 		try {
-			const response = await fetch("/api/generate-result", {
-				method: "POST",
-			});
+			let response;
+
+			if (process == 1) {
+				response = await fetch("/api/generate-result", {
+					method: "POST",
+				});
+			} else {
+				response = await fetch("/api/generate-result-assessed", {
+					method: "POST",
+				});
+			}
 
 			if (response.ok) {
 				console.log("Result generated successfully");
@@ -44,7 +54,20 @@ export default function CreateResultButton({
 		}
 	};
 
-	const canGenerateResult = !isEnrollmentPhase && atLeastOneQuestionnaireCompleted && participantCount >= 2;
+	let canGenerateResult;
+
+	if (process == 1) {
+		canGenerateResult =
+			!isEnrollmentPhase &&
+			atLeastOneQuestionnaireCompleted &&
+			participantCount >= 2;
+	} else {
+		canGenerateResult =
+			!isEnrollmentPhase &&
+			atLeastOneQuestionnaireCompleted &&
+			participantCount >= 1;
+	}
+	
 	if (!canGenerateResult) {
 		return null;
 	}

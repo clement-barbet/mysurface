@@ -242,7 +242,8 @@
 				"deletion-date": "Deletion Date",
 				"creation-date": "Creation Date",
 				"organization": "Organization",
-				"owner-name": "Owner's Name"
+				"owner-name": "Owner's Name",
+				"process": "Assessment"
 			},
 			"buttons": {
 				"delete": "Delete",

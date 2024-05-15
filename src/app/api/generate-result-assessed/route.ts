@@ -15,6 +15,7 @@ export async function POST() {
 			.single();
 
 		if (appSettingsError) {
+			console.log("Error fetching app settings", appSettingsError);
 			throw appSettingsError;
 		}
 
@@ -24,10 +25,10 @@ export async function POST() {
 			.select("*")
 			.eq("language_id", appSettings.language_id)
 			.eq("organization_id", appSettings.organization_id)
-			.eq("process_id", appSettings.process);
+			.eq("process_id", appSettings.process_id);
 
 		if (questionsError) {
-			console.log("Error fetching questions");
+			console.log("Error fetching questions", questionsError);
 			throw questionsError;
 		}
 
@@ -39,7 +40,20 @@ export async function POST() {
 				.eq("user_id", user.data.user?.id);
 
 		if (fetchParticipantError) {
+			console.log("Error fetching participants", fetchParticipantError);
 			throw fetchParticipantError;
+		}
+
+		// Fetch assesseds
+		const { data: assesseds, error: fetchAssessedsError } = await supabase
+			.from("assessed")
+			.select("id, name, description")
+			.eq("user_id", user.data.user?.id)
+			.eq("type", appSettings.process_id == 2 ? "leader" : "product");
+
+		if (fetchAssessedsError) {
+			console.log("Error fetching assesseds", fetchAssessedsError);
+			throw fetchAssessedsError;
 		}
 
 		// Fetch questionnaires
@@ -47,6 +61,10 @@ export async function POST() {
 			await supabase.from("questionnaires").select("*");
 
 		if (fetchQuestionnaireError) {
+			console.log(
+				"Error fetching questionnaires",
+				fetchQuestionnaireError
+			);
 			throw fetchQuestionnaireError;
 		}
 
@@ -58,22 +76,17 @@ export async function POST() {
 
 			let data;
 			if (questionnaire && !questionnaire.completed) {
-				data = participants
-					.filter((p) => p.id !== participant.id)
-					.map((p) => ({
-						participantId: p.id,
-						participantName: p.name,
-						answers: questions.map((question) => ({
-							questionText: question.question.replace(
-								"%s",
-								p.name
-							),
-							rating: 0,
-							weight: question.weight,
-						})),
-						interactionGrade: 0,
-						influenceGrade: 0,
-					}));
+				data = assesseds.map((a) => ({
+					participantId: a.id,
+					participantName: a.name,
+					answers: questions.map((question) => ({
+						questionText: question.question.replace("%s", a.name),
+						rating: 0,
+						weight: question.weight,
+					})),
+					interactionGrade: 0,
+					influenceGrade: 0,
+				}));
 				questionnaire.data = data;
 			}
 
@@ -83,6 +96,29 @@ export async function POST() {
 			};
 		});
 
+		const assessedData = assesseds.map((assessed) => {
+			let data;
+			data = participants.map((p) => ({
+				participantId: p.id,
+				participantName: p.name,
+				answers: questions.map((question) => ({
+					questionText: question.question.replace("%s", p.name),
+					rating: 0,
+					weight: question.weight,
+				})),
+				interactionGrade: 0,
+				influenceGrade: 0,
+			}));
+
+			return {
+				participantName: assessed.name,
+				data: data ? data : [],
+			};
+		});
+
+		// Combine participants and assessed data
+		const combinedData = [...participantsData, ...assessedData];
+
 		// Insert the participants data into the results table
 		const { data: insertedResult, error: insertError } = await supabase
 			.from("results")
@@ -90,14 +126,16 @@ export async function POST() {
 				{
 					id: Date.now().toString(),
 					created_at: new Date().toISOString(),
-					result: JSON.stringify(participantsData),
+					result: JSON.stringify(combinedData),
 					report_name: "Participants Data",
+                    process_id: appSettings.process_id,
 				},
 			])
 			.select("*")
 			.single();
 
 		if (insertError) {
+			console.log("Error inserting result", insertError);
 			throw insertError;
 		}
 
@@ -137,6 +175,21 @@ export async function POST() {
 					console.error(
 						"Error deleting participants:",
 						deleteParticipantsError
+					);
+				}
+			}
+
+			// Delete all records from assesseds
+			if (user.data.user) {
+				const { error: deleteAssessedsError } = await supabase
+					.from("assessed")
+					.delete()
+					.eq("user_id", user.data.user.id);
+
+				if (deleteAssessedsError) {
+					console.error(
+						"Error deleting assesseds:",
+						deleteAssessedsError
 					);
 				}
 			}

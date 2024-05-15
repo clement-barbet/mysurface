@@ -15,7 +15,9 @@ export default function CreateQuestionnairesButton({
 	participantCount,
 	setIsEnrollmentPhase,
 	fetchQuestionnaires,
-	fetchParticipants
+	fetchParticipants,
+	process,
+	assessedCount,
 }) {
 	const createQuestionnaires = async () => {
 		try {
@@ -46,7 +48,15 @@ export default function CreateQuestionnairesButton({
 		}
 	};
 
-	const canCreateQuestionnaires = isEnrollmentPhase && participantCount >= 2;
+	let canCreateQuestionnaires;
+	if (process == 1) {
+		canCreateQuestionnaires = isEnrollmentPhase && participantCount >= 2;
+	} else {
+		canCreateQuestionnaires = isEnrollmentPhase && participantCount >= 1 && assessedCount >= 1;
+	}
+
+	console.log("participantCount", participantCount);
+	console.log("assessedCount", assessedCount);
 
 	if (!isEnrollmentPhase) {
 		return null;

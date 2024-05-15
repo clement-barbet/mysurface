@@ -242,7 +242,8 @@
 				"deletion-date": "Datum Smazání",
 				"creation-date": "Datum Vytvoření",
 				"organization": "Organizace",
-				"owner-name": "Jméno Vlastníka"
+				"owner-name": "Jméno Vlastníka",
+				"process": "Hodnocení"
 			},
 			"buttons": {
 				"delete": "Smazat",

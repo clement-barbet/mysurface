@@ -26,10 +26,12 @@ export default function Results() {
 	const [open, setOpen] = useState(false);
 	const [openDelete, setOpenDelete] = useState(false);
 	const [reportName, setReportName] = useState("");
+	const [assessment, setAssessment] = useState("");
 
 	const headers_T = [
 		"results.table.headers.id",
 		"results.table.headers.name",
+		"results.table.headers.process",
 		"results.table.headers.date",
 		"results.table.headers.edit",
 		"results.table.headers.delete",
@@ -76,6 +78,16 @@ export default function Results() {
 		fetchData();
 	}, []);
 
+	function getProcessName(process_id) {
+		if (process_id === 1) {
+			return "participants.select-process.options.influence";
+		} else if (process_id === 2) {
+			return "participants.select-process.options.leaders";
+		} else {
+			return "participants.select-process.options.products";
+		}
+	}
+
 	return (
 		!loading && (
 			<>
@@ -116,6 +128,13 @@ export default function Results() {
 												</TableCell>
 												<TableCell className="px-6 py-2 whitespace-nowrap">
 													{result.report_name}
+												</TableCell>
+												<TableCell className="px-6 py-2 whitespace-nowrap">
+													<T
+														tkey={getProcessName(
+															result.process_id
+														)}
+													/>
 												</TableCell>
 												<TableCell className="px-6 py-2 whitespace-nowrap">
 													{formattedDate}
@@ -161,7 +180,9 @@ export default function Results() {
 							/>
 						</>
 					) : (
-						<p><T tkey="results.nodata"/></p>
+						<p>
+							<T tkey="results.nodata" />
+						</p>
 					)}
 				</div>
 				<ModalComponent

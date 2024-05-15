@@ -164,6 +164,7 @@ export default function Page() {
 			: false;
 
 	const participantCount = participants ? participants.length : 0;
+	const assessedCount = assesseds ? assesseds.length : 0;
 
 	useEffect(() => {
 		console.log("participants updated page.tsx", participants);
@@ -213,6 +214,8 @@ export default function Page() {
 						setIsEnrollmentPhase={setIsEnrollmentPhase}
 						fetchQuestionnaires={fetchQuestionnaires}
 						fetchParticipants={fetchParticipants}
+						process={process}
+						assessedCount={assessedCount}
 					/>
 					<ResetPhaseButton
 						isEnrollmentPhase={isEnrollmentPhase}
@@ -237,6 +240,7 @@ export default function Page() {
 						atLeastOneQuestionnaireCompleted={
 							atLeastOneQuestionnaireCompleted
 						}
+						process={process}
 					/>
 				</div>
 			</div>
