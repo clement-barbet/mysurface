@@ -1,10 +1,18 @@
 "use client";
-import T from "@/components/translations/translation";
+import ReportName from "./ReportName";
+import SelectProcess from "./SelectProcess";
+import UploadResults from "./UploadResults";
+import React, { useState } from "react";
 
 export default function Modeling() {
+	const [processId, setProcessId] = useState(1);
+	const [name, setName] = useState("");
+
 	return (
-		<h2 className="font-bold text-xl md:text-lg">
-			Modeling
-		</h2>
+		<div className="flex flex-col gap-y-2">
+			<SelectProcess onProcessIdChange={setProcessId} />
+			<ReportName onNameChange={setName} />
+			<UploadResults processId={processId} reportName={name} />
+		</div>
 	);
 }
