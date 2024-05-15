@@ -18,7 +18,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+This project uses two fonts: **Glory** (content) and **Fjalla One** (MySurface naming).
 
 ## Learn More
 
@@ -330,3 +330,75 @@ The FAQ page provides answers to frequently asked questions. To add a new questi
   </CustomAccordionItem>
 ```
 4. **Save Changes**: Save the modified page.tsx file and the updated i18n JSON file.
+
+## Uploading data from CSV
+
+You can upload a CSV file in order to generate a report manually. This means, loading one row into _Results_ table in DB so data must be set properly to adjust table's structure, which contains a JSON file with all needed data for generating graph nodes and links.
+
+### Assessment
+The CSV file must contain the assessment logic: 
+- Influence: Users assessing other users. You must add all combinations of couples and add ratings for each question.
+- Leaders/Products: Users assessing leaders/products with some rating, but also leaders/products must rate users with a 0 score for all questions.
+
+Logic for calculating influence grade and interaction grade is set in code.
+
+### CSV file structure
+Must contain these headers:
+```csv
+evaluator_id,evaluator_name,evaluated_id,evaluated_name,rating1,weight1,rating2,weight2,rating3,weight3
+```
+
+This is an example of 5 users rating 5 leaders:
+```csv
+evaluator_id,evaluator_name,evaluated_id,evaluated_name,rating1,weight1,rating2,weight2,rating3,weight3
+1,user1,6,leader1,5,0.5,3,0.5,7,0.5
+1,user1,7,leader2,8,0.5,4,0.5,6,0.5
+1,user1,8,leader3,9,0.5,2,0.5,8,0.5
+1,user1,9,leader4,3,0.5,5,0.5,7,0.5
+1,user1,10,leader5,4,0.5,6,0.5,9,0.5
+2,user2,6,leader1,2,0.5,9,0.5,4,0.5
+2,user2,7,leader2,3,0.5,7,0.5,8,0.5
+2,user2,8,leader3,5,0.5,2,0.5,6,0.5
+2,user2,9,leader4,8,0.5,4,0.5,7,0.5
+2,user2,10,leader5,6,0.5,3,0.5,5,0.5
+3,user3,6,leader1,9,0.5,4,0.5,8,0.5
+3,user3,7,leader2,2,0.5,6,0.5,3,0.5
+3,user3,8,leader3,5,0.5,7,0.5,6,0.5
+3,user3,9,leader4,8,0.5,2,0.5,5,0.5
+3,user3,10,leader5,3,0.5,9,0.5,4,0.5
+4,user4,6,leader1,7,0.5,6,0.5,5,0.5
+4,user4,7,leader2,4,0.5,8,0.5,9,0.5
+4,user4,8,leader3,2,0.5,5,0.5,7,0.5
+4,user4,9,leader4,6,0.5,3,0.5,2,0.5
+4,user4,10,leader5,9,0.5,4,0.5,6,0.5
+5,user5,6,leader1,5,0.5,8,0.5,6,0.5
+5,user5,7,leader2,7,0.5,3,0.5,2,0.5
+5,user5,8,leader3,4,0.5,9,0.5,5,0.5
+5,user5,9,leader4,2,0.5,6,0.5,3,0.5
+5,user5,10,leader5,8,0.5,7,0.5,4,0.5
+6,leader1,1,user1,0,0.5,0,0.5,0,0.5
+6,leader1,2,user2,0,0.5,0,0.5,0,0.5
+6,leader1,3,user3,0,0.5,0,0.5,0,0.5
+6,leader1,4,user4,0,0.5,0,0.5,0,0.5
+6,leader1,5,user5,0,0.5,0,0.5,0,0.5
+7,leader2,1,user1,0,0.5,0,0.5,0,0.5
+7,leader2,2,user2,0,0.5,0,0.5,0,0.5
+7,leader2,3,user3,0,0.5,0,0.5,0,0.5
+7,leader2,4,user4,0,0.5,0,0.5,0,0.5
+7,leader2,5,user5,0,0.5,0,0.5,0,0.5
+8,leader3,1,user1,0,0.5,0,0.5,0,0.5
+8,leader3,2,user2,0,0.5,0,0.5,0,0.5
+8,leader3,3,user3,0,0.5,0,0.5,0,0.5
+8,leader3,4,user4,0,0.5,0,0.5,0,0.5
+8,leader3,5,user5,0,0.5,0,0.5,0,0.5
+9,leader4,1,user1,0,0.5,0,0.5,0,0.5
+9,leader4,2,user2,0,0.5,0,0.5,0,0.5
+9,leader4,3,user3,0,0.5,0,0.5,0,0.5
+9,leader4,4,user4,0,0.5,0,0.5,0,0.5
+9,leader4,5,user5,0,0.5,0,0.5,0,0.5
+10,leader5,1,user1,0,0.5,0,0.5,0,0.5
+10,leader5,2,user2,0,0.5,0,0.5,0,0.5
+10,leader5,3,user3,0,0.5,0,0.5,0,0.5
+10,leader5,4,user4,0,0.5,0,0.5,0,0.5
+10,leader5,5,user5,0,0.5,0,0.5,0,0.5
+```
