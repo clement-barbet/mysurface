@@ -90,7 +90,7 @@ export default function DeleteAccountButton({ userId }: { userId: string }) {
 				<Button
 					onClick={handleConfirmOpen}
 					variant="login"
-					className="w-full md:w-1/2 lg:w-1/3 bg-accent_delete hover:bg-accent_delete_hover"
+					className="w-full md:w-1/2 lg:w-1/3 bg-red-500 hover:bg-red-600"
 				>
 					<T tkey="account.delete.button" />
 				</Button>

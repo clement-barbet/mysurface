@@ -29,7 +29,7 @@ export default function Account() {
   return (
     <>
       {userSB && userSB.id ? (
-        <div className="flex flex-col gap-y-4 md:gap-y-10 md:my-8 md:mx-8">
+        <div className="flex flex-col gap-y-2 md:gap-y-4 md:m-2">
           {" "}
           <div className="w-full p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
             <ChangeNames userId={userSB.id} />
