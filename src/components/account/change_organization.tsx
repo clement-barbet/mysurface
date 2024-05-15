@@ -100,7 +100,7 @@ export default function ChangeOrganization({ userId }: { userId: string }) {
 				<Form {...form}>
 					<form
 						onSubmit={form.handleSubmit(handleChangeOrganization)}
-						className="space-y-8"
+						className="flex flex-col gap-y-4"
 					>
 						<FormField
 							control={form.control}
