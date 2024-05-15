@@ -15,6 +15,7 @@ import T from "@/components/translations/translation";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { PiSuitcaseSimple } from "react-icons/pi";
 import { MdOutlineSettingsBackupRestore } from "react-icons/md";
+import { FiEdit } from "react-icons/fi";
 
 export default function DashboardNavbar() {
 	const pathname = usePathname();
@@ -289,6 +290,21 @@ export default function DashboardNavbar() {
 							>
 								<MdOutlineSettingsBackupRestore className="h-6 w-6" />
 								<T tkey="navbar.backup" />
+							</Link>
+						</li>
+						<li
+							className={clsx("py-2 px-4 tracking-wider", {
+								"border-l-4 border-light_gray":
+									pathname === "/home/modeling",
+							})}
+						>
+							<Link
+								onClick={handleLinkClick}
+								href="/home/modeling"
+								className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase"
+							>
+								<FiEdit className="h-6 w-6" />
+								<T tkey="navbar.modeling" />
 							</Link>
 						</li>
 					</>

@@ -342,7 +342,8 @@
 		"faq": "FAQ",
 		"language": "Jazyk",
 		"customers": "Zákazníci",
-		"backup": "Záloha Výsledků"
+		"backup": "Záloha Výsledků",
+		"modeling": "Modelování"
 	},
 	"backup-results": {
 		"title": "Záloha Výsledků"

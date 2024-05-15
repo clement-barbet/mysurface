@@ -21,7 +21,8 @@ export async function middleware(req: NextRequest) {
 		req.nextUrl.pathname.startsWith("/home/results-admin") ||
 		req.nextUrl.pathname.startsWith("/home/customers-admin") ||
 		req.nextUrl.pathname.startsWith("/home/backup") ||
-		req.nextUrl.pathname.startsWith("/home/participants-admin")
+		req.nextUrl.pathname.startsWith("/home/participants-admin") ||
+		req.nextUrl.pathname.startsWith("/home/modeling")
 
 	) {
 		// Check if the user has the "authenticated" role

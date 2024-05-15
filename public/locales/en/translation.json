@@ -342,7 +342,8 @@
 		"faq": "FAQ",
 		"language": "Language",
 		"customers": "Customers",
-		"backup": "Results Backup"
+		"backup": "Results Backup",
+		"modeling": "Modeling"
 	},
 	"topbar": {
 		"search": "Search",

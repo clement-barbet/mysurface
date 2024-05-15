@@ -342,7 +342,8 @@
 		"faq": "FAQ",
 		"language": "Idioma",
 		"customers": "Clientes",
-		"backup": "Respaldo de Resultados"
+		"backup": "Respaldo de Resultados",
+		"modeling": "Modelado"
 	},
 	"backup-results": {
 		"title": "Respaldo de Resultados"
