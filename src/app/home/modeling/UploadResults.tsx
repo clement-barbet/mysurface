@@ -14,13 +14,13 @@ function UploadResults({ processId, reportName }) {
 	const [successMessage, setSuccessMessage] = useState("");
 	const [errorMessage, setErrorMessage] = useState("");
 	const _ = require("lodash");
-    const router = useRouter();
+	const router = useRouter();
 
 	// Insert into database
 	async function addResultToDatabase(participantsData) {
 		try {
-            console.log("process_id", processId);
-            console.log("report_name", reportName);
+			console.log("process_id", processId);
+			console.log("report_name", reportName);
 			const { data: insertedResult, error: insertError } = await supabase
 				.from("results")
 				.insert([
@@ -41,7 +41,7 @@ function UploadResults({ processId, reportName }) {
 				);
 			} else {
 				setSuccessMessage(`Result added successfully.`);
-                const resultId = insertedResult.id;
+				const resultId = insertedResult.id;
 				router.push(`/home/results/${resultId}`);
 			}
 		} catch (error) {
@@ -77,12 +77,13 @@ function UploadResults({ processId, reportName }) {
 				}
 
 				// Group data by evaluator_id
-				const groupedData = _.groupBy(results.data, "evaluator_name");
+				const groupedData = _.groupBy(results.data, "evaluator_id");
 
 				// Transform data to match the database schema
 				const transformedData = _.map(
 					groupedData,
-					(data, participantName) => {
+					(data, evaluatorId) => {
+						const evaluatorName = data[0].evaluator_name;
 						const participantData = data.map((row) => {
 							const interactionRatings = [
 								parseFloat(row.rating1),
@@ -92,7 +93,7 @@ function UploadResults({ processId, reportName }) {
 								parseFloat(row.weight1),
 								parseFloat(row.weight2),
 							];
-							console.log(interactionRatings, interactionWeights);
+
 							const influenceRatings = [parseFloat(row.rating3)];
 							const influenceWeights = [parseFloat(row.weight3)];
 
@@ -143,7 +144,7 @@ function UploadResults({ processId, reportName }) {
 						});
 
 						return {
-							participantName,
+							participantName: evaluatorName,
 							data: participantData,
 						};
 					}
