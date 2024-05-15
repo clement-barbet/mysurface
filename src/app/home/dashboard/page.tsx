@@ -97,51 +97,28 @@ export default function Dashboard() {
 				</div>
 			</div>
 
-			<div className="flex flex-col xl:flex-row gap-y-2 xl:gap-x-2">
-				<div className="flex flex-col sm:flex-row xl:flex-col gap-y-2 sm:gap-x-2 xl:w-3/5">
-					<div className="p-5 h-auto w-full sm:w-1/2 xl:w-full flex flex-col shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
-						<div>
-							<h2 className="text-xl mb-2 font-semibold border-l-4 border-mid_blue pl-2">
-								<T tkey="dashboard.piechart.title" />
-							</h2>
-							<p className="text-gray-600 dark:text-gray-400 text-lg md:text-base">
-								<T tkey="dashboard.piechart.subtitle" />
-							</p>
-							<div className="mt-4">
-								<DashboardPieChart />
-							</div>
+			<div className="flex flex-col md:flex-row gap-y-2 xl:gap-x-2">
+					<div className="p-5 h-auto w-full shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
+						<h2 className="text-xl mb-2 font-semibold border-l-4 border-mid_blue pl-2">
+							<T tkey="dashboard.piechart.title" />
+						</h2>
+						<p className="text-gray-600 dark:text-gray-400 text-lg md:text-base">
+							<T tkey="dashboard.piechart.subtitle" />
+						</p>
+						<div className="mt-4">
+							<DashboardPieChart />
 						</div>
-					</div>
-					<div className="p-5 h-auto w-full sm:w-1/2 xl:w-full flex flex-col shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
-						<div>
-							<div className="mb-2">
-								<h2 className="text-xl mb-2 font-semibold border-l-4 border-mid_blue pl-2">
-									<T tkey="dashboard.notifications.title" />
-								</h2>
-								<p className="text-gray-600 dark:text-gray-400 text-lg md:text-base">
-									<T tkey="dashboard.notifications.subtitle" />
-								</p>
-							</div>
-							<Notification type="add" name="John Doe" />
-							<Notification type="remove" name="Richard Roe" />
-							<Notification type="complete" name="Jane Doe" />
-						</div>
-					</div>
 				</div>
-				<div className="p-5 h-auto w-full xl:w-2/5 flex flex-col justify-between shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
-					<div>
-						<div>
-							<h2 className="text-xl mb-2 font-semibold border-l-4 border-mid_blue pl-2">
-								<T tkey="dashboard.team.title" />
-							</h2>
+				<div className="p-5 h-auto w-full justify-between shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
+					<h2 className="text-xl mb-2 font-semibold border-l-4 border-mid_blue pl-2">
+						<T tkey="dashboard.team.title" />
+					</h2>
 
-							<p className="text-gray-600 dark:text-gray-400 text-lg md:text-base">
-								<T tkey="dashboard.team.subtitle" />
-							</p>
-							<div className="mt-3">
-								<TeamMembersList />
-							</div>
-						</div>
+					<p className="text-gray-600 dark:text-gray-400 text-lg md:text-base">
+						<T tkey="dashboard.team.subtitle" />
+					</p>
+					<div className="mt-3">
+						<TeamMembersList />
 					</div>
 					<div>
 						<Link
