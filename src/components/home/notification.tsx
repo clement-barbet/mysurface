@@ -47,16 +47,18 @@ const Notification = ({ type, msg, link, lang }) => {
 				<h3 className="font-semibold md:text-base text-lg">{title}</h3>
 				<p className="md:text-sm text-base">
 					{message}{" "}
-					<i>
-						({check}{" "}
-						<a
-							className=" text-accent_color hover:text-accent_hover font-semibold transition-color duration-200 ease-linear"
-							href={link}
-						>
-							{here}
-						</a>
-						)
-					</i>
+					{link && link != "" && (
+						<i>
+							({check}{" "}
+							<a
+								className=" text-accent_color hover:text-accent_hover font-semibold transition-color duration-200 ease-linear"
+								href={link}
+							>
+								{here}
+							</a>
+							)
+						</i>
+					)}
 				</p>
 			</div>
 		</div>
