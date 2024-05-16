@@ -1,57 +1,80 @@
 "use client";
 import { Notification } from "@/components/home/notification";
 import T from "@/components/translations/translation";
+import Loading from "@/components/ui/loading";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
-import { use, useEffect, useState } from "react";
-import { set } from "zod";
+import { useEffect, useState } from "react";
 
 export default function Home() {
 	const supabase = createClientComponentClient();
 	const [internalNotifications, setInternalNotifications] = useState([]);
-	const [language, setLanguage] = useState(0);
+	const [loading, setLoading] = useState(true);
 
-	async function getLanguage() {
-		const user = await supabase.auth.getUser();
-
-		if (user) {
-			// get AppSettings
-			const { data: appSettings, error: appSettingsError } =
-				await supabase
-					.from("app_settings")
-					.select("*")
-					.eq("user_id", user.data.user.id)
-					.single();
-
-			if (appSettingsError) {
-				console.error("Error fetching app settings:", appSettingsError);
-			}
-
-			setLanguage(appSettings.language_id);
+	async function fetchUser() {
+		try {
+			const fetchedUser = await supabase.auth.getUser();
+			if (!fetchedUser.data.user)
+				throw new Error("User not authenticated");
+			return fetchedUser.data.user;
+		} catch (error) {
+			console.error("Error fetching user", error);
 		}
 	}
 
-	async function getNotifications() {
-		// get Notifications
-		const { data: notifications, error: notificationsError } =
-			await supabase
+	async function fetchAppSettings(userId) {
+		try {
+			const { data: appSettings, error } = await supabase
+				.from("app_settings")
+				.select("*")
+				.eq("user_id", userId)
+				.single();
+
+			if (error) throw error;
+			return appSettings;
+		} catch (error) {
+			console.error("Error loading app settings", error);
+		}
+	}
+
+	async function fetchNotifications(languageId) {
+		try {
+			const { data: appNotifications, error } = await supabase
 				.from("notifications")
 				.select("*")
-				.eq("language_id", language);
+				.eq("language_id", languageId);
 
-		if (notificationsError) {
-			console.error("Error fetching notifications:", notificationsError);
+			if (error) throw error;
+			return appNotifications || [];
+		} catch (error) {
+			console.error("Error loading notifications", error);
 		}
-
-		setInternalNotifications(notifications);
 	}
 
 	useEffect(() => {
-		getLanguage();
+		const fetchData = async () => {
+			setLoading(true);
+			try {
+				const user = await fetchUser();
+				const userId = user.id;
+				const fetchedAppSettings = await fetchAppSettings(userId);
+				const languageId = fetchedAppSettings.language_id;
+				const fetchedNotifications = await fetchNotifications(
+					languageId
+				);
+				setInternalNotifications(fetchedNotifications);
+			} catch (error) {
+				console.error("Error fetching data", error);
+			} finally {
+				setLoading(false);
+			}
+		};
+
+		fetchData();
 	}, []);
 
-	useEffect(() => {
-		if (language != 0) getNotifications();
-	}, [language]);
+	if (loading) {
+		return <Loading />;
+	}
 
 	return (
 		<div className="flex flex-col gap-y-2">

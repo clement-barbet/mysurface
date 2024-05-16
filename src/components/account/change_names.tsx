@@ -24,7 +24,7 @@ const formSchema = z.object({
 	organization: z.string(),
 });
 
-export default function ChangeNames({ userId }: { userId: string }) {
+export default function ChangeNames({ userId }: { userId: any }) {
 	const supabase = createClientComponentClient();
 	const [successMessage, setSuccessMessage] = useState("");
 	const [errorMessage, setErrorMessage] = useState("");

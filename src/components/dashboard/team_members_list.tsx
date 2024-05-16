@@ -1,39 +1,8 @@
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
-import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faYinYang } from "@fortawesome/free-solid-svg-icons";
 import T from "@/components/translations/translation";
 
-async function getParticipants() {
-	const supabase = createClientComponentClient();
-	const user = await supabase.auth.getUser();
-	const { data, error } = await supabase
-		.from("participants")
-		.select("id, name, email")
-		.order("name")
-		.range(0, 6)
-		.eq("user_id", user.data.user.id);
-
-	if (error) {
-		console.error("Error fetching participants:", error);
-		return [];
-	}
-
-	return data || [];
-}
-
-interface Participant {
-	id: string;
-	name: string;
-	email: string;
-}
-
-export default function TeamMembersList() {
-	const [participants, setParticipants] = useState<Participant[]>([]);
-
-	useEffect(() => {
-		getParticipants().then((data: Participant[]) => setParticipants(data));
-	}, []);
+export default function TeamMembersList({participants}) {
 
 	if (participants.length === 0) {
 		return <p className="text-sm italic text-center"><T tkey="dashboard.team.nodata"/></p>;

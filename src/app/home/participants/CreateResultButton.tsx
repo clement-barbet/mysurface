@@ -9,11 +9,13 @@ export default function CreateResultButton({
 	participantCount,
 	atLeastOneQuestionnaireCompleted,
 	process,
+	userId,
 }: {
 	isEnrollmentPhase: boolean;
 	participantCount: number;
 	atLeastOneQuestionnaireCompleted: boolean;
 	process: any;
+	userId: any;
 }) {
 	const router = useRouter();
 
@@ -36,11 +38,10 @@ export default function CreateResultButton({
 
 				// Update the phase to "enrollment"
 				const supabase = createClientComponentClient();
-				const user = await supabase.auth.getUser();
 				await supabase
 					.from("app_settings")
 					.update({ isEnrollmentPhase: true })
-					.eq("user_id", user.data.user.id);
+					.eq("user_id", userId);
 
 				// Redirect to the result page
 				const resultResponse = await response.json();

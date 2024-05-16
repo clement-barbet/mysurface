@@ -10,7 +10,7 @@ import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 
-export default function DeleteAccountButton({ userId }: { userId: string }) {
+export default function DeleteAccountButton({ userId }: { userId: any }) {
 	const supabase = createClientComponentClient();
 	const [successMessage, setSuccessMessage] = useState("");
 	const [errorMessage, setErrorMessage] = useState("");

@@ -8,10 +8,12 @@ const DeleteAllParticipantsButton = ({
 	participantCount,
 	setParticipants,
 	setIsEnrollmentPhase,
+	userId,
 }: {
 	participantCount: number;
 	setParticipants: any;
 	setIsEnrollmentPhase: any;
+	userId: any;
 }) => {
 	// Return null if there are no participants
 	if (participantCount === 0) {
@@ -20,17 +22,16 @@ const DeleteAllParticipantsButton = ({
 
 	const handleClick = async () => {
 		const supabase = createClientComponentClient();
-		const user = await supabase.auth.getUser();
 		let deleteParticipantsError = null;
 
 		// Reset the phase and delete all questionnaires
-		const { updateError, deleteError } = await resetPhase();
+		const { updateError, deleteError } = await resetPhase(userId);
 		if (!updateError && !deleteError) {
 			// Delete all records from participants
 			const { error: deleteParticipantsError } = await supabase
 				.from("participants")
 				.delete()
-				.eq("user_id", user.data.user.id);
+				.eq("user_id", userId);
 
 			if (deleteParticipantsError) {
 				console.error(

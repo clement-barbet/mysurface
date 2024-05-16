@@ -11,10 +11,10 @@ import DeleteAllParticipantsButton from "./DeleteAllParticipantsButton";
 import CreateSendEmailsButton from "./CreateSendEmailsButton";
 import SelectProcess from "./SelectProcess";
 import FormAddAssessed from "./FormAddAssessed";
-import { Table } from "@mui/material";
 import TableAssessed from "./TableAssessed";
+import Loading from "@/components/ui/loading";
 
-export default function Page() {
+export default function Participants() {
 	const supabase = createClientComponentClient();
 	const [participants, setParticipants] = useState([]);
 	const [questionnaires, setQuestionnaires] = useState(null);
@@ -22,17 +22,28 @@ export default function Page() {
 	const [lang, setLang] = useState(null);
 	const [org, setOrg] = useState(null);
 	const [process, setProcess] = useState(null);
-	const [userId, setUserId] = useState(null);
 	const [assesseds, setAssesseds] = useState([]);
+	const [loading, setLoading] = useState(true);
+	const [userId, setUserId] = useState(null);
 
-	const fetchAssesseds = async () => {
+	const fetchUser = async () => {
 		try {
-			const user = await supabase.auth.getUser();
+			const fetchedUser = await supabase.auth.getUser();
+			if (!fetchedUser.data.user)
+				throw new Error("User not authenticated");
+			return fetchedUser.data.user;
+		} catch (error) {
+			console.error("Error fetching user", error);
+		}
+	};
+
+	const fetchAssesseds = async (userId, processId) => {
+		try {
 			const { data, error } = await supabase
 				.from("assessed")
 				.select("*")
-				.eq("user_id", user.data.user.id)
-				.eq("type", process == 2 ? "leader" : "product")
+				.eq("user_id", userId)
+				.eq("type", processId == 2 ? "leader" : "product")
 				.order("name");
 			if (error) throw error;
 			setAssesseds(data);
@@ -42,10 +53,8 @@ export default function Page() {
 		}
 	};
 
-	const fetchParticipants = async () => {
+	const fetchParticipants = async (userId) => {
 		try {
-			const user = await supabase.auth.getUser();
-			setUserId(user.data.user.id);
 			const { data, error } = await supabase
 				.from("participants")
 				.select(
@@ -57,7 +66,7 @@ export default function Page() {
               )
             `
 				)
-				.eq("user_id", user.data.user.id)
+				.eq("user_id", userId)
 				.order("name");
 			if (error) throw error;
 			const updatedParticipants = data.map((participant) => {
@@ -97,42 +106,50 @@ export default function Page() {
 		}
 	};
 
-	const fetchPhase = async () => {
+	const fetchPhase = async (userId) => {
 		try {
-			const user = await supabase.auth.getUser();
 			const { data: appSettings, error: appSettingsError } =
 				await supabase
 					.from("app_settings")
 					.select("*")
-					.eq("user_id", user.data.user.id)
+					.eq("user_id", userId)
 					.single();
 			if (appSettingsError) throw appSettingsError;
 			setIsEnrollmentPhase(appSettings.isEnrollmentPhase);
 			setLang(appSettings.language_id);
 			setOrg(appSettings.organization_id);
 			setProcess(appSettings.process_id);
+			return appSettings;
 		} catch (error) {
 			console.error("Error fetching phase:", error.message);
 		}
 	};
 
 	useEffect(() => {
-		fetchParticipants();
+		const fetchData = async () => {
+			setLoading(true);
+			try {
+				const fetchedUser = await fetchUser();
+				const fetchedUserId = fetchedUser.id;
+				setUserId(fetchedUserId);
+				if (fetchedUserId) {
+					const fetchedSettings = await fetchPhase(fetchedUserId);
+					const processId = fetchedSettings.process_id;
+					await fetchAssesseds(fetchedUserId, processId);
+					await fetchParticipants(fetchedUserId);
+					if (participants) {
+						await fetchQuestionnaires();
+					}
+				}
+			} catch (error) {
+				console.error("Error fetching data", error);
+			} finally {
+				setLoading(false);
+			}
+		};
+
+		fetchData();
 	}, []);
-
-	useEffect(() => {
-		if (participants) {
-			fetchQuestionnaires();
-		}
-	}, [participants]);
-
-	useEffect(() => {
-		fetchPhase();
-	}, [process]);
-
-	useEffect(() => {
-		fetchAssesseds();
-	}, [process]);
 
 	const onParticipantAdded = (newParticipant) => {
 		if (newParticipant.questionnaire) {
@@ -166,9 +183,9 @@ export default function Page() {
 	const participantCount = participants ? participants.length : 0;
 	const assessedCount = assesseds ? assesseds.length : 0;
 
-	useEffect(() => {
-		console.log("participants updated page.tsx", participants);
-	}, [participants]);
+	if (loading) {
+		return <Loading />;
+	}
 
 	return (
 		<div className="flex flex-col gap-y-2">
@@ -213,20 +230,23 @@ export default function Page() {
 						participantCount={participantCount}
 						setIsEnrollmentPhase={setIsEnrollmentPhase}
 						fetchQuestionnaires={fetchQuestionnaires}
-						fetchParticipants={fetchParticipants}
+						fetchParticipants={() => fetchParticipants(userId)}
 						process={process}
 						assessedCount={assessedCount}
+						userId={userId}
 					/>
 					<ResetPhaseButton
 						isEnrollmentPhase={isEnrollmentPhase}
 						setIsEnrollmentPhase={setIsEnrollmentPhase}
 						fetchQuestionnaires={fetchQuestionnaires}
-						fetchParticipants={fetchParticipants}
+						fetchParticipants={() => fetchParticipants(userId)}
+						userId={userId}
 					/>
 					<DeleteAllParticipantsButton
 						participantCount={participantCount}
 						setParticipants={setParticipants}
 						setIsEnrollmentPhase={setIsEnrollmentPhase}
+						userId={userId}
 					/>
 					<CreateSendEmailsButton
 						isEnrollmentPhase={isEnrollmentPhase}
@@ -241,6 +261,7 @@ export default function Page() {
 							atLeastOneQuestionnaireCompleted
 						}
 						process={process}
+						userId={userId}
 					/>
 				</div>
 			</div>

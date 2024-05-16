@@ -17,6 +17,7 @@ import Pagination from "@/components/ui/pagination/pagination";
 import usePagination from "@/components/ui/pagination/usePagination";
 import ModalComponent from "@/components/results/ModalComponentEdit";
 import ModalComponentDelete from "@/components/results/ModalComponentDelete";
+import Loading from "@/components/ui/loading";
 
 export default function Results() {
 	const [loading, setLoading] = useState(true);
@@ -76,6 +77,10 @@ export default function Results() {
 
 		fetchData();
 	}, []);
+
+	if (loading) {
+		return <Loading />;
+	}
 
 	return (
 		!loading && (

@@ -18,6 +18,7 @@ export default function CreateQuestionnairesButton({
 	fetchParticipants,
 	process,
 	assessedCount,
+	userId,
 }) {
 	const createQuestionnaires = async () => {
 		try {
@@ -30,11 +31,10 @@ export default function CreateQuestionnairesButton({
 
 				// Update the phase to "questionnaire"
 				const supabase = createClientComponentClient();
-				const user = await supabase.auth.getUser();
 				await supabase
 					.from("app_settings")
 					.update({ isEnrollmentPhase: false })
-					.eq("user_id", user.data.user.id);
+					.eq("user_id", userId);
 
 				fetchParticipants();
 				fetchQuestionnaires();
@@ -54,9 +54,6 @@ export default function CreateQuestionnairesButton({
 	} else {
 		canCreateQuestionnaires = isEnrollmentPhase && participantCount >= 1 && assessedCount >= 1;
 	}
-
-	console.log("participantCount", participantCount);
-	console.log("assessedCount", assessedCount);
 
 	if (!isEnrollmentPhase) {
 		return null;

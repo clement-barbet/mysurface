@@ -18,7 +18,7 @@ import { MdOutlineSettingsBackupRestore } from "react-icons/md";
 import { FiEdit } from "react-icons/fi";
 import { AiOutlineMessage } from "react-icons/ai";
 
-export default function DashboardNavbar() {
+export default function DashboardNavbar({ user }) {
 	const pathname = usePathname();
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false);
@@ -45,11 +45,10 @@ export default function DashboardNavbar() {
 
 	useEffect(() => {
 		const fetchSettings = async () => {
-			const user = await supabase.auth.getUser();
 			const { data, error } = await supabase
 				.from("roles")
 				.select("role")
-				.eq("user_id", user.data.user.id)
+				.eq("user_id", user.id)
 				.single();
 
 			if (error) {

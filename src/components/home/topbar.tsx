@@ -12,7 +12,7 @@ import Link from "next/link";
 import T from "@/components/translations/translation";
 import { useTranslation } from "react-i18next";
 
-export default function TopBar() {
+export default function TopBar({ user }) {
 	const [errorMessage, setErrorMessage] = useState("");
 	const supabase = createClientComponentClient();
 	const { t } = useTranslation();
@@ -40,45 +40,31 @@ export default function TopBar() {
 		};
 	}, [menuRef, isOpen]);
 
-	useEffect(() => {
-		const fetchUser = async () => {
-			const { data: user, error } = await supabase.auth.getUser();
+	const fetchOrganization = async () => {
+		const { data: appSettings, error } = await supabase
+			.from("app_settings")
+			.select("organization_id")
+			.eq("user_id", user.id)
+			.single();
 
-			if (user && user.user) {
-				setEmail(user.user.email);
-			} else if (error) {
-				setErrorMessage("No user found: Please log in.");
+		if (appSettings) {
+			if (appSettings.organization_id === 1) {
+				setOrganization("topbar.organizations.company");
+			} else if (appSettings.organization_id === 2) {
+				setOrganization("topbar.organizations.school");
+			} else if (appSettings.organization_id === 3) {
+				setOrganization("topbar.organizations.city");
 			}
-		};
-
-		fetchUser();
-	}, []);
+		} else if (error) {
+			setErrorMessage("No organization found: Please contact support.");
+		}
+	};
 
 	useEffect(() => {
-		const fetchOrganization = async () => {
-			const user = await supabase.auth.getUser();
-			const { data: appSettings, error } = await supabase
-				.from("app_settings")
-				.select("organization_id")
-				.eq("user_id", user.data.user.id)
-				.single();
-
-			if (appSettings) {
-				if (appSettings.organization_id === 1) {
-					setOrganization("topbar.organizations.company");
-				} else if (appSettings.organization_id === 2) {
-					setOrganization("topbar.organizations.school");
-				} else if (appSettings.organization_id === 3) {
-					setOrganization("topbar.organizations.city");
-				}
-			} else if (error) {
-				setErrorMessage(
-					"No organization found: Please contact support."
-				);
-			}
-		};
-
-		fetchOrganization();
+		if (user) {
+			setEmail(user.email);
+			fetchOrganization();
+		}
 	}, []);
 
 	const handleLogout = async () => {

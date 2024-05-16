@@ -1,15 +1,14 @@
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 
-export const resetPhase = async () => {
+export const resetPhase = async (userId) => {
 	const supabase = createClientComponentClient();
-	const user = await supabase.auth.getUser();
 	let deleteError = null;
 
 	// Update phase to enrollment
 	const { error: updateError } = await supabase
 		.from("app_settings")
 		.update({ isEnrollmentPhase: true })
-		.eq("user_id", user.data.user.id);
+		.eq("user_id", userId);
 
 	if (updateError) {
 		console.error("Error updating phase:", updateError);
@@ -22,7 +21,7 @@ export const resetPhase = async () => {
 		await supabase
 			.from("participants")
 			.select("questionnaire")
-			.eq("user_id", user.data.user.id);
+			.eq("user_id", userId);
 
 	if (questionnaireError) {
 		console.error("Error getting questionnaires:", questionnaireError);

@@ -22,7 +22,7 @@ const formSchema = z.object({
 	language: z.number(),
 });
 
-export default function ChangeLanguage({ userId }: { userId: string }) {
+export default function ChangeLanguage({ userId }: { userId: any }) {
 	const supabase = createClientComponentClient();
 	const [successMessage, setSuccessMessage] = useState("");
 	const [errorMessage, setErrorMessage] = useState("");

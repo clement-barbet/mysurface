@@ -17,6 +17,7 @@ import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import T from "@/components/translations/translation";
+import Loading from "@/components/ui/loading";
 
 export default function Customers() {
 	const [loading, setLoading] = useState(true);
@@ -88,6 +89,10 @@ export default function Customers() {
 			setConfirmOpen(false);
 		}
 	};
+
+	if (loading) {
+		return <Loading />;
+	}
 
 	return (
 		!loading && (

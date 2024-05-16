@@ -8,14 +8,16 @@ const ResetPhaseButton = ({
 	setIsEnrollmentPhase,
 	fetchParticipants,
 	fetchQuestionnaires,
+	userId,
 }: {
 	isEnrollmentPhase: boolean;
 	setIsEnrollmentPhase: (value: boolean) => void;
 	fetchParticipants: () => void;
 	fetchQuestionnaires: () => void;
+	userId: any;
 }) => {
 	const handleClick = async () => {
-		const { updateError, deleteError } = await resetPhase();
+		const { updateError, deleteError } = await resetPhase(userId);
 		if (!updateError && !deleteError) {
 			setIsEnrollmentPhase(true);
 			fetchParticipants();

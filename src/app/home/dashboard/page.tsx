@@ -1,45 +1,85 @@
 "use client";
-
 import { DashboardPieChart } from "@/components/dashboard/pie_chart";
 import TeamMembersList from "@/components/dashboard/team_members_list";
-import { Notification } from "@/components/dashboard/notification";
 import Link from "next/link";
 import T from "@/components/translations/translation";
 import { useEffect, useState } from "react";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
-import {
-	Table,
-	TableBody,
-	TableCell,
-	TableHead,
-	TableHeader,
-	THeadRow,
-	TBodyRow,
-} from "@/components/ui/table";
+import { TableBody, TableCell, TBodyRow } from "@/components/ui/table";
+import Loading from "@/components/ui/loading";
 
 export default function Dashboard() {
 	const [results, setResults] = useState([]);
 	const supabase = createClientComponentClient();
+	const [participants, setParticipants] = useState([]);
+	const [loading, setLoading] = useState(true);
 
-	useEffect(() => {
-		const fetchData = async () => {
-			const user = await supabase.auth.getUser();
-			const userId = user.data.user.id;
+	const fetchUser = async () => {
+		try {
+			const fetchedUser = await supabase.auth.getUser();
+			if (!fetchedUser.data.user)
+				throw new Error("User not authenticated");
+			return fetchedUser.data.user;
+		} catch (error) {
+			console.error("Error fetching user", error);
+		}
+	};
 
-			let { data: fetchedResults, error: resultsError } = await supabase
+	const fetchResults = async (userId) => {
+		try {
+			let { data: fetchedResults, error } = await supabase
 				.from("results")
 				.select("*")
 				.order("created_at", { ascending: false })
 				.limit(3)
 				.eq("user_id", userId);
 
-			if (resultsError)
-				console.error("Error loading results", resultsError);
-			else setResults(fetchedResults || []);
+			if (error) throw error;
+			return fetchedResults || [];
+		} catch (error) {
+			console.error("Error loading results", error);
+		}
+	};
+
+	const fetchParticipants = async (userId) => {
+		try {
+			let { data: fetchedParticipants, error } = await supabase
+				.from("participants")
+				.select("*")
+				.order("name")
+				.eq("user_id", userId);
+
+			if (error) throw error;
+			return fetchedParticipants || [];
+		} catch (error) {
+			console.error("Error loading participants", error);
+		}
+	};
+
+	useEffect(() => {
+		const fetchData = async () => {
+			setLoading(true);
+			try {
+				const user = await fetchUser();
+				const userId = user.id;
+				const [fetchedResults, fetchedParticipants] = await Promise.all(
+					[fetchResults(userId), fetchParticipants(userId)]
+				);
+				setResults(fetchedResults);
+				setParticipants(fetchedParticipants);
+			} catch (error) {
+				console.error("Error fetching data", error);
+			} finally {
+				setLoading(false);
+			}
 		};
 
 		fetchData();
 	}, []);
+
+	if (loading) {
+		return <Loading />;
+	}
 
 	return (
 		<>
@@ -97,17 +137,17 @@ export default function Dashboard() {
 				</div>
 			</div>
 
-			<div className="flex flex-col md:flex-row gap-y-2 xl:gap-x-2">
-					<div className="p-5 h-auto w-full shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
-						<h2 className="text-lg mb-2 font-semibold border-l-4 border-mid_blue pl-2">
-							<T tkey="dashboard.piechart.title" />
-						</h2>
-						<p className="text-gray-600 dark:text-gray-400 text-lg md:text-base">
-							<T tkey="dashboard.piechart.subtitle" />
-						</p>
-						<div className="mt-4">
-							<DashboardPieChart />
-						</div>
+			<div className="flex flex-col md:flex-row gap-y-2 md:gap-x-2">
+				<div className="p-5 h-auto w-full shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
+					<h2 className="text-lg mb-2 font-semibold border-l-4 border-mid_blue pl-2">
+						<T tkey="dashboard.piechart.title" />
+					</h2>
+					<p className="text-gray-600 dark:text-gray-400 text-lg md:text-base">
+						<T tkey="dashboard.piechart.subtitle" />
+					</p>
+					<div className="mt-4">
+						<DashboardPieChart participants={participants} />
+					</div>
 				</div>
 				<div className="p-5 h-auto w-full justify-between shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
 					<h2 className="text-lg mb-2 font-semibold border-l-4 border-mid_blue pl-2">
@@ -118,7 +158,7 @@ export default function Dashboard() {
 						<T tkey="dashboard.team.subtitle" />
 					</p>
 					<div className="mt-3">
-						<TeamMembersList />
+						<TeamMembersList participants={participants} />
 					</div>
 					<div>
 						<Link

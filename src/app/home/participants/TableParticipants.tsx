@@ -12,8 +12,7 @@ import {
 	TBodyRow,
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
-import { useState, useEffect } from "react";
-import Link from "next/link";
+import { useState } from "react";
 import { ErrorMessage } from "@/components/ui/msg/error_msg";
 import { SuccessMessage } from "@/components/ui/msg/success_msg";
 
@@ -57,10 +56,6 @@ function TableParticipants({
 			console.error("Error deleting participant:", response.statusText);
 		}
 	};
-
-	useEffect(() => {
-		console.log("participants updated table_participants", participants);
-	}, [participants]);
 
 	const renderQuestionnaireStatus = (status) => {
 		let color;

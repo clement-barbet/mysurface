@@ -7,20 +7,8 @@ import T from "@/components/translations/translation";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-async function getCompletionPercentage() {
+async function getCompletionPercentage(participants) {
 	const supabase = createClientComponentClient();
-	const user = await supabase.auth.getUser();
-
-	// Get participants with the correct user_id
-	const { data: participants, error: participantsError } = await supabase
-		.from("participants")
-		.select("questionnaire")
-		.eq("user_id", user.data.user.id);
-
-	if (participantsError) {
-		console.error("Error fetching participants:", participantsError);
-		return null;
-	}
 
 	// Get questionnaires for those participants
 	const questionnaireIds = participants.map((p) => p.questionnaire);
@@ -44,14 +32,14 @@ async function getCompletionPercentage() {
 	return (completedCount / totalCount) * 100;
 }
 
-const DashboardPieChart = () => {
+const DashboardPieChart = ({ participants }) => {
 	const [completedPercentage, setCompletedPercentage] = useState<
 		number | null
 	>(null);
 
 	useEffect(() => {
 		const fetchData = async () => {
-			const percentage = await getCompletionPercentage();
+			const percentage = await getCompletionPercentage(participants);
 			setCompletedPercentage(percentage);
 		};
 
@@ -82,8 +70,6 @@ const DashboardPieChart = () => {
 			},
 		],
 	};
-
-	console.log(data);
 
 	const options = {
 		plugins: {

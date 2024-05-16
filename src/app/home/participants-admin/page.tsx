@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/table";
 import usePagination from "@/components/ui/pagination/usePagination";
 import Pagination from "@/components/ui/pagination/pagination";
+import Loading from "@/components/ui/loading";
 
 export default function Results() {
 	const [loading, setLoading] = useState(true);
@@ -111,6 +112,10 @@ export default function Results() {
 			</div>
 		);
 	};
+
+	if (loading) {
+		return <Loading />;
+	}
 
 	return (
 		!loading && (
