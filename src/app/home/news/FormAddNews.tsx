@@ -142,7 +142,7 @@ export default function FormAddNews() {
 								name="type"
 								render={({ field }) => (
 									<FormItem>
-										<FormLabel htmlFor="language">
+										<FormLabel htmlFor="type">
 											Type
 										</FormLabel>
 										<FormControl>
