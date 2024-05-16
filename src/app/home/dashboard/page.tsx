@@ -44,7 +44,7 @@ export default function Dashboard() {
 	return (
 		<>
 			<div className="p-5 w-full m-auto mb-2 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
-				<h2 className="text-xl mb-2 font-semibold border-l-4 border-mid_blue pl-2">
+				<h2 className="text-lg mb-2 font-semibold border-l-4 border-mid_blue pl-2">
 					<T tkey="dashboard.results.title" />
 				</h2>
 				<p className="text-gray-600 dark:text-gray-400 text-lg md:text-base mb-2">
@@ -99,7 +99,7 @@ export default function Dashboard() {
 
 			<div className="flex flex-col md:flex-row gap-y-2 xl:gap-x-2">
 					<div className="p-5 h-auto w-full shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
-						<h2 className="text-xl mb-2 font-semibold border-l-4 border-mid_blue pl-2">
+						<h2 className="text-lg mb-2 font-semibold border-l-4 border-mid_blue pl-2">
 							<T tkey="dashboard.piechart.title" />
 						</h2>
 						<p className="text-gray-600 dark:text-gray-400 text-lg md:text-base">
@@ -110,7 +110,7 @@ export default function Dashboard() {
 						</div>
 				</div>
 				<div className="p-5 h-auto w-full justify-between shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
-					<h2 className="text-xl mb-2 font-semibold border-l-4 border-mid_blue pl-2">
+					<h2 className="text-lg mb-2 font-semibold border-l-4 border-mid_blue pl-2">
 						<T tkey="dashboard.team.title" />
 					</h2>
 
