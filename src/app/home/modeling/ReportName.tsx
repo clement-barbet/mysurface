@@ -42,7 +42,7 @@ export default function SelectProcess({ onNameChange }) {
 	return (
 		<>
 			<div className="p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
-				<h2 className="font-semibold text-xl mb-2  border-l-4 border-mid_blue pl-2">
+				<h2 className="font-semibold text-lg mb-2  border-l-4 border-mid_blue pl-2">
 					Report name
 				</h2>
 				<Form {...form}>

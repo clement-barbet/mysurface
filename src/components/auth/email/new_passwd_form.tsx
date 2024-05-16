@@ -75,7 +75,7 @@ export default function NewPasswordForm() {
 				setSuccessMessage={setSuccessMessage}
 			/>
 			<div>
-				<h2 className="pb-5 text-xl"><T tkey="account.password.title" /></h2>
+				<h2 className="pb-5 text-lg"><T tkey="account.password.title" /></h2>
 				<Form {...form}>
 					<form
 						onSubmit={form.handleSubmit(handleChangePassword)}

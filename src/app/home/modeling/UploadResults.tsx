@@ -166,7 +166,7 @@ function UploadResults({ processId, reportName }) {
 				setSuccessMessage={setSuccessMessage}
 			/>
 			<div className="p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
-				<h2 className="font-semibold text-xl  border-l-4 border-mid_blue pl-2">
+				<h2 className="font-semibold text-lg  border-l-4 border-mid_blue pl-2">
 					Upload data
 				</h2>
 				<div className="mt-4 w-full flex flex-col md:flex-row md:space-x-8 justify-between gap-y-2 md:gap-y-0">

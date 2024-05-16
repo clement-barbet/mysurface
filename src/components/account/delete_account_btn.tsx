@@ -80,7 +80,7 @@ export default function DeleteAccountButton({ userId }: { userId: any }) {
 				setSuccessMessage={setSuccessMessage}
 			/>
 			<div>
-				<h2 className="mb-2 text-xl font-semibold border-l-4 border-mid_blue pl-2">
+				<h2 className="mb-2 text-lg font-semibold border-l-4 border-mid_blue pl-2">
 					<T tkey="account.delete.title" />
 				</h2>
 				<p className="text-gray-600 dark:text-gray-400 text-lg md:text-base mb-4">

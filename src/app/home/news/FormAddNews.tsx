@@ -87,7 +87,7 @@ export default function FormAddNews() {
 				setSuccessMessage={setSuccessMessage}
 			/>
 			<div>
-				<h2 className="mb-2 text-xl font-semibold border-l-4 border-mid_blue pl-2">
+				<h2 className="mb-2 text-lg font-semibold border-l-4 border-mid_blue pl-2">
 					<T tkey="Add news or notifications" />
 				</h2>
 				<Form {...form}>

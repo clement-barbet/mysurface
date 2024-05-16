@@ -200,7 +200,7 @@ export default function UpdateInfoForm({ userId }: { userId: string }) {
 				setSuccessMessage={setSuccessMessage}
 			/>
 			<div>
-				<h2 className="pb-5 text-xl font-semibold">
+				<h2 className="pb-5 text-lg font-semibold">
 					<T tkey="account.language.title" />
 				</h2>
 				<Form {...form}>

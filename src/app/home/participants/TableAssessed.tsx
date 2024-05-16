@@ -68,7 +68,7 @@ function TableAssessed({
 				setSuccessMessage={setSuccessMessage}
 			/>
 			<div className="overflow-auto w-full hidden md:block p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
-				<h2 className="mb-4 font-semibold text-xl  text-black border-l-4 border-mid_blue pl-2">
+				<h2 className="mb-4 font-semibold text-lg  text-black border-l-4 border-mid_blue pl-2">
 					{process == 2 ? (
 						<T tkey="participants.titles.leaders" />
 					) : (
@@ -156,7 +156,7 @@ function TableAssessed({
 				</Table>
 			</div>
 			<div className="overflow-auto w-full block md:hidden p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
-				<h2 className="mb-4 font-semibold text-xl  text-black border-l-4 border-mid_blue pl-2">
+				<h2 className="mb-4 font-semibold text-lg  text-black border-l-4 border-mid_blue pl-2">
 					{process == 2 ? (
 						<T tkey="participants.titles.leaders" />
 					) : (

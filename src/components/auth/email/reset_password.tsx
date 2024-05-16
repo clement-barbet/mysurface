@@ -84,7 +84,7 @@ export default function ResetPasswordForm() {
 				setSuccessMessage={setSuccessMessage}
 			/>
 			<div>
-				<h2 className="mb-2 text-xl font-semibold border-l-4 border-mid_blue pl-2">
+				<h2 className="mb-2 text-lg font-semibold border-l-4 border-mid_blue pl-2">
 					<T tkey="account.password.title" />
 				</h2>
 				<Form {...form}>

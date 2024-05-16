@@ -221,7 +221,7 @@ export default function Participants() {
 				userId={userId}
 			/>
 			<div className="p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
-				<h2 className="mb-2 font-semibold text-xl border-l-4 border-mid_blue pl-2">
+				<h2 className="mb-2 font-semibold text-lg border-l-4 border-mid_blue pl-2">
 					<T tkey="participants.titles.manage" />
 				</h2>
 				<div className="flex flex-col gap-y-2 md:gap-x-4 md:flex-row md:justify-start md:flex-wrap">
