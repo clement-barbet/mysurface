@@ -37,7 +37,7 @@ const Notification = ({ type, msg, link, lang }) => {
 	const { icon, title, message, gradient } = notificationTypes[type];
 
 	return (
-		<div className="w-full py-1 border-b-2 flex flex-row items-center gap-x-4 hover:bg-light_gray dark:hover:bg-gray-600 dark:hover:bg-opacity-70 rounded-sm px-2 mb-2">
+		<div className="w-full py-1 border-b-2 flex flex-row items-center gap-x-4 hover:bg-light_gray dark:hover:bg-gray-600 dark:hover:bg-opacity-70 rounded-sm px-2 mb-2 transition-colors duration-200 ease-linear">
 			<div
 				className={`border-2 border-gray-200 shadow-sm dark:opacity-80 rounded-full min-w-10 min-h-10 flex items-center justify-center bg-gradient-to-br ${gradient}`}
 			>
