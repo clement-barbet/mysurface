@@ -1,10 +1,11 @@
 "use client";
 
-export default function News() {
+import FormAddNews from "./FormAddNews";
 
+export default function News() {
 	return (
-		<div className="flex flex-col gap-y-2">
-			
+		<div className="p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
+			<FormAddNews />
 		</div>
 	);
 }
