@@ -337,8 +337,8 @@ You can upload a CSV file in order to generate a report manually. This means, lo
 
 ### Assessment
 The CSV file must contain the assessment logic: 
-- Influence: Users assessing other users. You must add all combinations of couples and add ratings for each question.
-- Leaders/Products: Users assessing leaders/products with some rating, but also leaders/products must rate users with a 0 score for all questions.
+- **Influence**: Users assessing other users. You must add all combinations of couples and add ratings for each question.
+- **Leaders/Products**: Users assessing leaders/products with some rating, but also leaders/products must rate users with a 0 score for all questions.
 
 Logic for calculating influence grade and interaction grade is set in code.
 
