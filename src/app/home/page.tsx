@@ -48,24 +48,7 @@ export default function Home() {
 	useEffect(() => {
 		getLanguage();
 		getNotifications();
-	}, [language, internalNotifications]);
-
-	useEffect(() => {
-		const handleLanguageChange = () => {
-			getLanguage();
-			getNotifications();
-		};
-
-		window.addEventListener("storage", (e) => {
-			if (e.key === "i18nextLng") {
-				handleLanguageChange();
-			}
-		});
-
-		return () => {
-			window.removeEventListener("storage", handleLanguageChange);
-		};
-	}, [language, internalNotifications]);
+	}, []);
 
 	return (
 		<div className="flex flex-col gap-y-2">
