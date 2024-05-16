@@ -495,5 +495,34 @@
 				"no": "Ne"
 			}
 		}
+	},
+	"news": {
+		"title": "Přidat oznámení",
+		"form": {
+			"labels": {
+				"language": "Jazyk",
+				"type": "Typ",
+				"message": "Zpráva",
+				"link": "Odkaz"
+			},
+			"button": "Nahrát",
+			"options": {
+				"news": "Zprávy",
+				"update": "Aktualizace"
+			}
+		},
+		"table": {
+			"headers": {
+				"language": "Jazyk",
+				"type": "Typ",
+				"message": "Zpráva",
+				"link": "Odkaz",
+				"date": "Datum vytvoření",
+				"delete": "Smazat"
+			},
+			"buttons": {
+				"delete": "Smazat"
+			}
+		}
 	}
 }

@@ -492,5 +492,34 @@
 				"no": "No"
 			}
 		}
+	},
+	"news": {
+		"title": "Add notifications",
+		"form": {
+			"labels": {
+				"language": "Language",
+				"type": "Type",
+				"message": "Message",
+				"link": "Link"
+			},
+			"button": "Upload",
+			"options": {
+				"news": "News",
+				"update": "Update"
+			}
+		},
+		"table": {
+			"headers": {
+				"language": "Language",
+				"type": "Type",
+				"message": "Message",
+				"link": "Link",
+				"date": "Creation Date",
+				"delete": "Delete"
+			},
+			"buttons": {
+				"delete": "Delete"
+			}
+		}
 	}
 }

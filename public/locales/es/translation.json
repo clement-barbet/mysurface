@@ -495,5 +495,34 @@
 				"no": "No"
 			}
 		}
+	},
+	"news": {
+		"title": "Agregar notificaciones",
+		"form": {
+			"labels": {
+				"language": "Idioma",
+				"type": "Tipo",
+				"message": "Mensaje",
+				"link": "Enlace"
+			},
+			"button": "Cargar",
+			"options": {
+				"news": "Noticias",
+				"update": "Actualización"
+			}
+		},
+		"table": {
+			"headers": {
+				"language": "Idioma",
+				"type": "Tipo",
+				"message": "Mensaje",
+				"link": "Enlace",
+				"date": "Fecha de Creación",
+				"delete": "Eliminar"
+			},
+			"buttons": {
+				"delete": "Eliminar"
+			}
+		}
 	}
 }

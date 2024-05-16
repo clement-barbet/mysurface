@@ -26,11 +26,10 @@ const formSchema = z.object({
 	link: z.string(),
 });
 
-export default function FormAddNews() {
+export default function FormAddNews({ languages, onNotificationAdded }) {
 	const supabase = createClientComponentClient();
 	const [successMessage, setSuccessMessage] = useState("");
 	const [errorMessage, setErrorMessage] = useState("");
-	const [languages, setLanguages] = useState([]);
 
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
@@ -44,37 +43,32 @@ export default function FormAddNews() {
 
 	const onSubmit = async (formData: z.infer<typeof formSchema>) => {
 		const { language, message, type, link } = formData;
-		console.log(formData);
-
-		const { data, error } = await supabase
-			.from("notifications")
-			.insert([{ language_id: language, message, type, link }]);
-
+		const { data: insertedNotification, error } = await supabase.rpc(
+			"insert_notification_and_return",
+			{
+				new_language_id: language,
+				new_message: message,
+				new_type_notification: type,
+				new_link: link,
+			}
+		);
 		if (error) {
 			console.error("Error inserting notification:", error);
 			setErrorMessage("Error inserting notification.");
 			return;
 		}
 
+		console.log("insertedNotification form", insertedNotification);
+
+		if (insertedNotification) {
+			const newNotification = insertedNotification[0];
+			console.log("newNotification form", newNotification);
+			onNotificationAdded(newNotification);
+		}
+
 		setSuccessMessage("Notification inserted successfully.");
 		form.reset({ language: "1", message: "", type: "news", link: "" });
 	};
-
-	useEffect(() => {
-		const fetchLanguages = async () => {
-			const { data: languagesData, error: languagesDataError } =
-				await supabase.from("languages").select("*");
-
-			if (languagesDataError) {
-				console.error("Error fetching languages:", languagesDataError);
-				return;
-			}
-
-			setLanguages(languagesData);
-		};
-
-		fetchLanguages();
-	}, []);
 
 	return (
 		<>
@@ -88,7 +82,7 @@ export default function FormAddNews() {
 			/>
 			<div>
 				<h2 className="mb-2 text-lg font-semibold border-l-4 border-mid_blue pl-2">
-					<T tkey="Add news or notifications" />
+					<T tkey="news.title" />
 				</h2>
 				<Form {...form}>
 					<form
@@ -102,7 +96,7 @@ export default function FormAddNews() {
 								render={({ field }) => (
 									<FormItem>
 										<FormLabel htmlFor="language">
-											Language
+											<T tkey="news.form.labels.language" />
 										</FormLabel>
 										<FormControl>
 											<select
@@ -143,7 +137,7 @@ export default function FormAddNews() {
 								render={({ field }) => (
 									<FormItem>
 										<FormLabel htmlFor="type">
-											Type
+											<T tkey="news.form.labels.type" />
 										</FormLabel>
 										<FormControl>
 											<select
@@ -153,10 +147,10 @@ export default function FormAddNews() {
 												className="dark:bg-mid_blue appearance-none box-border w-full px-3 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 bg-dark_gray cursor-pointer"
 											>
 												<option value="news">
-													News
+													<T tkey="news.form.options.news" />
 												</option>
 												<option value="update">
-													Update
+													<T tkey="news.form.options.update" />
 												</option>
 											</select>
 										</FormControl>
@@ -172,7 +166,7 @@ export default function FormAddNews() {
 								render={({ field }) => (
 									<FormItem className="w-full">
 										<FormLabel htmlFor="message">
-											Message
+											<T tkey="news.form.labels.message" />
 										</FormLabel>
 										<FormControl>
 											<Input
@@ -191,7 +185,7 @@ export default function FormAddNews() {
 								render={({ field }) => (
 									<FormItem className="w-full">
 										<FormLabel htmlFor="link">
-											Link
+											<T tkey="news.form.labels.link" />
 										</FormLabel>
 										<FormControl>
 											<Input
@@ -207,7 +201,7 @@ export default function FormAddNews() {
 						</div>
 						<div className="w-full flex justify-end">
 							<Button type="submit" className="w-full md:w-1/5">
-								Upload
+								<T tkey="news.form.button" />
 							</Button>
 						</div>
 					</form>

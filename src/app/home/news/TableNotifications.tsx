@@ -19,7 +19,13 @@ import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 
 function TableNotifications({ notifications, setNotifications }) {
 	const supabase = createClientComponentClient();
-	const headers_T = ["Message", "Link", "Created At", "Language", "Delete"];
+	const headers_T = [
+		"news.table.headers.message",
+		"news.table.headers.link",
+		"news.table.headers.date",
+		"news.table.headers.language",
+		"news.table.headers.delete",
+	];
 	const [successMessage, setSuccessMessage] = useState("");
 	const [errorMessage, setErrorMessage] = useState("");
 
@@ -82,20 +88,13 @@ function TableNotifications({ notifications, setNotifications }) {
 											{notification.id}
 										</TableCell>
 										<TableCell className="px-6 py-4 whitespace-nowrap">
-											<div className="flex items-center">
-												<div className="inline-block mr-5">
-													<div className="border-2 border-gray-200 shadow-sm dark:opacity-80 rounded-full w-10 h-10 flex items-center justify-center bg-gradient-to-br from-accent_color to-accent_hover">
-														<FontAwesomeIcon
-															icon={faYinYang}
-															className="w-5 h-5 text-white"
-														/>
-													</div>
-												</div>
-												<div className="ml-4">
-													<div className="evaluator-name text-sm font-medium text-gray-900 dark:text-white">
-														{notification.message}
-													</div>
-												</div>
+											<div className="text-sm text-gray-500">
+												{notification.message}
+											</div>
+										</TableCell>
+										<TableCell className="px-6 py-4 whitespace-nowrap">
+											<div className="text-sm text-gray-500">
+												{notification.link}
 											</div>
 										</TableCell>
 										<TableCell className="px-6 py-4 whitespace-nowrap">
@@ -107,7 +106,7 @@ function TableNotifications({ notifications, setNotifications }) {
 										</TableCell>
 										<TableCell className="px-6 py-4 whitespace-nowrap">
 											<div className="text-sm text-gray-500">
-												{notification.link}
+												{notification.language}
 											</div>
 										</TableCell>
 										<TableCell className="px-6 py-4 text-sm text-left whitespace-nowrap">
@@ -119,7 +118,7 @@ function TableNotifications({ notifications, setNotifications }) {
 													)
 												}
 											>
-												<T tkey="participants.table.buttons.delete" />
+												<T tkey="news.table.buttons.delete" />
 											</Button>
 										</TableCell>
 									</TBodyRow>
