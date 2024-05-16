@@ -8,7 +8,7 @@ import { set } from "zod";
 export default function Home() {
 	const supabase = createClientComponentClient();
 	const [internalNotifications, setInternalNotifications] = useState([]);
-	const [language, setLanguage] = useState(1);
+	const [language, setLanguage] = useState(0);
 
 	async function getLanguage() {
 		const user = await supabase.auth.getUser();
@@ -47,8 +47,11 @@ export default function Home() {
 
 	useEffect(() => {
 		getLanguage();
-		getNotifications();
 	}, []);
+
+	useEffect(() => {
+		if (language != 0) getNotifications();
+	}, [language]);
 
 	return (
 		<div className="flex flex-col gap-y-2">
