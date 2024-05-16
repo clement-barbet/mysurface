@@ -468,5 +468,29 @@
 		"next": "Next",
 		"prev": "Previous",
 		"per-page": "Results per page:"
+	},
+	"customers": {
+		"title": "All Customers",
+		"nodata": "No customers added yet.",
+		"table": {
+			"headers": {
+				"name": "Name",
+				"email": "Email",
+				"organization": "Organization",
+				"organization-type": "Organization type",
+				"language": "Language",
+				"delete": "Delete user"
+			},
+			"buttons": {
+				"delete": "Delete"
+			}
+		},
+		"modal": {
+			"question": "Are you sure you want to delete the selected user?",
+			"options": {
+				"yes": "Yes",
+				"no": "No"
+			}
+		}
 	}
 }

@@ -471,5 +471,29 @@
 		"next": "Další",
 		"prev": "Předchozí",
 		"per-page": "Výsledky na stránku:"
+	},
+	"customers": {
+		"title": "Všichni Zákazníci",
+		"nodata": "Zatím nebyli přidáni žádní zákazníci.",
+		"table": {
+			"headers": {
+				"name": "Jméno",
+				"email": "Email",
+				"organization": "Organizace",
+				"organization-type": "Typ organizace",
+				"language": "Jazyk",
+				"delete": "Smazat uživatele"
+			},
+			"buttons": {
+				"delete": "Smazat"
+			}
+		},
+		"modal": {
+			"question": "Opravdu chcete smazat vybraného uživatele?",
+			"options": {
+				"yes": "Ano",
+				"no": "Ne"
+			}
+		}
 	}
 }

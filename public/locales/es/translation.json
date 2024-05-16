@@ -471,5 +471,29 @@
 		"next": "Siguiente",
 		"prev": "Anterior",
 		"per-page": "Resultados por página:"
+	},
+	"customers": {
+		"title": "Todos los Clientes",
+		"nodata": "No se han agregado clientes aún.",
+		"table": {
+			"headers": {
+				"name": "Nombre",
+				"email": "Correo electrónico",
+				"organization": "Organización",
+				"organization-type": "Tipo de organización",
+				"language": "Idioma",
+				"delete": "Eliminar usuario"
+			},
+			"buttons": {
+				"delete": "Eliminar"
+			}
+		},
+		"modal": {
+			"question": "¿Está seguro de que desea eliminar al usuario seleccionado?",
+			"options": {
+				"yes": "Sí",
+				"no": "No"
+			}
+		}
 	}
 }

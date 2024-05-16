@@ -87,13 +87,13 @@ export default function DeleteAccountButton({ userId }: { userId: string }) {
 					<T tkey="account.delete.subtitle" />
 				</p>
 				<div className="w-full flex justify-end">
-				<Button
-					onClick={handleConfirmOpen}
-					variant="login"
-					className="w-full md:w-1/2 lg:w-1/3 bg-red-500 hover:bg-red-600"
-				>
-					<T tkey="account.delete.button" />
-				</Button>
+					<Button
+						onClick={handleConfirmOpen}
+						variant="login"
+						className="w-full md:w-1/2 lg:w-1/3 bg-red-500 hover:bg-red-600"
+					>
+						<T tkey="account.delete.button" />
+					</Button>
 				</div>
 			</div>
 			<Modal
@@ -108,7 +108,8 @@ export default function DeleteAccountButton({ userId }: { userId: string }) {
 						top: "50%",
 						left: "50%",
 						transform: "translate(-50%, -50%)",
-						width: 400,
+						width: "90%",
+						maxWidth: 400,
 						bgcolor: "background.paper",
 						borderRadius: "10px",
 						boxShadow: 24,
@@ -119,7 +120,11 @@ export default function DeleteAccountButton({ userId }: { userId: string }) {
 						id="modal-modal-title"
 						variant="h6"
 						component="h2"
-						sx={{ mb: 2, textAlign: "center", fontFamily: "inherit" }}
+						sx={{
+							mb: 2,
+							textAlign: "center",
+							fontFamily: "inherit",
+						}}
 					>
 						<T tkey="account.delete.confirmation" />
 					</Typography>
