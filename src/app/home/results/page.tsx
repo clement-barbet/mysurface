@@ -91,7 +91,7 @@ export default function Results() {
 	return (
 		!loading && (
 			<>
-				<div className="w-full m-auto">
+				<div className="w-full m-auto hidden md:block">
 					{results.length > 0 ? (
 						<>
 							<Table className="w-full">
@@ -168,16 +168,6 @@ export default function Results() {
 									})}
 								</TableBody>
 							</Table>
-							<Pagination
-								currentPage={currentPage}
-								setCurrentPage={setCurrentPage}
-								items={results}
-								itemsPerPage={itemsPerPage}
-								handleItemsPerPageChange={
-									handleItemsPerPageChange
-								}
-								itemsPerPageOptions={itemsPerPageOptions}
-							/>
 						</>
 					) : (
 						<p>
@@ -185,6 +175,89 @@ export default function Results() {
 						</p>
 					)}
 				</div>
+				<div className="w-full block md:hidden">
+					{results.length
+						? currentItems.map((result) => {
+								if (result) {
+									const date = new Date(result.created_at);
+									const formattedDate =
+										date.toLocaleDateString("en-CA");
+									const formattedTime =
+										date.toLocaleTimeString("en-CA");
+									return (
+										<div
+											key={result.id}
+											className="md:hidden rounded-md border shadow-md bg-white dark:bg-black p-3 mb-4 flex flex-col gap-y-2"
+										>
+											<p>
+												<strong>
+													<T tkey={headers_T[0]} />:{" "}
+												</strong>
+												<Link
+													href={`/home/results/${result.id}`}
+													className="font-semibold text-accent_color hover:text-accent_hover underline hover:underline-offset-4 underline-offset-2 transition-all duration-200 ease-linear"
+												>
+													{result.id}
+												</Link>
+											</p>
+											<p>
+												<strong>
+													<T tkey={headers_T[1]} />:{" "}
+												</strong>
+												{result.report_name}
+											</p>
+											<p>
+												<strong>
+													<T tkey={headers_T[2]} />:{" "}
+												</strong>
+												<T
+													tkey={getProcessName(
+														result.process_id
+													)}
+												/>
+											</p>
+											<p>
+												<strong>
+													<T tkey={headers_T[3]} />:{" "}
+												</strong>
+												{formattedDate}&nbsp;&nbsp;
+												{formattedTime}
+											</p>
+											<Button
+												className="w-full"
+												onClick={() =>
+													handleOpen(result)
+												}
+												variant="blue"
+											>
+												<T tkey="results.table.buttons.edit" />
+											</Button>
+											<Button
+												className="w-full"
+												variant="delete"
+												onClick={() =>
+													handleOpenDelete(result)
+												}
+											>
+												<T tkey={headers_T[5]} />
+											</Button>
+										</div>
+									);
+								}
+								return null;
+						  })
+						: null}
+				</div>
+				{results.length === 0 ? null : (
+					<Pagination
+						currentPage={currentPage}
+						setCurrentPage={setCurrentPage}
+						items={results}
+						itemsPerPage={itemsPerPage}
+						handleItemsPerPageChange={handleItemsPerPageChange}
+						itemsPerPageOptions={itemsPerPageOptions}
+					/>
+				)}
 				<ModalComponent
 					open={open}
 					setOpen={setOpen}
