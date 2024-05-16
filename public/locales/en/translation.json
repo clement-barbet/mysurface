@@ -343,7 +343,8 @@
 		"language": "Language",
 		"customers": "All Customers",
 		"backup": "Results Backup",
-		"modeling": "Model Builder"
+		"modeling": "Model Builder",
+		"news": "News"
 	},
 	"topbar": {
 		"search": "Search",

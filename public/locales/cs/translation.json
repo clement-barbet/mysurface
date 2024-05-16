@@ -343,7 +343,8 @@
 		"language": "Jazyk",
 		"customers": "Všichni zákazníci",
 		"backup": "Záloha Výsledků",
-		"modeling": "Stavitel Modelu"
+		"modeling": "Stavitel Modelu",
+		"news": "Novinky"
 	},
 	"backup-results": {
 		"title": "Záloha Výsledků"

@@ -343,7 +343,8 @@
 		"language": "Idioma",
 		"customers": "Todos los Clientes",
 		"backup": "Respaldo de Resultados",
-		"modeling": "Constructor de Modelos"
+		"modeling": "Constructor de Modelos",
+		"news": "Noticias"
 	},
 	"backup-results": {
 		"title": "Respaldo de Resultados"
