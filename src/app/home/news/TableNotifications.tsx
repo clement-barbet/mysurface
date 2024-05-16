@@ -16,8 +16,19 @@ import { useState, useEffect } from "react";
 import { ErrorMessage } from "@/components/ui/msg/error_msg";
 import { SuccessMessage } from "@/components/ui/msg/success_msg";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import usePagination from "@/components/ui/pagination/usePagination";
+import Pagination from "@/components/ui/pagination/pagination";
 
 function TableNotifications({ notifications, setNotifications }) {
+	const {
+		currentPage,
+		setCurrentPage,
+		itemsPerPage,
+		handleItemsPerPageChange,
+		currentItems,
+		itemsPerPageOptions,
+	} = usePagination(notifications, 10);
+
 	const supabase = createClientComponentClient();
 	const headers_T = [
 		"news.table.headers.message",
@@ -75,7 +86,7 @@ function TableNotifications({ notifications, setNotifications }) {
 				</TableHeader>
 				<TableBody className="bg-white dark:bg-black divide-y divide-gray-200 dark:divide-gray-500">
 					{notifications.length ? (
-						notifications.map((notification) => {
+						currentItems.map((notification) => {
 							if (notification) {
 								const date = new Date(notification.created_at);
 								const formattedDate =
@@ -138,6 +149,16 @@ function TableNotifications({ notifications, setNotifications }) {
 					)}
 				</TableBody>
 			</Table>
+			{notifications.length === 0 ? null : (
+				<Pagination
+					currentPage={currentPage}
+					setCurrentPage={setCurrentPage}
+					items={notifications}
+					itemsPerPage={itemsPerPage}
+					handleItemsPerPageChange={handleItemsPerPageChange}
+					itemsPerPageOptions={itemsPerPageOptions}
+				/>
+			)}
 		</>
 	);
 }
