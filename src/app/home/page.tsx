@@ -1,8 +1,72 @@
 "use client";
 import { Notification } from "@/components/home/notification";
 import T from "@/components/translations/translation";
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import { use, useEffect, useState } from "react";
+import { set } from "zod";
 
 export default function Home() {
+	const supabase = createClientComponentClient();
+	const [internalNotifications, setInternalNotifications] = useState([]);
+	const [language, setLanguage] = useState(1);
+
+	async function getLanguage() {
+		const user = await supabase.auth.getUser();
+
+		if (user) {
+			// get AppSettings
+			const { data: appSettings, error: appSettingsError } =
+				await supabase
+					.from("app_settings")
+					.select("*")
+					.eq("user_id", user.data.user.id)
+					.single();
+
+			if (appSettingsError) {
+				console.error("Error fetching app settings:", appSettingsError);
+			}
+
+			setLanguage(appSettings.language_id);
+		}
+	}
+
+	async function getNotifications() {
+		// get Notifications
+		const { data: notifications, error: notificationsError } =
+			await supabase
+				.from("notifications")
+				.select("*")
+				.eq("language_id", language);
+
+		if (notificationsError) {
+			console.error("Error fetching notifications:", notificationsError);
+		}
+
+		setInternalNotifications(notifications);
+	}
+
+	useEffect(() => {
+		getLanguage();
+		getNotifications();
+	}, [language, internalNotifications]);
+
+	useEffect(() => {
+		const handleLanguageChange = () => {
+			getLanguage();
+			getNotifications();
+		};
+
+		window.addEventListener("storage", (e) => {
+			if (e.key === "i18nextLng") {
+				handleLanguageChange();
+			}
+		});
+
+		return () => {
+			window.removeEventListener("storage", handleLanguageChange);
+		};
+	}, [language, internalNotifications]);
+
 	return (
 		<div className="flex flex-col gap-y-2">
 			<div className="p-5 py-h-auto w-full flex flex-col shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
@@ -34,7 +98,8 @@ export default function Home() {
 												tkey={`home.guide.admin.steps.s${
 													i + 1
 												}`}
-											/>.
+											/>
+											.
 										</td>
 									</tr>
 								))}
@@ -62,7 +127,8 @@ export default function Home() {
 												tkey={`home.guide.user.steps.s${
 													i + 1
 												}`}
-											/>.
+											/>
+											.
 										</td>
 									</tr>
 								))}
@@ -81,16 +147,19 @@ export default function Home() {
 							<T tkey="home.updates.subtitle" />
 						</p>
 					</div>
-					<Notification
-						type="update"
-						msg="New version of MySurface available."
-						link="#"
-					/>
-					<Notification
-						type="news"
-						msg="New functionalities will be added soon."
-						link="#"
-					/>
+					{internalNotifications.length > 0 ? (
+						internalNotifications.map((notification, index) => (
+							<Notification
+								key={index}
+								msg={notification.message}
+								type={notification.type}
+								link={notification.link}
+								lang={notification.language_id}
+							/>
+						))
+					) : (
+						<p>No notifications.</p>
+					)}
 				</div>
 			</div>
 		</div>

@@ -105,7 +105,7 @@ export default function DashboardNavbar() {
 						alt="mysurface_logo"
 						className="w-7 h-7"
 					/>
-					<h1 className="text-xl font-fjalla">My Surface</h1>
+					<h1 className="text-xl font-fjalla">MySurface</h1>
 				</div>
 			</Link>
 			<ul
