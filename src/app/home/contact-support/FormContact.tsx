@@ -46,7 +46,7 @@ export default function FormContact({ settings }) {
 		resolver: zodResolver(formSchema),
 		defaultValues: {
             oid: "00D1t000000xBws",
-            "00N3X00000GmwAR": "Enterprise",
+            "00N3X00000GmwAR": "MySurface",
             "00N3X00000LsGqJ": "Question",
             "00N3X00000LsGqT": "",
             lead_source: "MySurface App Form",
