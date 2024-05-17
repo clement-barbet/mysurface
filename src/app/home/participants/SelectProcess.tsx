@@ -94,7 +94,7 @@ export default function SelectProcess({
 			{isEnrollmentPhase ? (
 				<div className="p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
 					<h2 className="font-semibold text-lg mb-2  border-l-4 border-mid_blue pl-2">
-						<T tkey="participants.titles.set-process" />
+						<T tkey="participants.titles.set-process.subtitle" />
 					</h2>
 					<div>
 						{selectedProcess == 1 && (

@@ -60,13 +60,28 @@
 		"titles": {
 			"add-form": "Add a new participant",
 			"add-csv": "Bulk participants upload",
-			"set-process": "Assessment type",
-			"manage": "Assessment execution",
+			"set-process": {
+				"title": "Assessment type",
+				"subtitle": "Assessment type seleciton"
+			},
+			"manage": {
+				"title": "Assessment execution",
+				"subtitle": "Manage assessment execution"
+			},
 			"add-leader": "Add a new leader",
 			"add-product": "Add a new product",
-			"participants": "Participants",
-			"leaders": "Leaders",
-			"products": "Products"
+			"participants": {
+				"title": "Participants",
+				"subtitle": "Active participants"
+			},
+			"leaders": {
+				"title": "Leaders",
+				"subtitle": "Active leaders"
+			},
+			"products": {
+				"title": "Products",
+				"subtitle": "Active products"
+			}
 		},
 		"table": {
 			"headers": {

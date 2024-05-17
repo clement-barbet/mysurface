@@ -35,15 +35,18 @@ export default function Participants() {
 	const fetchParticipantsWithStatus = async (userId) => {
 		try {
 			const fetchedParticipants = await fetchParticipants(userId);
-			const updatedParticipants = fetchedParticipants.map((participant) => {
-				let questionnaireStatus = "undefined";
-				if (participant.questionnaires) {
-					questionnaireStatus = participant.questionnaires.completed
-						? "completed"
-						: "tocomplete";
+			const updatedParticipants = fetchedParticipants.map(
+				(participant) => {
+					let questionnaireStatus = "undefined";
+					if (participant.questionnaires) {
+						questionnaireStatus = participant.questionnaires
+							.completed
+							? "completed"
+							: "tocomplete";
+					}
+					return { ...participant, questionnaireStatus };
 				}
-				return { ...participant, questionnaireStatus };
-			});
+			);
 			setParticipants(updatedParticipants);
 		} catch (error) {
 			console.error("Error fetching participants:", error.message);
@@ -80,7 +83,10 @@ export default function Participants() {
 					setOrg(fetchedSettings.organization_id);
 					setProcess(fetchedSettings.process_id);
 
-					const fetchedAssesseds = await fetchAssesseds(fetchedUserId, fetchedSettings.process_id);
+					const fetchedAssesseds = await fetchAssesseds(
+						fetchedUserId,
+						fetchedSettings.process_id
+					);
 					setAssesseds(fetchedAssesseds);
 					await fetchParticipantsWithStatus(fetchedUserId);
 					if (participants) {
@@ -117,6 +123,20 @@ export default function Participants() {
 		]);
 	};
 
+	useEffect(() => {
+		const loadAssessedData = async () => {
+			if (!userId || !process) {
+				return;
+			}
+			const data = await fetchAssesseds(userId, process);
+			setAssesseds(data);
+		};
+
+		if (process && process != 1) {
+			loadAssessedData();
+		}
+	}, [process]);
+
 	const onAssessedAdded = (newAssessed) => {
 		setAssesseds((currentAssesseds) => [...currentAssesseds, newAssessed]);
 	};
@@ -135,12 +155,27 @@ export default function Participants() {
 
 	return (
 		<div className="flex flex-col gap-y-2">
-			<SelectProcess
-				userId={userId}
-				process={process}
-				setProcess={setProcess}
-				isEnrollmentPhase={isEnrollmentPhase}
-			/>
+			<div>
+				<h2 className="ml-5 uppercase text-lg mt-4 mb-2 border-l-4 border-accent_delete pl-2">
+					<T tkey="participants.titles.set-process.title" />
+				</h2>
+				<SelectProcess
+					userId={userId}
+					process={process}
+					setProcess={setProcess}
+					isEnrollmentPhase={isEnrollmentPhase}
+				/>
+			</div>
+			{process != 1 &&
+				(process == 2 ? (
+					<h2 className="ml-5 uppercase text-lg mt-6 mb-2 border-l-4 border-accent_delete pl-2">
+						<T tkey="participants.titles.leaders.title" />
+					</h2>
+				) : (
+					<h2 className="ml-5 uppercase text-lg mt-6 mb-2 border-l-4 border-accent_delete pl-2">
+						<T tkey="participants.titles.products.title" />
+					</h2>
+				))}
 			<FormAddAssessed
 				process={process}
 				onAssessedAdded={onAssessedAdded}
@@ -152,22 +187,30 @@ export default function Participants() {
 				isEnrollmentPhase={isEnrollmentPhase}
 				process={process}
 			/>
-			<FormAddParticipant
-				onParticipantAdded={onParticipantAdded}
-				isEnrollmentPhase={isEnrollmentPhase}
-			/>
-			<TableParticipants
-				participants={participants}
-				setParticipants={setParticipants}
-				isEnrollmentPhase={isEnrollmentPhase}
-				lang={lang}
-				org={org}
-				selectedProcess={process}
-				userId={userId}
-			/>
+			<div className="flex flex-col gap-y-2">
+				<h2 className="ml-5 uppercase text-lg mt-6 mb-2 border-l-4 border-accent_delete pl-2">
+					<T tkey="participants.titles.participants.title" />
+				</h2>
+				<FormAddParticipant
+					onParticipantAdded={onParticipantAdded}
+					isEnrollmentPhase={isEnrollmentPhase}
+				/>
+				<TableParticipants
+					participants={participants}
+					setParticipants={setParticipants}
+					isEnrollmentPhase={isEnrollmentPhase}
+					lang={lang}
+					org={org}
+					selectedProcess={process}
+					userId={userId}
+				/>
+			</div>
+			<h2 className="ml-5 uppercase text-lg mt-6 mb-2 border-l-4 border-accent_delete pl-2">
+				<T tkey="participants.titles.manage.title" />
+			</h2>
 			<div className="p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
 				<h2 className="mb-2 font-semibold text-lg border-l-4 border-mid_blue pl-2">
-					<T tkey="participants.titles.manage" />
+					<T tkey="participants.titles.manage.subtitle" />
 				</h2>
 				<div className="flex flex-col gap-y-2 md:gap-x-4 md:flex-row md:justify-start md:flex-wrap">
 					<CreateQuestionnairesButton
@@ -175,7 +218,9 @@ export default function Participants() {
 						participantCount={participantCount}
 						setIsEnrollmentPhase={setIsEnrollmentPhase}
 						fetchQuestionnaires={fetchQuestionnairesByIds}
-						fetchParticipants={() => fetchParticipantsWithStatus(userId)}
+						fetchParticipants={() =>
+							fetchParticipantsWithStatus(userId)
+						}
 						process={process}
 						assessedCount={assessedCount}
 						userId={userId}
@@ -184,7 +229,9 @@ export default function Participants() {
 						isEnrollmentPhase={isEnrollmentPhase}
 						setIsEnrollmentPhase={setIsEnrollmentPhase}
 						fetchQuestionnaires={fetchQuestionnairesByIds}
-						fetchParticipants={() => fetchParticipantsWithStatus(userId)}
+						fetchParticipants={() =>
+							fetchParticipantsWithStatus(userId)
+						}
 						userId={userId}
 					/>
 					<DeleteAllParticipantsButton

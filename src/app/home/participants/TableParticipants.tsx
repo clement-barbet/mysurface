@@ -114,7 +114,7 @@ function TableParticipants({
 			/>
 			<div className="overflow-auto w-full hidden md:block p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
 				<h2 className="mb-4 font-semibold text-lg  text-black border-l-4 border-mid_blue pl-2">
-					<T tkey="participants.titles.participants" />
+					<T tkey="participants.titles.participants.subtitle" />
 				</h2>
 				<Table className="w-full">
 					<TableHeader>
@@ -246,7 +246,7 @@ function TableParticipants({
 			</div>
 			<div className="overflow-auto w-full block md:hidden p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
 				<h2 className="mb-4 font-semibold text-lg  text-black border-l-4 border-mid_blue pl-2">
-					<T tkey="participants.titles.participants" />
+					<T tkey="participants.titles.participants.title" />
 				</h2>
 				{participants.length
 					? participants.map((participant) => {
