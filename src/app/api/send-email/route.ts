@@ -11,6 +11,8 @@ const transporter = nodemailer.createTransport({
 	tls: {
 		rejectUnauthorized: false,
 	},
+	logger: true,
+	debug: true,
 });
 
 const sendMessage = async (mailOptions) => {
