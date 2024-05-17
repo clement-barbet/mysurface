@@ -17,6 +17,8 @@ import { PiSuitcaseSimple } from "react-icons/pi";
 import { MdOutlineSettingsBackupRestore } from "react-icons/md";
 import { FiEdit } from "react-icons/fi";
 import { AiOutlineMessage } from "react-icons/ai";
+import { fetchLanguages } from "@/db/languages/fetchLanguages";
+import { fetchRole } from "@/db/roles/fetchRoleByUserId";
 
 export default function DashboardNavbar({ user }) {
 	const pathname = usePathname();
@@ -28,37 +30,17 @@ export default function DashboardNavbar({ user }) {
 	const [userRole, setUserRole] = useState("");
 
 	useEffect(() => {
-		const fetchLanguages = async () => {
-			const { data, error } = await supabase
-				.from("languages")
-				.select("*");
-
-			if (error) {
-				console.error("Error fetching languages:", error);
-			} else {
-				setLanguages(data);
+		const fetchData = async () => {
+			try {
+				const fetchedLanguages = await fetchLanguages();
+				setLanguages(fetchedLanguages);
+				const fetchedRole = await fetchRole(user.id);
+				setUserRole(fetchedRole.role);
+			} catch (error) {
+				console.error("Error fetching data", error);
 			}
 		};
-
-		fetchLanguages();
-	}, []);
-
-	useEffect(() => {
-		const fetchSettings = async () => {
-			const { data, error } = await supabase
-				.from("roles")
-				.select("role")
-				.eq("user_id", user.id)
-				.single();
-
-			if (error) {
-				console.error("Error fetching settings:", error);
-			} else {
-				setUserRole(data.role);
-			}
-		};
-
-		fetchSettings();
+		fetchData();
 	}, []);
 
 	const handleLinkClick = () => {
