@@ -383,7 +383,7 @@ export default function DashboardNavbar({ user }) {
 						</Link>
 					</li>
 					<li className="text-sm mt-2 text-center text-gray-400 text-opacity-90">
-						MySurface&reg; v1.0
+						MySurface&reg; v2.0
 					</li>
 				</div>
 			</ul>
