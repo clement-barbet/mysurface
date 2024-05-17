@@ -220,7 +220,7 @@ function FormAddParticipant({ onParticipantAdded, isEnrollmentPhase }) {
 						/>
 						<label
 							htmlFor="fileUpload"
-							className="cursor-pointer text-sm border border-accent_color hover:bg-accent_light py-2 px-4 rounded inline-block transition-all duration-300 ease-in-out font-medium"
+							className="cursor-pointer text-sm border border-accent_color hover:bg-accent_light py-2 px-4 rounded inline-block transition-all duration-300 ease-in-out font-medium dark:text-white dark:hover:bg-gray-800"
 						>
 							<T tkey="participants.form.labels.select" />
 						</label>

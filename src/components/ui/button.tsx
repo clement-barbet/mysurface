@@ -21,7 +21,7 @@ const buttonVariants = cva(
         delete: "bg-accent_delete px-2 py-1 rounded-md text-white hover:bg-accent_delete_hover transition-all duration-300 ease-in-out",
         login: "w-full py-2 px-4 font-medium tracking-wider bg-accent_color text-white rounded-md hover:bg-accent_hover transition-all duration-300 ease-in-out hover:tracking-widest hover:drop-shadow-lg",
         signup: "w-full py-2 px-4 font-medium tracking-wider bg-transparent text-black rounded-md hover:bg-accent_light transition-all duration-300 ease-in-out hover:tracking-widest hover:drop-shadow-lg border-2 border-accent_color",
-        outline_blue: "bg-transparent text-black px-2 py-1 rounded-md hover:bg-accent_light transition-all duration-300 ease-in-out border-2 border-accent_color",
+        outline_blue: "bg-transparent text-black px-2 py-1 rounded-md hover:bg-accent_light transition-all duration-300 ease-in-out border-2 border-accent_color dark:text-white dark:hover:bg-gray-800",
         blue: "w-auto py-2 px-4 bg-accent_color text-white rounded-md hover:bg-accent_hover transition-all duration-200 ease-in-out",
       },
       size: {

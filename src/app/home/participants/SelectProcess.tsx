@@ -129,7 +129,7 @@ export default function SelectProcess({
 					<Form {...form}>
 						<form
 							onSubmit={form.handleSubmit(handleChangeProcess)}
-							className="w-2/5 space-y-8 flex flex-row items-end gap-x-4"
+							className="w-full md:w-2/5 flex md:flex-row flex-col items-end md:gap-x-4 md:gap-y-0 gap-y-2"
 						>
 							<FormField
 								control={form.control}
