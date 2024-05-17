@@ -402,3 +402,40 @@ evaluator_id,evaluator_name,evaluated_id,evaluated_name,rating1,weight1,rating2,
 10,leader5,4,user4,0,0.5,0,0.5,0,0.5
 10,leader5,5,user5,0,0.5,0,0.5,0,0.5
 ```
+
+## Replacing example results
+Example reports are stored in the _example_results_ view. If you want to change the existing examples or add more, you need to update the view through the SQL Editor in Supabase. Follow these steps:
+
+1. Access the SQL Editor in Supabase and copy and paste the following code:
+```sql
+CREATE OR REPLACE VIEW
+  public.example_results as
+SELECT
+  results.id,
+  results.result,
+  results.report_name
+FROM
+  results
+WHERE
+  results.id = '1713698503619'
+  OR results.id = '1714079302998'
+  OR results.id = '1713448772441';
+```
+
+2. If you want to change the current example reports, update the **results.id** in the WHERE clause. 
+3. If you want to add a new result, simply add another OR condition with the new results.id in the WHERE clause. For example:
+```sql
+CREATE OR REPLACE VIEW
+  public.example_results as
+SELECT
+  results.id,
+  results.result,
+  results.report_name
+FROM
+  results
+WHERE
+  results.id = '1713698503619'
+  OR results.id = '1714079302998'
+  OR results.id = '1713448772441'
+  OR results.id = 'NEW ID';
+```
