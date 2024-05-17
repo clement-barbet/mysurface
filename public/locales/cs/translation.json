@@ -59,15 +59,15 @@
 	"participants": {
 		"titles": {
 			"add-form": "Přidat nového účastníka",
-			"add-csv": "Hromadné nahrávání účastníků",
-			"set-process": "Vyberte typ hodnocení",
-			"manage": "Spustit hodnocení",
-			"add-leader": "Přidat nového vůdce",
+			"add-csv": "Hromadné nahrání účastníků",
+			"set-process": "Typ hodnocení",
+			"manage": "Provádění hodnocení",
+			"add-leader": "Přidat nového vedoucího",
 			"add-product": "Přidat nový produkt",
-			"participants": "Aktivní účastníci",
-			"leaders": "Aktivní vedoucí",
-			"products": "Aktivní produkty"
-		},
+			"participants": "Účastníci",
+			"leaders": "Vedoucí",
+			"products": "Produkty"
+		},		
 		"table": {
 			"headers": {
 				"name": "Jméno",
@@ -134,7 +134,7 @@
 				"products": "Uživatelé hodnotí produkty"
 			},
 			"button": "Vybrat",
-			"selected": "Vybraný proces:"
+			"selected": "Vybraný typ hodnocení:"
 		}
 	},
 	"faq": {
@@ -258,7 +258,7 @@
 			"labels": {
 				"id": "ID",
 				"name": "Název",
-				"value": "Hodnota",
+				"value": "Hodnota vlivu",
 				"group": "Skupina",
 				"action": "Akce",
 				"influence": "Úroveň vlivu"

@@ -60,13 +60,13 @@
 		"titles": {
 			"add-form": "Add a new participant",
 			"add-csv": "Bulk participants upload",
-			"set-process": "Select assessment type",
-			"manage": "Run assessment",
+			"set-process": "Assessment type",
+			"manage": "Assessment execution",
 			"add-leader": "Add a new leader",
 			"add-product": "Add a new product",
-			"participants": "Active participants",
-			"leaders": "Active leaders",
-			"products": "Active products"
+			"participants": "Participants",
+			"leaders": "Leaders",
+			"products": "Products"
 		},
 		"table": {
 			"headers": {
@@ -134,7 +134,7 @@
 				"products": "Users assess products"
 			},
 			"button": "Select",
-			"selected": "Selected process:"
+			"selected": "Selected assessment type:"
 		}
 	},
 	"faq": {
@@ -258,7 +258,7 @@
 			"labels": {
 				"id": "ID",
 				"name": "Name",
-				"value": "Value",
+				"value": "Influence value",
 				"group": "Group",
 				"action": "Action",
 				"influence": "Influence level"

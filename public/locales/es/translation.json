@@ -60,14 +60,14 @@
 		"titles": {
 			"add-form": "Agregar un nuevo participante",
 			"add-csv": "Carga masiva de participantes",
-			"set-process": "Seleccionar tipo de evaluación",
-			"manage": "Ejecutar evaluación",
+			"set-process": "Tipo de evaluación",
+			"manage": "Ejecución de la evaluación",
 			"add-leader": "Agregar un nuevo líder",
 			"add-product": "Agregar un nuevo producto",
-			"participants": "Participantes activos",
-			"leaders": "Líderes activos",
-			"products": "Productos activos"
-		},
+			"participants": "Participantes",
+			"leaders": "Líderes",
+			"products": "Productos"
+		},		
 		"table": {
 			"headers": {
 				"name": "Nombre",
@@ -134,7 +134,7 @@
 				"products": "Los usuarios evalúan productos"
 			},
 			"button": "Seleccionar",
-			"selected": "Proceso seleccionado:"
+			"selected": "Tipo de evaluación seleccionada:"
 		}
 	},
 	"faq": {
@@ -258,7 +258,7 @@
 			"labels": {
 				"id": "ID",
 				"name": "Nombre",
-				"value": "Valor",
+				"value": "Valor de influencia",
 				"group": "Grupo",
 				"action": "Acción",
 				"influence": "Nivel de influencia"
