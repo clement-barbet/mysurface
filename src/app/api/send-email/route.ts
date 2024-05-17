@@ -17,11 +17,14 @@ const transporter = nodemailer.createTransport({
 
 const sendMessage = async (mailOptions) => {
 	try {
+		console.log("Sending email");
+		console.log("Mail options: ", mailOptions);
+		console.log("Transporter: ", transporter);
 		await transporter.sendMail(mailOptions);
 		console.log("Email sent");
 		return new Response("Email sent", { status: 200 });
 	} catch (error) {
-		console.log("error is " + error);
+		console.log("Error sending email: " + error);
 		return new Response("Error sending email", { status: 500 });
 	}
 };
@@ -30,6 +33,7 @@ export async function POST(request: Request) {
 	try {
 		const body = await request.json();
 		const { name, email, url } = body;
+		console.log("Body req: ", body);
 
 		let mailOptions = {
 			from: "My Surface® <info@myaudit.org>",
@@ -41,7 +45,7 @@ export async function POST(request: Request) {
 		const response = await sendMessage(mailOptions);
 		return response;
 	} catch (error) {
-		console.log("error is " + error);
+		console.log("Error fetching: " + error);
 		return new Response("Error processing request", { status: 500 });
 	}
 }

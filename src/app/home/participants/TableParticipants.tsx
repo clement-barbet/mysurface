@@ -94,11 +94,12 @@ function TableParticipants({
 
 			if (!response.ok) {
 				setErrorMessage(`Error: ${response.status}`);
+				console.log("Response", response);
 			} else {
 				setSuccessMessage(`Email successfully sent to: ${email}`);
 			}
 		} catch (error) {
-			console.error("Error:", error);
+			console.error(`Error sending email to ${email}: ${error}`);
 		}
 	}
 
