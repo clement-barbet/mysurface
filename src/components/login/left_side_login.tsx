@@ -42,7 +42,7 @@ const LeftSideLogin = () => {
 					id="logo"
 					src="/logo/surf-app-logo.svg"
 					alt="mysurface_logo"
-					className="mx-auto mb-4 w-52 h-52"
+					className="mx-auto mb-4 w-44 h-44"
 				/>
 				<h1 className="text-6xl text-light_gray font-fjalla text-center mb-5">
 					MySurface

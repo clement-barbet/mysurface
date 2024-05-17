@@ -193,21 +193,6 @@ export default function DashboardNavbar({ user }) {
 						<T tkey="navbar.results-examples" />
 					</Link>
 				</li>
-				<li
-					className={clsx("py-2 px-4 tracking-wider", {
-						"border-l-4 border-light_gray":
-							pathname === "/home/faq",
-					})}
-				>
-					<Link
-						onClick={handleLinkClick}
-						href="/home/faq"
-						className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase"
-					>
-						<AiOutlineQuestion className="h-6 w-6" />
-						<T tkey="navbar.faq" />
-					</Link>
-				</li>
 				{userRole === "superadmin" ? (
 					<>
 						<hr className="w-full my-4 border-light_gray border border-opacity-50" />
@@ -308,6 +293,7 @@ export default function DashboardNavbar({ user }) {
 					</>
 				) : null}
 				<div className="relative mt-auto">
+					<hr className="w-full my-4 border-light_gray border border-opacity-50" />
 					<li
 						onClick={() =>
 							setIsLanguageMenuOpen(!isLanguageMenuOpen)
@@ -369,6 +355,21 @@ export default function DashboardNavbar({ user }) {
 					<li
 						className={clsx("py-2 px-4 tracking-wider", {
 							"border-l-4 border-light_gray":
+								pathname === "/home/faq",
+						})}
+					>
+						<Link
+							onClick={handleLinkClick}
+							href="/home/faq"
+							className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase"
+						>
+							<AiOutlineQuestion className="h-6 w-6" />
+							<T tkey="navbar.faq" />
+						</Link>
+					</li>
+					<li
+						className={clsx("py-2 px-4 tracking-wider", {
+							"border-l-4 border-light_gray":
 								pathname === "/home/contact-support",
 						})}
 					>
@@ -381,7 +382,9 @@ export default function DashboardNavbar({ user }) {
 							<T tkey="navbar.contact-support" />
 						</Link>
 					</li>
-					<li className="text-sm text-center text-gray-400 text-opacity-90">MySurface&reg; v1.0</li>
+					<li className="text-sm mt-2 text-center text-gray-400 text-opacity-90">
+						MySurface&reg; v1.0
+					</li>
 				</div>
 			</ul>
 		</nav>
