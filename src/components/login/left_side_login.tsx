@@ -23,7 +23,7 @@ const LeftSideLogin = () => {
 
 	return (
 		<div className="bg-mid_blue w-full md:w-1/2 min-content flex flex-col items-center justify-center md:pt-10 pb-10 pt-5 gap-y-10 md:gap-y-0">
-			<div className="flex flex-row gap-x-2 justify-center mt-auto text-light_gray md:order-2">
+			<div className="flex flex-row gap-x-2 justify-center mt-auto text-light_gray md:order-2 md:mt-4">
 				{languages.map((language) => (
 					<p
 						key={language.id}
