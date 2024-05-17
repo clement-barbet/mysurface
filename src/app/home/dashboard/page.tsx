@@ -4,57 +4,16 @@ import TeamMembersList from "@/components/dashboard/team_members_list";
 import Link from "next/link";
 import T from "@/components/translations/translation";
 import { useEffect, useState } from "react";
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { TableBody, TableCell, TBodyRow } from "@/components/ui/table";
 import Loading from "@/components/ui/loading";
+import { fetchUser } from "@/db/auth_user/fetchUser";
+import { fetchParticipants } from "@/db/participants/fetchParticipantsByUserId";
+import { fetchResults } from "@/db/results/fetchResultsByUserId";
 
 export default function Dashboard() {
 	const [results, setResults] = useState([]);
-	const supabase = createClientComponentClient();
 	const [participants, setParticipants] = useState([]);
 	const [loading, setLoading] = useState(true);
-
-	const fetchUser = async () => {
-		try {
-			const fetchedUser = await supabase.auth.getUser();
-			if (!fetchedUser.data.user)
-				throw new Error("User not authenticated");
-			return fetchedUser.data.user;
-		} catch (error) {
-			console.error("Error fetching user", error);
-		}
-	};
-
-	const fetchResults = async (userId) => {
-		try {
-			let { data: fetchedResults, error } = await supabase
-				.from("results")
-				.select("*")
-				.order("created_at", { ascending: false })
-				.limit(3)
-				.eq("user_id", userId);
-
-			if (error) throw error;
-			return fetchedResults || [];
-		} catch (error) {
-			console.error("Error loading results", error);
-		}
-	};
-
-	const fetchParticipants = async (userId) => {
-		try {
-			let { data: fetchedParticipants, error } = await supabase
-				.from("participants")
-				.select("*")
-				.order("name")
-				.eq("user_id", userId);
-
-			if (error) throw error;
-			return fetchedParticipants || [];
-		} catch (error) {
-			console.error("Error loading participants", error);
-		}
-	};
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -65,8 +24,8 @@ export default function Dashboard() {
 				const [fetchedResults, fetchedParticipants] = await Promise.all(
 					[fetchResults(userId), fetchParticipants(userId)]
 				);
-				setResults(fetchedResults);
-				setParticipants(fetchedParticipants);
+				setResults(fetchedResults?.slice(0, 3) ?? []);
+				setParticipants(fetchedParticipants?.slice(0, 6) ?? []);
 			} catch (error) {
 				console.error("Error fetching data", error);
 			} finally {

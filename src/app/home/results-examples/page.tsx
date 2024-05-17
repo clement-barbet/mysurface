@@ -1,6 +1,5 @@
 "use client";
 import { useEffect, useState } from "react";
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import T from "@/components/translations/translation";
 import Link from "next/link";
 import {
@@ -13,11 +12,11 @@ import {
 	TBodyRow,
 } from "@/components/ui/table";
 import { fetchExamples } from "@/db/results/fetchExamplesView";
+import Loading from "@/components/ui/loading";
 
 export default function ResultsExamples() {
 	const [loading, setLoading] = useState(true);
 	const [results, setResults] = useState([]);
-	const supabase = createClientComponentClient();
 
 	const headers_T = [
 		"results.table.headers.id",
@@ -39,6 +38,10 @@ export default function ResultsExamples() {
 
 		fetchData();
 	}, []);
+
+	if (loading) {
+		return <Loading />;
+	}
 
 	return (
 		!loading && (
@@ -80,7 +83,9 @@ export default function ResultsExamples() {
 							</Table>
 						</>
 					) : (
-						<p><T tkey="results.nodata"/></p>
+						<p>
+							<T tkey="results.nodata" />
+						</p>
 					)}
 				</div>
 			</>

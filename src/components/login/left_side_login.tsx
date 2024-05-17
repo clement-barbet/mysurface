@@ -1,29 +1,34 @@
 import React from "react";
 import T from "@/components/translations/translation";
 import { useTranslation } from "react-i18next";
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useState, useEffect } from "react";
+import { fetchLanguages } from "@/db/languages/fetchLanguages";
+import Loading from "../ui/loading";
 
 const LeftSideLogin = () => {
 	const { i18n } = useTranslation();
-	const supabase = createClientComponentClient();
 	const [languages, setLanguages] = useState([]);
+	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
-		const fetchLanguages = async () => {
-			const { data, error } = await supabase
-				.from("languages")
-				.select("*");
-
-			if (error) {
-				console.error("Error fetching languages:", error);
-			} else {
-				setLanguages(data);
+		const fetchData = async () => {
+			setLoading(true);
+			try {
+				const fetchedLanguages = await fetchLanguages();
+				setLanguages(fetchedLanguages);
+			} catch (error) {
+				console.error("Error loading results", error);
+			} finally {
+				setLoading(false);
 			}
 		};
 
-		fetchLanguages();
+		fetchData();
 	}, []);
+
+	if (loading) {
+		return <Loading />;
+	}
 
 	return (
 		<div className="bg-mid_blue w-full md:w-1/2 min-content flex flex-col items-center justify-center md:pt-10 pb-10 pt-5 gap-y-10 md:gap-y-0">
