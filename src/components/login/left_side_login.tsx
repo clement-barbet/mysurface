@@ -40,7 +40,7 @@ const LeftSideLogin = () => {
 			<div className="rounded-lg w-4/5 md:order-1 md:mb-4 ">
 				<img
 					id="logo"
-					src="/logo/surf-logo-white.svg"
+					src="/logo/surf-app-logo.svg"
 					alt="mysurface_logo"
 					className="mx-auto mb-4 w-52 h-52"
 				/>

@@ -84,7 +84,7 @@ export default function DashboardNavbar({ user }) {
 				>
 					<img
 						id="logo"
-						src="/logo/surf-logo-white.svg"
+						src="/logo/surf-app-logo.svg"
 						alt="mysurface_logo"
 						className="w-7 h-7"
 					/>

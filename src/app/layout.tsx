@@ -17,7 +17,7 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<head>
-				<link rel="icon" href="/logo/surf-app-favicon-purple.svg" />
+				<link rel="icon" href="/logo/surf-app-favicon.svg" />
 			</head>
 			<body
 				className={`${glory.className} bg-dark_gray dark:bg-dark_blue dark:bg-opacity-80 transition-colors duration-1000 linear`}
