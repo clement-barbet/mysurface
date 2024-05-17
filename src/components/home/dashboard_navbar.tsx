@@ -381,6 +381,7 @@ export default function DashboardNavbar({ user }) {
 							<T tkey="navbar.contact-support" />
 						</Link>
 					</li>
+					<li className="text-sm text-center text-gray-400 text-opacity-90">MySurface&reg; v1.0</li>
 				</div>
 			</ul>
 		</nav>

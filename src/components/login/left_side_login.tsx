@@ -54,6 +54,9 @@ const LeftSideLogin = () => {
 					<T tkey="login.slogan.part2" />
 				</p>
 			</div>
+			<p className="md:mt-2 text-sm text-center text-gray-400 text-opacity-90 md:order-3">
+				MySurface&reg; v1.0
+			</p>
 		</div>
 	);
 };
