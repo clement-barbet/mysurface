@@ -48,7 +48,7 @@ const LeftSideLogin = () => {
 					MySurface
 				</h1>
 				<hr className="w-3/4 lg:w-2/3 mx-auto mb-5 border-2 border-light_gray" />
-				<p className="text-light_gray font-glory text-center font-light text-xl w-4/5 lg:w-3/5 mx-auto">
+				<p className="text-light_gray font-glory text-center font-light text-xl w-full mx-auto">
 					<T tkey="login.slogan.part1" />
 					<br />
 					<T tkey="login.slogan.part2" />
