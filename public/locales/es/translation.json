@@ -344,7 +344,8 @@
 		"customers": "Todos los Clientes",
 		"backup": "Respaldo de Resultados",
 		"modeling": "Constructor de Modelos",
-		"news": "Noticias"
+		"news": "Noticias",
+		"contact-support": "Contactar Soporte"
 	},
 	"backup-results": {
 		"title": "Respaldo de Resultados"

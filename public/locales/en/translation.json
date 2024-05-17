@@ -344,7 +344,8 @@
 		"customers": "All Customers",
 		"backup": "Results Backup",
 		"modeling": "Model Builder",
-		"news": "News"
+		"news": "News",
+		"contact-support": "Contact Support"
 	},
 	"topbar": {
 		"search": "Search",

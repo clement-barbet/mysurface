@@ -17,6 +17,7 @@ import { PiSuitcaseSimple } from "react-icons/pi";
 import { MdOutlineSettingsBackupRestore } from "react-icons/md";
 import { FiEdit } from "react-icons/fi";
 import { AiOutlineMessage } from "react-icons/ai";
+import { BiSupport } from "react-icons/bi";
 import { fetchLanguages } from "@/db/languages/fetchLanguages";
 import { fetchRole } from "@/db/roles/fetchRoleByUserId";
 
@@ -306,59 +307,81 @@ export default function DashboardNavbar({ user }) {
 						</li>
 					</>
 				) : null}
-				<li
-					onClick={() => setIsLanguageMenuOpen(!isLanguageMenuOpen)}
-					className="py-2 px-4 tracking-wider relative mt-auto"
-				>
-					{isLanguageMenuOpen && (
-						<ul className="mb-2 ms-8">
-							{languages.map((language) => (
-								<li
-									key={language.id}
-									onClick={() => {
-										const changeLanguage = async () => {
-											i18n.changeLanguage(language.code);
-											localStorage.setItem(
-												"i18nextLng",
-												language.code
-											);
-											handleLinkClick();
-
-											const user =
-												await supabase.auth.getUser();
-
-											const { error } = await supabase
-												.from("app_settings")
-												.update({
-													language_id: language.id,
-												})
-												.eq(
-													"user_id",
-													user.data.user.id
+				<div className="relative mt-auto">
+					<li
+						onClick={() =>
+							setIsLanguageMenuOpen(!isLanguageMenuOpen)
+						}
+						className="py-2 px-4 tracking-wider"
+					>
+						{isLanguageMenuOpen && (
+							<ul className="mb-2 ms-8">
+								{languages.map((language) => (
+									<li
+										key={language.id}
+										onClick={() => {
+											const changeLanguage = async () => {
+												i18n.changeLanguage(
+													language.code
 												);
-
-											if (error) {
-												console.error(
-													"Error updating language:",
-													error
+												localStorage.setItem(
+													"i18nextLng",
+													language.code
 												);
-											}
-										};
+												handleLinkClick();
 
-										changeLanguage();
-									}}
-									className="hover:font-semibold cursor-pointer transition-all duration-200 ease-linear"
-								>
-									{language.name}
-								</li>
-							))}
-						</ul>
-					)}
-					<span className="hover:font-bold hover:cursor-pointer transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase">
-						<IoLanguageOutline className="h-6 w-6" />
-						<T tkey="navbar.language" />
-					</span>
-				</li>
+												const user =
+													await supabase.auth.getUser();
+
+												const { error } = await supabase
+													.from("app_settings")
+													.update({
+														language_id:
+															language.id,
+													})
+													.eq(
+														"user_id",
+														user.data.user.id
+													);
+
+												if (error) {
+													console.error(
+														"Error updating language:",
+														error
+													);
+												}
+											};
+
+											changeLanguage();
+										}}
+										className="hover:font-semibold cursor-pointer transition-all duration-200 ease-linear"
+									>
+										{language.name}
+									</li>
+								))}
+							</ul>
+						)}
+						<span className="hover:font-bold hover:cursor-pointer transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase">
+							<IoLanguageOutline className="h-6 w-6" />
+							<T tkey="navbar.language" />
+						</span>
+					</li>
+					<li
+						className={clsx("py-2 px-4 tracking-wider", {
+							"border-l-4 border-light_gray":
+								pathname === "/home/contact-support",
+						})}
+					>
+						<Link
+							onClick={handleLinkClick}
+							href="/home/contact-support"
+							className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase"
+						>
+							<BiSupport className="h-6 w-6" />
+							<T tkey="navbar.contact-support" />
+						</Link>
+					</li>
+				</div>
 			</ul>
 		</nav>
 	);
