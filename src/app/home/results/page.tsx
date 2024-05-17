@@ -18,6 +18,8 @@ import usePagination from "@/components/ui/pagination/usePagination";
 import ModalComponent from "@/components/results/ModalComponentEdit";
 import ModalComponentDelete from "@/components/results/ModalComponentDelete";
 import Loading from "@/components/ui/loading";
+import { fetchUser } from "@/db/auth_user/fetchUser";
+import { fetchResults } from "@/db/results/fetchResultsByUserId";
 
 export default function Results() {
 	const [loading, setLoading] = useState(true);
@@ -60,20 +62,17 @@ export default function Results() {
 
 	useEffect(() => {
 		const fetchData = async () => {
-			const user = await supabase.auth.getUser();
-			const userId = user.data.user.id;
-
 			setLoading(true);
-			let { data: fetchedResults, error: resultsError } = await supabase
-				.from("results")
-				.select("*")
-				.order("created_at", { ascending: false })
-				.eq("user_id", userId);
-
-			if (resultsError)
-				console.error("Error loading results", resultsError);
-			else setResults(fetchedResults || []);
-			setLoading(false);
+			try {
+				const fetchedUser = await fetchUser();
+				const userId = fetchedUser.id;
+				const fetchedResults = await fetchResults(userId);
+				setResults(fetchedResults);
+			} catch (error) {
+				console.error("Error fetching data:", error);
+			} finally {
+				setLoading(false);
+			}
 		};
 
 		fetchData();

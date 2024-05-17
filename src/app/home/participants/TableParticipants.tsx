@@ -19,7 +19,6 @@ import { SuccessMessage } from "@/components/ui/msg/success_msg";
 function TableParticipants({
 	participants,
 	setParticipants,
-	questionnaires,
 	isEnrollmentPhase,
 	lang,
 	org,

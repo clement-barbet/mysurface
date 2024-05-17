@@ -12,6 +12,7 @@ import {
 	THeadRow,
 	TBodyRow,
 } from "@/components/ui/table";
+import { fetchExamples } from "@/db/results/fetchExamplesView";
 
 export default function ResultsExamples() {
 	const [loading, setLoading] = useState(true);
@@ -25,18 +26,15 @@ export default function ResultsExamples() {
 
 	useEffect(() => {
 		const fetchData = async () => {
-			const user = await supabase.auth.getUser();
-
 			setLoading(true);
-			let { data: fetchedResults, error: resultsError } = await supabase
-				.from("example_results")
-				.select("*")
-				.order("id", { ascending: false });
-
-			if (resultsError)
-				console.error("Error loading results", resultsError);
-			else setResults(fetchedResults || []);
-			setLoading(false);
+			try {
+				const fetchedResults = await fetchExamples();
+				setResults(fetchedResults || []);
+			} catch (error) {
+				console.error("Error fetching data:", error);
+			} finally {
+				setLoading(false);
+			}
 		};
 
 		fetchData();

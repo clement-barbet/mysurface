@@ -19,8 +19,6 @@ function UploadResults({ processId, reportName }) {
 	// Insert into database
 	async function addResultToDatabase(participantsData) {
 		try {
-			console.log("process_id", processId);
-			console.log("report_name", reportName);
 			const { data: insertedResult, error: insertError } = await supabase
 				.from("results")
 				.insert([

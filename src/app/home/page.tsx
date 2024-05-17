@@ -2,53 +2,14 @@
 import { Notification } from "@/components/home/notification";
 import T from "@/components/translations/translation";
 import Loading from "@/components/ui/loading";
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import { fetchSettings } from "@/db/app_settings/fetchSettingsByUserId";
+import { fetchUser } from "@/db/auth_user/fetchUser";
+import { fetchNotifications } from "@/db/notifications/fetchNotificationsByLanguageId";
 import { useEffect, useState } from "react";
 
 export default function Home() {
-	const supabase = createClientComponentClient();
 	const [internalNotifications, setInternalNotifications] = useState([]);
 	const [loading, setLoading] = useState(true);
-
-	async function fetchUser() {
-		try {
-			const fetchedUser = await supabase.auth.getUser();
-			if (!fetchedUser.data.user)
-				throw new Error("User not authenticated");
-			return fetchedUser.data.user;
-		} catch (error) {
-			console.error("Error fetching user", error);
-		}
-	}
-
-	async function fetchAppSettings(userId) {
-		try {
-			const { data: appSettings, error } = await supabase
-				.from("app_settings")
-				.select("*")
-				.eq("user_id", userId)
-				.single();
-
-			if (error) throw error;
-			return appSettings;
-		} catch (error) {
-			console.error("Error loading app settings", error);
-		}
-	}
-
-	async function fetchNotifications(languageId) {
-		try {
-			const { data: appNotifications, error } = await supabase
-				.from("notifications")
-				.select("*")
-				.eq("language_id", languageId);
-
-			if (error) throw error;
-			return appNotifications || [];
-		} catch (error) {
-			console.error("Error loading notifications", error);
-		}
-	}
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -56,8 +17,8 @@ export default function Home() {
 			try {
 				const user = await fetchUser();
 				const userId = user.id;
-				const fetchedAppSettings = await fetchAppSettings(userId);
-				const languageId = fetchedAppSettings.language_id;
+				const fetchedSettings = await fetchSettings(userId);
+				const languageId = fetchedSettings.language_id;
 				const fetchedNotifications = await fetchNotifications(
 					languageId
 				);

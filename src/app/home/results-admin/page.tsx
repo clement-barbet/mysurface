@@ -1,6 +1,5 @@
 "use client";
 import { useEffect, useState } from "react";
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import T from "@/components/translations/translation";
 import Link from "next/link";
 import {
@@ -18,11 +17,12 @@ import usePagination from "@/components/ui/pagination/usePagination";
 import ModalComponent from "@/components/results/ModalComponentEdit";
 import ModalComponentDelete from "@/components/results/ModalComponentDelete";
 import Loading from "@/components/ui/loading";
+import { fetchResults } from "@/db/results/fetchedResults";
+import { fetchSettings } from "@/db/app_settings/fetchSettings";
 
 export default function Results() {
 	const [loading, setLoading] = useState(true);
 	const [results, setResults] = useState([]);
-	const supabase = createClientComponentClient();
 	const [selectedResult, setSelectedResult] = useState(null);
 	const [open, setOpen] = useState(false);
 	const [openDelete, setOpenDelete] = useState(false);
@@ -60,33 +60,28 @@ export default function Results() {
 	useEffect(() => {
 		const fetchData = async () => {
 			setLoading(true);
-			let { data: fetchedResults, error: resultsError } = await supabase
-				.from("results")
-				.select("*")
-				.order("created_at", { ascending: false });
-
-			let { data: fetchedAppSettings, error: appSettingsError } =
-				await supabase.from("app_settings").select("*");
-
-			if (resultsError)
-				console.error("Error loading results", resultsError);
-			else if (appSettingsError)
-				console.error("Error loading app settings", appSettingsError);
-			else {
-				let resultsWithUserEmail = fetchedResults.map((result) => {
-					let appSetting = fetchedAppSettings.find(
-						(setting) => setting.user_id === result.user_id
-					);
-					return {
-						...result,
-						user_email: appSetting
-							? appSetting.email
-							: "Email not found",
-					};
-				});
-				setResults(resultsWithUserEmail || []);
+			try {
+				const fetchedResults = await fetchResults();
+				const fetchedSettings = await fetchSettings();
+				if (fetchedResults || fetchedSettings) {
+					let resultsWithUserEmail = fetchedResults.map((result) => {
+						let appSetting = fetchedSettings.find(
+							(setting) => setting.user_id === result.user_id
+						);
+						return {
+							...result,
+							user_email: appSetting
+								? appSetting.email
+								: "Email not found",
+						};
+					});
+					setResults(resultsWithUserEmail || []);
+				}
+			} catch (error) {
+				console.error("Error fetching data:", error);
+			} finally {
+				setLoading(false);
 			}
-			setLoading(false);
 		};
 
 		fetchData();
@@ -100,7 +95,11 @@ export default function Results() {
 		!loading && (
 			<>
 				<div className="w-full m-auto">
-					<h2 className="text-3xl pb-2"><p><T tkey="results.titles.admin"/></p></h2>
+					<h2 className="text-3xl pb-2">
+						<p>
+							<T tkey="results.titles.admin" />
+						</p>
+					</h2>
 					{results.length > 0 ? (
 						<>
 							<Table className="w-full">
@@ -185,7 +184,9 @@ export default function Results() {
 							/>
 						</>
 					) : (
-						<p><T tkey="results.nodata"/></p>
+						<p>
+							<T tkey="results.nodata" />
+						</p>
 					)}
 				</div>
 				<ModalComponent

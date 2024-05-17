@@ -13,6 +13,12 @@ import SelectProcess from "./SelectProcess";
 import FormAddAssessed from "./FormAddAssessed";
 import TableAssessed from "./TableAssessed";
 import Loading from "@/components/ui/loading";
+import { fetchUser } from "@/db/auth_user/fetchUser";
+import { fetchSettings } from "@/db/app_settings/fetchSettingsByUserId";
+import { set } from "zod";
+import { fetchAssesseds } from "@/db/assessed/fetchAssessedsByUserIdAndProcessId";
+import { fetchParticipants } from "@/db/participants/fetchParticipantsWithStatusByUserId";
+import { fetchQuestionnaires } from "@/db/questionnaires/fetchQuestionnairesByIds";
 
 export default function Participants() {
 	const supabase = createClientComponentClient();
@@ -26,50 +32,10 @@ export default function Participants() {
 	const [loading, setLoading] = useState(true);
 	const [userId, setUserId] = useState(null);
 
-	const fetchUser = async () => {
+	const fetchParticipantsWithStatus = async (userId) => {
 		try {
-			const fetchedUser = await supabase.auth.getUser();
-			if (!fetchedUser.data.user)
-				throw new Error("User not authenticated");
-			return fetchedUser.data.user;
-		} catch (error) {
-			console.error("Error fetching user", error);
-		}
-	};
-
-	const fetchAssesseds = async (userId, processId) => {
-		try {
-			const { data, error } = await supabase
-				.from("assessed")
-				.select("*")
-				.eq("user_id", userId)
-				.eq("type", processId == 2 ? "leader" : "product")
-				.order("name");
-			if (error) throw error;
-			setAssesseds(data);
-			console.log("Assesseds fetched successfully");
-		} catch (error) {
-			console.error("Error fetching assesseds:", error.message);
-		}
-	};
-
-	const fetchParticipants = async (userId) => {
-		try {
-			const { data, error } = await supabase
-				.from("participants")
-				.select(
-					`
-              *,
-              questionnaires:questionnaire (
-                id,
-                completed
-              )
-            `
-				)
-				.eq("user_id", userId)
-				.order("name");
-			if (error) throw error;
-			const updatedParticipants = data.map((participant) => {
+			const fetchedParticipants = await fetchParticipants(userId);
+			const updatedParticipants = fetchedParticipants.map((participant) => {
 				let questionnaireStatus = "undefined";
 				if (participant.questionnaires) {
 					questionnaireStatus = participant.questionnaires.completed
@@ -79,13 +45,12 @@ export default function Participants() {
 				return { ...participant, questionnaireStatus };
 			});
 			setParticipants(updatedParticipants);
-			console.log("Participants fetched successfully");
 		} catch (error) {
 			console.error("Error fetching participants:", error.message);
 		}
 	};
 
-	const fetchQuestionnaires = async () => {
+	const fetchQuestionnairesByIds = async () => {
 		try {
 			const questionnaireIds = participants
 				.filter(
@@ -94,34 +59,10 @@ export default function Participants() {
 						p.questionnaire !== undefined
 				)
 				.map((p) => p.questionnaire);
-			const { data, error } = await supabase
-				.from("questionnaires")
-				.select("id, data, completed")
-				.in("id", questionnaireIds);
-			if (error) throw error;
-			setQuestionnaires(data);
-			console.log("Questionnaires fetched successfully");
+			const fetchedQuestionnaires = fetchQuestionnaires(questionnaireIds);
+			setQuestionnaires(fetchedQuestionnaires);
 		} catch (error) {
 			console.error("Error fetching questionnaires:", error.message);
-		}
-	};
-
-	const fetchPhase = async (userId) => {
-		try {
-			const { data: appSettings, error: appSettingsError } =
-				await supabase
-					.from("app_settings")
-					.select("*")
-					.eq("user_id", userId)
-					.single();
-			if (appSettingsError) throw appSettingsError;
-			setIsEnrollmentPhase(appSettings.isEnrollmentPhase);
-			setLang(appSettings.language_id);
-			setOrg(appSettings.organization_id);
-			setProcess(appSettings.process_id);
-			return appSettings;
-		} catch (error) {
-			console.error("Error fetching phase:", error.message);
 		}
 	};
 
@@ -133,12 +74,17 @@ export default function Participants() {
 				const fetchedUserId = fetchedUser.id;
 				setUserId(fetchedUserId);
 				if (fetchedUserId) {
-					const fetchedSettings = await fetchPhase(fetchedUserId);
-					const processId = fetchedSettings.process_id;
-					await fetchAssesseds(fetchedUserId, processId);
-					await fetchParticipants(fetchedUserId);
+					const fetchedSettings = await fetchSettings(fetchedUserId);
+					setIsEnrollmentPhase(fetchedSettings.isEnrollmentPhase);
+					setLang(fetchedSettings.language_id);
+					setOrg(fetchedSettings.organization_id);
+					setProcess(fetchedSettings.process_id);
+
+					const fetchedAssesseds = await fetchAssesseds(fetchedUserId, fetchedSettings.process_id);
+					setAssesseds(fetchedAssesseds);
+					await fetchParticipantsWithStatus(fetchedUserId);
 					if (participants) {
-						await fetchQuestionnaires();
+						await fetchQuestionnairesByIds();
 					}
 				}
 			} catch (error) {
@@ -213,7 +159,6 @@ export default function Participants() {
 			<TableParticipants
 				participants={participants}
 				setParticipants={setParticipants}
-				questionnaires={questionnaires}
 				isEnrollmentPhase={isEnrollmentPhase}
 				lang={lang}
 				org={org}
@@ -229,8 +174,8 @@ export default function Participants() {
 						isEnrollmentPhase={isEnrollmentPhase}
 						participantCount={participantCount}
 						setIsEnrollmentPhase={setIsEnrollmentPhase}
-						fetchQuestionnaires={fetchQuestionnaires}
-						fetchParticipants={() => fetchParticipants(userId)}
+						fetchQuestionnaires={fetchQuestionnairesByIds}
+						fetchParticipants={() => fetchParticipantsWithStatus(userId)}
 						process={process}
 						assessedCount={assessedCount}
 						userId={userId}
@@ -238,8 +183,8 @@ export default function Participants() {
 					<ResetPhaseButton
 						isEnrollmentPhase={isEnrollmentPhase}
 						setIsEnrollmentPhase={setIsEnrollmentPhase}
-						fetchQuestionnaires={fetchQuestionnaires}
-						fetchParticipants={() => fetchParticipants(userId)}
+						fetchQuestionnaires={fetchQuestionnairesByIds}
+						fetchParticipants={() => fetchParticipantsWithStatus(userId)}
 						userId={userId}
 					/>
 					<DeleteAllParticipantsButton

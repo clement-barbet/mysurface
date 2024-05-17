@@ -14,6 +14,8 @@ import {
 import usePagination from "@/components/ui/pagination/usePagination";
 import Pagination from "@/components/ui/pagination/pagination";
 import Loading from "@/components/ui/loading";
+import { fetchSettings } from "@/db/app_settings/fetchSettings";
+import { fetchParticipants } from "@/db/participants/fetchParticipantsWithStatus";
 
 export default function Results() {
 	const [loading, setLoading] = useState(true);
@@ -32,20 +34,7 @@ export default function Results() {
 	useEffect(() => {
 		const fetchData = async () => {
 			setLoading(true);
-			const { data: fetchedParticipants, error: participantsError } =
-				await supabase
-					.from("participants")
-					.select(
-						`
-              *,
-              questionnaires:questionnaire (
-                id,
-                completed
-              )
-            `
-					)
-					.order("created_at", { ascending: false });
-			if (participantsError) throw participantsError;
+			const fetchedParticipants = await fetchParticipants();
 			const updatedParticipants = fetchedParticipants.map(
 				(participant) => {
 					let questionnaireStatus = "undefined";
@@ -60,15 +49,11 @@ export default function Results() {
 			);
 			setParticipants(updatedParticipants);
 
-			let { data: fetchedAppSettings, error: appSettingsError } =
-				await supabase.from("app_settings").select("*");
-
-			if (appSettingsError)
-				console.error("Error loading app settings", appSettingsError);
-			else {
+			const fetchedSettings = await fetchSettings();
+			if (fetchedSettings) {
 				let participantsWithUserEmail = updatedParticipants.map(
 					(participant) => {
-						let appSetting = fetchedAppSettings.find(
+						let appSetting = fetchedSettings.find(
 							(setting) => setting.user_id === participant.user_id
 						);
 						return {

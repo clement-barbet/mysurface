@@ -2,12 +2,13 @@
 import DashboardNavbar from "@/components/home/dashboard_navbar";
 import TopBar from "@/components/home/topbar";
 import { usePathname } from "next/navigation";
-import React, { useState, useEffect, use } from "react";
+import React, { useState, useEffect } from "react";
 import { FaTimes } from "react-icons/fa";
 import Link from "next/link";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import Loading from "@/components/ui/loading";
 import { useRouter } from "next/navigation";
+import { fetchUser } from "@/db/auth_user/fetchUser";
 
 export default function HomeLayout({
 	children,
@@ -28,17 +29,6 @@ export default function HomeLayout({
 
 	const [isSmallScreen, setIsSmallScreen] = useState(false);
 	const [loading, setLoading] = useState(true);
-
-	async function fetchUser() {
-		try {
-			const fetchedUser = await supabase.auth.getUser();
-			if (!fetchedUser.data.user)
-				throw new Error("User not authenticated");
-			return fetchedUser.data.user;
-		} catch (error) {
-			console.error("Error fetching user", error);
-		}
-	}
 
 	useEffect(() => {
 		const fetchData = async () => {

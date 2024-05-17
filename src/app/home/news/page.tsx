@@ -1,42 +1,15 @@
 "use client";
 import { useEffect, useState } from "react";
 import FormAddNews from "./FormAddNews";
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import TableNotifications from "./TableNotifications";
 import Loading from "@/components/ui/loading";
-import { set } from "zod";
+import { fetchLanguages } from "@/db/languages/fetchLanguages";
+import { fetchNotifications } from "@/db/notifications/fetchNotifications";
 
 export default function News() {
-	const supabase = createClientComponentClient();
 	const [notifications, setNotifications] = useState([]);
 	const [languages, setLanguages] = useState([]);
 	const [loading, setLoading] = useState(true);
-
-	const fetchNotifications = async () => {
-		try {
-			const { data: fetchedNotifications, error } = await supabase
-				.from("notifications")
-				.select("*");
-
-			if (error) throw error;
-			return fetchedNotifications;
-		} catch (error) {
-			console.error("Error fetching notifications:", error);
-		}
-	};
-
-	const fetchLanguages = async () => {
-		try {
-			const { data: fetchedLanguages, error } = await supabase
-				.from("languages")
-				.select("*");
-
-			if (error) throw error;
-			return fetchedLanguages;
-		} catch (error) {
-			console.error("Error fetching languages:", error);
-		}
-	};
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -61,10 +34,6 @@ export default function News() {
 				);
 
 				setNotifications(notificationsWithLanguageName);
-				console.log(
-					"notificationsWithLanguageName",
-					notificationsWithLanguageName
-				);
 			} catch (error) {
 				console.error("Error fetching data:", error);
 			} finally {
@@ -74,7 +43,7 @@ export default function News() {
 
 		fetchData();
 	}, []);
-	
+
 	const onNotificationAdded = (newNotification) => {
 		const formattedNotification = {
 			id: newNotification.notification_id,
