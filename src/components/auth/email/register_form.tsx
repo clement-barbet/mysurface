@@ -30,7 +30,6 @@ const formSchema = z.object({
 	email: z.string().email(),
 	password: z.string(),
 	confirmPassword: z.string(),
-	code: z.string(),
 });
 
 export default function RegisterForm() {
@@ -64,28 +63,8 @@ export default function RegisterForm() {
 			email: "",
 			password: "",
 			confirmPassword: "",
-			code: "",
 		},
 	});
-
-	async function onSubmit(values: z.infer<typeof formSchema>) {
-		const response = await fetch("/api/registration-code", {
-			method: "GET",
-		});
-
-		if (!response.ok) {
-			console.error("Error:", response.statusText);
-			return;
-		}
-
-		const data = await response.json();
-		if (values.code !== data.code) {
-			setErrorMessage("Invalid registration code.");
-			return;
-		}
-
-		signUp(values);
-	}
 
 	async function signUp(values: z.infer<typeof formSchema>) {
 		const email = values.email;
@@ -152,7 +131,7 @@ export default function RegisterForm() {
 							</h2>
 							<Form {...form}>
 								<form
-									onSubmit={form.handleSubmit(onSubmit)}
+									onSubmit={form.handleSubmit(signUp)}
 									className="space-y-6"
 								>
 									<FormField
@@ -271,26 +250,6 @@ export default function RegisterForm() {
 											)}
 										/>
 									</div>
-									<FormField
-										control={form.control}
-										name="code"
-										render={({ field }) => (
-											<FormItem>
-												<FormLabel>
-													<T tkey="registration.form.labels.code" />
-												</FormLabel>
-												<FormControl>
-													<Input
-														placeholder={t(
-															"registration.form.placeholders.code"
-														)}
-														{...field}
-													/>
-												</FormControl>
-												<FormMessage />
-											</FormItem>
-										)}
-									/>
 									<div className="flex justify-center items-center">
 										<Button type="submit" variant="login">
 											<T tkey="registration.form.buttons.signup" />
