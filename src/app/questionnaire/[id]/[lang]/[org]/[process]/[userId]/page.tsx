@@ -40,6 +40,7 @@ export default async function QuestionnairePage({
 		.from("participants_view")
 		.select("*")
 		.neq("questionnaire", params.id)
+		.eq("user_id", params.userId)
 		.order("name");
 	if (participantsError) {
 		console.error("Error fetching participants:", participantsError);
@@ -94,7 +95,7 @@ export default async function QuestionnairePage({
 					<b>Evaluator</b>:{" "}
 					<span className="evaluator">{owner.name}</span>
 				</h2>
-				{process == 1 ? (
+				{ params.process == 1 ? (
 					<QuestionnaireForm
 						questionnaireId={params.id}
 						participants={participants}

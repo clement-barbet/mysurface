@@ -44,8 +44,6 @@ export default function QuestionnaireForm({
 	const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 	const router = useRouter();
 
-	console.log("questions", questions);
-
 	const handleAnswer = (
 		participantId: string,
 		questionId: string,
