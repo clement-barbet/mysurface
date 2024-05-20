@@ -591,7 +591,7 @@
 		"modeling": {
 			"insert": "Chyba při vkládání výsledku.",
 			"csv": {
-				"invalid": "Neplatný typ souboru. Nahrajte prosím soubor CSV.",
+				"invalid": "Neplatný typ souboru. Prosím, nahrajte soubor CSV.",
 				"rows": "Soubor CSV překročil maximální počet řádků."
 			}
 		},
@@ -601,8 +601,8 @@
 		},
 		"participants": {
 			"email": {
-				"individual": "Chyba při odesílání individuálního emailu.",
-				"mass": "Chyba při odesílání emailů hromadně."
+				"individual": "Chyba při odesílání emailu.",
+				"mass": "Chyba při odesílání emailů."
 			},
 			"process": "Chyba při aktualizaci procesu.",
 			"assessed": {
@@ -614,9 +614,10 @@
 				"email": "Neplatný formát emailu.",
 				"missing-fields": "Jméno a email jsou povinné.",
 				"csv": {
-					"invalid": "Neplatný typ souboru. Nahrajte prosím soubor CSV.",
+					"invalid": "Neplatný typ souboru. Prosím, nahrajte soubor CSV.",
 					"rows": "Soubor CSV překročil maximální počet řádků."
-				}
+				},
+				"delete-all": "Chyba při mazání všech účastníků."
 			}
 		},
 		"account": {
@@ -625,27 +626,27 @@
 			"organization": "Chyba při aktualizaci typu organizace.",
 			"deletion": "Chyba při mazání účtu."
 		},
-		"forgot-password": "Chyba při odesílání emailu pro resetování hesla. Prosím, zkuste to znovu.",
+		"forgot-password": "Chyba při odesílání emailu pro obnovení hesla. Prosím, zkuste to znovu.",
 		"registration": {
 			"process": "Chyba při registraci účtu. Prosím, zkuste to znovu.",
 			"match": "Hesla se neshodují.",
 			"length": "Heslo musí mít minimálně 6 znaků."
 		},
 		"reset-password": {
-			"process": "Chyba při resetování hesla. Prosím, zkuste to znovu.",
+			"process": "Chyba při obnově hesla. Prosím, zkuste to znovu.",
 			"match": "Hesla se neshodují.",
 			"length": "Heslo musí mít minimálně 6 znaků."
 		},
 		"my-info": "Chyba při aktualizaci vašich informací. Prosím, zkuste to znovu.",
-		"login": "Chyba při přihlašování. Prosím, zkuste to znovu.",
+		"login": "Chyba při přihlášení. Prosím, zkuste to znovu.",
 		"logout": "Chyba při odhlášení. Prosím, zkuste to znovu."
 	},
 	"success": {
 		"support": "Vaše zpráva byla úspěšně odeslána.",
-		"modeling": "Výsledek úspěšně vložen.",
+		"modeling": "Výsledek byl úspěšně vložen.",
 		"news": {
-			"insert": "Oznámení úspěšně vloženo.",
-			"delete": "Oznámení úspěšně smazáno."
+			"insert": "Oznámení bylo úspěšně vloženo.",
+			"delete": "Oznámení bylo úspěšně smazáno."
 		},
 		"participants": {
 			"email": {
@@ -658,7 +659,8 @@
 			},
 			"participant": {
 				"delete": "Účastník byl úspěšně smazán.",
-				"add": "Účastník byl úspěšně přidán."
+				"add": "Účastník byl úspěšně přidán.",
+				"delete-all": "Všichni účastníci byli úspěšně smazáni."
 			}
 		},
 		"account": {
@@ -667,10 +669,10 @@
 			"organization": "Typ organizace byl úspěšně aktualizován.",
 			"deletion": "Účet byl úspěšně smazán."
 		},
-		"forgot-password": "Email pro resetování hesla byl úspěšně odeslán.",
-		"registration": "Registrace byla úspěšná. Prosím, zkontrolujte svůj email, abyste potvrdili svůj účet.",
-		"reset-password": "Heslo bylo úspěšně resetováno. Nyní se můžete přihlásit s novým heslem.",
-		"my-info": "Informace byly úspěšně aktualizovány.",
-		"login": "Úspěšné přihlášení."
+		"forgot-password": "Email pro obnovení hesla byl úspěšně odeslán.",
+		"registration": "Registrace byla úspěšná. Prosím, zkontrolujte váš email, abyste potvrdili váš účet.",
+		"reset-password": "Heslo bylo úspěšně obnoveno. Nyní se můžete přihlásit s novým heslem.",
+		"my-info": "Vaše informace byly úspěšně aktualizovány.",
+		"login": "Přihlášení bylo úspěšné."
 	}
 }

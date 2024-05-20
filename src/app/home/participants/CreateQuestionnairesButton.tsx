@@ -27,8 +27,6 @@ export default function CreateQuestionnairesButton({
 			});
 
 			if (response.ok) {
-				console.log("Questionnaires created successfully");
-
 				// Update the phase to "questionnaire"
 				const supabase = createClientComponentClient();
 				await supabase

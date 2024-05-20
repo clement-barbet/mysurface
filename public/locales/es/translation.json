@@ -591,7 +591,7 @@
 		"modeling": {
 			"insert": "Error al insertar el resultado.",
 			"csv": {
-				"invalid": "Tipo de archivo no válido. Por favor, sube un archivo CSV.",
+				"invalid": "Tipo de archivo inválido. Por favor, carga un archivo CSV.",
 				"rows": "El archivo CSV excedió el número máximo de filas."
 			}
 		},
@@ -601,7 +601,7 @@
 		},
 		"participants": {
 			"email": {
-				"individual": "Error al enviar el correo electrónico individual.",
+				"individual": "Error al enviar el correo electrónico.",
 				"mass": "Error al enviar los correos electrónicos."
 			},
 			"process": "Error al actualizar el proceso.",
@@ -610,13 +610,14 @@
 			},
 			"participant": {
 				"delete": "Error al eliminar el participante.",
-				"add": "Error al agregar el participante.",
+				"add": "Error al añadir el participante.",
 				"email": "Formato de correo electrónico inválido.",
-				"missing-fields": "Se requieren el nombre y el correo electrónico.",
+				"missing-fields": "Nombre y correo electrónico son requeridos.",
 				"csv": {
-					"invalid": "Tipo de archivo no válido. Por favor, sube un archivo CSV.",
+					"invalid": "Tipo de archivo inválido. Por favor, carga un archivo CSV.",
 					"rows": "El archivo CSV excedió el número máximo de filas."
-				}
+				},
+				"delete-all": "Error al eliminar todos los participantes."
 			}
 		},
 		"account": {
@@ -641,36 +642,37 @@
 		"logout": "Error al cerrar sesión. Por favor, inténtalo de nuevo."
 	},
 	"success": {
-		"support": "Tu mensaje se ha enviado correctamente.",
-		"modeling": "Resultado insertado correctamente.",
+		"support": "Tu mensaje ha sido enviado exitosamente.",
+		"modeling": "Resultado insertado exitosamente.",
 		"news": {
-			"insert": "Notificación insertada correctamente.",
-			"delete": "Notificación eliminada correctamente."
+			"insert": "Notificación insertada exitosamente.",
+			"delete": "Notificación eliminada exitosamente."
 		},
 		"participants": {
 			"email": {
-				"individual": "Correo electrónico enviado correctamente.",
-				"mass": "Correos electrónicos enviados correctamente."
+				"individual": "Correo electrónico enviado exitosamente.",
+				"mass": "Correos electrónicos enviados exitosamente."
 			},
-			"process": "Proceso actualizado correctamente.",
+			"process": "Proceso actualizado exitosamente.",
 			"assessed": {
-				"delete": "Elemento evaluado eliminado correctamente."
+				"delete": "Elemento evaluado eliminado exitosamente."
 			},
 			"participant": {
-				"delete": "Participante eliminado correctamente.",
-				"add": "Participante agregado correctamente."
+				"delete": "Participante eliminado exitosamente.",
+				"add": "Participante añadido exitosamente.",
+				"delete-all": "Todos los participantes eliminados exitosamente."
 			}
 		},
 		"account": {
-			"language": "Idioma actualizado correctamente.",
-			"names": "Nombre y nombre de la organización actualizados correctamente.",
-			"organization": "Tipo de organización actualizado correctamente.",
-			"deletion": "Cuenta eliminada correctamente."
+			"language": "Idioma actualizado exitosamente.",
+			"names": "Nombre y nombre de la organización actualizados exitosamente.",
+			"organization": "Tipo de organización actualizado exitosamente.",
+			"deletion": "Cuenta eliminada exitosamente."
 		},
 		"forgot-password": "Se ha enviado un correo electrónico para restablecer tu contraseña.",
-		"registration": "Registro exitoso. Por favor, verifica tu correo electrónico para confirmar tu cuenta.",
-		"reset-password": "Contraseña restablecida correctamente. Ahora puedes iniciar sesión con tu nueva contraseña.",
-		"my-info": "Información actualizada correctamente.",
+		"registration": "Registro exitoso. Por favor, revisa tu correo electrónico para confirmar tu cuenta.",
+		"reset-password": "Restablecimiento de contraseña exitoso. Ahora puedes iniciar sesión con tu nueva contraseña.",
+		"my-info": "Información actualizada exitosamente.",
 		"login": "Inicio de sesión exitoso."
 	}
 }

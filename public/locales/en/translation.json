@@ -613,7 +613,8 @@
 				"csv": {
 					"invalid": "Invalid file type. Please upload a CSV file.",
 					"rows": "The CSV file exceeded the maximum number of rows."
-				}
+				},
+				"delete-all": "Error deleting all participants."
 			}
 		},
 		"account": {
@@ -655,7 +656,8 @@
 			},
 			"participant": {
 				"delete": "Participant deleted successfully.",
-				"add": "Participant added successfully."
+				"add": "Participant added successfully.",
+				"delete-all": "All participants deleted successfully."
 			}
 		},
 		"account": {

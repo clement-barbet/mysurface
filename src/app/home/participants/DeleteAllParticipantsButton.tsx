@@ -3,6 +3,9 @@ import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { Button } from "@/components/ui/button";
 import T from "@/components/translations/translation";
 import { resetPhase } from "./resetPhase";
+import { useState } from "react";
+import { ErrorMessage } from "@/components/ui/msg/error_msg";
+import { SuccessMessage } from "@/components/ui/msg/success_msg";
 
 const DeleteAllParticipantsButton = ({
 	participantCount,
@@ -15,10 +18,8 @@ const DeleteAllParticipantsButton = ({
 	setIsEnrollmentPhase: any;
 	userId: any;
 }) => {
-	// Return null if there are no participants
-	if (participantCount === 0) {
-		return null;
-	}
+	const [successMessage, setSuccessMessage] = useState("");
+	const [errorMessage, setErrorMessage] = useState("");
 
 	const handleClick = async () => {
 		const supabase = createClientComponentClient();
@@ -34,16 +35,18 @@ const DeleteAllParticipantsButton = ({
 				.eq("user_id", userId);
 
 			if (deleteParticipantsError) {
+				setErrorMessage("error.participants.participant.delete-all");
 				console.error(
 					"Error deleting participants:",
 					deleteParticipantsError
 				);
 			} else {
-				console.log("Participants deleted successfully");
+				setSuccessMessage("success.participants.participant.delete-all");
 				setParticipants([]);
 				setIsEnrollmentPhase(true);
 			}
 		} else {
+			setErrorMessage("error.participants.participant.delete-all");
 			console.error(
 				"Error deleting all participants:",
 				updateError,
@@ -53,10 +56,30 @@ const DeleteAllParticipantsButton = ({
 		}
 	};
 
+	// Return null if there are no participants
+	if (participantCount === 0) {
+		return null;
+	}
+
 	return (
-		<Button id="resetPhaseBtn" onClick={handleClick} variant="delete" className="md:w-1/5 w-full">
-			<T tkey="participants.buttons-section.buttons.deleteAll" />
-		</Button>
+		<>
+			<ErrorMessage
+				errorMessage={errorMessage}
+				setErrorMessage={setErrorMessage}
+			/>
+			<SuccessMessage
+				successMessage={successMessage}
+				setSuccessMessage={setSuccessMessage}
+			/>
+			<Button
+				id="resetPhaseBtn"
+				onClick={handleClick}
+				variant="delete"
+				className="md:w-1/5 w-full"
+			>
+				<T tkey="participants.buttons-section.buttons.deleteAll" />
+			</Button>
+		</>
 	);
 };
 
