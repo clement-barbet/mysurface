@@ -28,8 +28,8 @@ import { useTranslation } from "react-i18next";
 
 const formSchema = z.object({
 	email: z.string().email(),
-	password: z.string(),
-	confirmPassword: z.string(),
+	password: z.string().min(6, "error.registration.length"),
+	confirmPassword: z.string().min(6, "error.registration.length"),
 });
 
 export default function RegisterForm() {
@@ -72,12 +72,12 @@ export default function RegisterForm() {
 		const confirmPassword = values.confirmPassword;
 
 		if (password !== confirmPassword) {
-			setErrorMessage("Passwords do not match.");
+			setErrorMessage("error.registration.match");
 			return;
 		}
 
 		if (password.length < 6) {
-			setErrorMessage("Password should be at least 6 characters.");
+			setErrorMessage("error.registration.length");
 			return;
 		}
 
@@ -95,11 +95,10 @@ export default function RegisterForm() {
 		});
 
 		if (error) {
-			setErrorMessage("Error signing up. Please try again.");
-			console.log("Here is the error:", error);
+			setErrorMessage("error.registration.process");
+			console.log("Error:", error);
 		} else {
-			setSuccessMessage("Registration successful!");
-			console.log(data);
+			setSuccessMessage("success.registration");
 			setTimeout(() => {
 				return router.push("/login");
 			}, 2000);

@@ -88,9 +88,9 @@ export default function ChangeLanguage({ userId }: { userId: any }) {
 
 		if (updateError) {
 			console.log(updateError);
-			setErrorMessage(updateError.message);
+			setErrorMessage("error.account.language");
 		} else {
-			setSuccessMessage("Language updated successfully.");
+			setSuccessMessage("success.account.language");
 			const selectedLanguage = languages.find(
 				(language) => language.id === languageId
 			);

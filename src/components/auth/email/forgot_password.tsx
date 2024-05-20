@@ -48,9 +48,9 @@ export default function ForgotPassword() {
 		);
 
 		if (resetError) {
-			setErrorMessage("Error sending password reset email.");
+			setErrorMessage("error.forgot-password");
 		} else {
-			setSuccessMessage("Password reset email sent.");
+			setSuccessMessage("success.forgot-password");
 		}
 	};
 

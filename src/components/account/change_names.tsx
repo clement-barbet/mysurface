@@ -88,11 +88,9 @@ export default function ChangeNames({ userId }: { userId: any }) {
 
 		if (updateError) {
 			console.log(updateError);
-			setErrorMessage(updateError.message);
+			setErrorMessage("error.account.names");
 		} else {
-			setSuccessMessage(
-				"Name and oranization's name updated successfully."
-			);
+			setSuccessMessage("success.account.names");
 		}
 	};
 
@@ -166,7 +164,11 @@ export default function ChangeNames({ userId }: { userId: any }) {
 							)}
 						/>
 						<div className="w-full flex justify-end">
-							<Button type="submit" variant="login" className="w-full md:w-1/2 lg:w-1/3">
+							<Button
+								type="submit"
+								variant="login"
+								className="w-full md:w-1/2 lg:w-1/3"
+							>
 								<T tkey="account.name.button" />
 							</Button>
 						</div>

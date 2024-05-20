@@ -188,11 +188,11 @@ export default function UpdateInfoForm({
 			languageUpdateError
 		) {
 			setErrorMessage(
-				"Error updating personal information. Please try again."
+				"error.my-info"
 			);
 		} else {
 			setIsUpdated(true);
-			setSuccessMessage("Personal information updated successfully.");
+			setSuccessMessage("success.my-info");
 		}
 	};
 

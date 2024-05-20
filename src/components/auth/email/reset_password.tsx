@@ -23,8 +23,8 @@ import T from "@/components/translations/translation";
 import { useTranslation } from "react-i18next";
 
 const formSchema = z.object({
-	newPassword: z.string(),
-	confirmPassword: z.string(),
+	newPassword: z.string().min(6, "error.reset-password.length"),
+	confirmPassword: z.string().min(6, "error.reset-password.length"),
 });
 
 export default function ResetPasswordForm() {
@@ -37,7 +37,12 @@ export default function ResetPasswordForm() {
 	const handleChangePassword = async (data: z.infer<typeof formSchema>) => {
 		const { newPassword, confirmPassword } = data;
 		if (newPassword !== confirmPassword) {
-			setErrorMessage("Passwords do not match.");
+			setErrorMessage("error.reset-password.match");
+			return;
+		}
+
+		if (newPassword.length < 6 || confirmPassword.length < 6) {
+			setErrorMessage("error.reset-password.length");
 			return;
 		}
 
@@ -47,12 +52,12 @@ export default function ResetPasswordForm() {
 
 		if (updateError) {
 			console.log(updateError);
-			setErrorMessage(updateError.message);
+			setErrorMessage("error.reset-password.process");
 		} else {
-			setSuccessMessage(
-				"Password reset. You can now login with your new password"
-			);
-			router.push("/login");
+			setSuccessMessage("success.reset-password");
+			setTimeout(() => {
+				return router.push("/login");
+			}, 2000);
 		}
 	};
 

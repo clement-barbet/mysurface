@@ -583,5 +583,91 @@
 			"login": "Go to login",
 			"update": "Update"
 		}
+	},
+	"error": {
+		"modeling": {
+			"insert": "Error inserting the result.",
+			"csv": {
+				"invalid": "Invalid file type. Please upload a CSV file.",
+				"rows": "The CSV file exceeded the maximum number of rows."
+			}
+		},
+		"news": {
+			"insert": "Error inserting the notification.",
+			"delete": "Error deleting the notification."
+		},
+		"participants": {
+			"email": {
+				"individual": "Error sending the email.",
+				"mass": "Error sending the emails."
+			},
+			"process": "Error updating the process.",
+			"assessed": {
+				"delete": "Error deleting the assessed element."
+			},
+			"participant": {
+				"delete": "Error deleting the participant.",
+				"add": "Error adding the participant.",
+				"email": "Invalid email format.",
+				"missing-fields": "Name and email are required.",
+				"csv": {
+					"invalid": "Invalid file type. Please upload a CSV file.",
+					"rows": "The CSV file exceeded the maximum number of rows."
+				}
+			}
+		},
+		"account": {
+			"language": "Error updating the language.",
+			"names": "Error updating the name and oranization's name.",
+			"organization": "Error updating the organization type.",
+			"deletion": "Error deleting the account."
+		},
+		"forgot-password": "Error sending the email to reset your password. Please, try again.",
+		"registration": {
+			"process": "Error registering your account. Please, try again.",
+			"match": "Passwords don't match.",
+			"length": "Password must have at least 6 characters."
+		},
+		"reset-password": {
+			"process": "Error resetting your password. Please, try again.",
+			"match": "Passwords don't match.",
+			"length": "Password must have at least 6 characters."
+		},
+		"my-info": "Error updating your information. Please, try again.",
+		"login": "Error logging in. Please, try again.",
+		"logout": "Error logging out. Please, try again."
+	},
+	"success": {
+		"support": "Your message has been sent successfully.",
+		"modeling": "Result inserted successfully.",
+		"news": {
+			"insert": "Notification inserted successfully.",
+			"delete": "Notification deleted successfully."
+		},
+		"participants": {
+			"email": {
+				"individual": "Email sent successfully.",
+				"mass": "Emails sent successfully."
+			},
+			"process": "Process updated successfully.",
+			"assessed": {
+				"delete": "Assessed element deleted successfully."
+			},
+			"participant": {
+				"delete": "Participant deleted successfully.",
+				"add": "Participant added successfully."
+			}
+		},
+		"account": {
+			"language": "Language updated successfully.",
+			"names": "Name and oranization's name updated successfully.",
+			"organization": "Organization type updated successfully.",
+			"deletion": "Account deleted successfully."
+		},
+		"forgot-password": "An email has been sent to reset your password.",
+		"registration": "Registration successful. Please, check your email to confirm your account.",
+		"reset-password": "Password reset successfully. You can now log in with your new password.",
+		"my-info": "Information updated successfully.",
+		"login": "Logged in successfully."
 	}
 }

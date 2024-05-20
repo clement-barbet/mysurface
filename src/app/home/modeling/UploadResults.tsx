@@ -35,16 +35,16 @@ function UploadResults({ processId, reportName }) {
 				.single();
 
 			if (insertError) {
-				setErrorMessage(
-					`Error inserting result into DB: ${insertError}`
-				);
+				setErrorMessage("error.modeling.insert");
+				console.error("Error insert: ", insertError);
 			} else {
-				setSuccessMessage(`Result added successfully.`);
+				setSuccessMessage("success.modeling");
 				const resultId = insertedResult.id;
 				router.push(`/home/results/${resultId}`);
 			}
 		} catch (error) {
-			setErrorMessage(`Error inserting result into DB: ${error}`);
+			setErrorMessage("error.modeling.insert");
+			console.error("Error insert: ", error);
 		}
 	}
 
@@ -61,17 +61,13 @@ function UploadResults({ processId, reportName }) {
 			complete: async (results) => {
 				const fileExtension = file.name.split(".").pop();
 				if (fileExtension !== "csv") {
-					setErrorMessage(
-						"Invalid file type. Please upload a CSV file."
-					);
+					setErrorMessage("error.modeling.csv.invalid");
 					return;
 				}
 
-				const maxRows = 5000;
+				const maxRows = 100000;
 				if (results.data.length > maxRows) {
-					setErrorMessage(
-						`Too many rows: ${results.data.length}. The limit is ${maxRows}.`
-					);
+					setErrorMessage("error.modeling.csv.rows");
 					return;
 				}
 

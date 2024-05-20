@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
 	Form,
 	FormControl,
@@ -18,12 +18,16 @@ import Papa from "papaparse";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import Link from "next/link";
 import { ErrorMessage } from "@/components/ui/msg/error_msg";
+import { SuccessMessage } from "@/components/ui/msg/success_msg";
 
 function FormAddParticipant({ onParticipantAdded, isEnrollmentPhase }) {
 	const [file, setFile] = useState(null);
 	const supabase = createClientComponentClient();
 	const [fileName, setFileName] = useState("");
 	const [errorMessage, setErrorMessage] = useState<string | undefined>(
+		undefined
+	);
+	const [successMessage, setSuccessMessage] = useState<string | undefined>(
 		undefined
 	);
 
@@ -58,16 +62,14 @@ function FormAddParticipant({ onParticipantAdded, isEnrollmentPhase }) {
 				const fileExtension = file.name.split(".").pop();
 				if (fileExtension !== "csv") {
 					setErrorMessage(
-						"Invalid file type. Please upload a CSV file."
+						"error.participants.participant.csv.invalid"
 					);
 					return;
 				}
 
 				const maxRows = 200;
 				if (results.data.length > maxRows) {
-					setErrorMessage(
-						`Too many rows: ${results.data.length}. The limit is ${maxRows}.`
-					);
+					setErrorMessage("error.participants.participant.csv.rows");
 					return;
 				}
 				for (let row of results.data) {
@@ -75,16 +77,14 @@ function FormAddParticipant({ onParticipantAdded, isEnrollmentPhase }) {
 
 					if (!newParticipant.name || !newParticipant.email) {
 						setErrorMessage(
-							"Invalid participant data. Name and email are required."
+							"error.participants.participant.missing-fields"
 						);
 						continue;
 					}
 
 					const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 					if (!emailRegex.test(newParticipant.email)) {
-						setErrorMessage(
-							"Invalid participant data. Email is not valid."
-						);
+						setErrorMessage("error.participants.participant.email");
 						continue;
 					}
 
@@ -125,7 +125,9 @@ function FormAddParticipant({ onParticipantAdded, isEnrollmentPhase }) {
 			newParticipant.id = insertedParticipant.participant_id;
 			onParticipantAdded(newParticipant);
 			form.reset();
+			setSuccessMessage("success.participants.participant.add");
 		} else {
+			setErrorMessage("error.participants.participant.add");
 			console.error(
 				"Error adding participant onSubmit:",
 				insertedParticipant
@@ -139,6 +141,12 @@ function FormAddParticipant({ onParticipantAdded, isEnrollmentPhase }) {
 
 	return (
 		<>
+			{successMessage && (
+				<SuccessMessage
+					successMessage={successMessage}
+					setSuccessMessage={setSuccessMessage}
+				/>
+			)}
 			{errorMessage && (
 				<ErrorMessage
 					errorMessage={errorMessage}

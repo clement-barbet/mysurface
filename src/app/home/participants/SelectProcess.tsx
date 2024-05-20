@@ -61,9 +61,9 @@ export default function SelectProcess({
 
 		if (updateError) {
 			console.log(updateError);
-			setErrorMessage(updateError.message);
+			setErrorMessage("error.participants.process");
 		} else {
-			setSuccessMessage("Process updated successfully.");
+			setSuccessMessage("success.participants.process");
 			setProcess(process_id);
 		}
 	};

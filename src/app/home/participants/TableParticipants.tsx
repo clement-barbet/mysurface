@@ -51,7 +51,9 @@ function TableParticipants({
 				(participant) => participant.id != participantId
 			);
 			setParticipants(updatedParticipants);
+			setSuccessMessage("success.participants.participant.delete");
 		} else {
+			setErrorMessage("error.participants.participant.delete");
 			console.error("Error deleting participant:", response.statusText);
 		}
 	};
@@ -93,12 +95,13 @@ function TableParticipants({
 			});
 
 			if (!response.ok) {
-				setErrorMessage(`Error: ${response.status}`);
+				setErrorMessage("error.participants.email.individual");
 				console.log("Response", response);
 			} else {
-				setSuccessMessage(`Email successfully sent to: ${email}`);
+				setSuccessMessage("success.participants.email.individual");
 			}
 		} catch (error) {
+			setErrorMessage("error.participants.email.individual");
 			console.error(`Error sending email to ${email}: ${error}`);
 		}
 	}

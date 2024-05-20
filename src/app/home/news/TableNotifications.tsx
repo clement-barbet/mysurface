@@ -55,9 +55,10 @@ function TableNotifications({ notifications, setNotifications }) {
 				(notification) => notification.id != notificationId
 			);
 			setNotifications(updatedNotifications);
+			setSuccessMessage("success.news.delete");
 		} catch (error) {
 			console.error("Error deleting notification:", error);
-			setErrorMessage("Error deleting notification.");
+			setErrorMessage("error.news.delete");
 		}
 	};
 

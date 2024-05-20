@@ -12,7 +12,7 @@ import {
 	TBodyRow,
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { ErrorMessage } from "@/components/ui/msg/error_msg";
 import { SuccessMessage } from "@/components/ui/msg/success_msg";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
@@ -47,9 +47,10 @@ function TableAssessed({
 				(assessed) => assessed.id != assessedId
 			);
 			setAssesseds(updatedAssesseds);
+			setSuccessMessage("success.participants.assessed.delete");
 		} catch (error) {
 			console.error("Error deleting assessed:", error);
-			setErrorMessage("Error deleting assessed");
+			setErrorMessage("error.participants.assessed.delete");
 		}
 	};
 

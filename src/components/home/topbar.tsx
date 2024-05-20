@@ -66,7 +66,7 @@ export default function TopBar({ user }) {
 	const handleLogout = async () => {
 		const { error } = await supabase.auth.signOut();
 		if (error) {
-			setErrorMessage("Error logging out: " + error.message);
+			setErrorMessage("error.logout");
 		}
 	};
 

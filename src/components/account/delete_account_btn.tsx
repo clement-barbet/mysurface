@@ -9,6 +9,7 @@ import T from "@/components/translations/translation";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+import { set } from "zod";
 
 export default function DeleteAccountButton({ userId }: { userId: any }) {
 	const supabase = createClientComponentClient();
@@ -59,13 +60,16 @@ export default function DeleteAccountButton({ userId }: { userId: any }) {
 			);
 
 			if (procedureError) {
+				setErrorMessage("error.account.deletion");
 				throw procedureError;
 			} else {
+				setSuccessMessage("success.account.deletion");
 				console.log("user deleted");
 				return router.push("/login");
 			}
 		} catch (error) {
-			setErrorMessage(error.message);
+			setErrorMessage("error.account.deletion");
+			console.log("error:", error);
 		}
 	};
 

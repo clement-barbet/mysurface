@@ -586,5 +586,91 @@
 			"login": "Ir a iniciar sesión",
 			"update": "Actualizar"
 		}
+	},
+	"error": {
+		"modeling": {
+			"insert": "Error al insertar el resultado.",
+			"csv": {
+				"invalid": "Tipo de archivo no válido. Por favor, sube un archivo CSV.",
+				"rows": "El archivo CSV excedió el número máximo de filas."
+			}
+		},
+		"news": {
+			"insert": "Error al insertar la notificación.",
+			"delete": "Error al eliminar la notificación."
+		},
+		"participants": {
+			"email": {
+				"individual": "Error al enviar el correo electrónico individual.",
+				"mass": "Error al enviar los correos electrónicos."
+			},
+			"process": "Error al actualizar el proceso.",
+			"assessed": {
+				"delete": "Error al eliminar el elemento evaluado."
+			},
+			"participant": {
+				"delete": "Error al eliminar el participante.",
+				"add": "Error al agregar el participante.",
+				"email": "Formato de correo electrónico inválido.",
+				"missing-fields": "Se requieren el nombre y el correo electrónico.",
+				"csv": {
+					"invalid": "Tipo de archivo no válido. Por favor, sube un archivo CSV.",
+					"rows": "El archivo CSV excedió el número máximo de filas."
+				}
+			}
+		},
+		"account": {
+			"language": "Error al actualizar el idioma.",
+			"names": "Error al actualizar el nombre y el nombre de la organización.",
+			"organization": "Error al actualizar el tipo de organización.",
+			"deletion": "Error al eliminar la cuenta."
+		},
+		"forgot-password": "Error al enviar el correo electrónico para restablecer tu contraseña. Por favor, inténtalo de nuevo.",
+		"registration": {
+			"process": "Error al registrar tu cuenta. Por favor, inténtalo de nuevo.",
+			"match": "Las contraseñas no coinciden.",
+			"length": "La contraseña debe tener al menos 6 caracteres."
+		},
+		"reset-password": {
+			"process": "Error al restablecer tu contraseña. Por favor, inténtalo de nuevo.",
+			"match": "Las contraseñas no coinciden.",
+			"length": "La contraseña debe tener al menos 6 caracteres."
+		},
+		"my-info": "Error al actualizar tu información. Por favor, inténtalo de nuevo.",
+		"login": "Error al iniciar sesión. Por favor, inténtalo de nuevo.",
+		"logout": "Error al cerrar sesión. Por favor, inténtalo de nuevo."
+	},
+	"success": {
+		"support": "Tu mensaje se ha enviado correctamente.",
+		"modeling": "Resultado insertado correctamente.",
+		"news": {
+			"insert": "Notificación insertada correctamente.",
+			"delete": "Notificación eliminada correctamente."
+		},
+		"participants": {
+			"email": {
+				"individual": "Correo electrónico enviado correctamente.",
+				"mass": "Correos electrónicos enviados correctamente."
+			},
+			"process": "Proceso actualizado correctamente.",
+			"assessed": {
+				"delete": "Elemento evaluado eliminado correctamente."
+			},
+			"participant": {
+				"delete": "Participante eliminado correctamente.",
+				"add": "Participante agregado correctamente."
+			}
+		},
+		"account": {
+			"language": "Idioma actualizado correctamente.",
+			"names": "Nombre y nombre de la organización actualizados correctamente.",
+			"organization": "Tipo de organización actualizado correctamente.",
+			"deletion": "Cuenta eliminada correctamente."
+		},
+		"forgot-password": "Se ha enviado un correo electrónico para restablecer tu contraseña.",
+		"registration": "Registro exitoso. Por favor, verifica tu correo electrónico para confirmar tu cuenta.",
+		"reset-password": "Contraseña restablecida correctamente. Ahora puedes iniciar sesión con tu nueva contraseña.",
+		"my-info": "Información actualizada correctamente.",
+		"login": "Inicio de sesión exitoso."
 	}
 }

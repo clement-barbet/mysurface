@@ -54,11 +54,9 @@ export default function FormAddNews({ languages, onNotificationAdded }) {
 		);
 		if (error) {
 			console.error("Error inserting notification:", error);
-			setErrorMessage("Error inserting notification.");
+			setErrorMessage("error.news.insert");
 			return;
 		}
-
-		console.log("insertedNotification form", insertedNotification);
 
 		if (insertedNotification) {
 			const newNotification = insertedNotification[0];
@@ -66,7 +64,7 @@ export default function FormAddNews({ languages, onNotificationAdded }) {
 			onNotificationAdded(newNotification);
 		}
 
-		setSuccessMessage("Notification inserted successfully.");
+		setSuccessMessage("success.news.insert");
 		form.reset({ language: "1", message: "", type: "news", link: "" });
 	};
 

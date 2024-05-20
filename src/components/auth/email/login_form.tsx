@@ -37,6 +37,7 @@ export default function LoginForm() {
 	const [errorMessage, setErrorMessage] = useState<string | undefined>(
 		undefined
 	);
+	const [successMessage, setSuccessMessage] = useState("");
 
 	// Control password visibility
 	const [passwordType, setPasswordType] = useState("password");
@@ -72,7 +73,7 @@ export default function LoginForm() {
 
 		if (response.error) {
 			console.log(response);
-			setErrorMessage(response.error?.message);
+			setErrorMessage("error.login");
 			return;
 		} else {
 			const user = await supabase.auth.getUser();
@@ -101,7 +102,11 @@ export default function LoginForm() {
 					localStorage.setItem("i18nextLng", language.code);
 				}
 			}
-			return router.push("/home");
+
+			setSuccessMessage("success.login");
+			setTimeout(() => {
+				return router.push("/home");
+			}, 2000);
 		}
 	}
 
@@ -111,6 +116,12 @@ export default function LoginForm() {
 				<ErrorMessage
 					errorMessage={errorMessage}
 					setErrorMessage={setErrorMessage}
+				/>
+			)}
+			{successMessage && (
+				<SuccessMessage
+					successMessage={successMessage}
+					setSuccessMessage={setSuccessMessage}
 				/>
 			)}
 			<FormBg />

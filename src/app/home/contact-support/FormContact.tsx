@@ -5,7 +5,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { SuccessMessage } from "@/components/ui/msg/success_msg";
-import { ErrorMessage } from "@/components/ui/msg/error_msg";
 import {
 	Form,
 	FormControl,
@@ -39,7 +38,6 @@ const formSchema = z.object({
 
 export default function FormContact({ settings }) {
 	const [successMessage, setSuccessMessage] = useState("");
-	const [errorMessage, setErrorMessage] = useState("");
 
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
@@ -58,10 +56,6 @@ export default function FormContact({ settings }) {
 
 	return (
 		<>
-			<ErrorMessage
-				errorMessage={errorMessage}
-				setErrorMessage={setErrorMessage}
-			/>
 			<SuccessMessage
 				successMessage={successMessage}
 				setSuccessMessage={setSuccessMessage}
@@ -79,7 +73,7 @@ export default function FormContact({ settings }) {
 						method="POST"
 						onSubmit={form.handleSubmit((data) => {
 							console.log("Sending data: ", data);
-							setSuccessMessage("Contact form submitted.");
+							setSuccessMessage("success.support");
 							form.reset();
 						})}
 						className="flex flex-col gap-y-4"

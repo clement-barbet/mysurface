@@ -77,9 +77,9 @@ export default function ChangeOrganization({ userId }: { userId: any }) {
 
 		if (updateError) {
 			console.log(updateError);
-			setErrorMessage(updateError.message);
+			setErrorMessage("error.account.organization");
 		} else {
-			setSuccessMessage("Organization updated successfully.");
+			setSuccessMessage("success.account.organization");
 		}
 	};
 

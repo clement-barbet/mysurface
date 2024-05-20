@@ -24,6 +24,7 @@ const EmailButton = ({ participants, lang, org, isEnrollmentPhase }) => {
 			console.error("Error:", error);
 		}
 	}
+
 	const handleClick = async () => {
 		let failedEmails = [];
 		for (let participant of participants) {
@@ -41,13 +42,10 @@ const EmailButton = ({ participants, lang, org, isEnrollmentPhase }) => {
 		}
 
 		if (failedEmails.length === 0) {
-			setSuccessMessage("All emails sent successfully.");
+			setSuccessMessage("success.participants.email.mass");
 		} else {
-			setErrorMessage(
-				`Error sending emails to the following addresses: ${failedEmails.join(
-					", "
-				)}`
-			);
+			setErrorMessage("error.participants.email.mass");
+			console.log("Failed emails:", failedEmails);
 		}
 	};
 
