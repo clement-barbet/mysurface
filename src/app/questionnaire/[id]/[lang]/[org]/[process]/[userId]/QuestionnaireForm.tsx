@@ -6,11 +6,12 @@ import { useState } from "react";
 import QuestionComponent from "./QuestionComponent";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
+import T from "@/components/translations/translation";
+import i18n from "@/i18n";
 
 interface Participant {
 	id: string;
 	name: string;
-	email: string;
 	questionnaire: string;
 }
 
@@ -31,12 +32,16 @@ interface QuestionnaireFormProps {
 	questionnaireId: string;
 	participants: Participant[];
 	questions: Question[];
+	owner: Participant;
+	language: string;
 }
 
 export default function QuestionnaireForm({
 	questionnaireId,
 	participants,
 	questions,
+	owner,
+	language
 }: QuestionnaireFormProps) {
 	const [answers, setAnswers] = useState<{
 		[key: string]: { [key: string]: number };
@@ -116,8 +121,24 @@ export default function QuestionnaireForm({
 		}
 	};
 
+	const langMap = {
+		"1": "en",
+		"2": "cs",
+		"3": "es",
+	};
+
+	const langCode = langMap[language] || "en";
+
+	i18n.changeLanguage(langCode);
+	
 	return (
 		<div>
+			<h2>
+				<b>
+					<T tkey="questionnaire.evaluator" />
+				</b>
+				: <span className="evaluator">{owner.name}</span>
+			</h2>
 			{participants.map((participant, participantIndex) => (
 				<div key={participant.id}>
 					<h2
@@ -129,7 +150,11 @@ export default function QuestionnaireForm({
 									: "none",
 						}}
 					>
-						<b>Participant</b>: <span className="participant">{participant.name}</span>
+						<b>
+							<T tkey="questionnaire.evaluated" />
+						</b>
+						:{" "}
+						<span className="participant">{participant.name}</span>
 					</h2>
 					{questions.map((question, questionIndex) => (
 						<div
@@ -168,8 +193,12 @@ export default function QuestionnaireForm({
 			))}
 
 			{currentParticipantIndex === participants.length && (
-				<Button onClick={handleSubmit} variant="login">
-					SUBMIT
+				<Button
+					onClick={handleSubmit}
+					variant="login"
+					className="uppercase"
+				>
+					<T tkey="questionnaire.button" />
 				</Button>
 			)}
 		</div>

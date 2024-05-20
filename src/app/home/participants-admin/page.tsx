@@ -21,6 +21,14 @@ export default function Results() {
 	const [loading, setLoading] = useState(true);
 	const [participants, setParticipants] = useState([]);
 
+	const headers_T = [
+		"all-participants.table.headers.name",
+		"all-participants.table.headers.email",
+		"all-participants.table.headers.owner",
+		"all-participants.table.headers.date",
+		"all-participants.table.headers.questionnaire",
+	];
+
 	const {
 		currentPage,
 		setCurrentPage,
@@ -105,23 +113,19 @@ export default function Results() {
 		!loading && (
 			<>
 				<div className="w-full m-auto">
-					<h2 className="text-3xl pb-2">All Participants</h2>
+					<h2 className="text-3xl pb-2"><T tkey="all-participants.title" /></h2>
 					{participants.length > 0 ? (
 						<>
 							<Table className="w-full">
 								<TableHeader>
 									<THeadRow>
-										{[
-											"Participant's Name",
-											"Participant's Email",
-											"Owner's Email",
-											"Creation Date",
-											"Questionnaire Status",
-										].map((header, index) => (
-											<TableHead key={index}>
-												{header}
-											</TableHead>
-										))}
+										{headers_T.map((header, index) => {
+											return (
+												<TableHead key={index}>
+													<T tkey={header} />
+												</TableHead>
+											);
+										})}
 									</THeadRow>
 								</TableHeader>
 								<TableBody className="bg-white dark:bg-black divide-y divide-gray-200 dark:divide-gray-500">
@@ -172,7 +176,7 @@ export default function Results() {
 							/>
 						</>
 					) : (
-						<p>No data</p>
+						<p><T tkey="all-participants.nodata" /></p>
 					)}
 				</div>
 			</>

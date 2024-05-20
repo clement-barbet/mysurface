@@ -1,4 +1,5 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
+import T from "@/components/translations/translation";
 
 interface SuccessMessageProps {
 	successMessage: string;
@@ -27,7 +28,9 @@ const SuccessMessage: React.FC<SuccessMessageProps> = ({
 				className="m-0 w-full text-green-600 font-bold bg-green-200 p-4 fixed top-0 left-0 flex justify-between items-center drop-shadow-sm flex-shrink-0"
 				style={{ zIndex: 200 }}
 			>
-				<p>{successMessage}</p>
+				<p>
+					<T tkey={successMessage} />
+				</p>
 				<button
 					onClick={() => setSuccessMessage("")}
 					className="font-bold text-2xl z-100"

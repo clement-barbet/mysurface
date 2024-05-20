@@ -1,22 +1,19 @@
-// app/questionnaire/[id]/page.tsx
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
 import QuestionnaireForm from "./QuestionnaireForm";
 import QuestionnaireFormAssessed from "./QuestionnaireFormAssessed";
 
-/*
- * Anon users access this route with the questionnaire.
- * We need to make sure that the questionnaire is not completed.
- * We also need to get the participants and questions for the questionnaire.
- * We also need to get the owner of the questionnaire.
- * But anon users cannot access participants table directly (RLS policies).
- * So we need to get participants through participants view.
- */
 export default async function QuestionnairePage({
 	params,
 }: {
-	params: { id: string; lang: string; org: string; process: string, userId: string};
+	params: {
+		id: string;
+		lang: string;
+		org: string;
+		process: string;
+		userId: string;
+	};
 }) {
 	const supabase = createServerComponentClient({ cookies });
 
@@ -86,23 +83,19 @@ export default async function QuestionnairePage({
 
 	return (
 		<div className="m-auto mt-5 w-full md:w-2/3 flex flex-col">
-			<h1 className="text-3xl my-5">Complete the Questionnaire</h1>
 			<div className="p-10 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
-				<h2>
-					<b>Questionnaire</b>: {params.id}
-				</h2>
-				<h2>
-					<b>Evaluator</b>:{" "}
-					<span className="evaluator">{owner.name}</span>
-				</h2>
-				{ params.process == 1 ? (
+				{params.process == 1 ? (
 					<QuestionnaireForm
+						language={params.lang}
+						owner={owner}
 						questionnaireId={params.id}
 						participants={participants}
 						questions={questions}
 					/>
 				) : (
 					<QuestionnaireFormAssessed
+						language={params.lang}
+						owner={owner}
 						questionnaireId={params.id}
 						assesseds={assesseds}
 						questions={questions}

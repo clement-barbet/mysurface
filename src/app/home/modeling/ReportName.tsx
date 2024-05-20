@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { set, z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -12,6 +12,7 @@ import {
 	FormLabel,
 	FormMessage,
 } from "@/components/ui/form";
+import T from "@/components/translations/translation";
 
 const formSchema = z.object({
 	name: z.string(),
@@ -43,7 +44,7 @@ export default function SelectProcess({ onNameChange }) {
 		<>
 			<div className="p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
 				<h2 className="font-semibold text-lg mb-2  border-l-4 border-mid_blue pl-2">
-					Report name
+					<T tkey="modeling.report-name.title" />
 				</h2>
 				<Form {...form}>
 					<form className="w-2/5 space-y-8 flex flex-row items-end gap-x-4">
@@ -53,7 +54,7 @@ export default function SelectProcess({ onNameChange }) {
 							render={({ field }) => (
 								<FormItem>
 									<FormLabel htmlFor="name">
-										Report Name
+										<T tkey="modeling.report-name.label" />
 									</FormLabel>
 									<FormControl>
 										<Input

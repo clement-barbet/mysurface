@@ -327,8 +327,12 @@ export default function UpdateInfoForm({
 								</FormItem>
 							)}
 						/>
-						<Button type="submit" variant="login">
-							UPDATE
+						<Button
+							type="submit"
+							variant="login"
+							className="uppercase"
+						>
+							<T tkey="my-info.buttons.update" />
 						</Button>
 					</form>
 				</Form>

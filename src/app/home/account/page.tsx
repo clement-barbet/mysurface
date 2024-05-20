@@ -10,22 +10,11 @@ import ChangeNames from "@/components/account/change_names";
 import DeleteAccountButton from "@/components/account/delete_account_btn";
 import { useEffect, useState } from "react";
 import Loading from "@/components/ui/loading";
+import { fetchUser } from "@/db/auth_user/fetchUser";
 
 export default function Account() {
-	const supabase = createClientComponentClient();
 	const [userId, setUserId] = useState(null);
 	const [loading, setLoading] = useState(true);
-
-	const fetchUser = async () => {
-		try {
-			const fetchedUser = await supabase.auth.getUser();
-			if (!fetchedUser.data.user)
-				throw new Error("User not authenticated");
-			return fetchedUser.data.user;
-		} catch (error) {
-			console.error("Error fetching user", error);
-		}
-	};
 
 	useEffect(() => {
 		const fetchData = async () => {

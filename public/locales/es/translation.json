@@ -60,14 +60,29 @@
 		"titles": {
 			"add-form": "Agregar un nuevo participante",
 			"add-csv": "Carga masiva de participantes",
-			"set-process": "Tipo de evaluación",
-			"manage": "Ejecución de la evaluación",
+			"set-process": {
+				"title": "Tipo de evaluación",
+				"subtitle": "Selección del tipo de evaluación"
+			},
+			"manage": {
+				"title": "Ejecución de la evaluación",
+				"subtitle": "Gestionar la ejecución de la evaluación"
+			},
 			"add-leader": "Agregar un nuevo líder",
 			"add-product": "Agregar un nuevo producto",
-			"participants": "Participantes",
-			"leaders": "Líderes",
-			"products": "Productos"
-		},		
+			"participants": {
+				"title": "Participantes",
+				"subtitle": "Participantes activos"
+			},
+			"leaders": {
+				"title": "Líderes",
+				"subtitle": "Líderes activos"
+			},
+			"products": {
+				"title": "Productos",
+				"subtitle": "Productos activos"
+			}
+		},
 		"table": {
 			"headers": {
 				"name": "Nombre",
@@ -94,6 +109,7 @@
 		},
 		"form": {
 			"labels": {
+				"process": "Proceso",
 				"name": "Nombre",
 				"email": "Correo electrónico",
 				"select": "Seleccionar Archivo",
@@ -318,10 +334,6 @@
 			}
 		}
 	},
-	"emailconfirmation": {
-		"title": "Correo electrónico confirmado",
-		"button": "INICIAR SESIÓN"
-	},
 	"forgotpassword": {
 		"title": "Restablecer tu contraseña",
 		"form": {
@@ -524,6 +536,55 @@
 			"buttons": {
 				"delete": "Eliminar"
 			}
+		}
+	},
+	"all-participants": {
+		"title": "Todos los participantes",
+		"nodata": "Aún no se han agregado participantes.",
+		"table": {
+			"headers": {
+				"name": "Nombre",
+				"email": "Correo electrónico",
+				"owner": "Correo electrónico del usuario",
+				"date": "Fecha de creación",
+				"questionnaire": "Estado del cuestionario"
+			}
+		}
+	},
+	"modeling": {
+		"report-name": {
+			"title": "Nombre del Informe",
+			"label": "Nombre"
+		},
+		"upload": {
+			"title": "Cargar Datos",
+			"label": "Seleccionar archivo",
+			"button": "Cargar"
+		}
+	},
+	"support": {
+		"title": "Contactar Soporte",
+		"subtitle": "Por favor, complete el siguiente formulario para contactar con soporte.",
+		"labels": {
+			"subject": "Asunto",
+			"message": "Mensaje"
+		},
+		"button": "Enviar"
+	},
+	"questionnaire": {
+		"evaluated": "Evaluado",
+		"evaluator": "Evaluador",
+		"description": "Descripción",
+		"button": "Enviar"
+	},
+	"reset-password": {
+		"account": "Cuenta"
+	},
+	"my-info": {
+		"title": "Actualiza tu información",
+		"buttons": {
+			"login": "Ir a iniciar sesión",
+			"update": "Actualizar"
 		}
 	}
 }

@@ -6,6 +6,7 @@ import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { ErrorMessage } from "@/components/ui/msg/error_msg";
 import { SuccessMessage } from "@/components/ui/msg/success_msg";
 import { useRouter } from "next/navigation";
+import T from "@/components/translations/translation";
 
 function UploadResults({ processId, reportName }) {
 	const [file, setFile] = useState(null);
@@ -165,7 +166,7 @@ function UploadResults({ processId, reportName }) {
 			/>
 			<div className="p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
 				<h2 className="font-semibold text-lg  border-l-4 border-mid_blue pl-2">
-					Upload data
+					<T tkey="modeling.upload.title" />
 				</h2>
 				<div className="mt-4 w-full flex flex-col md:flex-row md:space-x-8 justify-between gap-y-2 md:gap-y-0">
 					<div className="md:w-4/5">
@@ -180,7 +181,7 @@ function UploadResults({ processId, reportName }) {
 							htmlFor="fileUploadAssesseds"
 							className="cursor-pointer text-sm border border-accent_color hover:bg-accent_light py-2 px-4 rounded inline-block transition-all duration-300 ease-in-out font-medium"
 						>
-							Select file
+							<T tkey="modeling.upload.label" />
 						</label>
 						{fileName && (
 							<span className="ms-2 text-sm text-darkest_gray">
@@ -194,7 +195,7 @@ function UploadResults({ processId, reportName }) {
 						className="w-full md:w-1/5"
 						onClick={handleFileUpload}
 					>
-						Upload
+						<T tkey="modeling.upload.button" />
 					</Button>
 				</div>
 			</div>

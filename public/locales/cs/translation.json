@@ -59,15 +59,30 @@
 	"participants": {
 		"titles": {
 			"add-form": "Přidat nového účastníka",
-			"add-csv": "Hromadné nahrání účastníků",
-			"set-process": "Typ hodnocení",
-			"manage": "Provádění hodnocení",
+			"add-csv": "Hromadné nahrávání účastníků",
+			"set-process": {
+				"title": "Typ hodnocení",
+				"subtitle": "Výběr typu hodnocení"
+			},
+			"manage": {
+				"title": "Provedení hodnocení",
+				"subtitle": "Správa provedení hodnocení"
+			},
 			"add-leader": "Přidat nového vedoucího",
 			"add-product": "Přidat nový produkt",
-			"participants": "Účastníci",
-			"leaders": "Vedoucí",
-			"products": "Produkty"
-		},		
+			"participants": {
+				"title": "Účastníci",
+				"subtitle": "Aktivní účastníci"
+			},
+			"leaders": {
+				"title": "Vedoucí",
+				"subtitle": "Aktivní vedoucí"
+			},
+			"products": {
+				"title": "Produkty",
+				"subtitle": "Aktivní produkty"
+			}
+		},
 		"table": {
 			"headers": {
 				"name": "Jméno",
@@ -94,6 +109,7 @@
 		},
 		"form": {
 			"labels": {
+				"process": "Proces",
 				"name": "Jméno",
 				"email": "E-mail",
 				"select": "Vybrat soubor",
@@ -318,10 +334,6 @@
 			}
 		}
 	},
-	"emailconfirmation": {
-		"title": "Potvrzení e-mailu",
-		"button": "PŘIHLÁSIT SE"
-	},
 	"forgotpassword": {
 		"title": "Obnovit heslo",
 		"form": {
@@ -524,6 +536,55 @@
 			"buttons": {
 				"delete": "Smazat"
 			}
+		}
+	},
+	"all-participants": {
+		"title": "Všichni účastníci",
+		"nodata": "Dosud nebyli přidáni žádní účastníci.",
+		"table": {
+			"headers": {
+				"name": "Jméno",
+				"email": "E-mail",
+				"owner": "Uživatelský e-mail",
+				"date": "Datum vytvoření",
+				"questionnaire": "Stav dotazníku"
+			}
+		}
+	},
+	"modeling": {
+		"report-name": {
+			"title": "Název Zprávy",
+			"label": "Název"
+		},
+		"upload": {
+			"title": "Nahrát Data",
+			"label": "Vybrat soubor",
+			"button": "Nahrát"
+		}
+	},
+	"support": {
+		"title": "Kontaktovat Podporu",
+		"subtitle": "Prosím, vyplňte níže uvedený formulář pro kontaktování podpory.",
+		"labels": {
+			"subject": "Předmět",
+			"message": "Zpráva"
+		},
+		"button": "Odeslat"
+	},
+	"questionnaire": {
+		"evaluated": "Hodnocený",
+		"evaluator": "Hodnotitel",
+		"description": "Popis",
+		"button": "Odeslat"
+	},
+	"reset-password": {
+		"account": "Účet"
+	},
+	"my-info": {
+		"title": "Aktualizujte své údaje",
+		"buttons": {
+			"login": "Přejít na přihlášení",
+			"update": "Aktualizovat"
 		}
 	}
 }

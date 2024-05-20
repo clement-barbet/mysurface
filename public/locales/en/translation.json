@@ -109,6 +109,7 @@
 		},
 		"form": {
 			"labels": {
+				"process": "Process",
 				"name": "Name",
 				"email": "Email",
 				"select": "Select File",
@@ -333,10 +334,6 @@
 			}
 		}
 	},
-	"emailconfirmation": {
-		"title": "Email confirmed",
-		"button": "LOG IN"
-	},
 	"forgotpassword": {
 		"title": "Reset your password",
 		"form": {
@@ -536,6 +533,55 @@
 			"buttons": {
 				"delete": "Delete"
 			}
+		}
+	},
+	"all-participants": {
+		"title": "All Participants",
+		"nodata": "No participants added yet.",
+		"table": {
+			"headers": {
+				"name": "Name",
+				"email": "Email",
+				"owner": "User's email",
+				"date": "Creation date",
+				"questionnaire": "Questionnaire status"
+			}
+		}
+	},
+	"modeling": {
+		"report-name": {
+			"title": "Report Name",
+			"label": "Name"
+		},
+		"upload": {
+			"title": "Upload Data",
+			"label": "Select file",
+			"button": "Upload"
+		}
+	},
+	"support": {
+		"title": "Contact Support",
+		"subtitle": "Please, fill out the form below to contact support.",
+		"labels": {
+			"subject": "Subject",
+			"message": "Message"
+		},
+		"button": "Send"
+	},
+	"questionnaire": {
+		"evaluated": "Evaluated",
+		"evaluator": "Evaluator",
+		"description": "Description",
+		"button": "Submit"
+	},
+	"reset-password": {
+		"account": "Account"
+	},
+	"my-info": {
+		"title": "Update your information",
+		"buttons": {
+			"login": "Go to login",
+			"update": "Update"
 		}
 	}
 }

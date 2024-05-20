@@ -15,7 +15,6 @@ import {
 	FormMessage,
 } from "@/components/ui/form";
 import T from "@/components/translations/translation";
-import { useTranslation } from "react-i18next";
 import { Input } from "@/components/ui/input";
 
 /*
@@ -27,11 +26,11 @@ import { Input } from "@/components/ui/input";
 */
 
 const formSchema = z.object({
-    oid: z.string(),
-    "00N3X00000GmwAR": z.string(),
-    "00N3X00000LsGqJ": z.string(),
-    "00N3X00000LsGqT": z.string(),
-    lead_source: z.string(),
+	oid: z.string(),
+	"00N3X00000GmwAR": z.string(),
+	"00N3X00000LsGqJ": z.string(),
+	"00N3X00000LsGqT": z.string(),
+	lead_source: z.string(),
 	subject: z.string().min(3).max(100),
 	lead_notes: z.string().min(3).max(1000),
 	last_name: z.string(),
@@ -45,11 +44,11 @@ export default function FormContact({ settings }) {
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
 		defaultValues: {
-            oid: "00D1t000000xBws",
-            "00N3X00000GmwAR": "MySurface",
-            "00N3X00000LsGqJ": "Question",
-            "00N3X00000LsGqT": "",
-            lead_source: "MySurface App Form",
+			oid: "00D1t000000xBws",
+			"00N3X00000GmwAR": "MySurface",
+			"00N3X00000LsGqJ": "Question",
+			"00N3X00000LsGqT": "",
+			lead_source: "MySurface App Form",
 			subject: "",
 			lead_notes: "",
 			last_name: settings.name,
@@ -69,17 +68,17 @@ export default function FormContact({ settings }) {
 			/>
 			<div>
 				<h2 className="mb-2 text-lg font-semibold border-l-4 border-mid_blue pl-2">
-					Contact support
+					<T tkey="support.title" />
 				</h2>
 				<p className="text-gray-600 dark:text-gray-400 text-lg md:text-base mb-2">
-					Please, fill out the form below to contact support.
+					<T tkey="support.subtitle" />
 				</p>
 				<Form {...form}>
 					<form
 						action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8"
 						method="POST"
 						onSubmit={form.handleSubmit((data) => {
-                            console.log("Sending data: ", data);
+							console.log("Sending data: ", data);
 							setSuccessMessage("Contact form submitted.");
 							form.reset();
 						})}
@@ -92,7 +91,7 @@ export default function FormContact({ settings }) {
 							render={({ field }) => (
 								<FormItem className="w-full">
 									<FormLabel htmlFor="subject">
-										Subject
+										<T tkey="support.labels.subject" />
 									</FormLabel>
 									<FormControl>
 										<Input
@@ -111,7 +110,7 @@ export default function FormContact({ settings }) {
 							render={({ field }) => (
 								<FormItem className="w-full">
 									<FormLabel htmlFor="lead_notes">
-										Message
+										<T tkey="support.labels.message" />
 									</FormLabel>
 									<FormControl>
 										<textarea
@@ -126,7 +125,7 @@ export default function FormContact({ settings }) {
 						/>
 						<div className="w-full flex justify-end">
 							<Button type="submit" className="w-full md:w-1/5">
-								Send
+								<T tkey="support.button" />
 							</Button>
 						</div>
 					</form>

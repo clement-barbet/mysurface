@@ -1,4 +1,5 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
+import T from "@/components/translations/translation";
 
 interface ErrorMessageProps {
 	errorMessage: string;
@@ -27,7 +28,9 @@ const ErrorMessage: React.FC<ErrorMessageProps> = ({
 				className="m-0 w-full text-red-600 font-bold bg-red-200 p-4 fixed top-0 left-0 flex justify-between items-center drop-shadow-sm flex-shrink-0"
 				style={{ zIndex: 200 }}
 			>
-				<p>{errorMessage}</p>
+				<p>
+					<T tkey={errorMessage} />
+				</p>
 				<button
 					onClick={() => setErrorMessage("")}
 					className="font-bold text-2xl z-100"

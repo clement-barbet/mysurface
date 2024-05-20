@@ -96,7 +96,7 @@ export default function SelectProcess({ onProcessIdChange }) {
 							render={({ field }) => (
 								<FormItem>
 									<FormLabel htmlFor="process_id">
-										Process
+										<T tkey="participants.form.labels.process" />
 									</FormLabel>
 									<FormControl>
 										<select

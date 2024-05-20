@@ -6,6 +6,14 @@ import { useState } from "react";
 import QuestionComponent from "./QuestionComponent";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
+import T from "@/components/translations/translation";
+import i18n from "@/i18n";
+
+interface Participant {
+	id: string;
+	name: string;
+	questionnaire: string;
+}
 
 interface Assessed {
 	id: string;
@@ -30,12 +38,16 @@ interface QuestionnaireFormProps {
 	questionnaireId: string;
 	assesseds: Assessed[];
 	questions: Question[];
+	owner: Participant;
+	language: string;
 }
 
 export default function QuestionnaireForm({
 	questionnaireId,
 	assesseds,
 	questions,
+	owner,
+	language,
 }: QuestionnaireFormProps) {
 	const [answers, setAnswers] = useState<{
 		[key: string]: { [key: string]: number };
@@ -112,8 +124,24 @@ export default function QuestionnaireForm({
 		}
 	};
 
+	const langMap = {
+		"1": "en",
+		"2": "cs",
+		"3": "es",
+	};
+
+	const langCode = langMap[language] || "en";
+
+	i18n.changeLanguage(langCode);
+
 	return (
 		<div>
+			<h2>
+				<b>
+					<T tkey="questionnaire.evaluator" />
+				</b>
+				: <span className="evaluator">{owner.name}</span>
+			</h2>
 			{assesseds.map((assessed, assessedIndex) => (
 				<div key={assessed.id}>
 					<h2
@@ -124,8 +152,10 @@ export default function QuestionnaireForm({
 									: "none",
 						}}
 					>
-						<b>Evaluated</b>:{" "}
-						<span className="participant">{assessed.name}</span>
+						<b>
+							<T tkey="questionnaire.evaluated" />
+						</b>
+						: <span className="participant">{assessed.name}</span>
 					</h2>
 					<h2
 						className="mb-4"
@@ -136,8 +166,13 @@ export default function QuestionnaireForm({
 									: "none",
 						}}
 					>
-						<b>Description</b>:{" "}
-						<span className="participant">{assessed.description}</span>
+						<b>
+							<T tkey="questionnaire.description" />
+						</b>
+						:{" "}
+						<span className="participant">
+							{assessed.description}
+						</span>
 					</h2>
 					{questions.map((question, questionIndex) => (
 						<div
@@ -174,8 +209,12 @@ export default function QuestionnaireForm({
 			))}
 
 			{currentAssessedIndex === assesseds.length && (
-				<Button onClick={handleSubmit} variant="login">
-					SUBMIT
+				<Button
+					onClick={handleSubmit}
+					variant="login"
+					className="uppercase"
+				>
+					<T tkey="questionnaire.button" />
 				</Button>
 			)}
 		</div>
