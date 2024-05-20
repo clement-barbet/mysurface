@@ -18,6 +18,9 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import T from "@/components/translations/translation";
 import Loading from "@/components/ui/loading";
+import { fetchSettings } from "@/db/app_settings/fetchSettings";
+import { fetchOrganizations } from "@/db/organizations/fetchOrganizations";
+import { fetchLanguages } from "@/db/languages/fetchLanguages";
 
 export default function Customers() {
 	const [loading, setLoading] = useState(true);
@@ -53,24 +56,40 @@ export default function Customers() {
 		itemsPerPageOptions,
 	} = usePagination(users, 10);
 
-	const fetchUsers = async () => {
-		setLoading(true);
-		let { data: fetchedCustomers, error } = await supabase
-			.from("restricted_customers_view")
-			.select("*");
-
-		if (error) {
-			console.log("Error fetching users: ", error);
-			setLoading(false);
-			return;
-		}
-
-		setUsers(fetchedCustomers);
-		setLoading(false);
-	};
-
 	useEffect(() => {
-		fetchUsers();
+		const fetchData = async () => {
+			setLoading(true);
+			try {
+				const fetchedSettings = await fetchSettings();
+				const fetchedOrganizations = await fetchOrganizations();
+				const fetchedLanguages = await fetchLanguages();
+
+				if (
+					fetchedSettings &&
+					fetchedOrganizations &&
+					fetchedLanguages
+				) {
+					// Map the fetched data to the users array
+					const fetchedCustomers = fetchedSettings.map((setting) => ({
+						...setting,
+						organization_name: fetchedOrganizations.find(
+							(org) => org.id === setting.organization_id
+						)?.name,
+						language_name: fetchedLanguages.find(
+							(lang) => lang.id === setting.language_id
+						)?.name,
+					}));
+
+					setUsers(fetchedCustomers || []);
+				}
+			} catch (error) {
+				console.error("Error fetching data:", error);
+			} finally {
+				setLoading(false);
+			}
+		};
+
+		fetchData();
 	}, []);
 
 	const deleteUser = async () => {

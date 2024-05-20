@@ -20,7 +20,6 @@ import { fetchParticipants } from "@/db/participants/fetchParticipantsWithStatus
 export default function Results() {
 	const [loading, setLoading] = useState(true);
 	const [participants, setParticipants] = useState([]);
-	const supabase = createClientComponentClient();
 
 	const {
 		currentPage,

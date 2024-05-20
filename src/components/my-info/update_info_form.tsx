@@ -28,7 +28,13 @@ const formSchema = z.object({
 	organization_id: z.number(),
 });
 
-export default function UpdateInfoForm({ userId }: { userId: string }) {
+export default function UpdateInfoForm({
+	userId,
+	setIsUpdated,
+}: {
+	userId: string;
+	setIsUpdated: (isUpdated: boolean) => void;
+}) {
 	const supabase = createClientComponentClient();
 	const [successMessage, setSuccessMessage] = useState("");
 	const [errorMessage, setErrorMessage] = useState("");
@@ -185,6 +191,7 @@ export default function UpdateInfoForm({ userId }: { userId: string }) {
 				"Error updating personal information. Please try again."
 			);
 		} else {
+			setIsUpdated(true);
 			setSuccessMessage("Personal information updated successfully.");
 		}
 	};
@@ -200,13 +207,10 @@ export default function UpdateInfoForm({ userId }: { userId: string }) {
 				setSuccessMessage={setSuccessMessage}
 			/>
 			<div>
-				<h2 className="pb-5 text-lg font-semibold">
-					<T tkey="account.language.title" />
-				</h2>
 				<Form {...form}>
 					<form
 						onSubmit={form.handleSubmit(handleUpdate)}
-						className="space-y-8"
+						className="flex flex-col gap-y-4"
 					>
 						<FormField
 							control={form.control}
