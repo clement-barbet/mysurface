@@ -1,8 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import { loadStripe } from "@stripe/stripe-js";
 
 export default function ManageSubscription({ billing, setBilling, user }) {
 	const supabase = createClientComponentClient();
+	const public_key = process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY;
+	console.log("Public key: ", public_key);
+	const stripePromise = loadStripe(public_key);
 
 	const handleNewTrial = async () => {
 		if (!user) {
@@ -25,6 +29,38 @@ export default function ManageSubscription({ billing, setBilling, user }) {
 					Date.now() + 30 * 24 * 60 * 60 * 1000
 				),
 			}));
+		}
+	};
+
+	const handleCheckout = async () => {
+		const stripe = await stripePromise;
+
+		if (!stripe) {
+			console.error("Failed to load Stripe");
+			return;
+		}
+
+		const response = await fetch("/api/stripe", { method: "POST" });
+
+		if (!response.ok) {
+			throw new Error(
+				`Network response was not ok, status: ${response.status}`
+			);
+		}
+
+		let data = {};
+		if (
+			response.headers.get("content-type")?.includes("application/json")
+		) {
+			data = await response.json();
+		}
+
+		const { id } = data;
+
+		const { error } = await stripe.redirectToCheckout({ sessionId: id });
+
+		if (error) {
+			console.error("Failed to start checkout:", error);
 		}
 	};
 
@@ -67,6 +103,7 @@ export default function ManageSubscription({ billing, setBilling, user }) {
 						<Button
 							variant="signup"
 							className="my-2 w-full md:w-3/5 lg:w-2/5 xl:w-1/5 uppercase text-base"
+							onClick={handleCheckout}
 						>
 							Checkout yearly plan
 						</Button>
@@ -85,6 +122,7 @@ export default function ManageSubscription({ billing, setBilling, user }) {
 						<Button
 							variant="signup"
 							className="my-2 w-full md:w-3/5 lg:w-2/5 xl:w-1/5 uppercase text-base"
+							onClick={handleCheckout}
 						>
 							Checkout yearly plan
 						</Button>
