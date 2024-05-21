@@ -156,7 +156,7 @@ export default function Participants() {
 	return (
 		<div className="flex flex-col gap-y-2">
 			<div>
-				<h2 className="ml-5 uppercase text-lg mt-4 mb-2 border-l-4 border-accent_delete pl-2">
+				<h2 className="ml-5 uppercase text-lg font-semibold mt-4 mb-2 border-l-4 border-accent_delete pl-2">
 					<T tkey="participants.titles.set-process.title" />
 				</h2>
 				<SelectProcess
@@ -168,11 +168,11 @@ export default function Participants() {
 			</div>
 			{process != 1 &&
 				(process == 2 ? (
-					<h2 className="ml-5 uppercase text-lg mt-6 mb-2 border-l-4 border-accent_delete pl-2">
+					<h2 className="ml-5 uppercase text-lg font-semibold mt-6 mb-2 border-l-4 border-accent_delete pl-2">
 						<T tkey="participants.titles.leaders.title" />
 					</h2>
 				) : (
-					<h2 className="ml-5 uppercase text-lg mt-6 mb-2 border-l-4 border-accent_delete pl-2">
+					<h2 className="ml-5 uppercase text-lg font-semibold mt-6 mb-2 border-l-4 border-accent_delete pl-2">
 						<T tkey="participants.titles.products.title" />
 					</h2>
 				))}
@@ -188,7 +188,7 @@ export default function Participants() {
 				process={process}
 			/>
 			<div className="flex flex-col gap-y-2">
-				<h2 className="ml-5 uppercase text-lg mt-6 mb-2 border-l-4 border-accent_delete pl-2">
+				<h2 className="ml-5 uppercase text-lg font-semibold mt-6 mb-2 border-l-4 border-accent_delete pl-2">
 					<T tkey="participants.titles.participants.title" />
 				</h2>
 				<FormAddParticipant
@@ -205,7 +205,7 @@ export default function Participants() {
 					userId={userId}
 				/>
 			</div>
-			<h2 className="ml-5 uppercase text-lg mt-6 mb-2 border-l-4 border-accent_delete pl-2">
+			<h2 className="ml-5 uppercase text-lg font-semibold mt-6 mb-2 border-l-4 border-accent_delete pl-2">
 				<T tkey="participants.titles.manage.title" />
 			</h2>
 			<div className="p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
