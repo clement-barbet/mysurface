@@ -1,4 +1,3 @@
-import { NextApiRequest, NextApiResponse } from "next";
 import { NextResponse } from "next/server";
 
 const secret_key = process.env.STRIPE_SECRET_KEY_DEV;
