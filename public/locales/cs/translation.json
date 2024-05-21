@@ -372,6 +372,10 @@
 			"company": "Společnost",
 			"school": "Škola",
 			"city": "Město"
+		},
+		"subscription-status": {
+			"active": "Aktivní",
+			"inactive": "Neaktivní"
 		}
 	},
 	"thankyou": {

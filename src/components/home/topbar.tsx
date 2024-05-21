@@ -12,6 +12,8 @@ import { MdPayment } from "react-icons/md";
 import Link from "next/link";
 import T from "@/components/translations/translation";
 import { fetchSettings } from "@/db/app_settings/fetchSettingsByUserId";
+import { set } from "zod";
+import { fetchBilling } from "@/db/billings/fetchBillingByUserId";
 
 export default function TopBar({ user }) {
 	const [errorMessage, setErrorMessage] = useState("");
@@ -21,6 +23,7 @@ export default function TopBar({ user }) {
 	const menuRef = useRef(null);
 	const divRef = useRef(null);
 	const [isOpen, setIsOpen] = useState(false);
+	const [subscriptionStatus, setSubscriptionStatus] = useState("inactive");
 
 	useEffect(() => {
 		function handleClickOutside(event) {
@@ -47,6 +50,10 @@ export default function TopBar({ user }) {
 					setEmail(user.email);
 					const fetchedSettings = await fetchSettings(user.id);
 					setOrganization(fetchedSettings.organization_id);
+					const fetchedBilling = await fetchBilling(user.id);
+					if (fetchedBilling) {
+						setSubscriptionStatus(fetchedBilling.status);
+					}
 
 					if (fetchedSettings.organization_id === 2) {
 						setOrganization("topbar.organizations.school");
@@ -54,6 +61,16 @@ export default function TopBar({ user }) {
 						setOrganization("topbar.organizations.city");
 					} else {
 						setOrganization("topbar.organizations.company");
+					}
+
+					if (fetchedBilling.status === "active") {
+						setSubscriptionStatus(
+							"topbar.subscription-status.active"
+						);
+					} else {
+						setSubscriptionStatus(
+							"topbar.subscription-status.inactive"
+						);
 					}
 				}
 			} catch (error) {
@@ -88,10 +105,21 @@ export default function TopBar({ user }) {
 				className="fixed right-0 left-0 md:left-48 w-auto dark:bg-black dark:bg-opacity-50 bg-light_gray bg-opacity-80 md:bg-white dark:md:bg-mid_blue text-dark_blue dark:text-light_gray md:ps-4 md:pe-8 ps-14 pe-4 h-10 flex items-center justify-between drop-shadow-sm rounded-br-2xl"
 				style={{ zIndex: 100 }}
 			>
-				<div className="md:w-1/4">
+				<div className="md:w-1/5">
 					<DarkModeButton />
 				</div>
-				<div className="hidden md:block md:w-2/4 text-center">
+				<div className="hidden md:block md:w-1/4 text-center">
+					<p>
+						<T tkey="topbar.subscription" />
+						<FaArrowRight className="inline-block mx-2 w-4 h-4 pb-1" />
+						<Link href="/home/subscription">
+							<span className="uppercase text-accent_color hover:text-accent_hover font-semibold transition-color duration-200 ease-linear">
+								<T tkey={subscriptionStatus} />
+							</span>
+						</Link>
+					</p>
+				</div>
+				<div className="hidden md:block md:w-1/4 text-center">
 					<p>
 						<T tkey="topbar.organization" />
 						<FaArrowRight className="inline-block mx-2 w-4 h-4 pb-1" />

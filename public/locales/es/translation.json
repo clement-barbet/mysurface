@@ -372,6 +372,10 @@
 			"company": "Empresa",
 			"school": "Escuela",
 			"city": "Ciudad"
+		},
+		"subscription-status": {
+			"active": "Activa",
+			"inactive": "Inactiva"
 		}
 	},
 	"thankyou": {
