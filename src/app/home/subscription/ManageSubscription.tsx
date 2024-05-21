@@ -45,7 +45,7 @@ export default function ManageSubscription({ billing, setBilling, user }) {
 						<span className="font-semibold uppercase text-accent_color px-1">
 							free trial
 						</span>{" "}
-						available.
+						available for 30 days.
 					</p>
 					<div className="flex justify-end">
 						<Button
@@ -54,6 +54,21 @@ export default function ManageSubscription({ billing, setBilling, user }) {
 							onClick={handleNewTrial}
 						>
 							Start free trial now
+						</Button>
+					</div>
+					<p>
+						You can purchase a{" "}
+						<span className="font-semibold uppercase text-mid_blue px-1">
+							yearly subscription
+						</span>{" "}
+						for 89 € per year.
+					</p>
+					<div className="flex justify-end">
+						<Button
+							variant="signup"
+							className="my-2 w-full md:w-3/5 lg:w-2/5 xl:w-1/5 uppercase text-base"
+						>
+							Checkout yearly plan
 						</Button>
 					</div>
 				</div>
