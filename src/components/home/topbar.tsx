@@ -8,6 +8,7 @@ import { FaUser } from "react-icons/fa6";
 import { IoMdSettings } from "react-icons/io";
 import { IoMdLogOut } from "react-icons/io";
 import { FaArrowRight } from "react-icons/fa";
+import { MdPayment } from "react-icons/md";
 import Link from "next/link";
 import T from "@/components/translations/translation";
 import { fetchSettings } from "@/db/app_settings/fetchSettingsByUserId";
@@ -124,6 +125,16 @@ export default function TopBar({ user }) {
 									</div>
 									<p>
 										<T tkey="topbar.account" />
+									</p>
+								</div>
+							</Link>
+							<Link href="/home/subscription">
+								<div className="flex items-center justify-start gap-x-1 px-4 py-3 hover:font-medium hover:bg-light_gray dark:hover:bg-mid_blue transition-all duration-100 ease-linear">
+									<div className="w-8 h-8 flex justify-center items-center dark:border-light_gray">
+										<MdPayment className="w-5 h-5" />
+									</div>
+									<p>
+										<T tkey="topbar.subscription" />
 									</p>
 								</div>
 							</Link>

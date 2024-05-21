@@ -363,8 +363,8 @@
 		"title": "Respaldo de Resultados"
 	},
 	"topbar": {
-		"search": "Buscar",
 		"account": "Mi cuenta",
+		"subscription": "Suscripción",
 		"team": "Mi equipo",
 		"logout": "Cerrar sesión",
 		"organization": "Organización",

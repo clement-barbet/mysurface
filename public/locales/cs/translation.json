@@ -363,8 +363,8 @@
 		"title": "Záloha Výsledků"
 	},
 	"topbar": {
-		"search": "Hledat",
 		"account": "Můj účet",
+		"subscription": "Předplatné",
 		"team": "Moje týmy",
 		"logout": "Odhlásit se",
 		"organization": "Organizace",

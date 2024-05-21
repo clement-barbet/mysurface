@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { LeftSideLogin } from "@/components/login/left_side_login";
 import { FormBg } from "@/components/ui/form_bg";
 import { ErrorMessage } from "@/components/ui/msg/error_msg";
+import { SuccessMessage } from "@/components/ui/msg/success_msg";
 import {
 	Form,
 	FormControl,

@@ -36,8 +36,29 @@ export async function middleware(req: NextRequest) {
 		}
 
 		if (role && role.role === "authenticated") {
-			return NextResponse.error("Not Found", 404);
+			return NextResponse.error();
 		}
+	}
+
+	const isHomeRoute = req.nextUrl.pathname.startsWith("/home");
+	const allowedHomeRoutes = ["/home", "/home/account", "/home/subscription", "/home/faq", "/home/contact-support"];
+
+	if (isHomeRoute && !allowedHomeRoutes.includes(req.nextUrl.pathname)) {
+		const { data: billing, error: billingError } = await supabase
+			.from("billings")
+			.select("*")
+			.eq("user_id", user?.user.id)
+			.single();
+
+		if (billingError) {
+			console.error(billingError);
+		}
+
+		if (billing && billing.status !== "active") {
+			return NextResponse.error();
+		}
+
+		return res;
 	}
 
 	if (req.nextUrl.pathname === "/") {

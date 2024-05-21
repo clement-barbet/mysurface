@@ -20,6 +20,7 @@ import { AiOutlineMessage } from "react-icons/ai";
 import { BiSupport } from "react-icons/bi";
 import { fetchLanguages } from "@/db/languages/fetchLanguages";
 import { fetchRole } from "@/db/roles/fetchRoleByUserId";
+import { fetchBilling } from "@/db/billings/fetchBillingByUserId";
 
 export default function DashboardNavbar({ user }) {
 	const pathname = usePathname();
@@ -29,6 +30,7 @@ export default function DashboardNavbar({ user }) {
 	const supabase = createClientComponentClient();
 	const [languages, setLanguages] = useState([]);
 	const [userRole, setUserRole] = useState("");
+	const [subscriptionStatus, setSubscriptionStatus] = useState("");
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -37,6 +39,8 @@ export default function DashboardNavbar({ user }) {
 				setLanguages(fetchedLanguages);
 				const fetchedRole = await fetchRole(user.id);
 				setUserRole(fetchedRole.role);
+				const fetchedBilling = await fetchBilling(user.id);
+				setSubscriptionStatus(fetchedBilling.status);
 			} catch (error) {
 				console.error("Error fetching data", error);
 			}
@@ -101,98 +105,104 @@ export default function DashboardNavbar({ user }) {
 					}
 				)}
 			>
-				<li
-					className={clsx("py-2 px-4 w-full tracking-wider", {
-						"border-l-4 border-light_gray":
-							pathname === "/home/dashboard",
-					})}
-				>
-					<Link
-						onClick={handleLinkClick}
-						href="/home/dashboard"
-						className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase"
-					>
-						<MdDashboard className="h-6 w-6" />
-						<T tkey="navbar.dashboard" />
-					</Link>
-				</li>
-				<li
-					className={clsx("py-2 px-4 tracking-wider", {
-						"border-l-4 border-light_gray":
-							pathname === "/home/participants",
-					})}
-				>
-					<Link
-						onClick={handleLinkClick}
-						href="/home/participants"
-						className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase"
-					>
-						<IoPeople className="h-6 w-6" />
-						<T tkey="navbar.participants" />
-					</Link>
-				</li>
-				<li
-					className={clsx("py-2 px-4 tracking-wider", {
-						"border-l-4 border-light_gray":
-							pathname === "/home/results" ||
-							/^\/home\/results(\/\d+)?$/.test(pathname),
-					})}
-				>
-					<Link
-						onClick={handleLinkClick}
-						href="/home/results"
-						className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase"
-					>
-						<PiGraph className="h-6 w-6" />
-						<T tkey="navbar.results" />
-					</Link>
-				</li>
-				<li
-					className={clsx("py-2 px-4 tracking-wider", {
-						"border-l-4 border-light_gray":
-							pathname === "/home/models",
-					})}
-				>
-					<Link
-						onClick={handleLinkClick}
-						href="/home/models"
-						className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase"
-					>
-						<TbVectorTriangle className="h-6 w-6" />
-						<T tkey="navbar.models" />
-					</Link>
-				</li>
-				<li
-					className={clsx("py-2 px-4 tracking-wider", {
-						"border-l-4 border-light_gray":
-							pathname === "/home/patterns",
-					})}
-				>
-					<Link
-						onClick={handleLinkClick}
-						href="/home/patterns"
-						className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase"
-					>
-						<BiTrendingUp className="h-6 w-6" />
-						<T tkey="navbar.patterns" />
-					</Link>
-				</li>
-				<li
-					className={clsx("py-2 px-4 tracking-wider", {
-						"border-l-4 border-light_gray":
-							pathname === "/home/results-examples" ||
-							/^\/home\/results-examples(\/\d+)?$/.test(pathname),
-					})}
-				>
-					<Link
-						onClick={handleLinkClick}
-						href="/home/results-examples"
-						className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase"
-					>
-						<PiGraph className="h-6 w-6" />
-						<T tkey="navbar.results-examples" />
-					</Link>
-				</li>
+				{subscriptionStatus === "active" ? (
+					<>
+						<li
+							className={clsx("py-2 px-4 w-full tracking-wider", {
+								"border-l-4 border-light_gray":
+									pathname === "/home/dashboard",
+							})}
+						>
+							<Link
+								onClick={handleLinkClick}
+								href="/home/dashboard"
+								className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase"
+							>
+								<MdDashboard className="h-6 w-6" />
+								<T tkey="navbar.dashboard" />
+							</Link>
+						</li>
+						<li
+							className={clsx("py-2 px-4 tracking-wider", {
+								"border-l-4 border-light_gray":
+									pathname === "/home/participants",
+							})}
+						>
+							<Link
+								onClick={handleLinkClick}
+								href="/home/participants"
+								className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase"
+							>
+								<IoPeople className="h-6 w-6" />
+								<T tkey="navbar.participants" />
+							</Link>
+						</li>
+						<li
+							className={clsx("py-2 px-4 tracking-wider", {
+								"border-l-4 border-light_gray":
+									pathname === "/home/results" ||
+									/^\/home\/results(\/\d+)?$/.test(pathname),
+							})}
+						>
+							<Link
+								onClick={handleLinkClick}
+								href="/home/results"
+								className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase"
+							>
+								<PiGraph className="h-6 w-6" />
+								<T tkey="navbar.results" />
+							</Link>
+						</li>
+						<li
+							className={clsx("py-2 px-4 tracking-wider", {
+								"border-l-4 border-light_gray":
+									pathname === "/home/models",
+							})}
+						>
+							<Link
+								onClick={handleLinkClick}
+								href="/home/models"
+								className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase"
+							>
+								<TbVectorTriangle className="h-6 w-6" />
+								<T tkey="navbar.models" />
+							</Link>
+						</li>
+						<li
+							className={clsx("py-2 px-4 tracking-wider", {
+								"border-l-4 border-light_gray":
+									pathname === "/home/patterns",
+							})}
+						>
+							<Link
+								onClick={handleLinkClick}
+								href="/home/patterns"
+								className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase"
+							>
+								<BiTrendingUp className="h-6 w-6" />
+								<T tkey="navbar.patterns" />
+							</Link>
+						</li>
+						<li
+							className={clsx("py-2 px-4 tracking-wider", {
+								"border-l-4 border-light_gray":
+									pathname === "/home/results-examples" ||
+									/^\/home\/results-examples(\/\d+)?$/.test(
+										pathname
+									),
+							})}
+						>
+							<Link
+								onClick={handleLinkClick}
+								href="/home/results-examples"
+								className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase"
+							>
+								<PiGraph className="h-6 w-6" />
+								<T tkey="navbar.results-examples" />
+							</Link>
+						</li>
+					</>
+				) : null}
 				{userRole === "superadmin" ? (
 					<>
 						<hr className="w-full my-4 border-light_gray border border-opacity-50" />

@@ -360,8 +360,8 @@
 		"contact-support": "Support"
 	},
 	"topbar": {
-		"search": "Search",
 		"account": "My account",
+		"subscription": "Subscription",
 		"team": "My team",
 		"logout": "Log out",
 		"organization": "Organization",
