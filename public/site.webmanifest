@@ -1,6 +1,7 @@
 {
-    "name": "",
-    "short_name": "",
+    "name": "MySurface®",
+    "short_name": "MySurf",
+    "description": "Influence and interaction analysing tool",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",
