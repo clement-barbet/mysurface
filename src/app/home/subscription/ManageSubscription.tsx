@@ -58,13 +58,23 @@ export default function ManageSubscription({ billing, setBilling, user }) {
 					</div>
 				</div>
 			) : (
-				<p>
-					Your subscription is{" "}
-					<span className="font-semibold uppercase text-accent_delete px-1">
-						inactive
-					</span>
-					.
-				</p>
+				<div>
+					<p>
+						Your subscription is{" "}
+						<span className="font-semibold uppercase text-accent_delete px-1">
+							inactive
+						</span>
+						.
+					</p>
+					<div className="flex justify-end">
+						<Button
+							variant="signup"
+							className="my-2 w-full md:w-3/5 lg:w-2/5 xl:w-1/5 uppercase text-base"
+						>
+							Checkout yearly plan
+						</Button>
+					</div>
+				</div>
 			)}
 		</div>
 	);
