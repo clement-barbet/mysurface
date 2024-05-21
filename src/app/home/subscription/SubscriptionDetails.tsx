@@ -1,6 +1,6 @@
 export default function SubscriptionDetails({ billing }) {
 	if (billing) {
-		if (!billing.expiration_date) {
+		if (!billing.expiration_date || billing.status === "inactive") {
 			billing.expiration_date = "N/A";
 			billing.days_until_expiration = "N/A";
 		}

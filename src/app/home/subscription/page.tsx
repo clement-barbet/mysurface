@@ -5,10 +5,12 @@ import { fetchUser } from "@/db/auth_user/fetchUser";
 import { fetchBilling } from "@/db/billings/fetchBillingByUserId";
 import { useEffect, useState } from "react";
 import SubsciptionDetails from "./SubscriptionDetails";
+import ManageSubscription from "./ManageSubscription";
 
 export default function Subscription() {
 	const [loading, setLoading] = useState(true);
 	const [billing, setBilling] = useState(null);
+	const [user, setUser] = useState(null);
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -16,6 +18,7 @@ export default function Subscription() {
 			try {
 				const fetchedUser = await fetchUser();
 				const userId = fetchedUser.id;
+				setUser(fetchedUser);
 				const fetchedBilling = await fetchBilling(userId);
 				setBilling(fetchedBilling);
 			} catch (error) {
@@ -50,6 +53,7 @@ export default function Subscription() {
 				<p className="text-gray-600 dark:text-gray-400 text-lg md:text-base">
 					Here you can manage your subscription.
 				</p>
+				<ManageSubscription billing={billing} setBilling={setBilling} user={user} />
 			</div>
 		</div>
 	);
