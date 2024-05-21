@@ -5,7 +5,7 @@ import { fetchUser } from "@/db/auth_user/fetchUser";
 import { fetchBilling } from "@/db/billings/fetchBillingByUserId";
 import { useEffect, useState } from "react";
 import SubsciptionDetails from "./SubscriptionDetails";
-import ManageSubscription from "./ManageSubscription";
+import ManageSubscriptionDev from "./ManageSubscriptionDev";
 
 export default function Subscription() {
 	const [loading, setLoading] = useState(true);
@@ -53,7 +53,7 @@ export default function Subscription() {
 				<p className="text-gray-600 dark:text-gray-400 text-lg md:text-base">
 					Here you can manage your subscription.
 				</p>
-				<ManageSubscription billing={billing} setBilling={setBilling} user={user} />
+				<ManageSubscriptionDev billing={billing} setBilling={setBilling} user={user} />
 			</div>
 		</div>
 	);

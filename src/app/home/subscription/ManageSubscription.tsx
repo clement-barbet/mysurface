@@ -1,12 +1,11 @@
 import { Button } from "@/components/ui/button";
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { loadStripe } from "@stripe/stripe-js";
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 
 export default function ManageSubscription({ billing, setBilling, user }) {
-	const supabase = createClientComponentClient();
 	const public_key = process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY;
-	console.log("Public key: ", public_key);
 	const stripePromise = loadStripe(public_key);
+    const supabase = createClientComponentClient();
 
 	const handleNewTrial = async () => {
 		if (!user) {
