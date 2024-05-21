@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import { ErrorMessage } from "@/components/ui/msg/error_msg";
 import { SuccessMessage } from "@/components/ui/msg/success_msg";
 import { fetchBilling } from "@/db/billings/fetchBillingByUserId";
+import { set } from "zod";
+import { useRouter } from "next/navigation";
 
 export default function ManageSubscriptionDev({ billing, setBilling, user }) {
 	const public_key = process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY_DEV;
@@ -13,6 +15,7 @@ export default function ManageSubscriptionDev({ billing, setBilling, user }) {
 	const [session, setSession] = useState(null);
 	const [successMessage, setSuccessMessage] = useState("");
 	const [errorMessage, setErrorMessage] = useState("");
+	const router = useRouter();
 
 	//testing: http://localhost:3000/home/subscription?session_id=cs_test_a1p3ieYJ1mXfOEGKiJs7yumxexWvtgI5ALNowiFT2CD2J2rO3aSAtuNjSY
 
@@ -77,9 +80,11 @@ export default function ManageSubscriptionDev({ billing, setBilling, user }) {
 				console.error("Error updating billing subscription:", error);
 			} else {
 				console.log("Billing subscription updated successfully:", data);
-				const fetchedBilling = await fetchBilling(user.id);
-				setBilling(fetchedBilling);
+				//const fetchedBilling = await fetchBilling(user.id);
+				//setBilling(fetchedBilling);
 				setSuccessMessage("Subscription payment successful.");
+				router.push("/home/subscription");
+				location.reload();
 			}
 		}
 	};
@@ -96,8 +101,10 @@ export default function ManageSubscriptionDev({ billing, setBilling, user }) {
 			console.error("Error updating billing trial:", error);
 		} else {
 			console.log("Billing trial updated successfully:", data);
-			const fetchedBilling = await fetchBilling(user.id);
-			setBilling(fetchedBilling);
+			//const fetchedBilling = await fetchBilling(user.id);
+			//setBilling(fetchedBilling);
+			setSuccessMessage("Free trial started successfully.");
+			location.reload();
 		}
 	};
 
