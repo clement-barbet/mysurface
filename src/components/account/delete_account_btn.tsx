@@ -28,32 +28,6 @@ export default function DeleteAccountButton({ userId }: { userId: any }) {
 
 	const handleDelete = async () => {
 		try {
-			const { data: participants, error: participantsError } =
-				await supabase
-					.from("participants")
-					.select("questionnaire")
-					.eq("user_id", userId);
-
-			if (participantsError) {
-				throw participantsError;
-			} else {
-				console.log("participants:", participants);
-			}
-
-			const { error: deleteError } = await supabase
-				.from("questionnaires")
-				.delete()
-				.in(
-					"id",
-					participants.map((p) => p.questionnaire)
-				);
-
-			if (deleteError) {
-				throw deleteError;
-			} else {
-				console.log("questionnaires deleted");
-			}
-
 			const { error: procedureError } = await supabase.rpc(
 				"delete_user",
 				{ user_id: userId }
