@@ -68,8 +68,6 @@ export default function ManageSubscriptionDev({ billing, setBilling, user }) {
 			return;
 		}
 
-		console.log("session: ", session);
-
 		if (session.status === "complete") {
 			const { data, error } = await supabase.rpc(
 				"update_billing_yearly",
