@@ -24,16 +24,13 @@ export default function ManageSubscription({ billing, setBilling, user }) {
 				console.log("Session ID:", sessionId);
 
 				if (sessionId) {
-					const response = await fetch(
-						`/api/stripe-get-session`,
-						{
-							method: "POST",
-							headers: {
-								"Content-Type": "application/json",
-							},
-							body: JSON.stringify({ session_id: sessionId }),
-						}
-					);
+					const response = await fetch(`/api/stripe-get-session`, {
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json",
+						},
+						body: JSON.stringify({ session_id: sessionId }),
+					});
 
 					if (!response.ok) {
 						throw new Error(
@@ -68,6 +65,7 @@ export default function ManageSubscription({ billing, setBilling, user }) {
 				"update_billing_yearly",
 				{
 					logged_user_id: user.id,
+					stripe_session_id: session.id,
 				}
 			);
 

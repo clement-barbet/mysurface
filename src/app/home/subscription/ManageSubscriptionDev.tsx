@@ -68,11 +68,14 @@ export default function ManageSubscriptionDev({ billing, setBilling, user }) {
 			return;
 		}
 
+		console.log("session: ", session);
+
 		if (session.status === "complete") {
 			const { data, error } = await supabase.rpc(
 				"update_billing_yearly",
 				{
 					logged_user_id: user.id,
+					stripe_session_id: session.id,
 				}
 			);
 
