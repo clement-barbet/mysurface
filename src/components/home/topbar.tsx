@@ -14,6 +14,8 @@ import T from "@/components/translations/translation";
 import { fetchSettings } from "@/db/app_settings/fetchSettingsByUserId";
 import { set } from "zod";
 import { fetchBilling } from "@/db/billings/fetchBillingByUserId";
+import clsx from "clsx";
+import Loading from "../ui/loading";
 
 export default function TopBar({ user }) {
 	const [errorMessage, setErrorMessage] = useState("");
@@ -23,7 +25,9 @@ export default function TopBar({ user }) {
 	const menuRef = useRef(null);
 	const divRef = useRef(null);
 	const [isOpen, setIsOpen] = useState(false);
-	const [subscriptionStatus, setSubscriptionStatus] = useState("inactive");
+	const [subscriptionStatus, setSubscriptionStatus] = useState("");
+	const [subscription, setSubscription] = useState(null);
+	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
 		function handleClickOutside(event) {
@@ -45,6 +49,7 @@ export default function TopBar({ user }) {
 
 	useEffect(() => {
 		const fetchData = async () => {
+			setLoading(true);
 			try {
 				if (user) {
 					setEmail(user.email);
@@ -53,6 +58,7 @@ export default function TopBar({ user }) {
 					const fetchedBilling = await fetchBilling(user.id);
 					if (fetchedBilling) {
 						setSubscriptionStatus(fetchedBilling.status);
+						setSubscription(fetchedBilling);
 					}
 
 					if (fetchedSettings.organization_id === 2) {
@@ -75,6 +81,8 @@ export default function TopBar({ user }) {
 				}
 			} catch (error) {
 				console.error("Error fetching data", error);
+			} finally {
+				setLoading(false);
 			}
 		};
 
@@ -92,6 +100,10 @@ export default function TopBar({ user }) {
 		event.stopPropagation();
 		setIsOpen((prevIsOpen) => !prevIsOpen);
 	};
+
+	if (loading) {
+		return <Loading />;
+	}
 
 	return (
 		<>
@@ -113,7 +125,19 @@ export default function TopBar({ user }) {
 						<T tkey="topbar.subscription" />
 						<FaArrowRight className="inline-block mx-2 w-4 h-4 pb-1" />
 						<Link href="/home/subscription">
-							<span className="uppercase text-accent_color hover:text-accent_hover font-semibold transition-color duration-200 ease-linear">
+							<span
+								className={clsx(
+									"uppercase font-semibold transition-color duration-200 ease-linear",
+									{
+										"text-accent_color hover:text-accent_hover":
+											subscription &&
+											subscription.status !== "inactive",
+										"text-accent_delete hover:text-accent_delete_hover":
+											subscription &&
+											subscription.status === "inactive",
+									}
+								)}
+							>
 								<T tkey={subscriptionStatus} />
 							</span>
 						</Link>

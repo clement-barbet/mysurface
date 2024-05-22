@@ -42,7 +42,7 @@ export default function Subscription() {
 					Subscription details
 				</h2>
 				<p className="text-gray-600 dark:text-gray-400 text-lg md:text-base">
-					Actual subscription details will be shown here.
+					Actual subscription details.
 				</p>
 				<SubsciptionDetails billing={billing} />
 			</div>

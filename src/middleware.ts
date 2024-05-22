@@ -41,9 +41,21 @@ export async function middleware(req: NextRequest) {
 	}
 
 	const isHomeRoute = req.nextUrl.pathname.startsWith("/home");
-	const allowedHomeRoutes = ["/home", "/home/account", "/home/subscription", "/home/faq", "/home/contact-support"];
+	const allowedHomeRoutes = [
+		"/home",
+		"/home/models",
+		"/home/patterns",
+		"/home/account",
+		"/home/subscription",
+		"/home/faq",
+		"/home/contact-support",
+	];
 
-	if (isHomeRoute && !allowedHomeRoutes.includes(req.nextUrl.pathname)) {
+	if (
+		isHomeRoute &&
+		!allowedHomeRoutes.includes(req.nextUrl.pathname) &&
+		!req.nextUrl.pathname.startsWith("/home/results-examples")
+	) {
 		const { data: billing, error: billingError } = await supabase
 			.from("billings")
 			.select("*")

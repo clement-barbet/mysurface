@@ -24,7 +24,6 @@ export default function ManageSubscriptionDev({ billing, setBilling, user }) {
 			try {
 				const urlParams = new URLSearchParams(window.location.search);
 				const sessionId = urlParams.get("session_id");
-				console.log("Session ID:", sessionId);
 
 				if (sessionId) {
 					const response = await fetch(
@@ -68,12 +67,15 @@ export default function ManageSubscriptionDev({ billing, setBilling, user }) {
 			return;
 		}
 
+		console.log("Session data:", session);
+
 		if (session.status === "complete") {
 			const { data, error } = await supabase.rpc(
 				"update_billing_yearly",
 				{
 					logged_user_id: user.id,
 					stripe_session_id: session.id,
+					stripe_customer_id: session.customer,
 				}
 			);
 
@@ -85,7 +87,9 @@ export default function ManageSubscriptionDev({ billing, setBilling, user }) {
 				//setBilling(fetchedBilling);
 				setSuccessMessage("Subscription payment successful.");
 				router.push("/home/subscription");
-				location.reload();
+				setTimeout(() => {
+					location.reload();
+				}, 1000);
 			}
 		}
 	};
@@ -105,7 +109,9 @@ export default function ManageSubscriptionDev({ billing, setBilling, user }) {
 			//const fetchedBilling = await fetchBilling(user.id);
 			//setBilling(fetchedBilling);
 			setSuccessMessage("Free trial started successfully.");
-			location.reload();
+			setTimeout(() => {
+				location.reload();
+			}, 1000);
 		}
 	};
 

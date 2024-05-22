@@ -66,6 +66,7 @@ export default function ManageSubscription({ billing, setBilling, user }) {
 				{
 					logged_user_id: user.id,
 					stripe_session_id: session.id,
+					stripe_customer_id: session.customer,
 				}
 			);
 
@@ -77,7 +78,9 @@ export default function ManageSubscription({ billing, setBilling, user }) {
 				//setBilling(fetchedBilling);
 				setSuccessMessage("Subscription payment successful.");
 				router.push("/home/subscription");
-				location.reload();
+				setTimeout(() => {
+					location.reload();
+				}, 1000);
 			}
 		}
 	};
@@ -97,7 +100,9 @@ export default function ManageSubscription({ billing, setBilling, user }) {
 			//const fetchedBilling = await fetchBilling(user.id);
 			//setBilling(fetchedBilling);
 			setSuccessMessage("Free trial started successfully.");
-			location.reload();
+			setTimeout(() => {
+				location.reload();
+			}, 1000);
 		}
 	};
 

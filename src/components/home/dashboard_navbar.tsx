@@ -153,55 +153,63 @@ export default function DashboardNavbar({ user }) {
 								<T tkey="navbar.results" />
 							</Link>
 						</li>
-						<li
-							className={clsx("py-2 px-4 tracking-wider", {
-								"border-l-4 border-light_gray":
-									pathname === "/home/models",
-							})}
-						>
-							<Link
-								onClick={handleLinkClick}
-								href="/home/models"
-								className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase"
-							>
-								<TbVectorTriangle className="h-6 w-6" />
-								<T tkey="navbar.models" />
-							</Link>
-						</li>
-						<li
-							className={clsx("py-2 px-4 tracking-wider", {
-								"border-l-4 border-light_gray":
-									pathname === "/home/patterns",
-							})}
-						>
-							<Link
-								onClick={handleLinkClick}
-								href="/home/patterns"
-								className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase"
-							>
-								<BiTrendingUp className="h-6 w-6" />
-								<T tkey="navbar.patterns" />
-							</Link>
-						</li>
-						<li
-							className={clsx("py-2 px-4 tracking-wider", {
-								"border-l-4 border-light_gray":
-									pathname === "/home/results-examples" ||
-									/^\/home\/results-examples(\/\d+)?$/.test(
-										pathname
-									),
-							})}
-						>
-							<Link
-								onClick={handleLinkClick}
-								href="/home/results-examples"
-								className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase"
-							>
-								<PiGraph className="h-6 w-6" />
-								<T tkey="navbar.results-examples" />
-							</Link>
-						</li>
 					</>
+				) : null}
+				<li
+					className={clsx("py-2 px-4 tracking-wider", {
+						"border-l-4 border-light_gray":
+							pathname === "/home/models",
+					})}
+				>
+					<Link
+						onClick={handleLinkClick}
+						href="/home/models"
+						className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase"
+					>
+						<TbVectorTriangle className="h-6 w-6" />
+						<T tkey="navbar.models" />
+					</Link>
+				</li>
+				<li
+					className={clsx("py-2 px-4 tracking-wider", {
+						"border-l-4 border-light_gray":
+							pathname === "/home/patterns",
+					})}
+				>
+					<Link
+						onClick={handleLinkClick}
+						href="/home/patterns"
+						className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase"
+					>
+						<BiTrendingUp className="h-6 w-6" />
+						<T tkey="navbar.patterns" />
+					</Link>
+				</li>
+				<li
+					className={clsx("py-2 px-4 tracking-wider", {
+						"border-l-4 border-light_gray":
+							pathname === "/home/results-examples" ||
+							/^\/home\/results-examples(\/\d+)?$/.test(pathname),
+					})}
+				>
+					<Link
+						onClick={handleLinkClick}
+						href="/home/results-examples"
+						className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase"
+					>
+						<PiGraph className="h-6 w-6" />
+						<T tkey="navbar.results-examples" />
+					</Link>
+				</li>
+				{subscriptionStatus !== "active" ? (
+					<li>
+						<Link
+							className="w-full inline-block text-sm mt-2 text-center text-gray-400 text-opacity-90 hover:text-gray-300 hover:font-semibold transition-all duration-200 ease-linear"
+							href="/home/subscription"
+						>
+							Subscribe
+						</Link>
+					</li>
 				) : null}
 				{userRole === "superadmin" ? (
 					<>
@@ -393,7 +401,7 @@ export default function DashboardNavbar({ user }) {
 						</Link>
 					</li>
 					<li className="text-sm mt-2 text-center text-gray-400 text-opacity-90">
-						MySurface&reg; v2.0
+						MySurface&reg; v2.1
 					</li>
 				</div>
 			</ul>

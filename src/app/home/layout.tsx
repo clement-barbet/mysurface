@@ -5,9 +5,7 @@ import { usePathname } from "next/navigation";
 import React, { useState, useEffect } from "react";
 import { FaTimes } from "react-icons/fa";
 import Link from "next/link";
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import Loading from "@/components/ui/loading";
-import { useRouter } from "next/navigation";
 import { fetchUser } from "@/db/auth_user/fetchUser";
 
 export default function HomeLayout({
@@ -15,8 +13,6 @@ export default function HomeLayout({
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
-	const router = useRouter();
-	const supabase = createClientComponentClient();
 	const [user, setUser] = useState(null);
 	const pathname = usePathname();
 	const pathArray = pathname.split("/");
@@ -62,41 +58,39 @@ export default function HomeLayout({
 	}
 
 	return (
-		user && (
-			<div className="flex relative">
-				{isSmallScreen && isResultsIdPage && (
-					<div className="absolute top-0 right-0 p-4 z-10">
-						<Link href={return_path}>
-							<FaTimes className="h-5 w-5 text-accent_delete cursor-pointer hover:text-accent_delete_hover transition-all duration-200 ease-linear" />
-						</Link>
-					</div>
-				)}
+		<div className="flex relative">
+			{isSmallScreen && isResultsIdPage && (
+				<div className="absolute top-0 right-0 p-4 z-10">
+					<Link href={return_path}>
+						<FaTimes className="h-5 w-5 text-accent_delete cursor-pointer hover:text-accent_delete_hover transition-all duration-200 ease-linear" />
+					</Link>
+				</div>
+			)}
+			{!(isSmallScreen && isResultsIdPage) && (
+				<div
+					style={{ flex: "0 0 auto" }}
+					className="md:relative md:w-48"
+				>
+					<DashboardNavbar user={user} />
+				</div>
+			)}
+			<div className="flex flex-grow flex-col w-full md:w-auto h-full">
 				{!(isSmallScreen && isResultsIdPage) && (
-					<div
-						style={{ flex: "0 0 auto" }}
-						className="md:relative md:w-48"
-					>
-						<DashboardNavbar user={user} />
+					<div className="h-10 md:relative">
+						<TopBar user={user} />
 					</div>
 				)}
-				<div className="flex flex-grow flex-col w-full md:w-auto h-full">
-					{!(isSmallScreen && isResultsIdPage) && (
-						<div className="h-10 md:relative">
-							<TopBar user={user} />
-						</div>
-					)}
-					<div
-						style={{ flex: "1 0 auto" }}
-						className={`relative py-2 px-2 ${
-							isSmallScreen && !isResultsIdPage
-								? "px-0 ps-12 pe-2"
-								: ""
-						}`}
-					>
-						{children}
-					</div>
+				<div
+					style={{ flex: "1 0 auto" }}
+					className={`relative py-2 px-2 ${
+						isSmallScreen && !isResultsIdPage
+							? "px-0 ps-12 pe-2"
+							: ""
+					}`}
+				>
+					{children}
 				</div>
 			</div>
-		)
+		</div>
 	);
 }

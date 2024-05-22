@@ -33,7 +33,7 @@ export default function SubscriptionDetails({ billing }) {
 			{billing ? (
 				<>
 					<p>
-						<span className="font-semibold">Subscription</span>:{" "}
+						<span className="font-semibold">Subscription Type</span>:{" "}
 						{billing.subscription}
 					</p>
 					<p>
@@ -41,11 +41,11 @@ export default function SubscriptionDetails({ billing }) {
 						{billing.status}
 					</p>
 					<p>
-						<span className="font-semibold">Update Date</span>:{" "}
+						<span className="font-semibold">Last Update Date</span>:{" "}
 						{billing.updated_at}
 					</p>
 					<p>
-						<span className="font-semibold">Expiration date</span>:{" "}
+						<span className="font-semibold">Expiration Date</span>:{" "}
 						{billing.expiration_date}
 					</p>
 					<p>
