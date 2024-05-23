@@ -2,7 +2,7 @@
 	"home": {
 		"welcome": {
 			"title": "Welcome",
-			"subtitle": "Write something here..."
+			"subtitle": "We wish you a nice day and easy assessment by MySurface"
 		},
 		"guide": {
 			"admin": {
@@ -10,7 +10,7 @@
 				"subtitle": "Steps to follow for admins.",
 				"steps": {
 					"s1": "Go to 'Participants' section",
-					"s2": "Add participants or Products through the form or by a CSV file",
+					"s2": "Add participants and products by the form or by a CSV file",
 					"s3": "Click button to create questionnaires for the participants",
 					"s4": "Send e-mail with link to each participant's questionnaire",
 					"s5": "See Participants quiestnnaire completion in Dashboards",

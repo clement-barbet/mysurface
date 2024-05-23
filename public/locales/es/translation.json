@@ -12,11 +12,10 @@
 					"s1": "Inicia sesión con una cuenta de administrador",
 					"s2": "Ve a la sección 'Participantes'",
 					"s3": "Dentro de 'Participantes', crea nuevos participantes, ya sea a través del formulario o cargando un archivo CSV",
-					"s4": "Haz clic en el botón 'Crear cuestionarios' para crear cuestionarios para los participantes",
-					"s5": "Copia el enlace del cuestionario de cada participante y compártelo con ellos",
-					"s6": "Después de que cada participante haya completado el cuestionario, ve a la sección 'Participantes' y haz clic en el botón 'Generar resultado'",
-					"s7": "Una vez generado el informe, serás redirigido a la página de informe con gráficos 2D y 3D",
-					"s8": "Puedes consultar los resultados en cualquier momento en la sección 'Resultados'"
+					"s4": "Copia el enlace del cuestionario de cada participante y compártelo con ellos",
+					"s5": "Después de que cada participante haya completado el cuestionario, ve a la sección 'Participantes' y haz clic en el botón 'Generar resultado'",
+					"s6": "Una vez generado el informe, serás redirigido a la página de informe con gráficos 2D y 3D",
+					"s7": "Puedes consultar los resultados en cualquier momento en la sección 'Resultados'"
 				}
 			},
 			"user": {

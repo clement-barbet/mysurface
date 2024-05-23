@@ -12,11 +12,10 @@
 					"s1": "Přihlaste se pomocí účtu správce",
 					"s2": "Přejděte na sekci 'Účastníci'",
 					"s3": "V sekci 'Účastníci' vytvořte nové účastníky, buď pomocí formuláře, nebo nahráním souboru CSV",
-					"s4": "Klikněte na tlačítko 'Vytvořit dotazníky', abyste vytvořili dotazníky pro účastníky",
-					"s5": "Zkopírujte odkaz na dotazník každého účastníka a sdílejte jej s nimi",
-					"s6": "Po dokončení dotazníku každým účastníkem přejděte do sekce 'Účastníci' a klikněte na tlačítko 'Generovat výsledek'",
-					"s7": "Jakmile je zpráva vygenerována, budete přesměrováni na stránku s výsledkem s grafy 2D a 3D",
-					"s8": "V sekci 'Výsledky' můžete kdykoli zkontrolovat výsledky"
+					"s4": "Zkopírujte odkaz na dotazník každého účastníka a sdílejte jej s nimi",
+					"s5": "Po dokončení dotazníku každým účastníkem přejděte do sekce 'Účastníci' a klikněte na tlačítko 'Generovat výsledek'",
+					"s6": "Jakmile je zpráva vygenerována, budete přesměrováni na stránku s výsledkem s grafy 2D a 3D",
+					"s7": "V sekci 'Výsledky' můžete kdykoli zkontrolovat výsledky"
 				}
 			},
 			"user": {
