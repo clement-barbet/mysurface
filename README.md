@@ -438,4 +438,3 @@ WHERE
   OR results.id = '1714079302998'
   OR results.id = '1713448772441'
   OR results.id = 'NEW ID';
-```

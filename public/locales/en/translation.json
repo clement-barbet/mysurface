@@ -9,14 +9,13 @@
 				"title": "Admin's Guide",
 				"subtitle": "Steps to follow for admins.",
 				"steps": {
-					"s1": "Log-in with an administrator account",
-					"s2": "Go to 'Participants' section",
-					"s3": "Inside 'Participants' create new participants, through the form or by uploading a CSV file",
-					"s4": "Click 'Create Questionnaires' button to create questionnaires for the participants",
-					"s5": "Copy each participant's questionnaire link and share it with them",
-					"s6": "After every participant has completed the questionnaire, go to 'Participants' section and click 'Generate Result' button",
-					"s7": "Once the report is generated, you'll be redirected to the report page with 2D and 3D graphs",
-					"s8": "You can check anytime the results in the 'Results' section"
+					"s1": "Go to 'Participants' section",
+					"s2": "Add participants or Products through the form or by a CSV file",
+					"s3": "Click button to create questionnaires for the participants",
+					"s4": "Send e-mail with link to each participant's questionnaire",
+					"s5": "See Participants quiestnnaire completion in Dashboards",
+					"s6": "Click 'Generate Result' button and be redirected to the report",
+					"s7": "You can check anytime the results in the 'Results' section"
 				}
 			},
 			"user": {
