@@ -14,7 +14,7 @@ export default function Patterns() {
 					</p>
 					<img
 						src="/Pattern1.png"
-						alt="stock"
+						alt="pattern1"
 						className="w-full rounded-lg"
 					/>
 				</div>
@@ -26,8 +26,8 @@ export default function Patterns() {
 						<T tkey="patterns.p2.subtitle" />
 					</p>
 					<img
-						src="/stock.jpg"
-						alt="stock"
+						src="/Pattern2.png"
+						alt="pattern2"
 						className="w-full rounded-lg"
 					/>
 				</div>
@@ -41,8 +41,8 @@ export default function Patterns() {
 						<T tkey="patterns.p3.subtitle" />
 					</p>
 					<img
-						src="/stock.jpg"
-						alt="stock"
+						src="/Pattern3.png"
+						alt="pattern3"
 						className="w-full rounded-lg"
 					/>
 				</div>
@@ -54,8 +54,8 @@ export default function Patterns() {
 						<T tkey="patterns.p4.subtitle" />
 					</p>
 					<img
-						src="/stock.jpg"
-						alt="stock"
+						src="/Pattern4.png"
+						alt="pattern4"
 						className="w-full rounded-lg"
 					/>
 				</div>
@@ -69,8 +69,8 @@ export default function Patterns() {
 						<T tkey="patterns.p5.subtitle" />
 					</p>
 					<img
-						src="/stock.jpg"
-						alt="stock"
+						src="/Pattern5.png"
+						alt="pattern5"
 						className="w-full rounded-lg"
 					/>
 				</div>
@@ -82,8 +82,8 @@ export default function Patterns() {
 						<T tkey="patterns.p6.subtitle" />
 					</p>
 					<img
-						src="/stock.jpg"
-						alt="stock"
+						src="/Pattern6.png"
+						alt="pattern6"
 						className="w-full rounded-lg"
 					/>
 				</div>
