@@ -107,6 +107,9 @@ export default function Models() {
 						<T tkey="models.m12.subtitle" />
 					</p>
 				</div>
+			</div>
+			
+			<div className="flex flex-col gap-y-2 lg:flex-row lg:gap-x-2">
 				<div className="w-full p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
 					<h2 className="font-semibold text-lg ">
 						<T tkey="models.m13.title" />
@@ -123,7 +126,19 @@ export default function Models() {
 						<T tkey="models.m14.subtitle" />
 					</p>
 				</div>
+				<div className="w-full p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
+					<h2 className="font-semibold text-lg ">
+						<T tkey="models.m15.title" />
+					</h2>
+					<p className="text-gray-600 dark:text-gray-400 text-lg md:text-base">
+						<T tkey="models.m15.subtitle" />
+					</p>
+				</div>
 			</div>
+
+
+
+
 		</div>
 	);
 }
