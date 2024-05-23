@@ -430,52 +430,60 @@
 	},
 	"models": {
 		"m1": {
-			"title": "Model 1",
-			"subtitle": "Description of the model 1."
+			"title": "Strategic Decision-Making",
+			"subtitle": "Understanding societal influences allows companies to make informed decisions about their products, services, and operations. For instance, a report might reveal shifting societal attitudes towards sustainability, prompting a company to invest in eco-friendly practices or develop environmentally conscious products to align with consumer preferences."
 		},
 		"m2": {
-			"title": "Model 2",
-			"subtitle": "Description of the model 2."
+			"title": "Reputation Management",
+			"subtitle": "Companies can use insights from a society influence report to manage their reputation effectively. By understanding societal values, expectations, and concerns, they can tailor their communications and actions to resonate positively with their target audience, thereby enhancing brand image and credibility."
 		},
 		"m3": {
-			"title": "Model 3",
-			"subtitle": "Description of the model 3."
+			"title": "Risk Management",
+			"subtitle": "Societal trends and shifts can pose risks to businesses, such as regulatory changes, boycotts, or negative public perception. A society influence report can help identify and mitigate these risks by providing early warnings and guidance on how to adapt strategies and operations accordingly."
 		},
 		"m4": {
-			"title": "Model 4",
-			"subtitle": "Description of the model 4."
+			"title": "Innovation and Product Development​",
+			"subtitle": "Companies can leverage societal influence reports to identify emerging trends and consumer demands, driving innovation and product development. By staying ahead of societal shifts, companies can develop products and services that meet evolving customer needs, gaining a competitive edge in the market."
 		},
 		"m5": {
-			"title": "Model 5",
-			"subtitle": "Description of the model 5."
+			"title": "Corporate Social Responsibility (CSR)",
+			"subtitle": "A society influence report can inform a company’s CSR initiatives by highlighting social issues and areas where the company can make a positive impact. This can include supporting community projects, promoting diversity and inclusion, or addressing environmental concerns, thereby enhancing corporate citizenship and stakeholder engagement."
 		},
 		"m6": {
-			"title": "Model 6",
-			"subtitle": "Description of the model 6."
+			"title": "Policy Development",
+			"subtitle": "Society influence reports offer insights into societal trends, preferences, and needs within the city’s population. This information can inform the development of policies and initiatives that address pressing social, economic, and environmental challenges, ensuring that city representatives can effectively respond to the evolving needs of residents."
 		},
 		"m7": {
-			"title": "Model 7",
-			"subtitle": "Description of the model 7."
+			"title": "Urban Planning",
+			"subtitle": "Understanding societal influences helps city representatives make informed decisions about urban development and infrastructure projects. By considering factors such as demographic shifts, cultural preferences, and lifestyle trends, urban planners can design cities that are more livable, sustainable, and inclusive, enhancing the quality of life for residents."
 		},
 		"m8": {
-			"title": "Model 8",
-			"subtitle": "Description of the model 8."
+			"title": "Equity and Social Justice",
+			"subtitle": "Insights from society influence reports can help city representatives identify disparities and inequities within the community, such as access to resources, opportunities, and services. This enables policymakers to implement targeted interventions and programs that promote social justice, reduce inequality, and create more inclusive communities."
 		},
 		"m9": {
-			"title": "Model 9",
-			"subtitle": "Description of the model 9."
+			"title": "Environmental Sustainability",
+			"subtitle": "Understanding societal influences allows city representatives to develop and implement strategies for environmental sustainability and climate resilience. By promoting sustainable practices, reducing carbon emissions, and enhancing green infrastructure, policymakers can mitigate the impact of climate change and create healthier, more resilient cities for future generations."
 		},
 		"m10": {
-			"title": "Model 10",
-			"subtitle": "Description of the model 10."
+			"title": "Public Health and Well-being",
+			"subtitle": "Society influence reports can inform public health initiatives and programs aimed at improving the well-being of residents. By identifying health trends, lifestyle preferences, and social determinants of health, city representatives can develop policies that promote physical activity, mental health, and access to healthcare services, fostering a healthier and more resilient population."
 		},
 		"m11": {
-			"title": "Model 11",
-			"subtitle": "Description of the model 11."
+			"title": "Crisis Management and Resilience",
+			"subtitle": "Insights from society influence reports can help city representatives anticipate and respond to crises, such as natural disasters, public health emergencies, or social unrest. By understanding societal dynamics and vulnerabilities, policymakers can develop robust emergency preparedness plans, coordinate response efforts, and build community resilience in the face of adversity."
 		},
 		"m12": {
-			"title": "Model 12",
-			"subtitle": "Description of the model 12."
+			"title": "Interdisciplinary Connections",
+			"subtitle": "Society influence reports often cover a wide range of topics and disciplines, providing opportunities for interdisciplinary learning and assessment. Educators can design assessments that integrate insights from multiple fields, encouraging students to make connections across subjects and apply their knowledge in diverse contexts."
+		},
+		"m13": {
+			"title": "Contextual Understanding​",
+			"subtitle": "Society influence reports provide educators with insights into broader societal trends, cultural dynamics, and social issues that may impact students’ learning experiences and academic performance. This contextual understanding allows teachers to tailor instruction and assessment strategies to better meet the needs and interests of diverse student populations."
+		},
+		"m14": {
+			"title": "Relevance and Engagement",
+			"subtitle": "Incorporating insights from society influence reports into classroom assessments can enhance the relevance and engagement of learning materials for students. By connecting academic content to real-world issues and societal trends, educators can make learning more meaningful and compelling, fostering deeper understanding and retention of key concepts."
 		}
 	},
 	"pagination": {
