@@ -58,7 +58,7 @@ export default function Home() {
 						</p>
 						<table className="border-collapse w-full my-1">
 							<tbody>
-								{Array.from({ length: 8 }, (_, i) => (
+								{Array.from({ length: 7 }, (_, i) => (
 									<tr key={i}>
 										<td className="text-accent_color pr-2 py-1 font-semibold align-top">
 											{i + 1}.
