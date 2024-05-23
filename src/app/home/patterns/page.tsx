@@ -13,7 +13,7 @@ export default function Patterns() {
 						<T tkey="patterns.p1.subtitle" />
 					</p>
 					<img
-						src="/stock.jpg"
+						src="/Pattern1.png"
 						alt="stock"
 						className="w-full rounded-lg"
 					/>
