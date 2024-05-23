@@ -2,7 +2,7 @@
 	"home": {
 		"welcome": {
 			"title": "Welcome",
-			"subtitle": "We wish you a nice day and easy assessment by MySurface"
+			"subtitle": "Enjoy easy assessment by MySurface"
 		},
 		"guide": {
 			"admin": {
@@ -380,8 +380,8 @@
 	},
 	"patterns": {
 		"p1": {
-			"title": "Pattern 1",
-			"subtitle": "Description of the pattern 1."
+			"title": "Two Nodes",
+			"subtitle": "On pattern you can see two assessed nodes. These nodes are connected, that means, these nodes have some relation or interaction. Meantime, one of nodes is bigger, another one smaller. That means, the bigger node got a higher influence/interaction rate by smaller one. Meantime, the bigger one assesed by less influence lebel the smaller node."
 		},
 		"p2": {
 			"title": "Pattern 2",
@@ -484,6 +484,10 @@
 		"m14": {
 			"title": "Relevance and Engagement",
 			"subtitle": "Incorporating insights from society influence reports into classroom assessments can enhance the relevance and engagement of learning materials for students. By connecting academic content to real-world issues and societal trends, educators can make learning more meaningful and compelling, fostering deeper understanding and retention of key concepts."
+		},
+		"m15": {
+			"title": "TBD",
+			"subtitle": "TBD"
 		}
 	},
 	"pagination": {

@@ -108,7 +108,6 @@ export default function Models() {
 					</p>
 				</div>
 			</div>
-			
 			<div className="flex flex-col gap-y-2 lg:flex-row lg:gap-x-2">
 				<div className="w-full p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
 					<h2 className="font-semibold text-lg ">
@@ -135,10 +134,6 @@ export default function Models() {
 					</p>
 				</div>
 			</div>
-
-
-
-
 		</div>
 	);
 }
