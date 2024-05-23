@@ -380,27 +380,27 @@
 	},
 	"patterns": {
 		"p1": {
-			"title": "Two Nodes",
+			"title": "Pattern 1 - Two Nodes",
 			"subtitle": "On pattern you can see two assessed nodes. These nodes are connected, that means, these nodes have some relation or interaction. Meantime, one of nodes is bigger, another one smaller. That means, the bigger node got a higher influence/interaction rate by smaller one. Meantime, the bigger one assesed by less influence lebel the smaller node."
 		},
 		"p2": {
-			"title": "Pattern 2",
-			"subtitle": "Description of the pattern 2."
+			"title": "Pattern 2 - Three Nodes - One Disconnected",
+			"subtitle": "Three nodes with visible three levels of influence. The biggest got the highest rate from other two nodes, meantime others got 50% less and 90% less than the biggest one. Meantime, two of them are disconnected, that means they don't havr any interaction."
 		},
 		"p3": {
-			"title": "Pattern 3",
+			"title": "Pattern 3 - Three Connected Nodes",
 			"subtitle": "Description of the pattern 3."
 		},
 		"p4": {
-			"title": "Pattern 4",
+			"title": "Pattern 4 - Nodes Group - One Exceptional",
 			"subtitle": "Description of the pattern 4."
 		},
 		"p5": {
-			"title": "Pattern 5",
+			"title": "Pattern 5 - Two Groups - One Disconnected ",
 			"subtitle": "Description of the pattern 5."
 		},
 		"p6": {
-			"title": "Pattern 6",
+			"title": "Pattern 6 - Thirdy Nodes - Fine Groups - Random Influence and Connection",
 			"subtitle": "Description of the pattern 6."
 		},
 		"p7": {
