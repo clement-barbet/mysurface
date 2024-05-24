@@ -437,4 +437,5 @@ WHERE
   results.id = '1713698503619'
   OR results.id = '1714079302998'
   OR results.id = '1713448772441'
-  OR results.id = 'NEW ID';
+  OR results.id = 'NEW ID'; 
+  
