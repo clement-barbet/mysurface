@@ -7,7 +7,7 @@ export default function Patterns() {
 
 
 
-			
+
 			<div className="flex flex-col gap-y-2 lg:flex-row lg:gap-x-2">
 				<div className="w-full p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
 					<h2 className="font-semibold text-lg ">
@@ -178,7 +178,7 @@ export default function Patterns() {
 						<T tkey="patterns.p9.subtitle" />
 					</p>
 					<img
-						src="/stock.jpg"
+						src="/Pattern-type3.png"
 						alt="stock"
 						className="w-full rounded-lg"
 					/>
