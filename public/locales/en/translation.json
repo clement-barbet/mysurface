@@ -381,7 +381,7 @@
 	"patterns": {
 		"p1": {
 			"title": "Pattern 1 - Two Nodes",
-			"subtitle": "On pattern you can see two assessed nodes. These nodes are connected, that means, these nodes have some relation or interaction. Meantime, one of nodes is bigger, another one smaller. That means, the bigger node got a higher influence/interaction rate by smaller one. Meantime, the bigger one assesed by less influence lebel the smaller node."
+			"subtitle": "You can see two connected nodes, that means these nodes have some relation or interaction. Meantime, one of nodes is bigger, another one smaller. That means, the bigger node got a higher influence rate by smaller one and vise-versa."
 		},
 		"p2": {
 			"title": "Pattern 2 - Three Nodes - One Disconnected",

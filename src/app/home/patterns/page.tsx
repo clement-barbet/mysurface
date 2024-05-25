@@ -61,10 +61,23 @@ export default function Patterns() {
 						className="w-full rounded-lg"
 					/>
 				</div>
+				<div className="w-full p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
+					<h2 className="font-semibold text-lg ">
+						<T tkey="patterns.p2.title" />
+					</h2>
+					<p className="text-gray-600 dark:text-gray-400 text-lg md:text-base mb-2">
+						<T tkey="patterns.p2.subtitle" />
+					</p>
+					<img
+						src="/Pattern2.png"
+						alt="pattern2"
+						className="w-full rounded-lg"
+					/>
+				</div>
 			</div>
 
 
-			
+
 			<div className="flex flex-col gap-y-2 lg:flex-row lg:gap-x-2">
 				<div className="w-full p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
 					<h2 className="font-semibold text-lg ">
