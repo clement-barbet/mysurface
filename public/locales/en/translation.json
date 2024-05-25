@@ -430,19 +430,19 @@
 	},
 	"models": {
 		"m1": {
-			"title": "Strategic Decision-Making",
+			"title": "Model 1 - Strategic Decision-Making",
 			"subtitle": "Understanding societal influences allows companies to make informed decisions about their products, services, and operations. For instance, a report might reveal shifting societal attitudes towards sustainability, prompting a company to invest in eco-friendly practices or develop environmentally conscious products to align with consumer preferences."
 		},
 		"m2": {
-			"title": "Reputation Management",
+			"title": "Model 2 - Reputation Management",
 			"subtitle": "Companies can use insights from a society influence report to manage their reputation effectively. By understanding societal values, expectations, and concerns, they can tailor their communications and actions to resonate positively with their target audience, thereby enhancing brand image and credibility."
 		},
 		"m3": {
-			"title": "Risk Management",
+			"title": "Model 3 - Risk Management",
 			"subtitle": "Societal trends and shifts can pose risks to businesses, such as regulatory changes, boycotts, or negative public perception. A society influence report can help identify and mitigate these risks by providing early warnings and guidance on how to adapt strategies and operations accordingly."
 		},
 		"m4": {
-			"title": "Innovation and Product Development​",
+			"title": "Model 4 - Innovation and Product Development​",
 			"subtitle": "Companies can leverage societal influence reports to identify emerging trends and consumer demands, driving innovation and product development. By staying ahead of societal shifts, companies can develop products and services that meet evolving customer needs, gaining a competitive edge in the market."
 		},
 		"m5": {
@@ -486,7 +486,7 @@
 			"subtitle": "Incorporating insights from society influence reports into classroom assessments can enhance the relevance and engagement of learning materials for students. By connecting academic content to real-world issues and societal trends, educators can make learning more meaningful and compelling, fostering deeper understanding and retention of key concepts."
 		},
 		"m15": {
-			"title": "Student Empowerment",
+			"title": "Model 15 - Student Empowerment",
 			"subtitle": "Incorporating society influence reports into classroom assessments empowers students to become agents of change in their communities. Assessments that challenge students to investigate societal issues, advocate for social justice, and take meaningful action foster a sense of agency and responsibility, empowering students to make a positive impact on the world around them."
 		}
 	},
