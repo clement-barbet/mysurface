@@ -380,40 +380,40 @@
 	},
 	"patterns": {
 		"p1": {
-			"title": "Pattern 1 - Two Nodes",
-			"subtitle": "You can see two connected nodes, that means these nodes have some relation or interaction. Meantime, one of nodes is bigger, another one smaller. That means, the bigger node got a higher influence rate by smaller one and vise-versa."
+			"title": "Influence Pattern Type",
+			"subtitle": "Description of the pattern 1."
 		},
 		"p2": {
-			"title": "Pattern 2 - Three Nodes - One Disconnected",
-			"subtitle": "Three nodes with visible three levels of influence. The biggest got the highest rate from other two nodes, meantime others got 50% less and 90% less than the biggest one. Meantime, two of them are disconnected, that means they don't havr any interaction."
+			"title": "Leader Pattern Type",
+			"subtitle": "Description of the pattern 2."
 		},
 		"p3": {
-			"title": "Pattern 3 - Three Connected Nodes",
+			"title": "Product Pattern Type",
 			"subtitle": "Description of the pattern 3."
 		},
 		"p4": {
-			"title": "Pattern 4 - Nodes Group - One Exceptional",
-			"subtitle": "Description of the pattern 4."
+			"title": "Pattern 1 - Two Nodes",
+			"subtitle": "You can see two connected nodes, that means these nodes have some relation or interaction. Meantime, one of nodes is bigger, another one smaller. That means, the bigger node got a higher influence rate by smaller one and vise-versa."
 		},
 		"p5": {
-			"title": "Pattern 5 - Two Groups - One Disconnected ",
-			"subtitle": "Description of the pattern 5."
+			"title": "Pattern 2 - Three Nodes - One Disconnected",
+			"subtitle": "Three nodes with visible three levels of influence. The biggest got the highest rate from other two nodes, meantime others got 50% less and 90% less than the biggest one. Meantime, two of them are disconnected, that means they don't havr any interaction."
 		},
 		"p6": {
-			"title": "Pattern 6 - Thirty Nodes - Random Influence And Connection",
-			"subtitle": "Description of the pattern 6."
+			"title": "Pattern 3 - Three Connected Nodes",
+			"subtitle": "........"
 		},
 		"p7": {
-			"title": "Pattern 7 - Influence Assessment Type",
-			"subtitle": "Description of the pattern 7."
+			"title": "Pattern 4 - Nodes Group - One Exceptional",
+			"subtitle": "Description of the p7."
 		},
 		"p8": {
-			"title": "Pattern 8 - Leader Assessment Type",
-			"subtitle": "Description of the pattern 8."
+			"title": "Pattern 5 - Two Groups - One Disconnected ",
+			"subtitle": "Description of the p8."
 		},
 		"p9": {
-			"title": "Pattern 9 - Product Assessment Type",
-			"subtitle": "Description of the pattern 9."
+			"title": "Pattern 6 - Thirty Nodes - Random Influence And Connection",
+			"subtitle": "Description of the p6."
 		},
 		"p10": {
 			"title": "Pattern 10",
