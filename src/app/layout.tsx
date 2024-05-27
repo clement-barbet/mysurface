@@ -46,7 +46,7 @@ export default function RootLayout({
 				<meta name="theme-color" content="#ffffff" />
 				<meta
 					property="og:url"
-					content="https://mysurface-rho.vercel.app"
+					content={baseUrl || "https://app.myaudit.org"}
 				/>
 				<meta property="og:type" content="website" />
 				<meta property="og:title" content="MySurface®" />
@@ -56,10 +56,8 @@ export default function RootLayout({
 				/>
 				<meta
 					property="og:image"
-					content="https://app.myaudit.org/android-chrome-512x512.png"
+					content={`${baseUrl}/android-chrome-192x192.png` || "https://app.myaudit.org/android-chrome-192x192.png"}
 				/>
-				<meta property="og:image:width" content="250" />
-				<meta property="og:image:height" content="250" />
 			</Head>
 			<body
 				className={`${glory.className} bg-dark_gray dark:bg-dark_blue dark:bg-opacity-80 transition-colors duration-1000 linear`}
