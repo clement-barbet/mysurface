@@ -44,6 +44,11 @@ export default function RootLayout({
 				/>
 				<meta name="msapplication-TileColor" content="#da532c" />
 				<meta name="theme-color" content="#ffffff" />
+				<meta
+					property="og:url"
+					content="https://mysurface-rho.vercel.app"
+				/>
+				<meta property="og:type" content="website" />
 				<meta property="og:title" content="MySurface®" />
 				<meta
 					property="og:description"
@@ -51,15 +56,10 @@ export default function RootLayout({
 				/>
 				<meta
 					property="og:image"
-					content={`${baseUrl}/android-chrome-512x512.png`}
-				/>
-				<meta
-					property="og:image:secure_url"
 					content="https://app.myaudit.org/android-chrome-512x512.png"
 				/>
-				<meta property="og:image:type" content="image/png" />
-				<meta property="og:image:width" content="200" />
-				<meta property="og:image:height" content="200" />
+				<meta property="og:image:width" content="250" />
+				<meta property="og:image:height" content="250" />
 			</Head>
 			<body
 				className={`${glory.className} bg-dark_gray dark:bg-dark_blue dark:bg-opacity-80 transition-colors duration-1000 linear`}
