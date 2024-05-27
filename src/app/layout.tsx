@@ -49,8 +49,14 @@ export default function RootLayout({
 					property="og:description"
 					content="App to discover the most influential people or products."
 				/>
-				<meta property="og:image" content="/android-chrome-512x512.png" />
-				<meta property="og:url" content={baseUrl} />
+				<meta
+					property="og:image"
+					content="/android-chrome-512x512.png"
+				/>
+				<meta
+					property="og:image"
+					content={`${process.env.NEXT_PUBLIC_BASE_URL}/android-chrome-512x512.png`}
+				/>
 			</Head>
 			<body
 				className={`${glory.className} bg-dark_gray dark:bg-dark_blue dark:bg-opacity-80 transition-colors duration-1000 linear`}
