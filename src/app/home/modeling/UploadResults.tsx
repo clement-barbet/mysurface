@@ -64,13 +64,6 @@ function UploadResults({ processId, reportName }) {
 					setErrorMessage("error.modeling.csv.invalid");
 					return;
 				}
-
-				const maxRows = 100000;
-				if (results.data.length > maxRows) {
-					setErrorMessage("error.modeling.csv.rows");
-					return;
-				}
-
 				// Group data by evaluator_id
 				const groupedData = _.groupBy(results.data, "evaluator_id");
 
