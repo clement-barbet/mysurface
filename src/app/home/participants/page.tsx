@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from "react";
 import FormAddParticipant from "./FormAddParticipant";
 import TableParticipants from "./TableParticipants";
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import CreateQuestionnairesButton from "./CreateQuestionnairesButton";
 import ResetPhaseButton from "./ResetPhaseButton";
 import CreateResultButton from "./CreateResultButton";
@@ -15,13 +14,11 @@ import TableAssessed from "./TableAssessed";
 import Loading from "@/components/ui/loading";
 import { fetchUser } from "@/db/auth_user/fetchUser";
 import { fetchSettings } from "@/db/app_settings/fetchSettingsByUserId";
-import { set } from "zod";
 import { fetchAssesseds } from "@/db/assessed/fetchAssessedsByUserIdAndProcessId";
 import { fetchParticipants } from "@/db/participants/fetchParticipantsWithStatusByUserId";
 import { fetchQuestionnaires } from "@/db/questionnaires/fetchQuestionnairesByIds";
 
 export default function Participants() {
-	const supabase = createClientComponentClient();
 	const [participants, setParticipants] = useState([]);
 	const [questionnaires, setQuestionnaires] = useState(null);
 	const [isEnrollmentPhase, setIsEnrollmentPhase] = useState(true);
@@ -245,6 +242,8 @@ export default function Participants() {
 						participants={participants}
 						lang={lang}
 						org={org}
+						selectedProcess={process}
+						userId={userId}
 					/>
 					<CreateResultButton
 						isEnrollmentPhase={isEnrollmentPhase}

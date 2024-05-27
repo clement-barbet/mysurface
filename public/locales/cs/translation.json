@@ -35,7 +35,7 @@
 	},
 	"dashboard": {
 		"results": {
-			"title": "Nejnovější Provedené Zprávy",
+			"title": "Poslední Vykonané Zprávy",
 			"subtitle": "Zkontrolujte nejnovější výsledky a grafy."
 		},
 		"piechart": {
@@ -60,7 +60,7 @@
 			"add-form": "Přidat nového účastníka",
 			"add-csv": "Hromadné nahrávání účastníků",
 			"set-process": {
-				"title": "Typ hodnocení",
+				"title": "Vyberte typ hodnocení",
 				"subtitle": "Výběr typu hodnocení"
 			},
 			"manage": {
@@ -295,7 +295,7 @@
 			"part1": "Propojte se, Spolupracujte, Vizualizujte:",
 			"part2": "Váš Tým, Váš Prostor."
 		},
-		"title": "Vítejte zpět!",
+		"title": "Přihlášení",
 		"form": {
 			"labels": {
 				"email": "E-mail",

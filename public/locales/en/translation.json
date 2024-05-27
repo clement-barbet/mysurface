@@ -35,7 +35,7 @@
 	},
 	"dashboard": {
 		"results": {
-			"title": "Latest Executed Reports",
+			"title": "Last Executed Reports",
 			"subtitle": "Check the latest results and graphics."
 		},
 		"piechart": {
@@ -60,7 +60,7 @@
 			"add-form": "Add a new participant",
 			"add-csv": "Bulk participants upload",
 			"set-process": {
-				"title": "Assessment type",
+				"title": "Select assessment type",
 				"subtitle": "Assessment type seleciton"
 			},
 			"manage": {
@@ -295,7 +295,7 @@
 			"part1": "Connect, Collaborate, Visualize:",
 			"part2": "Your Team, Your Surface."
 		},
-		"title": "Welcome back!",
+		"title": "Log In",
 		"form": {
 			"labels": {
 				"email": "Email",

@@ -17,11 +17,8 @@ const transporter = nodemailer.createTransport({
 
 const sendMessage = async (mailOptions) => {
 	try {
-		console.log("Sending email");
 		console.log("Mail options: ", mailOptions);
-		console.log("Transporter: ", transporter);
 		await transporter.sendMail(mailOptions);
-		console.log("Email sent");
 		return new Response("Email sent", { status: 200 });
 	} catch (error) {
 		console.log("Error sending email: " + error);
@@ -32,14 +29,30 @@ const sendMessage = async (mailOptions) => {
 export async function POST(request: Request) {
 	try {
 		const body = await request.json();
-		const { name, email, url } = body;
-		console.log("Body req: ", body);
+		const { name, email, url, lang } = body;
+
+		let subject;
+		let html;
+
+		if (lang == 2) {
+			// Czech language
+			subject = "Dotazník MySurface";
+			html = `<h2>Dobrý den ${name},</h2><p>Dotazník, který vám byl přidělen, můžete vyplnit kliknutím <a href="${url}">ZDE</a>. Prosím, vyplňte jej co nejdříve.</p><p>S pozdravem,</p><p><i>Team MySurface</i></p>`;
+		} else if (lang == 3) {
+			// Spanish language
+			subject = "Cuestionario MySurface";
+			html = `<h2>Hola ${name},</h2><p>Puedes rellenar el cuestionario que se te ha asignado haciendo clic <a href="${url}">AQUÍ</a>. Por favor, complétalo lo antes posible.</p><p>Saludos,</p><p><i>Equipo de MySurface</i></p>`;
+		} else {
+			// English language
+			subject = "MySurface questionnaire";
+			html = `<h2>Hello ${name},</h2><p>You can fill out the questionnaire assigned to you by clicking <a href="${url}">HERE</a>. Please complete it as soon as possible.</p><p>Best regards,</p><p><i>The MySurface Team</i></p>`;
+		}
 
 		let mailOptions = {
 			from: "My Surface® <info@myaudit.org>",
 			to: email,
-			subject: "My Surface questionnaire",
-			text: `Hello, ${name}, here is the link to your My Surface questionnaire: ${url}`,
+			subject: subject,
+			html: html,
 		};
 
 		const response = await sendMessage(mailOptions);

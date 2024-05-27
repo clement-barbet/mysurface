@@ -5,18 +5,18 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import T from "@/components/translations/translation";
 
-const EmailButton = ({ participants, lang, org, isEnrollmentPhase }) => {
+const EmailButton = ({ participants, lang, org, isEnrollmentPhase, userId, selectedProcess }) => {
 	const [successMessage, setSuccessMessage] = useState("");
 	const [errorMessage, setErrorMessage] = useState("");
 
-	async function sendEmail(name, email, url) {
+	async function sendEmail(name, email, url, lang) {
 		try {
 			const response = await fetch("/api/send-email", {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
 				},
-				body: JSON.stringify({ name, email, url }),
+				body: JSON.stringify({ name, email, url, lang }),
 			});
 
 			return response;
@@ -29,10 +29,11 @@ const EmailButton = ({ participants, lang, org, isEnrollmentPhase }) => {
 		let failedEmails = [];
 		for (let participant of participants) {
 			const { name, email } = participant;
-			const url = `${process.env.NEXT_PUBLIC_BASE_URL}/questionnaire/${participant.questionnaire}/${lang}/${org}`;
-
+			const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+			const questionnaireId = participant.questionnaire;
+			const url = `${baseUrl}/questionnaire/${questionnaireId}/${lang}/${org}/${selectedProcess}/${userId}`;
 			try {
-				const response = await sendEmail(name, email, url);
+				const response = await sendEmail(name, email, url, lang);
 				if (!response.ok) {
 					failedEmails.push(email);
 				}

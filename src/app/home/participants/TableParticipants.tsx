@@ -84,14 +84,14 @@ function TableParticipants({
 		);
 	};
 
-	async function sendEmail(name, email, url) {
+	async function sendEmail(name, email, url, lang) {
 		try {
 			const response = await fetch("/api/send-email", {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
 				},
-				body: JSON.stringify({ name, email, url }),
+				body: JSON.stringify({ name, email, url, lang }),
 			});
 
 			if (!response.ok) {
@@ -184,7 +184,8 @@ function TableParticipants({
 																sendEmail(
 																	participant.name,
 																	participant.email,
-																	url
+																	url,
+																	lang
 																);
 															}}
 															className="linkToQuestionnaire"
@@ -297,7 +298,8 @@ function TableParticipants({
 														sendEmail(
 															participant.name,
 															participant.email,
-															url
+															url,
+															lang
 														);
 													}}
 													className="linkToQuestionnaire"

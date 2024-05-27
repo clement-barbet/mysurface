@@ -60,7 +60,7 @@
 			"add-form": "Agregar un nuevo participante",
 			"add-csv": "Carga masiva de participantes",
 			"set-process": {
-				"title": "Tipo de evaluación",
+				"title": "Selecciona el tipo de evaluación",
 				"subtitle": "Selección del tipo de evaluación"
 			},
 			"manage": {
@@ -295,7 +295,7 @@
 			"part1": "Conecta, Colabora, Visualiza:",
 			"part2": "Tu Equipo, Tu Superficie."
 		},
-		"title": "¡Bienvenido de nuevo!",
+		"title": "Inicio de Sesión",
 		"form": {
 			"labels": {
 				"email": "Correo electrónico",
