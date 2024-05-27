@@ -21,6 +21,7 @@ import Loading from "@/components/ui/loading";
 import { fetchSettings } from "@/db/app_settings/fetchSettings";
 import { fetchOrganizations } from "@/db/organizations/fetchOrganizations";
 import { fetchLanguages } from "@/db/languages/fetchLanguages";
+import { fetchBillings } from "@/db/billings/fetchBillings";
 
 export default function Customers() {
 	const [loading, setLoading] = useState(true);
@@ -35,6 +36,10 @@ export default function Customers() {
 		"customers.table.headers.organization",
 		"customers.table.headers.organization-type",
 		"customers.table.headers.language",
+		"customers.table.headers.status",
+		"customers.table.headers.license",
+		"customers.table.headers.date",
+		"customers.table.headers.expiration",
 		"customers.table.headers.delete",
 	];
 
@@ -63,22 +68,33 @@ export default function Customers() {
 				const fetchedSettings = await fetchSettings();
 				const fetchedOrganizations = await fetchOrganizations();
 				const fetchedLanguages = await fetchLanguages();
+				const fetchedBillings = await fetchBillings();
 
 				if (
 					fetchedSettings &&
 					fetchedOrganizations &&
-					fetchedLanguages
+					fetchedLanguages &&
+					fetchedBillings
 				) {
 					// Map the fetched data to the users array
-					const fetchedCustomers = fetchedSettings.map((setting) => ({
-						...setting,
-						organization_name: fetchedOrganizations.find(
-							(org) => org.id === setting.organization_id
-						)?.name,
-						language_name: fetchedLanguages.find(
-							(lang) => lang.id === setting.language_id
-						)?.name,
-					}));
+					const fetchedCustomers = fetchedSettings.map((setting) => {
+						// Find the corresponding billing for this setting
+						const billing = fetchedBillings.find(
+							(bill) => bill.user_id === setting.user_id
+						);
+
+						return {
+							...setting,
+							organization_name: fetchedOrganizations.find(
+								(org) => org.id === setting.organization_id
+							)?.name,
+							language_name: fetchedLanguages.find(
+								(lang) => lang.id === setting.language_id
+							)?.name,
+							// Add the billing data to the customer
+							billing: billing,
+						};
+					});
 
 					setUsers(fetchedCustomers || []);
 				}
@@ -136,6 +152,27 @@ export default function Customers() {
 								</TableHeader>
 								<TableBody className="bg-white dark:bg-black divide-y divide-gray-200 dark:divide-gray-500">
 									{currentItems.map((user) => {
+										const updatedAtDate = new Date(
+											user.billing.updated_at
+										);
+										const formattedUpdatedAtDate =
+											updatedAtDate.toLocaleDateString(
+												"en-CA"
+											);
+
+										const expirationDate = user.billing
+											.expiration_date
+											? new Date(
+													user.billing.expiration_date
+											  )
+											: null;
+										const formattedExpirationDate =
+											expirationDate
+												? expirationDate.toLocaleDateString(
+														"en-CA"
+												  )
+												: "N/A";
+
 										return (
 											<TBodyRow key={user.id}>
 												<TableCell className="px-6 py-2 whitespace-nowrap">
@@ -152,6 +189,18 @@ export default function Customers() {
 												</TableCell>
 												<TableCell className="px-6 py-2 whitespace-nowrap">
 													{user.language_name}
+												</TableCell>
+												<TableCell className="px-6 py-2 whitespace-nowrap">
+													{user.billing.status}
+												</TableCell>
+												<TableCell className="px-6 py-2 whitespace-nowrap">
+													{user.billing.subscription}
+												</TableCell>
+												<TableCell className="px-6 py-2 whitespace-nowrap">
+													{formattedUpdatedAtDate}
+												</TableCell>
+												<TableCell className="px-6 py-2 whitespace-nowrap">
+													{formattedExpirationDate}
 												</TableCell>
 												<TableCell className="px-6 py-2 whitespace-nowrap">
 													<Button

@@ -500,7 +500,11 @@
 				"organization": "Organización",
 				"organization-type": "Tipo de organización",
 				"language": "Idioma",
-				"delete": "Eliminar usuario"
+				"delete": "Eliminar usuario",
+				"status": "Estado",
+				"license": "Licencia",
+				"date": "Última modificación",
+				"expiration": "Expiración"
 			},
 			"buttons": {
 				"delete": "Eliminar"

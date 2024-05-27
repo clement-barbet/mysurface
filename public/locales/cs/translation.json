@@ -500,7 +500,11 @@
 				"organization": "Organizace",
 				"organization-type": "Typ organizace",
 				"language": "Jazyk",
-				"delete": "Smazat uživatele"
+				"delete": "Smazat uživatele",
+				"status": "Stav",
+				"license": "Licence",
+				"date": "Poslední aktualizace",
+				"expiration": "Vypršení"
 			},
 			"buttons": {
 				"delete": "Smazat"

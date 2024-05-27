@@ -509,7 +509,11 @@
 				"organization": "Organization",
 				"organization-type": "Organization type",
 				"language": "Language",
-				"delete": "Delete user"
+				"delete": "Delete user",
+				"status": "Status",
+				"license": "License",
+				"date": "Last update",
+				"expiration": "Expiration"
 			},
 			"buttons": {
 				"delete": "Delete"
