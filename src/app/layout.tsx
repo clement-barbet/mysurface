@@ -46,7 +46,7 @@ export default function RootLayout({
 				<meta name="theme-color" content="#ffffff" />
 				<meta
 					property="og:url"
-					content={baseUrl || "https://app.myaudit.org"}
+					content={baseUrl ? baseUrl : "https://app.myaudit.org"}
 				/>
 				<meta property="og:type" content="website" />
 				<meta property="og:title" content="MySurface®" />
@@ -56,7 +56,7 @@ export default function RootLayout({
 				/>
 				<meta
 					property="og:image"
-					content={`${baseUrl}/android-chrome-192x192.png` || "https://app.myaudit.org/android-chrome-192x192.png"}
+					content={(baseUrl ? `${baseUrl}/android-chrome-192x192.png` : "https://app.myaudit.org/android-chrome-192x192.png")}
 				/>
 			</Head>
 			<body
