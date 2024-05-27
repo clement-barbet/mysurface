@@ -4,10 +4,11 @@ import Loading from "@/components/ui/loading";
 import { fetchUser } from "@/db/auth_user/fetchUser";
 import { fetchBilling } from "@/db/billings/fetchBillingByUserId";
 import { useEffect, useState } from "react";
-import SubsciptionDetails from "./SubscriptionDetails";
-import ManageSubscriptionDev from "./ManageSubscriptionDev";
+import LicenseDetails from "./LicenseDetails";
+import ManageLicenseDev from "./ManageLicenseDev";
+import T from "@/components/translations/translation";
 
-export default function Subscription() {
+export default function License() {
 	const [loading, setLoading] = useState(true);
 	const [billing, setBilling] = useState(null);
 	const [user, setUser] = useState(null);
@@ -39,21 +40,24 @@ export default function Subscription() {
 		<div className="flex flex-col gap-y-2">
 			<div className="p-5 py-h-auto w-full flex flex-col shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
 				<h2 className="text-lg mb-2 font-semibold border-l-4 border-mid_blue pl-2">
-					Subscription details
+					<T tkey="license.titles.details.title" />
 				</h2>
 				<p className="text-gray-600 dark:text-gray-400 text-lg md:text-base">
-					Actual subscription details.
+					<T tkey="license.titles.details.subtitle" />
 				</p>
-				<SubsciptionDetails billing={billing} />
+				<LicenseDetails billing={billing} />
 			</div>
 			<div className="p-5 py-h-auto w-full flex flex-col shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
 				<h2 className="text-lg mb-2 font-semibold border-l-4 border-mid_blue pl-2">
-					Manage subscription
+					<T tkey="license.titles.manage.title" />
 				</h2>
 				<p className="text-gray-600 dark:text-gray-400 text-lg md:text-base">
-					Here you can manage your subscription.
+					<T tkey="license.titles.manage.subtitle" />
 				</p>
-				<ManageSubscriptionDev billing={billing} setBilling={setBilling} user={user} />
+				<ManageLicenseDev
+					billing={billing}
+					user={user}
+				/>
 			</div>
 		</div>
 	);

@@ -358,11 +358,12 @@
 		"backup": "Results Backup",
 		"modeling": "Model Builder",
 		"news": "News",
-		"contact-support": "Support"
+		"contact-support": "Support",
+		"purchase": "Purchase License"
 	},
 	"topbar": {
 		"account": "My account",
-		"subscription": "Subscription",
+		"license": "License",
 		"team": "My team",
 		"logout": "Log out",
 		"organization": "Organization",
@@ -657,7 +658,8 @@
 		},
 		"my-info": "Error updating your information. Please, try again.",
 		"login": "Error logging in. Please, try again.",
-		"logout": "Error logging out. Please, try again."
+		"logout": "Error logging out. Please, try again.",
+		"license": "License purchase error. Please, try again."
 	},
 	"success": {
 		"support": "Your message has been sent successfully.",
@@ -691,6 +693,69 @@
 		"registration": "Registration successful. Please, check your email to confirm your account.",
 		"reset-password": "Password reset successfully. You can now log in with your new password.",
 		"my-info": "Information updated successfully.",
-		"login": "Logged in successfully."
+		"login": "Logged in successfully.",
+		"license": {
+			"trial": "Trial started successfully.",
+			"purchase": "Annual license purchased successfully."
+		}
+	},
+	"license": {
+		"titles": {
+			"details": {
+				"title": "License details",
+				"subtitle": "Actual license details."
+			},
+			"manage": {
+				"title": "Manage license",
+				"subtitle": "Here you can manage your license."
+			}
+		},
+		"details": {
+			"type": {
+				"title": "License type",
+				"options": {
+					"none": "None",
+					"trial": "Trial",
+					"yearly": "Annual",
+					"lifetime": "Lifetime"
+				}
+			},
+			"status": {
+				"title": "License status",
+				"options": {
+					"active": "Active",
+					"inactive": "Inactive"
+				}
+			},
+			"update": "Last update date",
+			"expiration": "Expiration date",
+			"days": "Days until expiration"
+		},
+		"manage": {
+			"active": {
+				"a1": "Your license is",
+				"a2": "active",
+				"a3": "Enjoy it!"
+			},
+			"inactive": {
+				"i1": "Your license is",
+				"i2": "inactive",
+				"i3": "You can purchase an annual license for 89 €"
+			},
+			"trial": {
+				"t1": "You have a",
+				"t2": "free trial",
+				"t3": "available for 30 days"
+			},
+			"purchase": {
+				"p1": "You can purchase an",
+				"p2": "annual license",
+				"p3": "for 89 €"
+			},
+			"buttons": {
+				"trial": "Start trial",
+				"checkout": "Checkout anual license"
+			}
+		}
 	}
 }

@@ -8,7 +8,7 @@ import { fetchBilling } from "@/db/billings/fetchBillingByUserId";
 import { set } from "zod";
 import { useRouter } from "next/navigation";
 
-export default function ManageSubscription({ billing, setBilling, user }) {
+export default function ManageLicense({ billing, setBilling, user }) {
 	const public_key = process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY;
 	const stripePromise = loadStripe(public_key);
 	const supabase = createClientComponentClient();

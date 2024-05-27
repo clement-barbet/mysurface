@@ -109,8 +109,7 @@ export default function DashboardNavbar({ user }) {
 			>
 				<li
 					className={clsx("py-2 px-4 tracking-wider", {
-						"border-l-4 border-light_gray":
-							pathname === "/home",
+						"border-l-4 border-light_gray": pathname === "/home",
 					})}
 				>
 					<Link
@@ -222,9 +221,9 @@ export default function DashboardNavbar({ user }) {
 					<li>
 						<Link
 							className="w-full inline-block text-sm mt-2 text-center text-gray-400 text-opacity-90 hover:text-gray-300 hover:font-semibold transition-all duration-200 ease-linear"
-							href="/home/subscription"
+							href="/home/license"
 						>
-							Subscribe
+							<T tkey="navbar.purchase" />
 						</Link>
 					</li>
 				) : null}

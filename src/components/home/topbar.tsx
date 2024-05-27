@@ -122,9 +122,9 @@ export default function TopBar({ user }) {
 				</div>
 				<div className="hidden md:block md:w-1/4 text-center">
 					<p>
-						<T tkey="topbar.subscription" />
+						<T tkey="topbar.license" />
 						<FaArrowRight className="inline-block mx-2 w-4 h-4 pb-1" />
-						<Link href="/home/subscription">
+						<Link href="/home/license">
 							<span
 								className={clsx(
 									"uppercase font-semibold transition-color duration-200 ease-linear",
@@ -180,13 +180,13 @@ export default function TopBar({ user }) {
 									</p>
 								</div>
 							</Link>
-							<Link href="/home/subscription">
+							<Link href="/home/license">
 								<div className="flex items-center justify-start gap-x-1 px-4 py-3 hover:font-medium hover:bg-light_gray dark:hover:bg-mid_blue transition-all duration-100 ease-linear">
 									<div className="w-8 h-8 flex justify-center items-center dark:border-light_gray">
 										<MdPayment className="w-5 h-5" />
 									</div>
 									<p>
-										<T tkey="topbar.subscription" />
+										<T tkey="topbar.license" />
 									</p>
 								</div>
 							</Link>

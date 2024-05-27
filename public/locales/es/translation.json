@@ -358,14 +358,15 @@
 		"backup": "Respaldo de Resultados",
 		"modeling": "Constructor de Modelos",
 		"news": "Noticias",
-		"contact-support": "Soporte"
+		"contact-support": "Soporte",
+		"purchase": "Comprar Licencia"
 	},
 	"backup-results": {
 		"title": "Respaldo de Resultados"
 	},
 	"topbar": {
 		"account": "Mi cuenta",
-		"subscription": "Suscripción",
+		"license": "Licencia",
 		"team": "Mi equipo",
 		"logout": "Cerrar sesión",
 		"organization": "Organización",
@@ -648,7 +649,8 @@
 		},
 		"my-info": "Error al actualizar tu información. Por favor, inténtalo de nuevo.",
 		"login": "Error al iniciar sesión. Por favor, inténtalo de nuevo.",
-		"logout": "Error al cerrar sesión. Por favor, inténtalo de nuevo."
+		"logout": "Error al cerrar sesión. Por favor, inténtalo de nuevo.",
+		"license": "Error en la compra de la licencia. Por favor, inténtalo de nuevo."
 	},
 	"success": {
 		"support": "Tu mensaje ha sido enviado exitosamente.",
@@ -683,5 +685,64 @@
 		"reset-password": "Restablecimiento de contraseña exitoso. Ahora puedes iniciar sesión con tu nueva contraseña.",
 		"my-info": "Información actualizada exitosamente.",
 		"login": "Inicio de sesión exitoso."
+	},
+	"license": {
+		"titles": {
+			"details": {
+				"title": "Detalles de la licencia",
+				"subtitle": "Detalles actuales de la licencia."
+			},
+			"manage": {
+				"title": "Gestionar licencia",
+				"subtitle": "Aquí puedes gestionar tu licencia."
+			}
+		},
+		"details": {
+			"type": {
+				"title": "Tipo de licencia",
+				"options": {
+					"none": "Ninguno",
+					"trial": "Prueba",
+					"yearly": "Anual",
+					"lifetime": "De por vida"
+				}
+			},
+			"status": {
+				"title": "Estado de la licencia",
+				"options": {
+					"active": "Activa",
+					"inactive": "Inactiva"
+				}
+			},
+			"update": "Fecha de la última actualización",
+			"expiration": "Fecha de expiración",
+			"days": "Días hasta la expiración"
+		},
+		"manage": {
+			"active": {
+				"a1": "Tu licencia está",
+				"a2": "activa",
+				"a3": "¡Disfrútala!"
+			},
+			"inactive": {
+				"i1": "Tu licencia está",
+				"i2": "inactiva",
+				"i3": "Puedes comprar una licencia anual por 89 €"
+			},
+			"trial": {
+				"t1": "Tienes una",
+				"t2": "prueba gratuita",
+				"t3": "disponible por 30 días"
+			},
+			"purchase": {
+				"p1": "Puedes comprar una",
+				"p2": "licencia anual",
+				"p3": "por 89 €"
+			},
+			"buttons": {
+				"trial": "Iniciar prueba",
+				"checkout": "Comprar licencia anual"
+			}
+		}
 	}
 }

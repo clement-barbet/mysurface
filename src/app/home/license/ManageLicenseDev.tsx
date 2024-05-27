@@ -4,20 +4,16 @@ import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useEffect, useState } from "react";
 import { ErrorMessage } from "@/components/ui/msg/error_msg";
 import { SuccessMessage } from "@/components/ui/msg/success_msg";
-import { fetchBilling } from "@/db/billings/fetchBillingByUserId";
-import { set } from "zod";
 import { useRouter } from "next/navigation";
+import T from "@/components/translations/translation";
 
-export default function ManageSubscriptionDev({ billing, setBilling, user }) {
+export default function ManageLicenseDev({ billing, user }) {
 	const public_key = process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY_DEV;
 	const stripePromise = loadStripe(public_key);
 	const supabase = createClientComponentClient();
-	const [session, setSession] = useState(null);
 	const [successMessage, setSuccessMessage] = useState("");
 	const [errorMessage, setErrorMessage] = useState("");
 	const router = useRouter();
-
-	//testing: http://localhost:3000/home/subscription?session_id=cs_test_a1p3ieYJ1mXfOEGKiJs7yumxexWvtgI5ALNowiFT2CD2J2rO3aSAtuNjSY
 
 	useEffect(() => {
 		const fetchSession = async () => {
@@ -45,13 +41,12 @@ export default function ManageSubscriptionDev({ billing, setBilling, user }) {
 
 					const responseData = await response.json();
 					const fetchedSession = responseData.data;
-					setSession(fetchedSession);
 					console.log("Session data:", fetchedSession);
 
 					if (fetchedSession.status === "complete") {
 						setSubscription(fetchedSession);
 					} else {
-						setErrorMessage("Subscription payment failed.");
+						setErrorMessage("error.license");
 					}
 				}
 			} catch (error) {
@@ -83,10 +78,8 @@ export default function ManageSubscriptionDev({ billing, setBilling, user }) {
 				console.error("Error updating billing subscription:", error);
 			} else {
 				console.log("Billing subscription updated successfully:", data);
-				//const fetchedBilling = await fetchBilling(user.id);
-				//setBilling(fetchedBilling);
-				setSuccessMessage("Subscription payment successful.");
-				router.push("/home/subscription");
+				setSuccessMessage("success.license.purchase");
+				router.push("/home/license");
 				setTimeout(() => {
 					location.reload();
 				}, 1000);
@@ -106,9 +99,7 @@ export default function ManageSubscriptionDev({ billing, setBilling, user }) {
 			console.error("Error updating billing trial:", error);
 		} else {
 			console.log("Billing trial updated successfully:", data);
-			//const fetchedBilling = await fetchBilling(user.id);
-			//setBilling(fetchedBilling);
-			setSuccessMessage("Free trial started successfully.");
+			setSuccessMessage("success.license.trial");
 			setTimeout(() => {
 				location.reload();
 			}, 1000);
@@ -162,20 +153,20 @@ export default function ManageSubscriptionDev({ billing, setBilling, user }) {
 			<div className="text-sm m-2">
 				{billing.status === "active" ? (
 					<p>
-						Your subscription is{" "}
+						<T tkey="license.manage.active.a1" />{" "}
 						<span className="font-semibold uppercase text-accent_color px-1">
-							active
+							<T tkey="license.manage.active.a2" />.
 						</span>
-						. Enjoy it!
+						<T tkey="license.manage.active.a3" />
 					</p>
 				) : billing.subscription === "none" && !billing.isTrialUsed ? (
 					<div>
 						<p>
-							You have a{" "}
+							<T tkey="license.manage.trial.t1" />{" "}
 							<span className="font-semibold uppercase text-accent_color px-1">
-								free trial
+								<T tkey="license.manage.trial.t2" />
 							</span>{" "}
-							available for 30 days.
+							<T tkey="license.manage.trial.t3" />.
 						</p>
 						<div className="flex justify-end">
 							<Button
@@ -183,15 +174,15 @@ export default function ManageSubscriptionDev({ billing, setBilling, user }) {
 								className="my-2 w-full md:w-3/5 lg:w-2/5 xl:w-1/5 uppercase text-base"
 								onClick={handleNewTrial}
 							>
-								Start free trial now
+								<T tkey="license.manage.buttons.trial" />
 							</Button>
 						</div>
 						<p>
-							You can purchase a{" "}
+							<T tkey="license.manage.purchase.p1" />{" "}
 							<span className="font-semibold uppercase text-mid_blue px-1">
-								yearly subscription
+								<T tkey="license.manage.purchase.p2" />
 							</span>{" "}
-							for 89 € per year.
+							<T tkey="license.manage.purchase.p3" />.
 						</p>
 						<div className="flex justify-end">
 							<Button
@@ -199,18 +190,18 @@ export default function ManageSubscriptionDev({ billing, setBilling, user }) {
 								className="my-2 w-full md:w-3/5 lg:w-2/5 xl:w-1/5 uppercase text-base"
 								onClick={handleCheckout}
 							>
-								Checkout yearly plan
+								<T tkey="license.manage.buttons.checkout" />
 							</Button>
 						</div>
 					</div>
 				) : (
 					<div>
 						<p>
-							Your subscription is{" "}
+							<T tkey="license.manage.inactive.i1" />{" "}
 							<span className="font-semibold uppercase text-accent_delete px-1">
-								inactive
+								<T tkey="license.manage.inactive.i2" />
 							</span>
-							.
+							. <T tkey="license.manage.inactive.i3" />.
 						</p>
 						<div className="flex justify-end">
 							<Button
@@ -218,7 +209,7 @@ export default function ManageSubscriptionDev({ billing, setBilling, user }) {
 								className="my-2 w-full md:w-3/5 lg:w-2/5 xl:w-1/5 uppercase text-base"
 								onClick={handleCheckout}
 							>
-								Checkout yearly plan
+								<T tkey="license.manage.buttons.trial" />
 							</Button>
 						</div>
 					</div>
