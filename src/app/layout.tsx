@@ -51,8 +51,15 @@ export default function RootLayout({
 				/>
 				<meta
 					property="og:image"
-					content={baseUrl.concat("/android-chrome-512x512.png")}
+					content={`${baseUrl}/android-chrome-512x512.png`}
 				/>
+				<meta
+					property="og:image:secure_url"
+					content={`${baseUrl}/android-chrome-512x512.png`}
+				/>
+				<meta property="og:image:type" content="image/png" />
+				<meta property="og:image:width" content="200" />
+				<meta property="og:image:height" content="200" />
 			</Head>
 			<body
 				className={`${glory.className} bg-dark_gray dark:bg-dark_blue dark:bg-opacity-80 transition-colors duration-1000 linear`}
