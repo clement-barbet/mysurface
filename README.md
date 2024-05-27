@@ -478,3 +478,35 @@ if (lang == 2) {
 	<p><i>The MySurface Team</i></p>`;
 }
 ```
+
+## Update billings
+
+### Lifetime
+When setting a subscription to _lifetime_ triggers will automatically set **expiration_date** to _NULL_, **updated_at** to _current time_ and **status** to _active_. 
+So you just need to manually change the value of the **subscription** to _lifetime_ through Supabase interface in Table Editor or run the next command, setting the value of **user_id**:
+```sql
+UPDATE billings
+SET subscription = 'lifetime'
+WHERE user_id = 'USER_ID';
+```
+
+### Yearly
+When setting a subscription to _yearly_ it is needed to run a function to update the **expiration_date** correctly. You'll need to add the user_id (_auth.users_ table) and Stripe session_id and customer_id (can be set to _NULL_ if there is no such information).
+```sql
+SELECT update_billing_yearly('user_id', 'stripe_session_id', 'stripe_customer_id');
+```
+
+### Trial
+When setting a subscription to _trial_ it is needed to run a function to update the **expiration_date** correctly and also to set isTrialUsed to _TRUE_. You'll need to add the user_id.
+```sql
+SELECT update_billing_trial('user_id');
+```
+
+### None
+When setting a subscription to _none_ triggers will automatically set **updated_at** to _current time_ and **status** to _inactive_. Other fields won't be updated, just in case that information is needed in the future.
+So you just need to manually change the value of the **subscription** to _none_ through Supabase interface in Table Editor or run the next command, setting the value of **user_id**:
+```sql
+UPDATE billings
+SET subscription = 'none'
+WHERE user_id = 'USER_ID';
+```
