@@ -51,7 +51,7 @@ export default function RootLayout({
 				/>
 				<meta
 					property="og:image"
-					content={`${baseUrl}/android-chrome-512x512.png`}
+					content={baseUrl.concat("/android-chrome-512x512.png")}
 				/>
 			</Head>
 			<body
