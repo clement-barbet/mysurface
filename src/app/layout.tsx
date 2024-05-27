@@ -37,6 +37,10 @@ export default function RootLayout({
 							: "https://app.myaudit.org/android-chrome-192x192.png"
 					}
 				/>
+				<meta property="og:image:width" content="192" />
+				<meta property="og:image:height" content="192" />
+				<meta property="og:image:type" content="image/png" />
+				<meta property="og:image:alt" content="MySurface_Logo" />
 				<link
 					rel="apple-touch-icon"
 					sizes="180x180"
