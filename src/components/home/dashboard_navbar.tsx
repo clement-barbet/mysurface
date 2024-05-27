@@ -2,8 +2,7 @@
 import clsx from "clsx";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { MdDashboard } from "react-icons/md";
-import { IoPeople, IoLanguageOutline } from "react-icons/io5";
+import { IoLanguageOutline } from "react-icons/io5";
 import { PiGraph } from "react-icons/pi";
 import { AiOutlineQuestion } from "react-icons/ai";
 import { BsArrowRightCircleFill, BsArrowLeftCircleFill } from "react-icons/bs";
@@ -22,6 +21,8 @@ import { fetchLanguages } from "@/db/languages/fetchLanguages";
 import { fetchRole } from "@/db/roles/fetchRoleByUserId";
 import { fetchBilling } from "@/db/billings/fetchBillingByUserId";
 import { GoHome } from "react-icons/go";
+import { MdOutlineDashboard } from "react-icons/md";
+import { BsPeople } from "react-icons/bs";
 
 export default function DashboardNavbar({ user }) {
 	const pathname = usePathname();
@@ -134,7 +135,7 @@ export default function DashboardNavbar({ user }) {
 								href="/home/dashboard"
 								className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase"
 							>
-								<MdDashboard className="h-6 w-6" />
+								<MdOutlineDashboard className="h-6 w-6" />
 								<T tkey="navbar.dashboard" />
 							</Link>
 						</li>
@@ -149,7 +150,7 @@ export default function DashboardNavbar({ user }) {
 								href="/home/participants"
 								className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase"
 							>
-								<IoPeople className="h-6 w-6" />
+								<BsPeople className="h-6 w-6" />
 								<T tkey="navbar.participants" />
 							</Link>
 						</li>
@@ -256,7 +257,7 @@ export default function DashboardNavbar({ user }) {
 								href="/home/participants-admin"
 								className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase"
 							>
-								<IoPeople className="h-6 w-6" />
+								<BsPeople className="h-6 w-6" />
 								<T tkey="navbar.participants-admin" />
 							</Link>
 						</li>
