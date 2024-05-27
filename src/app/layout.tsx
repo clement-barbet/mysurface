@@ -55,7 +55,7 @@ export default function RootLayout({
 				/>
 				<meta
 					property="og:image:secure_url"
-					content={`${baseUrl}/android-chrome-512x512.png`}
+					content="https://app.myaudit.org/android-chrome-512x512.png"
 				/>
 				<meta property="og:image:type" content="image/png" />
 				<meta property="og:image:width" content="200" />
