@@ -51,11 +51,7 @@ export default function RootLayout({
 				/>
 				<meta
 					property="og:image"
-					content="/android-chrome-512x512.png"
-				/>
-				<meta
-					property="og:image"
-					content={`${process.env.NEXT_PUBLIC_BASE_URL}/android-chrome-512x512.png`}
+					content={`${baseUrl}/android-chrome-512x512.png`}
 				/>
 			</Head>
 			<body
