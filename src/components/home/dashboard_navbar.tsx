@@ -21,6 +21,7 @@ import { BiSupport } from "react-icons/bi";
 import { fetchLanguages } from "@/db/languages/fetchLanguages";
 import { fetchRole } from "@/db/roles/fetchRoleByUserId";
 import { fetchBilling } from "@/db/billings/fetchBillingByUserId";
+import { GoHome } from "react-icons/go";
 
 export default function DashboardNavbar({ user }) {
 	const pathname = usePathname();
@@ -105,6 +106,21 @@ export default function DashboardNavbar({ user }) {
 					}
 				)}
 			>
+				<li
+					className={clsx("py-2 px-4 tracking-wider", {
+						"border-l-4 border-light_gray":
+							pathname === "/home",
+					})}
+				>
+					<Link
+						onClick={handleLinkClick}
+						href="/home"
+						className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase"
+					>
+						<GoHome className="h-6 w-6" />
+						<T tkey="navbar.home" />
+					</Link>
+				</li>
 				{subscriptionStatus === "active" ? (
 					<>
 						<li

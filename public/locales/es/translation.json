@@ -26,7 +26,8 @@
 					"s2": "Completa las preguntas del cuestionario",
 					"s3": "Envía el formulario"
 				}
-			}
+			},
+			"help": "¿Necesitas ayuda?"
 		},
 		"updates": {
 			"title": "Actualizaciones",
@@ -342,6 +343,7 @@
 		}
 	},
 	"navbar": {
+		"home": "Inicio",
 		"dashboard": "Panel",
 		"participants": "Participantes",
 		"results": "Resultados",

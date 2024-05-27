@@ -26,7 +26,8 @@
 					"s2": "Complete the questionnaire questions",
 					"s3": "Submit the form"
 				}
-			}
+			},
+			"help": "Need help?"
 		},
 		"updates": {
 			"title": "Updates",
@@ -342,6 +343,7 @@
 		}
 	},
 	"navbar": {
+		"home": "Home",
 		"dashboard": "Dashboard",
 		"participants": "Participants",
 		"results": "Results",

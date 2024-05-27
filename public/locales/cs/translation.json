@@ -31,7 +31,8 @@
 		"updates": {
 			"title": "Aktualizace",
 			"subtitle": "Nejnovější aktualizace a novinky o platformě."
-		}
+		},
+		"help": "Potřebujete pomoc?"
 	},
 	"dashboard": {
 		"results": {
@@ -342,6 +343,7 @@
 		}
 	},
 	"navbar": {
+		"home": "Domů",
 		"dashboard": "Nástěnka",
 		"participants": "Účastníci",
 		"results": "Výsledky",

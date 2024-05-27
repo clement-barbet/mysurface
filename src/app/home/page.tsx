@@ -5,6 +5,7 @@ import Loading from "@/components/ui/loading";
 import { fetchSettings } from "@/db/app_settings/fetchSettingsByUserId";
 import { fetchUser } from "@/db/auth_user/fetchUser";
 import { fetchNotifications } from "@/db/notifications/fetchNotificationsByLanguageId";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function Home() {
@@ -73,6 +74,13 @@ export default function Home() {
 										</td>
 									</tr>
 								))}
+								<tr className="text-center">
+									<td className="pb-1 pt-4" colSpan={2}>
+										<Link href="https://mysurface.myaudit.org/webinar/" className=" text-gray-600 dark:text-gray-400 hover:font-semibold transition-all duration-200 ease-linear">
+											<T tkey="home.guide.help" />
+										</Link>
+									</td>
+								</tr>
 							</tbody>
 						</table>
 					</div>
