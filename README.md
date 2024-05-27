@@ -437,4 +437,44 @@ WHERE
   results.id = '1713698503619'
   OR results.id = '1714079302998'
   OR results.id = '1713448772441'
-  OR results.id = 'NEW ID'; 
+  OR results.id = 'NEW ID';
+```
+4. If you want to remove a result, just erase it from the WHERE clause.
+5. For updating the name of the report that is shown as an example, you can run this code where you need to specify the new name and also the ID for that specific report:
+```sql
+UPDATE results
+SET report_name='NEW REPORT NAME'
+WHERE id = 'REPORT ID'
+```
+
+## Editing email content
+
+To update the content of the email sent to users, follow these steps:
+
+1. Locate the file containing the configuration and content of the email which can be found at _src\app\api\send-email\route.ts_.
+2. Within this file, there is a block of code that defines the subjects (**subject**) and HTML bodies (**html**) of the email in different languages (English, Spanish, and Czech). This block is located within the POST function.
+3. Inside the POST function, you'll see different sections for each language, handled by an if-else structure. This is where you can update the email text.
+```ts
+if (lang == 2) {
+	// Czech language
+	subject = "Dotazník MySurface";
+	html = `<h2>Dobrý den ${name},</h2>
+	<p>Dotazník, který vám byl přidělen, můžete vyplnit kliknutím <a href="${url}">ZDE</a>. Prosím, vyplňte jej co nejdříve.</p>
+	<p>S pozdravem,</p>
+	<p><i>Team MySurface</i></p>`;
+} else if (lang == 3) {
+	// Spanish language
+	subject = "Cuestionario MySurface";
+	html = `<h2>Hola ${name},</h2>
+	<p>Puedes rellenar el cuestionario que se te ha asignado haciendo clic <a href="${url}">AQUÍ</a>. Por favor, complétalo lo antes posible.</p>
+	<p>Saludos,</p>
+	<p><i>Equipo de MySurface</i></p>`;
+} else {
+	// English language
+	subject = "MySurface questionnaire";
+	html = `<h2>Hello ${name},</h2>
+	<p>You can fill out the questionnaire assigned to you by clicking <a href="${url}">HERE</a>. Please complete it as soon as possible.</p>
+	<p>Best regards,</p>
+	<p><i>The MySurface Team</i></p>`;
+}
+```
