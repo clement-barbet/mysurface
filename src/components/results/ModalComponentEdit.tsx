@@ -4,26 +4,26 @@ import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 
 interface ModalComponentProps {
 	open: boolean;
-    setOpen: (value: boolean) => void;
-    setResults: (value: any) => void;
-    results: any;
+	setOpen: (value: boolean) => void;
+	setResults: (value: any) => void;
+	results: any;
 	reportName: string;
 	setReportName: (value: string) => void;
-    selectedResult: any;
+	selectedResult: any;
 	table: string;
 }
 
 const ModalComponent: React.FC<ModalComponentProps> = ({
 	open,
-    setOpen,
-    setResults,
-    results,
+	setOpen,
+	setResults,
+	results,
 	reportName,
 	setReportName,
-    selectedResult,
-	table
+	selectedResult,
+	table,
 }) => {
-    const supabase = createClientComponentClient();
+	const supabase = createClientComponentClient();
 	const handleSave = async () => {
 		const { error } = await supabase
 			.from(table)
@@ -56,6 +56,7 @@ const ModalComponent: React.FC<ModalComponentProps> = ({
 			aria-describedby="modal-modal-description"
 		>
 			<Box
+				className="bg-white dark:bg-gray-700"
 				sx={{
 					position: "absolute",
 					top: "50%",
@@ -63,13 +64,13 @@ const ModalComponent: React.FC<ModalComponentProps> = ({
 					transform: "translate(-50%, -50%)",
 					width: "90%",
 					maxWidth: 400,
-					bgcolor: "background.paper",
 					borderRadius: "10px",
 					boxShadow: 24,
 					p: 4,
 				}}
 			>
 				<Typography
+					className="text-black dark:text-white"
 					id="modal-modal-title"
 					variant="h6"
 					component="h2"
@@ -82,6 +83,16 @@ const ModalComponent: React.FC<ModalComponentProps> = ({
 					Update Report Name
 				</Typography>
 				<TextField
+					InputProps={{
+						className: "border-gray-700 dark:border-gray-300 text-black dark:text-white",
+						classes: {
+							notchedOutline:
+								"border-gray-700 dark:border-gray-300",
+						},
+					}}
+					InputLabelProps={{
+						className: "text-black dark:text-gray-300"
+					}}
 					autoFocus
 					margin="dense"
 					id="name"

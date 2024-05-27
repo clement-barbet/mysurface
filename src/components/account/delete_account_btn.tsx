@@ -81,6 +81,7 @@ export default function DeleteAccountButton({ userId }: { userId: any }) {
 				aria-describedby="modal-modal-description"
 			>
 				<Box
+					className="bg-white dark:bg-gray-700"
 					sx={{
 						position: "absolute",
 						top: "50%",
@@ -88,13 +89,13 @@ export default function DeleteAccountButton({ userId }: { userId: any }) {
 						transform: "translate(-50%, -50%)",
 						width: "90%",
 						maxWidth: 400,
-						bgcolor: "background.paper",
 						borderRadius: "10px",
 						boxShadow: 24,
 						p: 4,
 					}}
 				>
 					<Typography
+						className="text-black dark:text-white"
 						id="modal-modal-title"
 						variant="h6"
 						component="h2"

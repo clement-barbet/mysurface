@@ -76,9 +76,13 @@ export default function Home() {
 								))}
 								<tr className="text-center">
 									<td className="pb-1 pt-4" colSpan={2}>
-										<Link href="https://mysurface.myaudit.org/webinar/" className=" text-gray-600 dark:text-gray-400 hover:font-semibold transition-all duration-200 ease-linear">
+										<a
+											target="_blank"
+											href="https://mysurface.myaudit.org/webinar/"
+											className="text-gray-600 dark:text-gray-400 hover:font-semibold transition-all duration-200 ease-linear"
+										>
 											<T tkey="home.guide.help" />
-										</Link>
+										</a>
 									</td>
 								</tr>
 							</tbody>
