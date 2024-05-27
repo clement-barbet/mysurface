@@ -479,7 +479,15 @@ if (lang == 2) {
 }
 ```
 
-## Update billings
+## Update subscription
+If you just want to update the **expiration_date**, you can run this code where you need to change the **user_id** and set the **interval** you want:
+```sql
+UPDATE billings
+SET expiration_date = CURRENT_TIMESTAMP + INTERVAL '30 days'
+WHERE user_id = 'USER_ID';
+```
+
+If you want to update subscriptions properly:
 
 ### Lifetime
 When setting a subscription to _lifetime_ triggers will automatically set **expiration_date** to _NULL_, **updated_at** to _current time_ and **status** to _active_. 
