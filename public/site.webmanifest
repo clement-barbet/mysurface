@@ -1,7 +1,7 @@
 {
     "name": "MySurface®",
     "short_name": "MySurface",
-    "description": "Influence and interaction analysing tool",
+    "description": "App to discover the most influential people or products.",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",

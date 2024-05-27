@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import { Glory } from "next/font/google";
 import "./globals.css";
+import Head from "next/head";
 
 const glory = Glory({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
 	title: "MySurface®",
-	description: "Influence and interaction analysing tool",
+	description: "App to discover the most influential people or products.",
 };
 
 export default function RootLayout({
@@ -14,9 +15,10 @@ export default function RootLayout({
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
+	const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 	return (
 		<html lang="en">
-			<head>
+			<Head>
 				<link
 					rel="apple-touch-icon"
 					sizes="180x180"
@@ -42,7 +44,14 @@ export default function RootLayout({
 				/>
 				<meta name="msapplication-TileColor" content="#da532c" />
 				<meta name="theme-color" content="#ffffff" />
-			</head>
+				<meta property="og:title" content="MySurface®" />
+				<meta
+					property="og:description"
+					content="App to discover the most influential people or products."
+				/>
+				<meta property="og:image" content="/logo/surf-app-logo.svg" />
+				<meta property="og:url" content={baseUrl} />
+			</Head>
 			<body
 				className={`${glory.className} bg-dark_gray dark:bg-dark_blue dark:bg-opacity-80 transition-colors duration-1000 linear`}
 			>
