@@ -49,7 +49,7 @@ export default function RootLayout({
 					property="og:description"
 					content="App to discover the most influential people or products."
 				/>
-				<meta property="og:image" content="/logo/surf-app-logo.svg" />
+				<meta property="og:image" content="/android-chrome-512x512.png" />
 				<meta property="og:url" content={baseUrl} />
 			</Head>
 			<body
