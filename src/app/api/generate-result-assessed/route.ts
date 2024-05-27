@@ -80,7 +80,6 @@ export async function POST() {
 					participantId: a.id,
 					participantName: a.name,
 					answers: questions.map((question) => ({
-						questionText: question.question.replace("%s", a.name),
 						rating: 0,
 						weight: question.weight,
 					})),
@@ -102,7 +101,6 @@ export async function POST() {
 				participantId: p.id,
 				participantName: p.name,
 				answers: questions.map((question) => ({
-					questionText: question.question.replace("%s", p.name),
 					rating: 0,
 					weight: question.weight,
 				})),
