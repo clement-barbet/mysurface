@@ -18,8 +18,8 @@ export const metadata: Metadata = {
 		images: [
 			{
 				url: new URL("/open_graph.png", baseUrl).toString(),
-				width: 300,
-				height: 170,
+				width: 2252,
+				height: 1279,
 				alt: "MySurface_App",
 			},
 		],
