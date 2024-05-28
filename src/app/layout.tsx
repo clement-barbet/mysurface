@@ -1,12 +1,29 @@
 import type { Metadata } from "next";
 import { Glory } from "next/font/google";
 import "./globals.css";
+import Head from "next/head";
 
 const glory = Glory({ subsets: ["latin"] });
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
 export const metadata: Metadata = {
 	title: "MySurface®",
 	description: "App to discover the most influential people or products.",
+	metadataBase: new URL(baseUrl),
+	openGraph: {
+		type: "website",
+		url: new URL(baseUrl),
+		title: "MySurface®",
+		description: "App to discover the most influential people or products.",
+		images: [
+			{
+				url: new URL("/android-chrome-192x192.png", baseUrl).toString(),
+				width: 192,
+				height: 192,
+				alt: "MySurface_Logo",
+			},
+		],
+	},
 };
 
 export default function RootLayout({
@@ -14,30 +31,9 @@ export default function RootLayout({
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
-	const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 	return (
 		<html lang="en">
-			<head>
-				<meta property="og:url" content="https://app.myaudit.org" />
-				<meta property="og:type" content="website" />
-				<meta
-					property="og:image"
-					content="https://app.myaudit.org/android-chrome-192x192.png"
-				/>
-				<meta
-					property="og:logo"
-					content="https://app.myaudit.org/android-chrome-192x192.png"
-				/>
-				<meta property="og:image:width" content="192" />
-				<meta property="og:image:height" content="192" />
-				<meta property="og:image:type" content="image/png" />
-				<meta property="og:image:alt" content="MySurface_Logo" />
-				<meta property="og:title" content="MySurface®" />
-				<meta
-					property="og:description"
-					content="App to discover the most influential people or products."
-				/>
-				<meta property="og:site_name" content="MySurface®" />
+			<Head>
 				<link
 					rel="apple-touch-icon"
 					sizes="180x180"
@@ -63,7 +59,7 @@ export default function RootLayout({
 				/>
 				<meta name="msapplication-TileColor" content="#da532c" />
 				<meta name="theme-color" content="#ffffff" />
-			</head>
+			</Head>
 			<body
 				className={`${glory.className} bg-dark_gray dark:bg-dark_blue dark:bg-opacity-80 transition-colors duration-1000 linear`}
 			>
