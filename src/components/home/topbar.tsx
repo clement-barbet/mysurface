@@ -12,10 +12,10 @@ import { MdPayment } from "react-icons/md";
 import Link from "next/link";
 import T from "@/components/translations/translation";
 import { fetchSettings } from "@/db/app_settings/fetchSettingsByUserId";
-import { set } from "zod";
 import { fetchBilling } from "@/db/billings/fetchBillingByUserId";
 import clsx from "clsx";
 import Loading from "../ui/loading";
+import { useRouter } from "next/navigation";
 
 export default function TopBar({ user }) {
 	const [errorMessage, setErrorMessage] = useState("");
@@ -28,6 +28,7 @@ export default function TopBar({ user }) {
 	const [subscriptionStatus, setSubscriptionStatus] = useState("");
 	const [subscription, setSubscription] = useState(null);
 	const [loading, setLoading] = useState(true);
+	const router = useRouter();
 
 	useEffect(() => {
 		function handleClickOutside(event) {
@@ -89,11 +90,18 @@ export default function TopBar({ user }) {
 		fetchData();
 	}, []);
 
-	const handleLogout = async () => {
-		const { error } = await supabase.auth.signOut();
-		if (error) {
-			setErrorMessage("error.logout");
-		}
+	const handleLogout = () => {
+		supabase.auth
+			.signOut()
+			.then(() => {
+				sessionStorage.removeItem("darkMode");
+				const html = document.documentElement;
+				html.classList.remove("dark");
+				router.push("/login");
+			})
+			.catch((error) => {
+				setErrorMessage("error.logout");
+			});
 	};
 
 	const handleDivClick = (event) => {
@@ -200,7 +208,7 @@ export default function TopBar({ user }) {
 									</p>
 								</div>
 							</Link>
-							<Link href="/login" onClick={handleLogout}>
+							<div onClick={handleLogout}>
 								<div className="flex items-center justify-start gap-x-1 px-4 py-3 hover:font-medium hover:bg-light_gray dark:hover:bg-mid_blue transition-all duration-100 ease-linear">
 									<div className="w-8 h-8 flex justify-center items-center dark:border-light_gray">
 										<IoMdLogOut className="h-5 w-5" />
@@ -209,7 +217,7 @@ export default function TopBar({ user }) {
 										<T tkey="topbar.logout" />
 									</p>
 								</div>
-							</Link>
+							</div>
 						</div>
 					)}
 				</div>
