@@ -518,3 +518,37 @@ UPDATE billings
 SET subscription = 'none'
 WHERE user_id = 'USER_ID';
 ```
+
+## Change icons
+Icons are added through different React libraries. 
+1. Check the file where the icon set to be changed is located. For **side menu** _/src/components/home/dashboard_navbar.tsx_ and **profile menu** _/src/components/home/topbar.tsx_.
+2. Browse [React Icons](https://react-icons.github.io/react-icons/) and select a new one. When opening an icon, it displays the needed import for React that you need to **copy and paste** it at the top of the _.tsx_ file you are about to edit. It looks like this:
+```ts
+import { FaHome } from "react-icons/fa";
+```
+3. Locate the exact icon that you want to replace. It is possibly located inside a **Link** tag, like this where the actual icon is called _GoHome_:
+```ts
+<Link
+	onClick={handleLinkClick}
+	href="/home"
+	className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase"
+>
+	<GoHome className="h-6 w-6" />
+	<T tkey="navbar.home" />
+</Link>
+```
+4. Replace the name of the icon with the new one that you have already imported. In this example, the new icon is called _FaHome_:
+```ts
+<Link
+	onClick={handleLinkClick}
+	href="/home"
+	className="hover:font-bold transition-all duration-200 ease-linear flex items-center gap-x-2 uppercase"
+>
+	<FaHome className="h-6 w-6" />
+	<T tkey="navbar.home" />
+</Link>
+```
+5. Finally, you need to locate and remove the import of the previous icon. It should look something like this:
+```ts
+import { GoHome } from "react-icons/go";
+```
