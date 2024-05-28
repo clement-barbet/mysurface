@@ -169,8 +169,6 @@ export default function ManageLicenseDev({ billing, user }) {
 		return diffDays <= 30;
 	};
 
-	console.log(isExpiringSoon());
-
 	const renderActiveSubscription = () => {
 		if (billing.status === "active") {
 			return (
