@@ -25,7 +25,7 @@ const SuccessMessage: React.FC<SuccessMessageProps> = ({
 	return (
 		successMessage && (
 			<div
-				className="m-0 w-full text-green-600 font-bold bg-green-200 p-4 fixed top-0 left-0 flex justify-between items-center drop-shadow-sm flex-shrink-0"
+				className="m-0 w-full text-white font-semibold bg-accent_color py-2 px-4 fixed top-0 left-0 flex justify-between items-center drop-shadow-sm flex-shrink-0"
 				style={{ zIndex: 200 }}
 			>
 				<p>
