@@ -103,7 +103,7 @@ export default function HomeLayout({
 					className="banner m-0 text-black dark:text-black px-4 py-2 w-full font-semibold fixed top-0 bg-accent_light flex justify-between items-center drop-shadow-sm flex-shrink-0"
 					style={{ zIndex: 200 }}
 				>
-					<p>{bannerMessage}</p>
+					<p>{bannerMessage}{" "}Manage your license <Link href="/home/license" className="text-accent_color hover:text-accent_hover font-bold uppercase">HERE</Link>.</p>
 					<button
 						onClick={() => setShowBanner(false)}
 						className="font-bold text-2xl z-100"
