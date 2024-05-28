@@ -8,6 +8,7 @@ import Link from "next/link";
 import Loading from "@/components/ui/loading";
 import { fetchUser } from "@/db/auth_user/fetchUser";
 import { fetchBilling } from "@/db/billings/fetchBillingByUserId";
+import T from "@/components/translations/translation";
 
 export default function HomeLayout({
 	children,
@@ -74,16 +75,32 @@ export default function HomeLayout({
 				);
 			}
 
-			let message = "";
+			let message: JSX.Element | null = null;
 			if (subscription.subscription === "none") {
-				message = "You don't have a license.";
+				message = (
+					<>
+						<T tkey="license_popup.inactive" />
+					</>
+				);
 			} else if (subscription.subscription === "trial") {
-				message = `You are on a trial period. It will expire in ${daysUntilExpiration} days.`;
+				message = (
+					<>
+						<T tkey="license_popup.trial.t1" />{" "}
+						{daysUntilExpiration}{" "}
+						<T tkey="license_popup.trial.t2" />
+					</>
+				);
 			} else if (
 				subscription.subscription === "yearly" &&
 				daysUntilExpiration <= 30
 			) {
-				message = `Your annual license is about to expire. It will expire in ${daysUntilExpiration} days.`;
+				message = (
+					<>
+						<T tkey="license_popup.license.l1" />{" "}
+						{daysUntilExpiration}{" "}
+						<T tkey="license_popup.license.l2" />
+					</>
+				);
 			}
 
 			setBannerMessage(message);
@@ -103,7 +120,16 @@ export default function HomeLayout({
 					className="banner m-0 text-black dark:text-black px-4 py-2 w-full font-semibold fixed top-0 bg-accent_light flex justify-between items-center drop-shadow-sm flex-shrink-0"
 					style={{ zIndex: 200 }}
 				>
-					<p>{bannerMessage}{" "}Manage your license <Link href="/home/license" className="text-accent_color hover:text-accent_hover font-bold uppercase">HERE</Link>.</p>
+					<p>
+						{bannerMessage}{" "}
+						<Link
+							href="/home/license"
+							className="text-accent_color hover:text-accent_hover font-bold uppercase px-1"
+						>
+							<T tkey="license_popup.here" />
+						</Link>
+						.
+					</p>
 					<button
 						onClick={() => setShowBanner(false)}
 						className="font-bold text-2xl z-100"

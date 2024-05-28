@@ -783,5 +783,17 @@
 				"checkout": "Comprar licencia anual"
 			}
 		}
+	},
+	"license_popup": {
+		"inactive": "No tienes una licencia activa. Activar",
+		"trial": {
+			"t1": "Tu período de prueba expira en",
+			"t2": "días. Gestiona tu licencia"
+		},
+		"license": {
+			"l1": "Tu licencia anual expira en",
+			"l2": "días. Gestiona tu licencia"
+		},
+		"here": "aquí"
 	}
 }

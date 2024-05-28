@@ -784,5 +784,17 @@
 				"checkout": "Zakoupit roční licenci"
 			}
 		}
+	},
+	"license_popup": {
+		"inactive": "Nemáte aktivní licenci. Aktivovat",
+		"trial": {
+			"t1": "Vaše zkušební období vyprší za",
+			"t2": "dní. Spravujte svou licenci"
+		},
+		"license": {
+			"l1": "Vaše roční licence vyprší za",
+			"l2": "dní. Spravujte svou licenci"
+		},
+		"here": "zde"
 	}
 }

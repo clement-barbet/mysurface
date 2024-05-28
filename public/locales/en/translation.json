@@ -793,8 +793,20 @@
 			},
 			"buttons": {
 				"trial": "Start trial",
-				"checkout": "Checkout annual license"
+				"checkout": "Buy annual license"
 			}
 		}
+	},
+	"license_popup": {
+		"inactive": "You don't have active license. Activate",
+		"trial": {
+			"t1": "Your trial period expires in",
+			"t2": "days. Manage your license"
+		},
+		"license": {
+			"l1": "Your annual license expires in",
+			"l2": "days. Manage your license"
+		},
+		"here": "here"
 	}
 }
