@@ -3,7 +3,7 @@ import T from "@/components/translations/translation";
 export default function LicenseTypes() {
 	return (
 		<div className="flex md:flex-row flex-col md:gap-x-2 lg:gap-x-4 xl:gap-x-6 gap-y-4 w-full mt-2">
-			<div className="card w-full bg-light_gray dark:bg-dark_blue  rounded-md overflow-hidden">
+			<div className="card w-full bg-light_gray dark:bg-dark_blue  rounded-md overflow-hidden drop-shadow-md">
 				<div className="bg-accent_color text-white p-4 text-center">
 					<h3 className="font-semibold text-xl">
 						<T tkey="license.types.trial.title" />
@@ -30,7 +30,7 @@ export default function LicenseTypes() {
 					</p>
 				</div>
 			</div>
-			<div className="card w-full bg-light_gray dark:bg-dark_blue rounded-md overflow-hidden">
+			<div className="card w-full bg-light_gray dark:bg-dark_blue rounded-md overflow-hidden drop-shadow-md">
 				<div className="bg-accent_delete text-white p-4 text-center">
 					<h3 className="font-semibold text-xl">
 						<T tkey="license.types.annual.title" />
@@ -57,7 +57,7 @@ export default function LicenseTypes() {
 					</p>
 				</div>
 			</div>
-			<div className="card w-full bg-light_gray dark:bg-dark_blue rounded-md overflow-hidden">
+			<div className="card w-full bg-light_gray dark:bg-dark_blue rounded-md overflow-hidden drop-shadow-md">
 				<div className="bg-mid_blue text-white p-4 text-center">
 					<h3 className="font-semibold text-xl">
 						<T tkey="license.types.webinar.title" />
