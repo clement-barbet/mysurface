@@ -24,6 +24,19 @@ export const metadata: Metadata = {
 			},
 		],
 	},
+	keywords: [
+		"MySurface",
+		"Influential",
+		"People",
+		"Products",
+		"Discover",
+		"App",
+		"Leaders",
+		"Teams",
+		"Companies",
+		"Schools",
+		"Cities",
+	],
 };
 
 export default function RootLayout({
