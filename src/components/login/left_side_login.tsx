@@ -3,6 +3,7 @@ import T from "@/components/translations/translation";
 import { useTranslation } from "react-i18next";
 import { useState, useEffect } from "react";
 import { fetchLanguages } from "@/db/languages/fetchLanguages";
+import Link from "next/link";
 
 const LeftSideLogin = () => {
 	const { i18n } = useTranslation();
@@ -54,8 +55,13 @@ const LeftSideLogin = () => {
 					<T tkey="login.slogan.part2" />
 				</p>
 			</div>
-			<p className="md:mt-2 text-sm text-center text-gray-400 text-opacity-90 md:order-3">
+			<p className="md:mt-6 text-sm text-center text-gray-400 text-opacity-90 md:order-3">
 				MySurface&reg; v2.1
+			</p>
+			<p className="md:mt-2 text-sm text-center text-accent_color text-opacity-90 hover:text-accent_light md:order-4 transition-all duration-200 ease-linear">
+				<Link href="https://mysurface.myaudit.org">
+					mysurface.myaudit.org
+				</Link>
 			</p>
 		</div>
 	);
