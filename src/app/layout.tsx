@@ -17,16 +17,17 @@ export const metadata: Metadata = {
 		description: "App to discover the most influential people or products.",
 		images: [
 			{
-				url: new URL("/android-chrome-192x192.png", baseUrl).toString(),
-				width: 192,
-				height: 192,
-				alt: "MySurface_Logo",
+				url: new URL("/open_graph.png", baseUrl).toString(),
+				width: 300,
+				height: 170,
+				alt: "MySurface_App",
 			},
 		],
 	},
 	keywords: [
 		"MySurface",
-		"Influential",
+		"Influence",
+		"Interaction",
 		"People",
 		"Products",
 		"Discover",
