@@ -737,15 +737,15 @@
 					"l4": "Technical support"
 				}
 			},
-			"lifetime": {
-				"title": "Lifetime",
-				"subtitle": "Unlimited access",
+			"webinar": {
+				"title": "Webinar",
+				"subtitle": "Lifetime",
 				"tax": "199 €",
 				"list": {
-					"l1": "Assess unlimited nodes",
-					"l2": "Unlimited assessments",
-					"l3": "All 2D and 3D models",
-					"l4": "Webinar"
+					"l1": "How to use MySurface",
+					"l2": "Use-cases and stories",
+					"l3": "2 hours make you PRO!",
+					"l4": "Lifetime webinar access"
 				}
 			}
 		},

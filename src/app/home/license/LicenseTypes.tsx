@@ -60,27 +60,27 @@ export default function LicenseTypes() {
 			<div className="card w-full bg-light_gray dark:bg-dark_blue rounded-md overflow-hidden">
 				<div className="bg-mid_blue text-white p-4 text-center">
 					<h3 className="font-semibold text-xl">
-						<T tkey="license.types.lifetime.title" />
+						<T tkey="license.types.webinar.title" />
 					</h3>
 					<h4>
-						<T tkey="license.types.lifetime.subtitle" />
+						<T tkey="license.types.webinar.subtitle" />
 					</h4>
 					<p className="uppercase font-light text-3xl mt-2">
-						<T tkey="license.types.lifetime.tax" />
+						<T tkey="license.types.webinar.tax" />
 					</p>
 				</div>
 				<div className="text-center py-2">
 					<p>
-						<T tkey="license.types.lifetime.list.l1" />
+						<T tkey="license.types.webinar.list.l1" />
 					</p>
 					<p>
-						<T tkey="license.types.lifetime.list.l2" />
+						<T tkey="license.types.webinar.list.l2" />
 					</p>
 					<p>
-						<T tkey="license.types.lifetime.list.l3" />
+						<T tkey="license.types.webinar.list.l3" />
 					</p>
 					<p>
-						<T tkey="license.types.lifetime.list.l4" />
+						<T tkey="license.types.webinar.list.l4" />
 					</p>
 				</div>
 			</div>

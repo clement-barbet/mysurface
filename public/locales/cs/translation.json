@@ -725,15 +725,15 @@
 					"l4": "Technická podpora"
 				}
 			},
-			"lifetime": {
-				"title": "Doživotní",
-				"subtitle": "Neomezený přístup",
+			"webinar": {
+				"title": "Webinář",
+				"subtitle": "Doživotní",
 				"tax": "199 €",
 				"list": {
-					"l1": "Hodnocení neomezeného počtu uzlů",
-					"l2": "Neomezené hodnocení",
-					"l3": "Všechny 2D a 3D modely",
-					"l4": "Webinář"
+					"l1": "Jak používat MySurface",
+					"l2": "Případy použití a příběhy",
+					"l3": "2 hodiny a stanete se PRO!",
+					"l4": "Doživotní přístup k webináři"
 				}
 			}
 		},

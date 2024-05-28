@@ -724,15 +724,15 @@
 					"l4": "Soporte técnico"
 				}
 			},
-			"lifetime": {
-				"title": "De por vida",
-				"subtitle": "Acceso ilimitado",
+			"webinar": {
+				"title": "Webinario",
+				"subtitle": "De por vida",
 				"tax": "199 €",
 				"list": {
-					"l1": "Evalúa nodos ilimitados",
-					"l2": "Evaluaciones ilimitadas",
-					"l3": "Todos los modelos 2D y 3D",
-					"l4": "Seminario web"
+					"l1": "Cómo usar MySurface",
+					"l2": "Casos de uso e historias",
+					"l3": "¡2 horas te hacen un PRO!",
+					"l4": "Acceso de por vida al webinario"
 				}
 			}
 		},
