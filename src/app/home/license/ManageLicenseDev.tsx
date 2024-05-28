@@ -62,8 +62,6 @@ export default function ManageLicenseDev({ billing, user }) {
 			return;
 		}
 
-		console.log("Session data:", session);
-
 		if (session.status === "complete") {
 			const { data, error } = await supabase.rpc(
 				"update_billing_yearly",
@@ -77,7 +75,6 @@ export default function ManageLicenseDev({ billing, user }) {
 			if (error) {
 				console.error("Error updating billing subscription:", error);
 			} else {
-				console.log("Billing subscription updated successfully:", data);
 				setSuccessMessage("success.license.purchase");
 				router.push("/home/license");
 				setTimeout(() => {
