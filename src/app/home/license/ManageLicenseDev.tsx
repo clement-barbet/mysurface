@@ -209,7 +209,7 @@ export default function ManageLicenseDev({ billing, user }) {
 								className="my-2 w-full md:w-3/5 lg:w-2/5 xl:w-1/5 uppercase text-base"
 								onClick={handleCheckout}
 							>
-								<T tkey="license.manage.buttons.trial" />
+								<T tkey="license.manage.buttons.checkout" />
 							</Button>
 						</div>
 					</div>

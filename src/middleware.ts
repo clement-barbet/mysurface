@@ -46,7 +46,7 @@ export async function middleware(req: NextRequest) {
 		"/home/models",
 		"/home/patterns",
 		"/home/account",
-		"/home/subscription",
+		"/home/license",
 		"/home/faq",
 		"/home/contact-support",
 	];
