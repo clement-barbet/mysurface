@@ -688,6 +688,10 @@
 	},
 	"license": {
 		"titles": {
+			"types": {
+				"title": "Tipos de licencias",
+				"subtitle": "Tipos de licencias disponibles para MySurface App."
+			},
 			"details": {
 				"title": "Detalles de la licencia",
 				"subtitle": "Detalles actuales de la licencia."
@@ -695,6 +699,41 @@
 			"manage": {
 				"title": "Gestionar licencia",
 				"subtitle": "Aquí puedes gestionar tu licencia."
+			}
+		},
+		"types": {
+			"trial": {
+				"title": "Prueba",
+				"subtitle": "Prueba de 1 mes",
+				"tax": "gratis",
+				"list": {
+					"l1": "Evalúa hasta 55 nodos",
+					"l2": "Evaluaciones ilimitadas",
+					"l3": "Todos los modelos 2D y 3D",
+					"l4": "No se requiere tarjeta de crédito"
+				}
+			},
+			"annual": {
+				"title": "Anual",
+				"subtitle": "Acceso de 1 año",
+				"tax": "89 €",
+				"list": {
+					"l1": "Evalúa hasta 1000 nodos",
+					"l2": "Evaluaciones ilimitadas",
+					"l3": "Todos los modelos 2D y 3D",
+					"l4": "Soporte técnico"
+				}
+			},
+			"lifetime": {
+				"title": "De por vida",
+				"subtitle": "Acceso ilimitado",
+				"tax": "199 €",
+				"list": {
+					"l1": "Evalúa nodos ilimitados",
+					"l2": "Evaluaciones ilimitadas",
+					"l3": "Todos los modelos 2D y 3D",
+					"l4": "Seminario web"
+				}
 			}
 		},
 		"details": {

@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import LicenseDetails from "./LicenseDetails";
 import ManageLicenseDev from "./ManageLicenseDev";
 import T from "@/components/translations/translation";
+import LicenseTypes from "./LicenseTypes";
 
 export default function License() {
 	const [loading, setLoading] = useState(true);
@@ -38,6 +39,15 @@ export default function License() {
 
 	return (
 		<div className="flex flex-col gap-y-2">
+			<div className="p-5 py-h-auto w-full flex flex-col shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
+				<h2 className="text-lg mb-2 font-semibold border-l-4 border-mid_blue pl-2">
+					<T tkey="license.titles.types.title" />
+				</h2>
+				<p className="text-gray-600 dark:text-gray-400 text-lg md:text-base">
+					<T tkey="license.titles.types.subtitle" />
+				</p>
+				<LicenseTypes />
+			</div>
 			<div className="p-5 py-h-auto w-full flex flex-col shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
 				<h2 className="text-lg mb-2 font-semibold border-l-4 border-mid_blue pl-2">
 					<T tkey="license.titles.details.title" />

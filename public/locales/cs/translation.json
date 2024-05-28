@@ -26,7 +26,8 @@
 					"s2": "Vyplňte otázky dotazníku",
 					"s3": "Odeslat formulář"
 				}
-			}
+			},
+			"help": "Potřebujete pomoc?"
 		},
 		"updates": {
 			"title": "Aktualizace",
@@ -688,13 +689,52 @@
 	},
 	"license": {
 		"titles": {
+			"types": {
+				"title": "Typy licencí",
+				"subtitle": "Dostupné typy licencí pro aplikaci MySurface."
+			},
 			"details": {
 				"title": "Podrobnosti o licenci",
 				"subtitle": "Aktuální podrobnosti o licenci."
 			},
 			"manage": {
-				"title": "Spravovat licenci",
+				"title": "Správa licence",
 				"subtitle": "Zde můžete spravovat svou licenci."
+			}
+		},
+		"types": {
+			"trial": {
+				"title": "Zkušební",
+				"subtitle": "1 měsíc zkušební doba",
+				"tax": "zdarma",
+				"list": {
+					"l1": "Hodnocení až 55 uzlů",
+					"l2": "Neomezené hodnocení",
+					"l3": "Všechny 2D a 3D modely",
+					"l4": "Není vyžadována kreditní karta"
+				}
+			},
+			"annual": {
+				"title": "Roční",
+				"subtitle": "Přístup na 1 rok",
+				"tax": "89 €",
+				"list": {
+					"l1": "Hodnocení až 1000 uzlů",
+					"l2": "Neomezené hodnocení",
+					"l3": "Všechny 2D a 3D modely",
+					"l4": "Technická podpora"
+				}
+			},
+			"lifetime": {
+				"title": "Doživotní",
+				"subtitle": "Neomezený přístup",
+				"tax": "199 €",
+				"list": {
+					"l1": "Hodnocení neomezeného počtu uzlů",
+					"l2": "Neomezené hodnocení",
+					"l3": "Všechny 2D a 3D modely",
+					"l4": "Webinář"
+				}
 			}
 		},
 		"details": {

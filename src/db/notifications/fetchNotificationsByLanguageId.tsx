@@ -6,7 +6,8 @@ export const fetchNotifications = async (languageId) => {
 		const { data: appNotifications, error } = await supabase
 			.from("notifications")
 			.select("*")
-			.eq("language_id", languageId);
+			.eq("language_id", languageId)
+			.order("created_at", { ascending: false });
 
 		if (error) throw error;
 		return appNotifications || [];
