@@ -760,14 +760,14 @@
 		},
 		"manage": {
 			"active": {
-				"a1": "Vaše licence je",
-				"a2": "aktivní",
-				"a3": "Užijte si to!"
+				"a1": "Vaše",
+				"a2": "licence je",
+				"a3": "aktivní",
+				"a4": "Užijte si to!"
 			},
 			"inactive": {
 				"i1": "Vaše licence je",
-				"i2": "neaktivní",
-				"i3": "Můžete si zakoupit roční licenci za 89 €"
+				"i2": "neaktivní"
 			},
 			"trial": {
 				"t1": "Máte",
@@ -775,13 +775,15 @@
 				"t3": "k dispozici na 30 dní"
 			},
 			"purchase": {
-				"p1": "Můžete si zakoupit",
-				"p2": "roční licenci",
-				"p3": "za 89 €"
+				"p1": "Můžete si koupit",
+				"p2": "Můžete vylepšit svou licenci zakoupením",
+				"p3": "Můžete obnovit svou licenci zakoupením nové",
+				"p4": "roční licence",
+				"p5": "za 89 €"
 			},
 			"buttons": {
-				"trial": "Zahájit zkušební verzi",
-				"checkout": "Zakoupit roční licenci"
+				"trial": "Začít zkušební verzi",
+				"checkout": "Koupit roční licenci"
 			}
 		}
 	},

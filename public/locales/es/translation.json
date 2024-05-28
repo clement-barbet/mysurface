@@ -759,14 +759,14 @@
 		},
 		"manage": {
 			"active": {
-				"a1": "Tu licencia está",
-				"a2": "activa",
-				"a3": "¡Disfrútala!"
+				"a1": "Tu",
+				"a2": "licencia está",
+				"a3": "activa",
+				"a4": "¡Disfrútala!"
 			},
 			"inactive": {
 				"i1": "Tu licencia está",
-				"i2": "inactiva",
-				"i3": "Puedes comprar una licencia anual por 89 €"
+				"i2": "inactiva"
 			},
 			"trial": {
 				"t1": "Tienes una",
@@ -775,8 +775,10 @@
 			},
 			"purchase": {
 				"p1": "Puedes comprar una",
-				"p2": "licencia anual",
-				"p3": "por 89 €"
+				"p2": "Puedes mejorar tu licencia comprando una",
+				"p3": "Puedes renovar tu licencia comprando una nueva",
+				"p4": "licencia anual",
+				"p5": "por 89 €"
 			},
 			"buttons": {
 				"trial": "Iniciar prueba",

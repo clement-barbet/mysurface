@@ -772,14 +772,14 @@
 		},
 		"manage": {
 			"active": {
-				"a1": "Your license is",
-				"a2": "active",
-				"a3": "Enjoy it!"
+				"a1": "Your",
+				"a2": "license is",
+				"a3": "active",
+				"a4": "Enjoy it!"
 			},
 			"inactive": {
 				"i1": "Your license is",
-				"i2": "inactive",
-				"i3": "You can purchase an annual license for 89 €"
+				"i2": "inactive"
 			},
 			"trial": {
 				"t1": "You have a",
@@ -788,8 +788,10 @@
 			},
 			"purchase": {
 				"p1": "You can purchase an",
-				"p2": "annual license",
-				"p3": "for 89 €"
+				"p2": "You can upgrade your license by purchasing an",
+				"p3": "You can renew your license purchasing a new",
+				"p4": "annual license",
+				"p5": "for 89 €"
 			},
 			"buttons": {
 				"trial": "Start trial",
