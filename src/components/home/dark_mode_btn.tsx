@@ -1,19 +1,26 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { IoSunny, IoMoon } from "react-icons/io5";
 
 function DarkModeButton() {
-	const [darkMode, setDarkMode] = useState(false);
+	const [darkMode, setDarkMode] = useState(() => {
+		const storedDarkMode = sessionStorage.getItem("darkMode");
+		return storedDarkMode ? JSON.parse(storedDarkMode) : false;
+	});
 
-	const toggleDarkMode = () => {
+	useEffect(() => {
 		const html = document.documentElement;
 
 		if (darkMode) {
-			html.classList.remove("dark");
-		} else {
 			html.classList.add("dark");
+		} else {
+			html.classList.remove("dark");
 		}
 
-		setDarkMode(!darkMode);
+		sessionStorage.setItem("darkMode", JSON.stringify(darkMode));
+	}, [darkMode]);
+
+	const toggleDarkMode = () => {
+		setDarkMode((prevMode) => !prevMode);
 	};
 
 	return (
