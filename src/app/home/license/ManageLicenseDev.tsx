@@ -88,6 +88,7 @@ export default function ManageLicenseDev({ billing, user }) {
 		if (!user) {
 			return;
 		}
+
 		const { data, error } = await supabase.rpc("update_billing_trial", {
 			logged_user_id: user.id,
 		});
