@@ -451,7 +451,7 @@ WHERE id = 'REPORT ID'
 
 To update the content of the email sent to users, follow these steps:
 
-1. Locate the file containing the configuration and content of the email which can be found at _src\app\api\send-email\route.ts_.
+1. Locate the file containing the configuration and content of the email which can be found at _src/app/api/send-email/route.ts_. If you want to update the email that is sent when a user activates a trial, then, you need to change this file: _src/app/api/update-trial/route.ts_.
 2. Within this file, there is a block of code that defines the subjects (**subject**) and HTML bodies (**html**) of the email in different languages (English, Spanish, and Czech). This block is located within the POST function.
 3. Inside the POST function, you'll see different sections for each language, handled by an if-else structure. This is where you can update the email text.
 ```ts
