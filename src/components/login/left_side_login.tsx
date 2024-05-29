@@ -56,7 +56,7 @@ const LeftSideLogin = () => {
 				</p>
 			</div>
 			<p className="md:mt-6 text-sm text-center text-gray-400 text-opacity-90 md:order-3">
-				MySurface&reg; v2.1
+				MySurface&reg; v2.2
 			</p>
 			<p className="md:mt-2 text-sm text-center text-accent_color text-opacity-90 hover:text-accent_light md:order-4 transition-all duration-200 ease-linear">
 				<Link href="https://mysurface.myaudit.org">
