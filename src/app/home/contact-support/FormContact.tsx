@@ -62,7 +62,7 @@ export default function FormContact({ settings }) {
 	});
 
 	const onSubmit = async (formData: z.infer<typeof formSchema>) => {
-		console.log("Sending data: ", formData);
+		//console.log("Sending data: ", formData);
 
 		try {
 			const response = await fetch("/api/contact-form", {

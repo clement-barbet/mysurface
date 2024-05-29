@@ -44,7 +44,7 @@ export default function ManageLicenseDev({ billing, user }) {
 					console.log("Session data:", fetchedSession);
 
 					if (fetchedSession.status === "complete") {
-						setSubscription(fetchedSession);
+						await setSubscription(fetchedSession);
 					} else {
 						setErrorMessage("error.license");
 					}
@@ -63,23 +63,30 @@ export default function ManageLicenseDev({ billing, user }) {
 		}
 
 		if (session.status === "complete") {
-			const { data, error } = await supabase.rpc(
-				"update_billing_yearly",
-				{
-					logged_user_id: user.id,
-					stripe_session_id: session.id,
-					stripe_customer_id: session.customer,
-				}
-			);
+			try {
+				const response = await fetch("/api/update-yearly", {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify({
+						logged_user_id: user.id,
+						stripe_session_id: session.id,
+						stripe_customer_id: session.customer,
+					}),
+				});
 
-			if (error) {
-				console.error("Error updating billing subscription:", error);
-			} else {
+				if (!response.ok) {
+					throw new Error(`HTTP error! status: ${response.status}`);
+				}
+
 				setSuccessMessage("success.license.purchase");
 				router.push("/home/license");
 				setTimeout(() => {
 					location.reload();
 				}, 1000);
+			} catch (error) {
+				console.error("Failed to update billing subscription: ", error);
 			}
 		}
 	};
@@ -89,18 +96,30 @@ export default function ManageLicenseDev({ billing, user }) {
 			return;
 		}
 
-		const { data, error } = await supabase.rpc("update_billing_trial", {
-			logged_user_id: user.id,
-		});
+		try {
+			const response = await fetch("/api/update-trial", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({
+					logged_user_id: user.id,
+					lang: user.language_id,
+					email: user.email,
+					name: user.name,
+				}),
+			});
 
-		if (error) {
-			console.error("Error updating billing trial:", error);
-		} else {
-			console.log("Billing trial updated successfully:", data);
+			if (!response.ok) {
+				throw new Error(`HTTP error! status: ${response.status}`);
+			}
+
 			setSuccessMessage("success.license.trial");
 			setTimeout(() => {
 				location.reload();
 			}, 1000);
+		} catch (error) {
+			console.error("Failed to update billing trial: ", error);
 		}
 	};
 
