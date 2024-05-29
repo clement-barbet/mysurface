@@ -69,6 +69,7 @@ These are the tables forming the backbone of our database design:
  	- **question_type**: Type of the question can be set to interaction or influence.
  	- **language_id**: ID that references the languages id column.
  	- **organization_id**: ID that references the organizations id column.
+ 	- **process_id**: ID that references the processes id column. Assessment type.
 - **Questionnaires**: Stores the questionnaire related to a participant. **After completing the report, the related questionnaires records will be deleted.**
 	- **id**: Unique identifier for each questionnaire entry.
  	- **created_at**: The timestamp indicating when the entry was created.
@@ -95,13 +96,44 @@ These are the tables forming the backbone of our database design:
  	- **report_name**: Name of the report.
  	- **user_name**: Name of the user that owned the report.
 	- **organization**: Name of the organization of the owner.
-
+- **Assessed**: Stores the information for each assessed, that can be either a leader or product. **After completing the report, the related assessed records will be deleted.**
+	- **id**: Unique identifier for each assessed entry.
+ 	- **created_at**: The timestamp indicating when the record was inserted.
+ 	- **name**: Name of assessed.
+ 	- **description**: Description of assessed, optional.
+ 	- **user_id**: UUID that references the auth.users id column. Represents the manager of the team who added the assessed.
+	- **type**: Type of assessed wich can be leader or product.
+- **Billings**: Stores the information of each actual billing of users.
+	- **id**: Unique identifier for each billing entry.
+  	- **updated_at**: The timestamp indicating when the record has been updated.
+ 	- **expiration_date**: The timestamp indicating when the license expires.
+ 	- **subscription**: Indicates the license type: none, trial, yearly or lifetime.
+ 	- **user_id**: UUID that references the auth.users id column. Represents the owner of the billing.
+ 	- **isTrialUsed**: Boolean value. When a user activates a trial it must be set to true.
+	- **status**: Status of the license, active or inactive.
+	- **session_id**: ID of the session that is created by Stripe when processing license payment.
+	- **payment_id**: Payment intent ID from Stripe.
+	- **email**: Customer's email when payment is executed in Stripe.
+- **Notifications**: Stores the internal notifications in different languages.
+	- **id**: Unique identifier for each notification entry.
+  	- **created_at**: The timestamp indicating when the record has been created.
+ 	- **message**: Content of the notification.
+ 	- **type**: Notification type which can be set to update or news.
+ 	- **link**: Link related to view details of the notification. It's optional.
+ 	- **language_id**: ID that references languages table ID. Represents the language of the notification.
+- **Processes**: Stores the available assessment processes.
+	- **id**: Unique identifier for each process entry.
+  	- **type**: Name of the process.
 
 ### Authentication
 
 When a user signs up, a trigger is activated to add the required information to the public database schema. In Supabase, user information is stored in a separate table called **auth.users**, which is governed by strict policies to ensure the security of sensitive data. Consequently, any additional user information must be stored in the separate public database schema.
 
-The trigger, named **new_user_trigger**, activates upon the insertion of a record into the _auth.users_ table, executing the function **handle_new_user**. This function inserts the user's ID and email into the _public.app_settings_ table and subsequently adds the user's ID into the _public.roles_ table. Any unspecified values are automatically set to default.
+The trigger, named **new_user_trigger**, activates upon the insertion of a record into the _auth.users_ table, executing the function **handle_new_user**. This function inserts the user's ID and email into the _public.app_settings_ table and subsequently adds the user's ID into the _public.roles_ table. Any unspecified values are automatically set to default. It also adds a record into _public.billings_ table with related values.
+
+### Cron Jobs
+
+There is a cron job named _update_expired_subscriptions_daily_ which runs everyday at 00:00 UTC and executes the function called _update_expired_subscriptions_. This way expired subscriptions are handled.
 
 ### Additional Triggers and Functions
 
@@ -124,22 +156,90 @@ The report_before_delete_trigger trigger is designed to execute before a row is 
 - **Description**:
 The delete_user function is a standalone function designed to delete a user from the _auth.users_ table based on the provided user_id. When invoked with a valid user_id, the function deletes the corresponding user record from the _auth.users_ table.
 
+#### 4. Delete user related questionnaires function
+- **Function Name**: delete_user_related_questionnaires
+- **Description**:
+Deletes related questionnaires to participants that have been added by the user and are about to be deleted by the ON DELETE CASCADE clause.
+
+#### 5. Return inserted assessed
+- **Function Name**: insert_assessed_and_return
+- **Parameters**:
+	- **new_name**: Name field.
+	- **new_description**: Description field.
+	- **new_type**: Type field.
+- **Description**:
+Returns the record that has been inserted into assessed table. It is necessary to get the assigned ID and thus, add it into interface table.
+
+#### 6. Return inserted notification
+- **Function Name**: insert_notification_and_return
+- **Parameters**:
+	- **new_language_id**: Language_id field.
+	- **new_message**: Message field.
+	- **new_link**: Link field.
+	- **new_type_notification**: Type field.
+- **Description**:
+Returns the record that has been inserted into notifications table. It is necessary to get the assigned ID and thus, add it into interface table.
+
+#### 7. Return inserted participant
+- **Function Name**: insert_participant_and_return
+- **Parameters**:
+	- **new_email**: Email field.
+	- **new_name**: Name field.
+- **Description**:
+Returns the record that has been inserted into participants table. It is necessary to get the assigned ID and thus, add it into interface table.
+
+#### 8. Restrict insert into assessed
+- **Function Name**: restrict_assessed_insert_by_subscription
+- **Description**:
+Checks the actual subscription and status of the logged user and restricts insert into assessed table. If subscription is inactive or none, the insert is rejected. If the subscription is trial the user can just add up to 20 assessed and if it's yearly can add up to 500. A user with a lifetime subscription has no restrictions.
+
+#### 9. Restrict insert into participants
+- **Function Name**: restrict_participants_insert_by_subscription
+- **Description**:
+Checks the actual subscription and status of the logged user and restricts insert into participants table. If subscription is inactive or none, the insert is rejected. If the subscription is trial the user can just add up to 35 participants and if it's yearly can add up to 500. A user with a lifetime subscription has no restrictions.
+
+#### 10. Activate free trial
+- **Function Name**: update_billing_trial
+- **Parameters**:
+	- **logged_user_id**: ID of the logged user, which references the table auth.users.
+- **Description**:
+Activates the free trial of the logged user; setting subscription to _trial_ and isTrialUsed to _true_. Then, updated expiration_date adding a 30 days interval from current date.
+
+#### 11. Activate annual license
+- **Function Name**: update_billing_yearly
+- **Parameters**:
+	- **logged_user_id**: ID of the logged user, which references the table auth.users.
+	- **stripe_session_id**: Session_id field.
+	- **stripe_payment_id**: Payment_id field.
+	- **stripe_email**: Email field.
+- **Description**:
+Activates the annual license of the logged user after successful payment in Stripe; setting subscription to _yearly_ and adding Stripe related parameters. Then, updated expiration_date adding a 360 days interval from current date. If the user activates a new license before it has expired, adds remaining time to the expiration date.
+
+#### 12. Lifetime expiration date update
+- **Function Name**: update_expiration_date_lifetime
+- **Description**:
+Updates expiration_date to NULL when lifetime subscription is selected.
+
+#### 13. Handle expired subscriptions
+- **Function Name**: update_expired_subscriptions
+- **Description**:
+Checks the expiration_date of subscriptions in billings table and if expired, sets subscription to _none_. A cron scheduled task runs this function everyday at 00:00 UTC.
+
+#### 14. Update status based on subscription
+- **Function Name**: update_status_based_on_subscription
+- **Description**:
+Updates status of subscription depending on the type. If none sets to _inactive_, otherwise to _active_.
+
+#### 15. Update updated_at in billings
+- **Function Name**: update_updated_at_column
+- **Description**:
+Updates the column updated_at in billings table to current time.
+
 ### RLS Policies
 
 Row-Level Security (RLS) policies in Supabase provide a powerful mechanism for controlling access to rows within database tables based on specified criteria. 
 
-While every user is automatically assigned the 'authenticated' role in Supabase, the 'role' column in the roles table is utilized for managing policies and determining access permissions. This setup enables the management of access control for displaying or concealing elements within the interface, enhancing data security and user privacy compliance. To distinguish between the default "authenticated" role and custom roles defined in the roles table, a convention is used: if the role is italicized, it signifies a predefined role.
-
-These are the defined RLS policies for each table:
-- **Languages**: Languages are viewable (SELECT) by any user.
-- **Organizations**: Organizations are viewable (SELECT) by _authenticated_ users.
-- **App_settings**: Authenticated users can SELECT, INSERT, UPDATE and DELETE only the records matching the user_id. Superadmin users can SELECT every record, but only INSERT, UPDATE and DELETE the records matching the user_id.
-- **Roles**: Users can SELECT, INSERT, UPDATE and DELETE only the records matching the user_id.
-- **Questions**: Languages are viewable (SELECT) by any user.
-- **Questionnaires**: Languages are viewable (SELECT) and editable (UPDATE) by _authenticated_ or _anon_ users. Just _authenticated_ users can INSERT or DELETE questionnaires.
-- **Participants**: Users can INSERT, UPDATE and DELETE only the records matching the user_id. Every user can SELECT participants.
-- **Results**: Authenticated users can SELECT, INSERT, UPDATE and DELETE only the records matching the user_id. Superadmin users can SELECT, INSERT, UPDATE and DELETE every record.
-- **Deleted_reports**: Superadmin users can SELECT, INSERT, UPDATE and DELETE every record.
+While every user is automatically assigned the 'authenticated' role in Supabase, the 'role' column in the roles table is utilized for managing policies and determining access permissions. This setup enables the management of access control for displaying or concealing elements within the interface, enhancing data security and user privacy compliance. 
 
 ## Editing Texts with i18n using JSON Files (Patterns and Models)
 
