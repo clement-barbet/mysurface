@@ -652,7 +652,10 @@
 		"my-info": "Chyba při aktualizaci vašich informací. Prosím, zkuste to znovu.",
 		"login": "Chyba při přihlášení. Prosím, zkuste to znovu.",
 		"logout": "Chyba při odhlášení. Prosím, zkuste to znovu.",
-		"license": "Chyba při nákupu licence. Prosím, zkuste to znovu."
+		"license": {
+			"purchase": "Chyba při nákupu licence. Prosím, zkuste to znovu.",
+			"update": "Licence zakoupena, ale chyba při aktualizaci stavu licence. Prosím, kontaktujte podporu."
+		}
 	},
 	"success": {
 		"support": "Vaše zpráva byla úspěšně odeslána.",

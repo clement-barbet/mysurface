@@ -660,7 +660,10 @@
 		"my-info": "Error updating your information. Please, try again.",
 		"login": "Error logging in. Please, try again.",
 		"logout": "Error logging out. Please, try again.",
-		"license": "License purchase error. Please, try again."
+		"license": {
+			"purchase": "License purchase error. Please, try again.",
+			"update": "License purchased but error updating the license status. Please, contact support."
+		}
 	},
 	"success": {
 		"support": "Your message has been sent successfully.",

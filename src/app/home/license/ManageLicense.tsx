@@ -22,16 +22,13 @@ export default function ManageLicense({ billing, user }) {
 				const sessionId = urlParams.get("session_id");
 
 				if (sessionId) {
-					const response = await fetch(
-						`/api/stripe-get-session`,
-						{
-							method: "POST",
-							headers: {
-								"Content-Type": "application/json",
-							},
-							body: JSON.stringify({ session_id: sessionId }),
-						}
-					);
+					const response = await fetch(`/api/stripe-get-session`, {
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json",
+						},
+						body: JSON.stringify({ session_id: sessionId }),
+					});
 
 					if (!response.ok) {
 						throw new Error(
@@ -81,14 +78,15 @@ export default function ManageLicense({ billing, user }) {
 				}
 
 				setSuccessMessage("success.license.purchase");
-				router.push("/home/license");
-				setTimeout(() => {
-					location.reload();
-				}, 1000);
 			} catch (error) {
 				console.error("Failed to update billing subscription: ", error);
 			}
 		}
+
+		router.push("/home/license");
+		setTimeout(() => {
+			location.reload();
+		}, 1000);
 	};
 
 	const handleNewTrial = async () => {

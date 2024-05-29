@@ -651,7 +651,10 @@
 		"my-info": "Error al actualizar tu información. Por favor, inténtalo de nuevo.",
 		"login": "Error al iniciar sesión. Por favor, inténtalo de nuevo.",
 		"logout": "Error al cerrar sesión. Por favor, inténtalo de nuevo.",
-		"license": "Error en la compra de la licencia. Por favor, inténtalo de nuevo."
+		"license": {
+			"purchase": "Error al comprar la licencia. Por favor, inténtalo de nuevo.",
+			"update": "Licencia comprada pero error al actualizar el estado de la licencia. Por favor, contacta con soporte."
+		}
 	},
 	"success": {
 		"support": "Tu mensaje ha sido enviado exitosamente.",
