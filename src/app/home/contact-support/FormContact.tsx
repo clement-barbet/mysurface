@@ -64,39 +64,24 @@ export default function FormContact({ settings }) {
 	const onSubmit = async (formData: z.infer<typeof formSchema>) => {
 		console.log("Sending data: ", formData);
 
-		const formDataEncoded = Object.keys(formData)
-			.map(
-				(key) =>
-					encodeURIComponent(key) +
-					"=" +
-					encodeURIComponent(formData[key])
-			)
-			.join("&");
-
-		console.log("Data encoded: ", formDataEncoded);
-
 		try {
-			const response = await fetch(
-				"https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8",
-				{
-					method: "POST",
-					headers: {
-						"Content-Type": "application/x-www-form-urlencoded",
-					},
-					body: formDataEncoded,
-				}
-			);
+			const response = await fetch("/api/contact-form", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify(formData),
+			});
 
 			if (!response.ok) {
-				setErrorMessage("error.support");
 				throw new Error(`HTTP error! status: ${response.status}`);
 			}
 
 			setSuccessMessage("success.support");
 			form.reset();
 		} catch (error) {
-			setErrorMessage("error.support");
 			console.error("Failed to submit form: ", error);
+			setErrorMessage("error.support");
 		}
 	};
 
