@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/form";
 import T from "@/components/translations/translation";
 import { Input } from "@/components/ui/input";
+import { ErrorMessage } from "@/components/ui/msg/error_msg";
 
 const formSchema = z.object({
 	oid: z.string(),
@@ -36,6 +37,7 @@ const formSchema = z.object({
 
 export default function FormContact({ settings }) {
 	const [successMessage, setSuccessMessage] = useState("");
+	const [errorMessage, setErrorMessage] = useState("");
 	const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 	const actualUrl = baseUrl + "/home/contact-support";
 
@@ -53,21 +55,57 @@ export default function FormContact({ settings }) {
 			last_name: settings.name || "No name",
 			email: settings.email,
 			company: settings.organization || "No organization",
-			phone: "",
+			phone: "No phone",
 			retURL: actualUrl,
-			encoding: "UTF-8",
 			Submit: "Send",
 		},
 	});
 
-	const onSubmit = (formData: z.infer<typeof formSchema>) => {
+	const onSubmit = async (formData: z.infer<typeof formSchema>) => {
 		console.log("Sending data: ", formData);
-		setSuccessMessage("success.support");
-		form.reset();
+
+		const formDataEncoded = Object.keys(formData)
+			.map(
+				(key) =>
+					encodeURIComponent(key) +
+					"=" +
+					encodeURIComponent(formData[key])
+			)
+			.join("&");
+
+		console.log("Data encoded: ", formDataEncoded);
+
+		try {
+			const response = await fetch(
+				"https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8",
+				{
+					method: "POST",
+					headers: {
+						"Content-Type": "application/x-www-form-urlencoded",
+					},
+					body: formDataEncoded,
+				}
+			);
+
+			if (!response.ok) {
+				setErrorMessage("error.support");
+				throw new Error(`HTTP error! status: ${response.status}`);
+			}
+
+			setSuccessMessage("success.support");
+			form.reset();
+		} catch (error) {
+			setErrorMessage("error.support");
+			console.error("Failed to submit form: ", error);
+		}
 	};
 
 	return (
 		<>
+			<ErrorMessage
+				errorMessage={errorMessage}
+				setErrorMessage={setErrorMessage}
+			/>
 			<SuccessMessage
 				successMessage={successMessage}
 				setSuccessMessage={setSuccessMessage}
@@ -81,8 +119,6 @@ export default function FormContact({ settings }) {
 				</p>
 				<Form {...form}>
 					<form
-						action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8"
-						method="POST"
 						onSubmit={form.handleSubmit(onSubmit)}
 						className="flex flex-col gap-y-4"
 					>
@@ -151,7 +187,11 @@ export default function FormContact({ settings }) {
 							)}
 						/>
 						<div className="w-full flex justify-end">
-							<Button type="submit" className="w-full md:w-1/5" name="Submit">
+							<Button
+								type="submit"
+								className="w-full md:w-1/5"
+								name="Submit"
+							>
 								<T tkey="support.button" />
 							</Button>
 						</div>

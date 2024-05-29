@@ -599,6 +599,7 @@
 		}
 	},
 	"error": {
+		"support": "Vaši zprávu se nepodařilo odeslat. Zkuste to prosím znovu.",
 		"modeling": {
 			"insert": "Chyba při vkládání výsledku.",
 			"csv": {

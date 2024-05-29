@@ -607,6 +607,7 @@
 		}
 	},
 	"error": {
+		"support": "Your message could not be sent. Please, try again.",
 		"modeling": {
 			"insert": "Error inserting the result.",
 			"csv": {

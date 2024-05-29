@@ -598,6 +598,7 @@
 		}
 	},
 	"error": {
+		"support": "No se pudo enviar tu mensaje. Por favor, intenta de nuevo.",
 		"modeling": {
 			"insert": "Error al insertar el resultado.",
 			"csv": {
