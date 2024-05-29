@@ -41,12 +41,12 @@ export default function License() {
 		<div className="flex flex-col gap-y-2">
 			<div className="p-5 py-h-auto w-full flex flex-col shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
 				<h2 className="text-lg mb-2 font-semibold border-l-4 border-mid_blue pl-2">
-					<T tkey="license.titles.types.title" />
+					<T tkey="license.titles.manage.title" />
 				</h2>
 				<p className="text-gray-600 dark:text-gray-400 text-lg md:text-base">
-					<T tkey="license.titles.types.subtitle" />
+					<T tkey="license.titles.manage.subtitle" />
 				</p>
-				<LicenseTypes />
+				<ManageLicenseDev billing={billing} user={user} />
 			</div>
 			<div className="p-5 py-h-auto w-full flex flex-col shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
 				<h2 className="text-lg mb-2 font-semibold border-l-4 border-mid_blue pl-2">
@@ -59,15 +59,12 @@ export default function License() {
 			</div>
 			<div className="p-5 py-h-auto w-full flex flex-col shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
 				<h2 className="text-lg mb-2 font-semibold border-l-4 border-mid_blue pl-2">
-					<T tkey="license.titles.manage.title" />
+					<T tkey="license.titles.types.title" />
 				</h2>
 				<p className="text-gray-600 dark:text-gray-400 text-lg md:text-base">
-					<T tkey="license.titles.manage.subtitle" />
+					<T tkey="license.titles.types.subtitle" />
 				</p>
-				<ManageLicenseDev
-					billing={billing}
-					user={user}
-				/>
+				<LicenseTypes />
 			</div>
 		</div>
 	);

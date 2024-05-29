@@ -132,6 +132,9 @@ export default function ManageLicenseDev({ billing, user }) {
 			}, 1000);
 		} catch (error) {
 			console.error("Failed to update billing trial: ", error);
+			setTimeout(() => {
+				location.reload();
+			}, 1000);
 		}
 	};
 
