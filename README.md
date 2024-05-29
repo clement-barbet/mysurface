@@ -131,6 +131,16 @@ When a user signs up, a trigger is activated to add the required information to 
 
 The trigger, named **new_user_trigger**, activates upon the insertion of a record into the _auth.users_ table, executing the function **handle_new_user**. This function inserts the user's ID and email into the _public.app_settings_ table and subsequently adds the user's ID into the _public.roles_ table. Any unspecified values are automatically set to default. It also adds a record into _public.billings_ table with related values.
 
+### Views
+
+#### Participants_view
+
+This view is used in questionnaires generation, so that anon users can select information available there. Email of participants is save as it's not stored in this view.
+
+#### Example_results
+
+This view is used for showing example results to all users, even though they are not the owners of the record stored in results. 
+
 ### Cron Jobs
 
 There is a cron job named _update_expired_subscriptions_daily_ which runs everyday at 00:00 UTC and executes the function called _update_expired_subscriptions_. This way expired subscriptions are handled.
