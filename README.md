@@ -223,7 +223,7 @@ Activates the free trial of the logged user; setting subscription to _trial_ and
 	- **stripe_payment_id**: Payment_id field.
 	- **stripe_email**: Email field.
 - **Description**:
-Activates the annual license of the logged user after successful payment in Stripe; setting subscription to _yearly_ and adding Stripe related parameters. Then, updated expiration_date adding a 360 days interval from current date. If the user activates a new license before it has expired, adds remaining time to the expiration date.
+Activates the annual license of the logged user after successful payment in Stripe; setting subscription to _yearly_ and adding Stripe related parameters. Then, updated expiration_date adding a 365 days interval from current date. If the user activates a new license before it has expired, adds remaining time to the expiration date.
 
 #### 12. Lifetime expiration date update
 - **Function Name**: update_expiration_date_lifetime
