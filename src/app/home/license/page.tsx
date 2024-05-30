@@ -1,5 +1,5 @@
 "use client";
-
+//
 import Loading from "@/components/ui/loading";
 import { fetchUser } from "@/db/auth_user/fetchUser";
 import { fetchBilling } from "@/db/billings/fetchBillingByUserId";
