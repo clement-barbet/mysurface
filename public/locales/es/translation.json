@@ -648,7 +648,10 @@
 			"match": "Las contraseñas no coinciden.",
 			"length": "La contraseña debe tener al menos 6 caracteres."
 		},
-		"my-info": "Error al actualizar tu información. Por favor, inténtalo de nuevo.",
+		"my-info": {
+			"update": "Error al actualizar tu información. Por favor, inténtalo de nuevo.",
+			"session": "No se pudo obtener la sesión o el enlace ha expirado"
+		},
 		"login": "Error al iniciar sesión. Por favor, inténtalo de nuevo.",
 		"logout": "Error al cerrar sesión. Por favor, inténtalo de nuevo.",
 		"license": {

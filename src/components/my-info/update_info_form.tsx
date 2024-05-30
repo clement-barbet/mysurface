@@ -188,7 +188,7 @@ export default function UpdateInfoForm({
 			languageUpdateError
 		) {
 			setErrorMessage(
-				"error.my-info"
+				"error.my-info.update"
 			);
 		} else {
 			setIsUpdated(true);

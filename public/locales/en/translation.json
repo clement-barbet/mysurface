@@ -657,7 +657,10 @@
 			"match": "Passwords don't match.",
 			"length": "Password must have at least 6 characters."
 		},
-		"my-info": "Error updating your information. Please, try again.",
+		"my-info": {
+			"update": "Error updating your information. Please, try again.",
+			"session": "Unable to fetch session or the link has expired"
+		},
 		"login": "Error logging in. Please, try again.",
 		"logout": "Error logging out. Please, try again.",
 		"license": {

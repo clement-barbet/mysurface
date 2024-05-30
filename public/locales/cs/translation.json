@@ -649,7 +649,10 @@
 			"match": "Hesla se neshodují.",
 			"length": "Heslo musí mít minimálně 6 znaků."
 		},
-		"my-info": "Chyba při aktualizaci vašich informací. Prosím, zkuste to znovu.",
+		"my-info": {
+			"update": "Chyba při aktualizaci vašich informací. Zkuste to prosím znovu.",
+			"session": "Nelze načíst relaci nebo odkaz vypršel"
+		},
 		"login": "Chyba při přihlášení. Prosím, zkuste to znovu.",
 		"logout": "Chyba při odhlášení. Prosím, zkuste to znovu.",
 		"license": {

@@ -6,20 +6,29 @@ import { Button } from "@/components/ui/button";
 import UpdateInfoForm from "@/components/my-info/update_info_form";
 import Loading from "@/components/ui/loading";
 import T from "@/components/translations/translation";
+import { ErrorMessage } from "@/components/ui/msg/error_msg";
 
 export default function MyInfo() {
 	const supabase = createClientComponentClient();
 	const [userSB, setUserSB] = useState(null);
 	const [loading, setLoading] = useState(true);
 	const [isUpdated, setIsUpdated] = useState(false);
+	const [errorMessage, setErrorMessage] = useState("");
 
 	useEffect(() => {
 		const fetchUser = async () => {
 			try {
-				const session = await supabase.auth.getSession();
-				if (session) {
-					setUserSB(session.data.session.user);
-				}
+				supabase.auth.onAuthStateChange(async (event, session) => {
+					if (
+						event === "SIGNED_IN" &&
+						session?.user.email_confirmed_at
+					) {
+						console.log("session: ", session);
+						setUserSB(session.user);
+					} else {
+						setErrorMessage("error.my-info.session");
+					}
+				});
 			} catch (error) {
 				console.error("Error fetching user: ", error);
 			} finally {
@@ -36,6 +45,10 @@ export default function MyInfo() {
 
 	return userSB && userSB.id ? (
 		<>
+			<ErrorMessage
+				errorMessage={errorMessage}
+				setErrorMessage={setErrorMessage}
+			/>
 			<h2 className="text-3xl text-center py-4">
 				<T tkey="my-info.title" />
 			</h2>
