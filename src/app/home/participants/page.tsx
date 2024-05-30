@@ -28,6 +28,12 @@ export default function Participants() {
 	const [assesseds, setAssesseds] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [userId, setUserId] = useState(null);
+	const [participantCount, setParticipantCount] = useState(0);
+	const [assessedCount, setAssessedCount] = useState(0);
+	const [
+		atLeastOneQuestionnaireCompleted,
+		setAtLeastOneQuestionnaireCompleted,
+	] = useState(false);
 
 	const fetchParticipantsWithStatus = async (userId) => {
 		try {
@@ -45,24 +51,17 @@ export default function Participants() {
 				}
 			);
 			setParticipants(updatedParticipants);
+			const countParticipants = fetchedParticipants
+				? fetchedParticipants.length
+				: 0;
+			setParticipantCount(countParticipants);
+
+			const completed = updatedParticipants.some(
+				(participant) => participant.questionnaireStatus === "completed"
+			);
+			setAtLeastOneQuestionnaireCompleted(completed);
 		} catch (error) {
 			console.error("Error fetching participants:", error.message);
-		}
-	};
-
-	const fetchQuestionnairesByIds = async () => {
-		try {
-			const questionnaireIds = participants
-				.filter(
-					(p) =>
-						p.questionnaire !== null &&
-						p.questionnaire !== undefined
-				)
-				.map((p) => p.questionnaire);
-			const fetchedQuestionnaires = fetchQuestionnaires(questionnaireIds);
-			setQuestionnaires(fetchedQuestionnaires);
-		} catch (error) {
-			console.error("Error fetching questionnaires:", error.message);
 		}
 	};
 
@@ -86,9 +85,10 @@ export default function Participants() {
 					);
 					setAssesseds(fetchedAssesseds);
 					await fetchParticipantsWithStatus(fetchedUserId);
-					if (participants) {
-						await fetchQuestionnairesByIds();
-					}
+					const countAssesseds = fetchedAssesseds
+						? fetchedAssesseds.length
+						: 0;
+					setAssessedCount(countAssesseds);
 				}
 			} catch (error) {
 				console.error("Error fetching data", error);
@@ -137,14 +137,6 @@ export default function Participants() {
 	const onAssessedAdded = (newAssessed) => {
 		setAssesseds((currentAssesseds) => [...currentAssesseds, newAssessed]);
 	};
-
-	const atLeastOneQuestionnaireCompleted =
-		questionnaires && questionnaires.length > 0
-			? questionnaires.some((questionnaire) => questionnaire.completed)
-			: false;
-
-	const participantCount = participants ? participants.length : 0;
-	const assessedCount = assesseds ? assesseds.length : 0;
 
 	if (loading) {
 		return <Loading />;
@@ -214,7 +206,6 @@ export default function Participants() {
 						isEnrollmentPhase={isEnrollmentPhase}
 						participantCount={participantCount}
 						setIsEnrollmentPhase={setIsEnrollmentPhase}
-						fetchQuestionnaires={fetchQuestionnairesByIds}
 						fetchParticipants={() =>
 							fetchParticipantsWithStatus(userId)
 						}
@@ -225,7 +216,6 @@ export default function Participants() {
 					<ResetPhaseButton
 						isEnrollmentPhase={isEnrollmentPhase}
 						setIsEnrollmentPhase={setIsEnrollmentPhase}
-						fetchQuestionnaires={fetchQuestionnairesByIds}
 						fetchParticipants={() =>
 							fetchParticipantsWithStatus(userId)
 						}

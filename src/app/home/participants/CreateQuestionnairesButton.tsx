@@ -14,7 +14,6 @@ export default function CreateQuestionnairesButton({
 	isEnrollmentPhase,
 	participantCount,
 	setIsEnrollmentPhase,
-	fetchQuestionnaires,
 	fetchParticipants,
 	process,
 	assessedCount,
@@ -35,7 +34,6 @@ export default function CreateQuestionnairesButton({
 					.eq("user_id", userId);
 
 				fetchParticipants();
-				fetchQuestionnaires();
 			} else {
 				console.error("Error creating questionnaires");
 			}

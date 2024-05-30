@@ -36,15 +36,6 @@ export default function SelectProcess({ onProcessIdChange }) {
 		onProcessIdChange(selectedProcess);
 	};
 
-	let processName;
-	if (selectedProcess == 1) {
-		processName = "participants.select-process.options.influence";
-	} else if (selectedProcess == 2) {
-		processName = "participants.select-process.options.leaders";
-	} else if (selectedProcess == 3) {
-		processName = "participants.select-process.options.products";
-	}
-
 	const processId = form.watch("process_id");
 
 	useEffect(() => {

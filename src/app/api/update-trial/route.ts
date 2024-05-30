@@ -31,7 +31,7 @@ const sendMessage = async (mailOptions) => {
 export async function POST(req: Request) {
 	try {
 		const supabase = createServerComponentClient({ cookies });
-		const { logged_user_id, lang, email, name } = await req.json();
+		let { logged_user_id, lang, email, name } = await req.json();
 
 		const { data, error } = await supabase.rpc("update_billing_trial", {
 			logged_user_id: logged_user_id,
@@ -41,6 +41,8 @@ export async function POST(req: Request) {
 			throw new Error(error.message);
 		}
 
+		name = name || "";
+
 		let subject;
 		let html;
 		let baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
@@ -49,7 +51,7 @@ export async function POST(req: Request) {
 		if (lang == 2) {
 			// Czech language
 			subject = "Zkušební verze MySurface zdarma";
-			html = `<h2>Ahoj ${name},</h2>
+			html = `<h2>Ahoj ${name}</h2>
             <p>Aktivovali jste zkušební licenci v aplikaci MySurface, která vyprší za 30 dní. Užijte si to!</p>
             <p>Vždy můžete vylepšit svou verzi zakoupením roční licence <a href="${url}">ZDE</a>.</p>
             <p>S pozdravem,</p>
@@ -57,7 +59,7 @@ export async function POST(req: Request) {
 		} else if (lang == 3) {
 			// Spanish language
 			subject = "Prueba Gratuita de MySurface";
-			html = `<h2>Hola ${name},</h2>
+			html = `<h2>Hola ${name}</h2>
             <p>Has activado una licencia de prueba gratuita en MySurface App, la cual expirará en 30 días. ¡Disfrútala!</p>
             <p>Siempre puedes mejorar tu versión adquiriendo una licencia anual <a href="${url}">AQUÍ</a>.</p>
             <p>Saludos cordiales,</p>
@@ -65,7 +67,7 @@ export async function POST(req: Request) {
 		} else {
 			// English language
 			subject = "MySurface Free Trial";
-			html = `<h2>Hello ${name},</h2>
+			html = `<h2>Hello ${name}</h2>
 			<p>You have activated a free trial license in MySurface App, which will expire in 30 days. Enjoy it!</p>
             <p>You can always upgrade your version by purchasing an annual license <a href="${url}">HERE</a>.</p>
 			<p>Best regards,</p>

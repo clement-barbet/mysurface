@@ -29,7 +29,9 @@ const sendMessage = async (mailOptions) => {
 export async function POST(request: Request) {
 	try {
 		const body = await request.json();
-		const { name, email, url, lang } = body;
+		let { name, email, url, lang } = body;
+
+		name = name || "";
 
 		let subject;
 		let html;
@@ -37,21 +39,21 @@ export async function POST(request: Request) {
 		if (lang == 2) {
 			// Czech language
 			subject = "Dotazník MySurface";
-			html = `<h2>Dobrý den ${name},</h2>
+			html = `<h2>Dobrý den ${name}</h2>
 			<p>Dotazník, který vám byl přidělen, můžete vyplnit kliknutím <a href="${url}">ZDE</a>. Prosím, vyplňte jej co nejdříve.</p>
 			<p>S pozdravem,</p>
 			<p><i>Team MySurface</i></p>`;
 		} else if (lang == 3) {
 			// Spanish language
 			subject = "Cuestionario MySurface";
-			html = `<h2>Hola ${name},</h2>
+			html = `<h2>Hola ${name}</h2>
 			<p>Puedes rellenar el cuestionario que se te ha asignado haciendo clic <a href="${url}">AQUÍ</a>. Por favor, complétalo lo antes posible.</p>
 			<p>Saludos,</p>
 			<p><i>Equipo de MySurface</i></p>`;
 		} else {
 			// English language
 			subject = "MySurface questionnaire";
-			html = `<h2>Hello ${name},</h2>
+			html = `<h2>Hello ${name}</h2>
 			<p>You can fill out the questionnaire assigned to you by clicking <a href="${url}">HERE</a>. Please complete it as soon as possible.</p>
 			<p>Best regards,</p>
 			<p><i>The MySurface Team</i></p>`;

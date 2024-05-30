@@ -18,7 +18,7 @@ import {
 import T from "@/components/translations/translation";
 
 const formSchema = z.object({
-	process_id: z.string(),
+	process_id: z.number(),
 });
 
 export default function SelectProcess({
@@ -30,24 +30,18 @@ export default function SelectProcess({
 	const supabase = createClientComponentClient();
 	const [successMessage, setSuccessMessage] = useState("");
 	const [errorMessage, setErrorMessage] = useState("");
-	const [selectedProcess, setSelectedProcess] = useState(process);
 
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
 		defaultValues: {
-			process_id: selectedProcess,
+			process_id: process,
 		},
 	});
 
-	useEffect(() => {
-		setSelectedProcess(process);
-	}, [process]);
-
-	const { setValue } = form;
+	const { setValue, watch } = form;
 
 	const handleSelectChange = (event) => {
-		const newSelectedProcess = event.target.value;
-		setSelectedProcess(newSelectedProcess);
+		const newSelectedProcess = parseInt(event.target.value, 10);
 		setValue("process_id", newSelectedProcess);
 	};
 
@@ -68,17 +62,15 @@ export default function SelectProcess({
 		}
 	};
 
-	let processName;
-	if (selectedProcess === 1) {
-		processName = "participants.select-process.options.influence";
-	} else if (selectedProcess === 2) {
-		processName = "participants.select-process.options.leaders";
-	} else if (selectedProcess === 3) {
-		processName = "participants.select-process.options.products";
-	}
+	const processId = watch("process_id");
 
-	if (selectedProcess === null) {
-		return null;
+	let processName;
+	if (processId == 1) {
+		processName = "participants.select-process.options.influence";
+	} else if (processId == 2) {
+		processName = "participants.select-process.options.leaders";
+	} else if (processId == 3) {
+		processName = "participants.select-process.options.products";
 	}
 
 	return (
@@ -97,7 +89,7 @@ export default function SelectProcess({
 						<T tkey="participants.titles.set-process.subtitle" />
 					</h2>
 					<div>
-						{selectedProcess == 1 && (
+						{processId == 1 && (
 							<p className="text-darkest_gray italic text-sm">
 								<span className="font-semibold">
 									<T tkey="participants.select-process.options.influence" />
@@ -106,7 +98,7 @@ export default function SelectProcess({
 								<T tkey="participants.select-process.explanations.influence" />
 							</p>
 						)}
-						{selectedProcess == 2 && (
+						{processId == 2 && (
 							<p className="text-darkest_gray italic text-sm">
 								<span className="font-semibold">
 									<T tkey="participants.select-process.options.leaders" />
@@ -115,7 +107,7 @@ export default function SelectProcess({
 								<T tkey="participants.select-process.explanations.leaders" />
 							</p>
 						)}
-						{selectedProcess == 3 && (
+						{processId == 3 && (
 							<p className="text-darkest_gray italic text-sm">
 								<span className="font-semibold">
 									<T tkey="participants.select-process.options.products" />
@@ -144,7 +136,7 @@ export default function SelectProcess({
 												name="process_id"
 												id="process_id"
 												onChange={handleSelectChange}
-												value={selectedProcess}
+												value={processId}
 												className="dark:bg-mid_blue appearance-none box-border w-full px-3 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 bg-dark_gray cursor-pointer"
 											>
 												<option value="1">
