@@ -7,18 +7,21 @@ import {
 	TooltipProvider,
 	TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import T from "@/components/translations/translation";
 
 export default function CreateQuestionnairesButton({
 	isEnrollmentPhase,
-	participantCount,
+	participants,
 	setIsEnrollmentPhase,
 	fetchParticipants,
 	process,
-	assessedCount,
+	assesseds,
 	userId,
 }) {
+	const [canCreateQuestionnaires, setCanCreateQuestionnaires] =
+		useState(false);
+
 	const createQuestionnaires = async () => {
 		try {
 			const response = await fetch("/api/create-questionnaires", {
@@ -44,12 +47,20 @@ export default function CreateQuestionnairesButton({
 		}
 	};
 
-	let canCreateQuestionnaires;
-	if (process == 1) {
-		canCreateQuestionnaires = isEnrollmentPhase && participantCount >= 2;
-	} else {
-		canCreateQuestionnaires = isEnrollmentPhase && participantCount >= 1 && assessedCount >= 1;
-	}
+	useEffect(() => {
+		let canCreate;
+		const participantCount = participants.length || 0;
+		const assessedCount = assesseds.length || 0;
+		if (process == 1) {
+			canCreate = isEnrollmentPhase && participantCount >= 2;
+		} else {
+			canCreate =
+				isEnrollmentPhase &&
+				participantCount >= 1 &&
+				assessedCount >= 1;
+		}
+		setCanCreateQuestionnaires(canCreate);
+	}, [process, isEnrollmentPhase, participants, assesseds]);
 
 	if (!isEnrollmentPhase) {
 		return null;

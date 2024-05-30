@@ -101,19 +101,8 @@ export default function Participants() {
 	}, []);
 
 	const onParticipantAdded = (newParticipant) => {
-		if (newParticipant.questionnaire) {
-			const linkedQuestionnaire = questionnaires.find(
-				(q) => q.id === newParticipant.questionnaire.id
-			);
-			if (linkedQuestionnaire) {
-				newParticipant.questionnaireStatus =
-					linkedQuestionnaire.completed ? "completed" : "tocomplete";
-			} else {
-				newParticipant.questionnaireStatus = "undefined";
-			}
-		} else {
-			console.error("newParticipant.questionnaire is undefined");
-		}
+		newParticipant.questionnaireStatus = "undefined";
+
 		setParticipants((currentParticipants) => [
 			...currentParticipants,
 			newParticipant,
@@ -141,7 +130,7 @@ export default function Participants() {
 	if (loading) {
 		return <Loading />;
 	}
-
+	
 	return (
 		<div className="flex flex-col gap-y-2">
 			<div>
@@ -204,13 +193,13 @@ export default function Participants() {
 				<div className="flex flex-col gap-y-2 md:gap-x-4 md:flex-row md:justify-start md:flex-wrap">
 					<CreateQuestionnairesButton
 						isEnrollmentPhase={isEnrollmentPhase}
-						participantCount={participantCount}
+						participants={participants}
 						setIsEnrollmentPhase={setIsEnrollmentPhase}
 						fetchParticipants={() =>
 							fetchParticipantsWithStatus(userId)
 						}
 						process={process}
-						assessedCount={assessedCount}
+						assesseds={assesseds}
 						userId={userId}
 					/>
 					<ResetPhaseButton
@@ -222,7 +211,7 @@ export default function Participants() {
 						userId={userId}
 					/>
 					<DeleteAllParticipantsButton
-						participantCount={participantCount}
+						participants={participants}
 						setParticipants={setParticipants}
 						setIsEnrollmentPhase={setIsEnrollmentPhase}
 						userId={userId}

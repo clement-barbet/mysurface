@@ -8,12 +8,12 @@ import { ErrorMessage } from "@/components/ui/msg/error_msg";
 import { SuccessMessage } from "@/components/ui/msg/success_msg";
 
 const DeleteAllParticipantsButton = ({
-	participantCount,
+	participants,
 	setParticipants,
 	setIsEnrollmentPhase,
 	userId,
 }: {
-	participantCount: number;
+	participants: any;
 	setParticipants: any;
 	setIsEnrollmentPhase: any;
 	userId: any;
@@ -56,6 +56,7 @@ const DeleteAllParticipantsButton = ({
 		}
 	};
 
+	let participantCount = participants.length || 0;
 	// Return null if there are no participants
 	if (participantCount === 0) {
 		return null;
