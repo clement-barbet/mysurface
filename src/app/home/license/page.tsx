@@ -1,11 +1,10 @@
 "use client";
-//
 import Loading from "@/components/ui/loading";
 import { fetchUser } from "@/db/auth_user/fetchUser";
 import { fetchBilling } from "@/db/billings/fetchBillingByUserId";
 import { useEffect, useState } from "react";
 import LicenseDetails from "./LicenseDetails";
-import ManageLicenseDev from "./ManageLicenseDev";
+import ManageLicense from "./ManageLicense";
 import T from "@/components/translations/translation";
 import LicenseTypes from "./LicenseTypes";
 
@@ -55,7 +54,7 @@ export default function License() {
 				<p className="text-gray-600 dark:text-gray-400 text-lg md:text-base">
 					<T tkey="license.titles.manage.subtitle" />
 				</p>
-				<ManageLicenseDev billing={billing} user={user} />
+				<ManageLicense billing={billing} user={user} />
 			</div>
 			<div className="p-5 py-h-auto w-full flex flex-col shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
 				<h2 className="text-lg mb-2 font-semibold border-l-4 border-mid_blue pl-2">
