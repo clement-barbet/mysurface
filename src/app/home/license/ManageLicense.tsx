@@ -22,13 +22,16 @@ export default function ManageLicense({ billing, user }) {
 				const sessionId = urlParams.get("session_id");
 
 				if (sessionId) {
-					const response = await fetch(`/api/stripe-get-session`, {
-						method: "POST",
-						headers: {
-							"Content-Type": "application/json",
-						},
-						body: JSON.stringify({ session_id: sessionId }),
-					});
+					const response = await fetch(
+						`/api/stripe-get-session`,
+						{
+							method: "POST",
+							headers: {
+								"Content-Type": "application/json",
+							},
+							body: JSON.stringify({ session_id: sessionId }),
+						}
+					);
 
 					if (!response.ok) {
 						throw new Error(
@@ -43,7 +46,7 @@ export default function ManageLicense({ billing, user }) {
 					if (fetchedSession.status === "complete") {
 						await setSubscription(fetchedSession);
 					} else {
-						setErrorMessage("error.license");
+						setErrorMessage("error.license.purchase");
 					}
 				}
 			} catch (error) {
@@ -60,6 +63,8 @@ export default function ManageLicense({ billing, user }) {
 		}
 
 		if (session.status === "complete") {
+			setSuccessMessage("success.license.purchase");
+			console.log("email: ", session.customer_details.email);
 			try {
 				const response = await fetch("/api/update-yearly", {
 					method: "POST",
@@ -68,8 +73,14 @@ export default function ManageLicense({ billing, user }) {
 					},
 					body: JSON.stringify({
 						logged_user_id: user.id,
-						stripe_session_id: session.id,
-						stripe_customer_id: session.customer,
+						stripe_session_id:
+							session.id || "error storing session id",
+						stripe_payment_id:
+							session.payment_intent ||
+							"error storing payment id",
+						stripe_email:
+							session.customer_details.email ||
+							"error storing email",
 					}),
 				});
 
@@ -77,16 +88,19 @@ export default function ManageLicense({ billing, user }) {
 					throw new Error(`HTTP error! status: ${response.status}`);
 				}
 
-				setSuccessMessage("success.license.purchase");
+				router.push("/home/license");
+				setTimeout(() => {
+					location.reload();
+				}, 1000);
 			} catch (error) {
 				console.error("Failed to update billing subscription: ", error);
+				setErrorMessage("error.license.update");
+				router.push("/home/license");
+				setTimeout(() => {
+					location.reload();
+				}, 1000);
 			}
 		}
-
-		router.push("/home/license");
-		setTimeout(() => {
-			location.reload();
-		}, 1000);
 	};
 
 	const handleNewTrial = async () => {
@@ -118,6 +132,9 @@ export default function ManageLicense({ billing, user }) {
 			}, 1000);
 		} catch (error) {
 			console.error("Failed to update billing trial: ", error);
+			setTimeout(() => {
+				location.reload();
+			}, 1000);
 		}
 	};
 
