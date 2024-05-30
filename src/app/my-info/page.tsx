@@ -18,6 +18,7 @@ export default function MyInfo() {
 	useEffect(() => {
 		const fetchUser = async () => {
 			try {
+				setLoading(true);
 				supabase.auth.onAuthStateChange(async (event, session) => {
 					if (
 						event === "SIGNED_IN" &&
@@ -25,12 +26,15 @@ export default function MyInfo() {
 					) {
 						console.log("session: ", session);
 						setUserSB(session.user);
-					} else {
-						setErrorMessage("error.my-info.session");
+						console.log(session.user);
+						if (!session.user) {
+							setErrorMessage("error.my-info.session");
+						}
 					}
 				});
 			} catch (error) {
 				console.error("Error fetching user: ", error);
+				setErrorMessage("error.my-info.session");
 			} finally {
 				setLoading(false);
 			}
