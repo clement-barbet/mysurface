@@ -24,9 +24,7 @@ export default function MyInfo() {
 						event === "SIGNED_IN" &&
 						session?.user.email_confirmed_at
 					) {
-						console.log("session: ", session);
 						setUserSB(session.user);
-						console.log(session.user);
 						if (!session.user) {
 							setErrorMessage("error.my-info.session");
 						}

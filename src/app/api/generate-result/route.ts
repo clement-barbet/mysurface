@@ -24,7 +24,7 @@ export async function POST() {
 			.select("*")
 			.eq("language_id", appSettings.language_id)
 			.eq("organization_id", appSettings.organization_id)
-			.eq("process_id", appSettings.process);
+			.eq("process_id", appSettings.process_id);
 
 		if (questionsError) {
 			console.log("Error fetching questions");
