@@ -383,52 +383,40 @@
 	},
 	"patterns": {
 		"p1": {
-			"title": "Influence Pattern Type",
-			"subtitle": "Description of the pattern 1."
+			"title": "Pattern Type 1 - Influence",
+			"subtitle": "Every entity rates all other entities, meantime getting rate from all."
 		},
 		"p2": {
-			"title": "Leader Pattern Type",
-			"subtitle": "Description of the pattern 2."
+			"title": "Pattern Type 2 - Leader",
+			"subtitle": "Entities rate specified entities, meantime can rate it's opponent. Best for rating people."
 		},
 		"p3": {
-			"title": "Product Pattern Type",
-			"subtitle": "Description of the pattern 3."
+			"title": "Pattern Type 3 - Product",
+			"subtitle": "Entities rate specified entities. meantime they cannot rate. Best for rating product or things."
 		},
 		"p4": {
 			"title": "Pattern 1 - Two Nodes",
 			"subtitle": "You can see two connected nodes, that means these nodes have some relation or interaction. Meantime, one of nodes is bigger, another one smaller. That means, the bigger node got a higher influence rate by smaller one and vise-versa."
 		},
 		"p5": {
-			"title": "Pattern 2 - Three Nodes - One Disconnected",
-			"subtitle": "Three nodes with visible three levels of influence. The biggest got the highest rate from other two nodes, meantime others got 50% less and 90% less than the biggest one. Meantime, two of them are disconnected, that means they don't havr any interaction."
+			"title": "Pattern 2 - Three Nodes",
+			"subtitle": "Three nodes with visible three levels of influence. The biggest got the highest rate from other two nodes, meantime others got 50% less and 90% less than the biggest one. Meantime, two of them are disconnected, that means they don't have any interaction."
 		},
 		"p6": {
 			"title": "Pattern 3 - Three Connected Nodes",
-			"subtitle": "........"
+			"subtitle": "Three nodes with visible levels of influence. The biggest have the highest rate from other two nodes, meantime others got 50% less and 90% less than the biggest one. Meantime, all of them are connected, that means they all have interaction."
 		},
 		"p7": {
 			"title": "Pattern 4 - Nodes Group - One Exceptional",
-			"subtitle": "Description of the p7."
+			"subtitle": "Twelve connected nodes with one exceptional represent that 11 nodes have closer collaboration with similar level of influence. Meantime, one node has signifficantly smaller influence level, rated by the rest nodes. The weak element needs to be analyzed."
 		},
 		"p8": {
 			"title": "Pattern 5 - Two Groups - One Disconnected ",
-			"subtitle": "Description of the p8."
+			"subtitle": "The following pattern represents two independent collaboartion groups that don't cooperayte together. Both groups has at least one shining node that reporesens the most influental person in the group. One element is disconneced, not rate by any of other nodes."
 		},
 		"p9": {
 			"title": "Pattern 6 - Thirty Nodes - Random Influence And Connection",
-			"subtitle": "Description of the p6."
-		},
-		"p10": {
-			"title": "Pattern 10",
-			"subtitle": "Description of the pattern 10."
-		},
-		"p11": {
-			"title": "Pattern 11",
-			"subtitle": "Description of the pattern 11."
-		},
-		"p12": {
-			"title": "Pattern 12",
-			"subtitle": "Description of the pattern 12."
+			"subtitle": "The following pattern reporesent random connecttion and influence between nodes. Some of tgem are connected, some of them not/ So closer nodes are, so closer is the connection between them and surrounded nodes."
 		}
 	},
 	"models": {

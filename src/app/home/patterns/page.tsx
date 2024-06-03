@@ -4,10 +4,6 @@ import T from "@/components/translations/translation";
 export default function Patterns() {
 	return (
 		<div className="flex flex-col gap-y-2">
-
-
-
-
 			<div className="flex flex-col gap-y-2 lg:flex-row lg:gap-x-2">
 				<div className="w-full p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
 					<h2 className="font-semibold text-lg ">
@@ -48,15 +44,7 @@ export default function Patterns() {
 						className="w-full rounded-lg"
 					/>
 				</div>
-			</div>
-
-
-
-
-
-
-
-			
+			</div>			
 			<div className="flex flex-col gap-y-2 lg:flex-row lg:gap-x-2">
 				<div className="w-full p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
 					<h2 className="font-semibold text-lg ">
@@ -137,49 +125,6 @@ export default function Patterns() {
 					<img
 						src="/Pattern6.png"
 						alt="pattern6"
-						className="w-full rounded-lg"
-					/>
-				</div>
-			</div>
-			<div className="flex flex-col gap-y-2 lg:flex-row lg:gap-x-2">
-				<div className="w-full p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
-					<h2 className="font-semibold text-lg ">
-						<T tkey="patterns.p10.title" />
-					</h2>
-					<p className="text-gray-600 dark:text-gray-400 text-lg md:text-base mb-2">
-						<T tkey="patterns.p10.subtitle" />
-					</p>
-					<img
-						src="/stock.jpg"
-						alt="stock"
-						className="w-full rounded-lg"
-					/>
-				</div>
-				<div className="w-full p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
-					<h2 className="font-semibold text-lg ">
-						<T tkey="patterns.p11.title" />
-					</h2>
-					<p className="text-gray-600 dark:text-gray-400 text-lg md:text-base mb-2">
-						<T tkey="patterns.p11.subtitle" />
-					</p>
-					<img
-						src="/stock.jpg"
-						alt="stock"
-						className="w-full rounded-lg"
-					/>
-				</div>
-			</div>
-			<div className="flex flex-col gap-y-2 lg:flex-row lg:gap-x-2">
-				<div className="w-full p-5 shadow-md rounded-lg bg-white dark:bg-black bg-opacity-90">
-					<h2 className="font-semibold text-lg ">
-						<T tkey="patterns.p12.title" />
-					</h2>
-					<p className="text-gray-600 dark:text-gray-400 text-lg md:text-base mb-2">
-						<T tkey="patterns.p12.subtitle" />
-					</p>
-					<img
-						src="/Pattern-type3.png"
-						alt="stock"
 						className="w-full rounded-lg"
 					/>
 				</div>
