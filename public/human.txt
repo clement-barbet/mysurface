@@ -7,6 +7,6 @@
         |___/                                    
 
 TEAM:
-· Laco Vencel (laco@lanast.com) - Leader
+· Laco Vencel (laco@lanast.com) - Owner
 · Clément Barbet (clementbarbet13@gmail.com) - Developer
 · Leire Lasa (leire.lasa.amo@gmail.com) - Developer

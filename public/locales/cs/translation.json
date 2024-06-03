@@ -9,10 +9,10 @@
 				"title": "Průvodce administrátora",
 				"subtitle": "Kroky pro administrátora.",
 				"steps": {
-					"s1": "Přihlaste se a nastavte si profil organizace",
-					"s2": "Přejděte na sekci 'Účastníci'",
+					"s1": "Po přihlášení si nastavte profil organizace.",
+					"s2": "Přejděte na sekci 'Účastníci'.",
 					"s3": "V sekci 'Účastníci' si vyberte proces, vytvořte účastníky a spustěte dotazník.",
-					"s4": "Zkopírujte odkaz na dotazník, nebo odešlete hromadně na každého účastníka",
+					"s4": "Zkopírujte odkaz na dotazník a nebo odešlete hromadně na každého účastníka",
 					"s5": "Po dokončení dotazníku každým účastníkem klikněte na tlačítko 'Generovat výsledek'",
 					"s6": "Jakmile je zpráva vygenerována, budete přesměrováni na stránku s grafy 2D a 3D",
 					"s7": "V sekci 'Výsledky' můžete kdykoli zkontrolovat výsledky zpětně."
