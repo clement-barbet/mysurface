@@ -62,7 +62,7 @@
 			"add-form": "Přidat nového účastníka",
 			"add-csv": "Hromadné nahrávání účastníků",
 			"set-process": {
-				"title": "Vyberte typ hodnocení",
+				"title": "Typ hodnocení",
 				"subtitle": "Výběr typu hodnocení"
 			},
 			"manage": {
