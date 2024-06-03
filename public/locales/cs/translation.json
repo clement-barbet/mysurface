@@ -387,90 +387,102 @@
 	},
 	"patterns": {
 		"p1": {
-			"title": "Pattern 1",
-			"subtitle": "Description of the pattern 1."
+			"title": "Typ vzoru 1 - Vliv",
+			"subtitle": "Všechny entity hodnotí všechny ostatní entity z hlediska kvality spolupráce a úrovně vlivu každého uzlu (uzel=osoba)."
 		},
 		"p2": {
-			"title": "Pattern 2",
-			"subtitle": "Description of the pattern 2."
+			"title": "Typ vzoru 2 - Vůdce",
+			"subtitle": "Entity hodnotí pouze určené entity, mezitím určená entita může hodnotit svého soupeře. Nejlepší pro hodnocení lidí."
 		},
 		"p3": {
-			"title": "Pattern 3",
-			"subtitle": "Description of the pattern 3."
+			"title": "Typ vzoru 3 - Produkt",
+			"subtitle": "Entity hodnotí určené entity, mezitím určená entita nehodnotí ostatní. Nejlepší pro hodnocení produktů nebo věcí."
 		},
 		"p4": {
-			"title": "Pattern 4",
-			"subtitle": "Description of the pattern 4."
+			"title": "Vzor 1 - Dva uzly",
+			"subtitle": "Vidíte dva propojené uzly, což znamená, že tyto uzly mají nějaký vztah nebo interakci. Mezitím je jeden z uzlů větší, druhý menší. To znamená, že větší uzel získal vyšší vliv od menšího a naopak."
 		},
 		"p5": {
-			"title": "Pattern 5",
-			"subtitle": "Description of the pattern 5."
+			"title": "Vzor 2 - Tři uzly",
+			"subtitle": "Tři uzly s viditelnými třemi úrovněmi vlivu. Největší uzel získal nejvyšší hodnocení od dalších dvou uzlů, mezitím ostatní získali o 50 % méně a o 90 % méně než největší uzel. Mezitím jsou dva z nich odpojené, což znamená, že nemají žádnou interakci."
 		},
 		"p6": {
-			"title": "Pattern 6",
-			"subtitle": "Description of the pattern 6."
+			"title": "Vzor 3 - Tři propojené uzly",
+			"subtitle": "Tři uzly s viditelnými úrovněmi vlivu. Největší uzel má nejvyšší hodnocení od dalších dvou uzlů, mezitím ostatní získali o 50 % méně a o 90 % méně než největší uzel. Mezitím jsou všichni propojeni, což znamená, že všichni mají interakci."
 		},
 		"p7": {
-			"title": "Pattern 7",
-			"subtitle": "Description of the pattern 7."
+			"title": "Vzor 4 - Skupina uzlů - Jeden výjimečný",
+			"subtitle": "Dvanáct propojených uzlů s jedním výjimečným ukazuje, že 11 uzlů má bližší spolupráci s podobnou úrovní vlivu. Mezitím jeden uzel má výrazně menší úroveň vlivu, hodnocený ostatními uzly. Slabý prvek je třeba analyzovat."
 		},
 		"p8": {
-			"title": "Pattern 8",
-			"subtitle": "Description of the pattern 8."
+			"title": "Vzor 5 - Dvě skupiny - Jeden odpojený",
+			"subtitle": "Následující vzor představuje dvě nezávislé spolupracující skupiny, které spolu nepracují. Obě skupiny mají alespoň jeden zářivý uzel, který představuje nejvlivnější osobu ve skupině. Jeden prvek je odpojený, nehodnocený žádným z ostatních uzlů."
 		},
 		"p9": {
-			"title": "Pattern 9",
-			"subtitle": "Description of the pattern 9."
+			"title": "Vzor 6 - Třicet uzlů - Náhodný vliv a propojení",
+			"subtitle": "Následující vzor představuje náhodné propojení a vliv mezi uzly. Některé z nich jsou propojené, některé ne. Čím blíže jsou uzly, tím těsnější je propojení mezi nimi a okolními uzly."
 		}
 	},
 	"models": {
 		"m1": {
-			"title": "Model 1",
-			"subtitle": "Description of the model 1."
+			"title": "#1 Strategické rozhodování",
+			"subtitle": "Porozumění vlivům umožňuje firmám činit informovaná rozhodnutí o jejich produktech, službách a operacích. Například zpráva může odhalit měnící se postoje společnosti k udržitelnosti, což může podnítit firmu k investování do ekologických praktik nebo vývoji produktů ohleduplných k životnímu prostředí, aby se sladila s preferencemi spotřebitelů."
 		},
 		"m2": {
-			"title": "Model 2",
-			"subtitle": "Description of the model 2."
+			"title": "#2 Řízení reputace",
+			"subtitle": "Firmy mohou využít poznatky ze zprávy o vlivech k efektivnímu řízení své reputace. Porozuměním společenským hodnotám, očekáváním a obavám mohou přizpůsobit svou komunikaci a činnosti tak, aby pozitivně rezonovaly s jejich cílovou skupinou, čímž zlepší image značky a její důvěryhodnost."
 		},
 		"m3": {
-			"title": "Model 3",
-			"subtitle": "Description of the model 3."
+			"title": "#3 Řízení rizik",
+			"subtitle": "Společenské trendy a změny mohou představovat rizika pro podniky, jako jsou regulační změny, bojkoty nebo negativní veřejné vnímání. Zpráva o vlivech může pomoci tato rizika identifikovat a zmírnit tím, že poskytne včasná varování a pokyny, jak přizpůsobit strategie a operace."
 		},
 		"m4": {
-			"title": "Model 4",
-			"subtitle": "Description of the model 4."
+			"title": "#4 Inovace a vývoj produktů",
+			"subtitle": "Firmy mohou využít zprávy o vlivech k identifikaci vznikajících trendů a spotřebitelských požadavků, což podpoří inovace a vývoj produktů. Předjímají-li společenské změny, mohou vyvíjet produkty a služby, které splňují vyvíjející se potřeby zákazníků, čímž získají konkurenční výhodu na trhu."
 		},
 		"m5": {
-			"title": "Model 5",
-			"subtitle": "Description of the model 5."
+			"title": "#5 Společenská odpovědnost firem (CSR)",
+			"subtitle": "Zpráva o vlivech může informovat CSR iniciativy firmy tím, že poukáže na sociální problémy a oblasti, kde může firma pozitivně působit. To může zahrnovat podporu komunitních projektů, propagaci rozmanitosti a inkluze nebo řešení environmentálních problémů, čímž se zvýší občanská odpovědnost firmy a zapojení stakeholderů."
 		},
 		"m6": {
-			"title": "Model 6",
-			"subtitle": "Description of the model 6."
+			"title": "#6 Vývoj politiky",
+			"subtitle": "Zprávy o vlivech nabízejí vhled do společenských trendů, preferencí a potřeb obyvatel města. Tyto informace mohou informovat o vývoji politik a iniciativ, které řeší naléhavé sociální, ekonomické a environmentální výzvy, a zajistit, aby městští představitelé mohli efektivně reagovat na měnící se potřeby obyvatel."
 		},
 		"m7": {
-			"title": "Model 7",
-			"subtitle": "Description of the model 7."
+			"title": "#7 Městské plánování",
+			"subtitle": "Porozumění vlivům pomáhá městským představitelům činit informovaná rozhodnutí o městském rozvoji a infrastrukturních projektech. Zvažováním faktorů, jako jsou demografické změny, kulturní preference a životní stylové trendy, mohou urbanisté navrhovat města, která jsou obyvatelnější, udržitelnější a inkluzivnější, čímž zlepší kvalitu života obyvatel."
 		},
 		"m8": {
-			"title": "Model 8",
-			"subtitle": "Description of the model 8."
+			"title": "#8 Rovnost a sociální spravedlnost",
+			"subtitle": "Poznatky ze zpráv o vlivech mohou městským představitelům pomoci identifikovat nerovnosti a nespravedlnosti v rámci komunity, jako je přístup k zdrojům, příležitostem a službám. To umožňuje tvůrcům politik implementovat cílené intervence a programy, které podporují sociální spravedlnost, snižují nerovnosti a vytvářejí inkluzivnější komunity."
 		},
 		"m9": {
-			"title": "Model 9",
-			"subtitle": "Description of the model 9."
+			"title": "#9 Environmentální udržitelnost",
+			"subtitle": "Porozumění vlivům umožňuje městským představitelům vyvíjet a implementovat strategie pro environmentální udržitelnost a odolnost vůči klimatickým změnám. Propagováním udržitelných praktik, snižováním emisí uhlíku a posilováním zelené infrastruktury mohou tvůrci politik zmírnit dopady klimatických změn a vytvářet zdravější a odolnější města pro budoucí generace."
 		},
 		"m10": {
-			"title": "Model 10",
-			"subtitle": "Description of the model 10."
+			"title": "#10 Veřejné zdraví a pohoda",
+			"subtitle": "Zprávy o vlivech mohou informovat veřejné zdravotní iniciativy a programy zaměřené na zlepšení pohody obyvatel. Identifikací zdravotních trendů, preferencí životního stylu a sociálních determinantů zdraví mohou městští představitelé vyvíjet politiky, které podporují fyzickou aktivitu, duševní zdraví a přístup ke zdravotním službám, čímž podporují zdravější a odolnější populaci."
 		},
 		"m11": {
-			"title": "Model 11",
-			"subtitle": "Description of the model 11."
+			"title": "#11 Krizové řízení a odolnost",
+			"subtitle": "Poznatky ze zpráv o vlivu mohou městským představitelům pomoci předvídat a reagovat na krize, jako jsou přírodní katastrofy, veřejné zdravotní nouze nebo sociální nepokoje. Porozuměním společenským dynamikám a zranitelnostem mohou tvůrci politik vyvíjet robustní plány připravenosti na nouzové situace, koordinovat reakční úsilí a budovat odolnost komunity tváří v tvář nepřízni osudu."
 		},
 		"m12": {
-			"title": "Model 12",
-			"subtitle": "Description of the model 12."
+			"title": "#12 Interdisciplinární propojení",
+			"subtitle": "Zprávy o vlivech často pokrývají širokou škálu témat a disciplín, což poskytuje příležitosti pro interdisciplinární učení a hodnocení. Vzdělavatelé mohou navrhovat hodnocení, která integrují poznatky z různých oborů, povzbuzující studenty, aby vytvářeli spojení mezi předměty a aplikovali své znalosti v různých kontextech."
+		},
+		"m13": {
+			"title": "#13 Kontextové porozumění",
+			"subtitle": "Zprávy o vlivech poskytují vzdělavatelům vhled do širších společenských trendů, kulturní dynamiky a sociálních problémů, které mohou ovlivnit vzdělávací zkušenosti a akademický výkon studentů. Toto kontextové porozumění umožňuje učitelům přizpůsobit výukové a hodnoticí strategie, aby lépe vyhovovaly potřebám a zájmům různorodých studentských populací."
+		},
+		"m14": {
+			"title": "#14 Relevance a zapojení",
+			"subtitle": "Inkorporace poznatků ze zpráv o vlivu do školních hodnocení může zvýšit relevanci a zapojení studijních materiálů pro studenty. Spojením akademického obsahu s reálnými problémy a společenskými trendy mohou vzdělavatelé učinit učení smysluplnějším a atraktivnějším, podporujícím hlubší porozumění a zapamatování klíčových konceptů."
+		},
+		"m15": {
+			"title": "#15 Posílení studentů",
+			"subtitle": "Inkorporace zpráv o vlivech do školních hodnocení posiluje studenty, aby se stali agenty změny ve svých komunitách. Hodnocení, která studentům umožňují zkoumat společenské problémy, prosazovat sociální spravedlnost a podnikat smysluplné kroky, podporují pocit agentury a odpovědnosti, posilující studenty k pozitivnímu vlivu na svět kolem nich."
 		}
 	},
 	"pagination": {

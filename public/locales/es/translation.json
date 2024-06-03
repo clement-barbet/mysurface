@@ -386,90 +386,102 @@
 	},
 	"patterns": {
 		"p1": {
-			"title": "Pattern 1",
-			"subtitle": "Description of the pattern 1."
+			"title": "Tipo de Patrón 1 - Influencia",
+			"subtitle": "Todas las entidades califican a todas las demás entidades por la calidad de la colaboración y el nivel de influencia de cada nodo (nodo=persona)."
 		},
 		"p2": {
-			"title": "Pattern 2",
-			"subtitle": "Description of the pattern 2."
+			"title": "Tipo de Patrón 2 - Líder",
+			"subtitle": "Las entidades califican solo a las entidades especificadas, mientras tanto, la entidad especificada puede calificar a su oponente. Mejor para calificar personas."
 		},
 		"p3": {
-			"title": "Pattern 3",
-			"subtitle": "Description of the pattern 3."
+			"title": "Tipo de Patrón 3 - Producto",
+			"subtitle": "Las entidades califican a las entidades especificadas, mientras tanto, la entidad especificada no califica a las demás. Mejor para calificar productos o cosas."
 		},
 		"p4": {
-			"title": "Pattern 4",
-			"subtitle": "Description of the pattern 4."
+			"title": "Patrón 1 - Dos Nodos",
+			"subtitle": "Puedes ver dos nodos conectados, lo que significa que estos nodos tienen alguna relación o interacción. Mientras tanto, uno de los nodos es más grande, el otro más pequeño. Eso significa que el nodo más grande obtuvo una mayor tasa de influencia del más pequeño y viceversa."
 		},
 		"p5": {
-			"title": "Pattern 5",
-			"subtitle": "Description of the pattern 5."
+			"title": "Patrón 2 - Tres Nodos",
+			"subtitle": "Tres nodos con tres niveles visibles de influencia. El más grande obtuvo la calificación más alta de los otros dos nodos, mientras tanto, los demás obtuvieron un 50% menos y un 90% menos que el más grande. Mientras tanto, dos de ellos están desconectados, lo que significa que no tienen ninguna interacción."
 		},
 		"p6": {
-			"title": "Pattern 6",
-			"subtitle": "Description of the pattern 6."
+			"title": "Patrón 3 - Tres Nodos Conectados",
+			"subtitle": "Tres nodos con niveles visibles de influencia. El más grande tiene la calificación más alta de los otros dos nodos, mientras tanto, los demás obtuvieron un 50% menos y un 90% menos que el más grande. Mientras tanto, todos están conectados, lo que significa que todos tienen interacción."
 		},
 		"p7": {
-			"title": "Pattern 7",
-			"subtitle": "Description of the pattern 7."
+			"title": "Patrón 4 - Grupo de Nodos - Uno Excepcional",
+			"subtitle": "Doce nodos conectados con uno excepcional representan que 11 nodos tienen una colaboración más cercana con un nivel de influencia similar. Mientras tanto, un nodo tiene un nivel de influencia significativamente menor, calificado por los demás nodos. El elemento débil necesita ser analizado."
 		},
 		"p8": {
-			"title": "Pattern 8",
-			"subtitle": "Description of the pattern 8."
+			"title": "Patrón 5 - Dos Grupos - Uno Desconectado",
+			"subtitle": "El siguiente patrón representa dos grupos de colaboración independientes que no cooperan entre sí. Ambos grupos tienen al menos un nodo destacado que representa a la persona más influyente del grupo. Un elemento está desconectado, no calificado por ninguno de los otros nodos."
 		},
 		"p9": {
-			"title": "Pattern 9",
-			"subtitle": "Description of the pattern 9."
+			"title": "Patrón 6 - Treinta Nodos - Influencia y Conexión Aleatoria",
+			"subtitle": "El siguiente patrón representa la conexión y la influencia aleatoria entre nodos. Algunos de ellos están conectados, algunos no. Cuanto más cerca estén los nodos, más estrecha es la conexión entre ellos y los nodos circundantes."
 		}
 	},
 	"models": {
 		"m1": {
-			"title": "Model 1",
-			"subtitle": "Description of the model 1."
+			"title": "#1 Toma de decisiones estratégicas",
+			"subtitle": "Comprender las influencias sociales permite a las empresas tomar decisiones informadas sobre sus productos, servicios y operaciones. Por ejemplo, un informe podría revelar actitudes sociales cambiantes hacia la sostenibilidad, lo que llevaría a una empresa a invertir en prácticas ecológicas o desarrollar productos conscientes del medio ambiente para alinearse con las preferencias de los consumidores."
 		},
 		"m2": {
-			"title": "Model 2",
-			"subtitle": "Description of the model 2."
+			"title": "#2 Gestión de la reputación",
+			"subtitle": "Las empresas pueden utilizar los conocimientos de un informe de influencia social para gestionar su reputación de manera efectiva. Al comprender los valores, expectativas y preocupaciones sociales, pueden adaptar su comunicación y acciones para resonar positivamente con su audiencia objetivo, mejorando así la imagen y credibilidad de la marca."
 		},
 		"m3": {
-			"title": "Model 3",
-			"subtitle": "Description of the model 3."
+			"title": "#3 Gestión de riesgos",
+			"subtitle": "Las tendencias y cambios sociales pueden suponer riesgos para las empresas, como cambios regulatorios, boicots o percepción pública negativa. Un informe de influencia social puede ayudar a identificar y mitigar estos riesgos al proporcionar advertencias tempranas y orientación sobre cómo adaptar estrategias y operaciones en consecuencia."
 		},
 		"m4": {
-			"title": "Model 4",
-			"subtitle": "Description of the model 4."
+			"title": "#4 Innovación y desarrollo de productos",
+			"subtitle": "Las empresas pueden aprovechar los informes de influencia social para identificar tendencias emergentes y demandas de los consumidores, impulsando la innovación y el desarrollo de productos. Al adelantarse a los cambios sociales, las empresas pueden desarrollar productos y servicios que satisfagan las necesidades cambiantes de los clientes, obteniendo una ventaja competitiva en el mercado."
 		},
 		"m5": {
-			"title": "Model 5",
-			"subtitle": "Description of the model 5."
+			"title": "#5 Responsabilidad social corporativa (RSC)",
+			"subtitle": "Un informe de influencia social puede informar las iniciativas de RSC de una empresa al resaltar problemas sociales y áreas donde la empresa puede tener un impacto positivo. Esto puede incluir apoyar proyectos comunitarios, promover la diversidad y la inclusión, o abordar preocupaciones ambientales, mejorando así la ciudadanía corporativa y el compromiso de los stakeholders."
 		},
 		"m6": {
-			"title": "Model 6",
-			"subtitle": "Description of the model 6."
+			"title": "#6 Desarrollo de políticas",
+			"subtitle": "Los informes de influencia social ofrecen información sobre tendencias, preferencias y necesidades sociales dentro de la población de la ciudad. Esta información puede informar el desarrollo de políticas e iniciativas que aborden desafíos sociales, económicos y ambientales urgentes, asegurando que los representantes de la ciudad puedan responder efectivamente a las necesidades cambiantes de los residentes."
 		},
 		"m7": {
-			"title": "Model 7",
-			"subtitle": "Description of the model 7."
+			"title": "#7 Planificación urbana",
+			"subtitle": "Comprender las influencias sociales ayuda a los representantes de la ciudad a tomar decisiones informadas sobre el desarrollo urbano y los proyectos de infraestructura. Al considerar factores como cambios demográficos, preferencias culturales y tendencias de estilo de vida, los urbanistas pueden diseñar ciudades más habitables, sostenibles e inclusivas, mejorando la calidad de vida de los residentes."
 		},
 		"m8": {
-			"title": "Model 8",
-			"subtitle": "Description of the model 8."
+			"title": "#8 Equidad y justicia social",
+			"subtitle": "Los conocimientos de los informes de influencia social pueden ayudar a los representantes de la ciudad a identificar disparidades e inequidades dentro de la comunidad, como el acceso a recursos, oportunidades y servicios. Esto permite a los formuladores de políticas implementar intervenciones y programas específicos que promuevan la justicia social, reduzcan la desigualdad y creen comunidades más inclusivas."
 		},
 		"m9": {
-			"title": "Model 9",
-			"subtitle": "Description of the model 9."
+			"title": "#9 Sostenibilidad ambiental",
+			"subtitle": "Comprender las influencias sociales permite a los representantes de la ciudad desarrollar e implementar estrategias para la sostenibilidad ambiental y la resiliencia climática. Al promover prácticas sostenibles, reducir las emisiones de carbono y mejorar la infraestructura verde, los formuladores de políticas pueden mitigar el impacto del cambio climático y crear ciudades más saludables y resilientes para las futuras generaciones."
 		},
 		"m10": {
-			"title": "Model 10",
-			"subtitle": "Description of the model 10."
+			"title": "#10 Salud pública y bienestar",
+			"subtitle": "Los informes de influencia social pueden informar las iniciativas y programas de salud pública dirigidos a mejorar el bienestar de los residentes. Al identificar tendencias de salud, preferencias de estilo de vida y determinantes sociales de la salud, los representantes de la ciudad pueden desarrollar políticas que promuevan la actividad física, la salud mental y el acceso a servicios de salud, fomentando una población más saludable y resiliente."
 		},
 		"m11": {
-			"title": "Model 11",
-			"subtitle": "Description of the model 11."
+			"title": "#11 Gestión de crisis y resiliencia",
+			"subtitle": "Los conocimientos de los informes de influencia social pueden ayudar a los representantes de la ciudad a anticipar y responder a crisis, como desastres naturales, emergencias de salud pública o disturbios sociales. Al comprender las dinámicas y vulnerabilidades sociales, los formuladores de políticas pueden desarrollar planes robustos de preparación para emergencias, coordinar esfuerzos de respuesta y construir la resiliencia comunitaria frente a la adversidad."
 		},
 		"m12": {
-			"title": "Model 12",
-			"subtitle": "Description of the model 12."
+			"title": "#12 Conexiones interdisciplinarias",
+			"subtitle": "Los informes de influencia social a menudo cubren una amplia gama de temas y disciplinas, proporcionando oportunidades para el aprendizaje y la evaluación interdisciplinarios. Los educadores pueden diseñar evaluaciones que integren conocimientos de múltiples campos, alentando a los estudiantes a hacer conexiones entre materias y aplicar sus conocimientos en contextos diversos."
+		},
+		"m13": {
+			"title": "#13 Comprensión contextual",
+			"subtitle": "Los informes de influencia social proporcionan a los educadores información sobre tendencias sociales más amplias, dinámicas culturales y problemas sociales que pueden afectar las experiencias de aprendizaje y el rendimiento académico de los estudiantes. Esta comprensión contextual permite a los maestros adaptar las estrategias de instrucción y evaluación para satisfacer mejor las necesidades e intereses de poblaciones estudiantiles diversas."
+		},
+		"m14": {
+			"title": "#14 Relevancia y compromiso",
+			"subtitle": "Incorporar conocimientos de informes de influencia social en las evaluaciones en el aula puede aumentar la relevancia y el compromiso de los materiales de aprendizaje para los estudiantes. Al conectar el contenido académico con problemas del mundo real y tendencias sociales, los educadores pueden hacer que el aprendizaje sea más significativo y atractivo, fomentando una comprensión más profunda y la retención de conceptos clave."
+		},
+		"m15": {
+			"title": "#15 Empoderamiento estudiantil",
+			"subtitle": "Incorporar informes de influencia social en las evaluaciones en el aula empodera a los estudiantes para que se conviertan en agentes de cambio en sus comunidades. Las evaluaciones que desafían a los estudiantes a investigar problemas sociales, abogar por la justicia social y tomar acciones significativas fomentan un sentido de agencia y responsabilidad, empoderando a los estudiantes para tener un impacto positivo en el mundo que les rodea."
 		}
 	},
 	"pagination": {
