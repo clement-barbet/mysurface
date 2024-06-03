@@ -1,30 +1,30 @@
 {
 	"home": {
 		"welcome": {
-			"title": "Vítejte",
+			"title": "Vítejte v MySurface",
 			"subtitle": "Vítejte v MySurface."
 		},
 		"guide": {
 			"admin": {
 				"title": "Průvodce administrátora",
-				"subtitle": "Kroky k následování pro administrátory.",
+				"subtitle": "Kroky pro administrátora.",
 				"steps": {
-					"s1": "Přihlaste se pomocí účtu správce",
+					"s1": "Přihlaste se a nastavte si profil organizace",
 					"s2": "Přejděte na sekci 'Účastníci'",
-					"s3": "V sekci 'Účastníci' vytvořte nové účastníky, buď pomocí formuláře, nebo nahráním souboru CSV",
-					"s4": "Zkopírujte odkaz na dotazník každého účastníka a sdílejte jej s nimi",
-					"s5": "Po dokončení dotazníku každým účastníkem přejděte do sekce 'Účastníci' a klikněte na tlačítko 'Generovat výsledek'",
-					"s6": "Jakmile je zpráva vygenerována, budete přesměrováni na stránku s výsledkem s grafy 2D a 3D",
-					"s7": "V sekci 'Výsledky' můžete kdykoli zkontrolovat výsledky"
+					"s3": "V sekci 'Účastníci' si vyberte proces, vytvořte účastníky a spustěte dotazník.",
+					"s4": "Zkopírujte odkaz na dotazník, nebo odešlete hromadně na každého účastníka",
+					"s5": "Po dokončení dotazníku každým účastníkem klikněte na tlačítko 'Generovat výsledek'",
+					"s6": "Jakmile je zpráva vygenerována, budete přesměrováni na stránku s grafy 2D a 3D",
+					"s7": "V sekci 'Výsledky' můžete kdykoli zkontrolovat výsledky zpětně."
 				}
 			},
 			"user": {
-				"title": "Uživatelský průvodce",
+				"title": "Průvodce uživatele",
 				"subtitle": "Kroky k následování pro uživatele.",
 				"steps": {
-					"s1": "Přístup k odkazu poskytnutému vaším administrátorem, který obsahuje dotazník",
-					"s2": "Vyplňte otázky dotazníku",
-					"s3": "Odeslat formulář"
+					"s1": "Uživatel nemá přístup k systému.",
+					"s2": "Uživatel přijme e-mail",
+					"s3": "a zodpoví tří otázky na škále 0-10 a odešle formulář"
 				}
 			},
 			"help": "Nevíte si rady?"
@@ -66,18 +66,18 @@
 				"subtitle": "Výběr typu hodnocení"
 			},
 			"manage": {
-				"title": "Provedení hodnocení",
+				"title": "Správa hodnocení",
 				"subtitle": "Správa provedení hodnocení"
 			},
-			"add-leader": "Přidat nového vedoucího",
+			"add-leader": "Přidat nového lídra",
 			"add-product": "Přidat nový produkt",
 			"participants": {
 				"title": "Účastníci",
 				"subtitle": "Aktivní účastníci"
 			},
 			"leaders": {
-				"title": "Vedoucí",
-				"subtitle": "Aktivní vedoucí"
+				"title": "Lídři",
+				"subtitle": "Aktivní lídři"
 			},
 			"products": {
 				"title": "Produkty",
@@ -119,7 +119,7 @@
 			"buttons": {
 				"add": "Přidat účastníka",
 				"csv": "Nahrát CSV",
-				"add-leader": "Přidat Vůdce",
+				"add-leader": "Přidat Lídra",
 				"add-product": "Přidat Produkt"
 			},
 			"link": {
@@ -142,13 +142,13 @@
 		"select-process": {
 			"options": {
 				"influence": "Vliv",
-				"leaders": "Vůdci",
-				"products": "Produkty"
+				"leaders": "Líder",
+				"products": "Produkt"
 			},
 			"explanations": {
 				"influence": "Každý hodnotí každého",
-				"leaders": "Uživatelé hodnotí konkrétní uživatele",
-				"products": "Uživatelé hodnotí produkty"
+				"leaders": "Uživatel hodnotí konkrétního uživatele",
+				"products": "Uživatelé hodnotí produkt"
 			},
 			"button": "Vybrat",
 			"selected": "Vybraný typ hodnocení:"
@@ -222,7 +222,7 @@
 		},
 		"delete": {
 			"title": "Smazat Účet",
-			"subtitle": "Jakmile smažete svůj účet, všechna vaše data budou ztracena. Prosím, buďte opatrní a promyšleně před pokračováním v této akci.",
+			"subtitle": "Jakmile smažete svůj účet, všechna vaše data budou ztracena. Prosím, buďte opatrní před pokračováním v této akci.",
 			"button": "SMAZAT MŮJ ÚČET",
 			"confirmation": "Jste si jisti, že chcete smazat svůj účet?",
 			"options": {
