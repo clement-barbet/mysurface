@@ -506,7 +506,7 @@
 				"status": "Stav",
 				"license": "Licence",
 				"date": "Poslední aktualizace",
-				"expiration": "Vypršení"
+				"expiration": "Expirace"
 			},
 			"buttons": {
 				"delete": "Smazat"
